@@ -1,0 +1,76 @@
+import MapChart from "@/components/ui/MapChart";
+
+export default function ContactPage() {
+  return (
+    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+      <div className="mb-16">
+        <h1 className="text-4xl md:text-5xl font-mono font-bold text-white mb-6 uppercase tracking-wider">
+          Initiate <span className="text-[#39ff14]">Contact</span>
+        </h1>
+        <div className="w-24 h-1 bg-[#39ff14] mb-6 shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-12 items-start">
+        {/* Contact Form */}
+        <div className="glass-panel p-8 border border-[#39ff14]/20 relative">
+          <div className="absolute top-0 right-0 p-4 opacity-50">
+            <div className="w-12 h-12 border-t-2 border-r-2 border-[#39ff14]" />
+          </div>
+          
+          <div className="mb-8">
+            <p className="text-gray-300 font-mono text-sm border-l-2 border-[#39ff14] pl-3 mb-2">
+              SECURE COMMUNICATION CHANNEL ESTABLISHED
+            </p>
+            <p className="text-gray-500 font-sans text-sm">
+              All transmissions are encrypted. We will respond to your inquiry within 24 hours.
+            </p>
+          </div>
+
+          <form className="space-y-6 font-mono">
+            <div>
+              <label className="block text-sm text-[#39ff14] mb-2 uppercase tracking-wide">Company Name</label>
+              <input type="text" className="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-[#39ff14] focus:bg-black outline-none transition-all placeholder-gray-700" placeholder="Enter organization identifier..." />
+            </div>
+            <div>
+              <label className="block text-sm text-[#39ff14] mb-2 uppercase tracking-wide">Encrypted Comm (Email)</label>
+              <input type="email" className="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-[#39ff14] focus:bg-black outline-none transition-all placeholder-gray-700" placeholder="Enter return address..." />
+            </div>
+            <div>
+              <label className="block text-sm text-[#39ff14] mb-2 uppercase tracking-wide">Transmission Data</label>
+              <textarea rows={5} className="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-[#39ff14] focus:bg-black outline-none transition-all placeholder-gray-700 resize-none" placeholder="Detail your infrastructure requirements or security concerns..."></textarea>
+            </div>
+            <button type="button" className="bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14] font-bold px-6 py-3 hover:bg-[#39ff14] hover:text-black transition-all duration-300 w-full uppercase tracking-widest mt-4 flex justify-center items-center gap-2 group">
+              <span>Transmit Signal</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </form>
+        </div>
+
+        {/* Global / Local Map Info */}
+        <div className="space-y-8">
+            <div className="glass-panel p-8 border border-white/5 h-[400px] flex flex-col">
+                <h3 className="text-xl font-mono text-white mb-2 uppercase tracking-wider">Deployment <span className="text-[#00f0ff]">Zone</span></h3>
+                <p className="text-gray-400 font-sans text-sm mb-4">
+                    Physical hardware deployments and on-site network clustering are currently restricted to our primary operational theater in Upstate South Carolina.
+                </p>
+                <div className="flex-grow w-full relative min-h-[250px] bg-black/30 rounded-sm border border-white/5 overflow-hidden">
+                    <MapChart />
+                </div>
+            </div>
+
+            <div className="glass-panel p-8 border border-white/5 border-l-[#b026ff]">
+                <h3 className="text-xl font-mono text-white mb-2 uppercase tracking-wider">Global <span className="text-[#b026ff]">Consulting</span></h3>
+                <p className="text-gray-400 font-sans leading-relaxed">
+                    While physical deployments hold geographic constraints, our strategic cybersecurity consulting, compliance auditing (HIPAA/SOC2), and infrastructure architecture design services are available worldwide. 
+                </p>
+                <div className="mt-4 flex items-center gap-2 text-sm text-[#b026ff] font-mono">
+                    <span className="w-2 h-2 rounded-full bg-[#b026ff] animate-ping" />
+                    STATUS: ACCEPTING GLOBAL CONTRACTS
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+

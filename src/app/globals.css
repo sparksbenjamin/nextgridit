@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-roboto-mono);
+
+  --color-brand-cyan: #00f0ff;
+  --color-brand-green: #39ff14;
+  --color-brand-purple: #b026ff;
+  --color-brand-dark: #0a0a0a;
+  --color-brand-gray: #1a1a1a;
+  --color-brand-text: #e0e0e0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #050505;
+    --foreground: #e0e0e0;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: #39ff14;
+  color: #000;
+}
+
+/* Cyber UI elements */
+.glass-panel {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(57, 255, 20, 0.1);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.border-glow-purple {
+  box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+}
+
+/* Matrix rain overlay effect for sections */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
 }
