@@ -1,5 +1,7 @@
 import { IconSkull, IconShieldCheck, IconWorld } from "@tabler/icons-react"
 
+export const runtime = "edge";
+
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">

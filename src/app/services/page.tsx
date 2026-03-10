@@ -26,6 +26,8 @@ const detailedServices = [
   }
 ]
 
+export const runtime = "edge";
+
 export default function ServicesPage() {
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
