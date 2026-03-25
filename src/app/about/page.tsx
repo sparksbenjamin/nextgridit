@@ -1,7 +1,5 @@
 import { IconSkull, IconShieldCheck, IconWorld } from "@tabler/icons-react"
 
-export const runtime = "edge";
-
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
@@ -19,16 +17,16 @@ export default function AboutPage() {
             I started NextgridIT out of frustration. Working inside massive corporate environments, I watched daily as enterprises deployed incredible, automated security layers. Meanwhile, the small businesses down the street were left exposed, entirely reliant on reactive break-fix IT models.
           </p>
           <p>
-            The technology to secure these smaller networks exists, and it doesn't have to cost a fortune. The problem isn't the cost of the tools; the problem is that the agencies who know how to deploy them charge enterprise rates to everyone.
+            The technology to secure these smaller networks exists, and it doesn&apos;t have to cost a fortune. The problem isn&apos;t the cost of the tools; the problem is that the agencies who know how to deploy them charge enterprise rates to everyone.
           </p>
           <p className="border-l-2 border-[#b026ff] pl-4 text-white font-mono my-8 py-2">
-            "A truly secure world is one where <span className="text-[#b026ff] drop-shadow-[0_0_8px_rgba(176,38,255,0.8)]">everyone</span> is secure. We are trying to make a safer tomorrow, today."
+            &ldquo;A truly secure world is one where <span className="text-[#b026ff] drop-shadow-[0_0_8px_rgba(176,38,255,0.8)]">everyone</span> is secure. We are trying to make a safer tomorrow, today.&rdquo;
           </p>
           <p>
-            When I'm not architecting secure networks for NextgridIT clients, I spend my time hunting for zero-day vulnerabilities (bug bounties) inside the infrastructure of tech giants like Microsoft and Google. 
+            When I&apos;m not architecting secure networks for NextgridIT clients, I spend my time hunting for zero-day vulnerabilities (bug bounties) inside the infrastructure of tech giants like Microsoft and Google.
           </p>
           <p>
-            That offensive security mindset is baked into everything we do. We don't just set up your router; we configure it knowing exactly how an attacker would try to break it.
+            That offensive security mindset is baked into everything we do. We don&apos;t just set up your router; we configure it knowing exactly how an attacker would try to break it.
           </p>
         </div>
 
@@ -53,7 +51,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <h3 className="text-xl font-mono font-bold text-white mb-1">Active Bug Hunter</h3>
-                <p className="text-sm text-gray-400 font-sans">Continually pressure-testing the world's largest networks (Google, Microsoft).</p>
+                <p className="text-sm text-gray-400 font-sans">Continually pressure-testing the world&apos;s largest networks (Google, Microsoft).</p>
               </div>
             </div>
 
@@ -69,7 +67,20 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      <section id="case-studies" className="mt-20 glass-panel p-8 border border-white/5 scroll-mt-28">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-mono font-bold text-white uppercase tracking-wider mb-4">
+            Case Study <span className="text-[#39ff14]">Approach</span>
+          </h2>
+          <p className="text-gray-300 leading-relaxed mb-4">
+            Most client environments involve sensitive infrastructure, so we keep names private and focus on outcomes. Engagements are measured against downtime reduction, security posture improvements, response time, and operational clarity for the team using the system every day.
+          </p>
+          <p className="text-gray-400 leading-relaxed">
+            If you want examples that match your environment, the best next step is a discovery call so we can share relevant anonymized work without pretending every network has the same risks.
+          </p>
+        </div>
+      </section>
     </div>
   )
 }
-

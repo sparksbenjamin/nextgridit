@@ -48,7 +48,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-400 font-mono max-w-2xl mb-10 leading-relaxed"
           >
-            We bring Fortune 500 security protocols and advanced network setups to small organizations. Because cyber threats don't discriminate by size.
+            We bring Fortune 500 security protocols and advanced network setups to small organizations. Because cyber threats don&apos;t discriminate by size.
           </motion.p>
 
           <motion.div

@@ -4,8 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-export const runtime = "edge";
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -18,7 +16,8 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "NextgridIT | Enterprise IT for Small Business",
-  description: "Bringing large enterprise IT Solutions to small companies. Specialized in Security and Network setups.",
+  description:
+    "Enterprise IT, network architecture, and security services designed for small and mid-sized businesses.",
   icons: {
     icon: "/favicon.ico",
   },

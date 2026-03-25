@@ -1,9 +1,13 @@
 declare module "react-simple-maps" {
     import * as React from "react";
 
+    type UnknownRecord = Record<string, unknown>;
+    type MapPosition = UnknownRecord;
+    type MapEvent = React.SyntheticEvent;
+
     export interface ComposableMapProps {
-        projection?: string | Function;
-        projectionConfig?: any;
+        projection?: string | ((...args: unknown[]) => unknown);
+        projectionConfig?: UnknownRecord;
         width?: number;
         height?: number;
         viewBox?: string;
@@ -18,11 +22,11 @@ declare module "react-simple-maps" {
         zoom?: number;
         minZoom?: number;
         maxZoom?: number;
-        onMoveStart?: (event: any, position: any) => void;
-        onMoveEnd?: (event: any, position: any) => void;
-        onMove?: (position: any) => void;
+        onMoveStart?: (event: MapEvent, position: MapPosition) => void;
+        onMoveEnd?: (event: MapEvent, position: MapPosition) => void;
+        onMove?: (position: MapPosition) => void;
         translateExtent?: [[number, number], [number, number]];
-        filterZoomEvent?: (event: any) => boolean;
+        filterZoomEvent?: (event: MapEvent) => boolean;
         className?: string;
         children?: React.ReactNode;
     }
@@ -31,14 +35,14 @@ declare module "react-simple-maps" {
 
     export interface GeographiesProps {
         geography: string | object | string[];
-        children: (data: { geographies: any[]; outline: any; borders: any }) => React.ReactNode;
-        parseGeographies?: (geos: any[]) => any[];
+        children: (data: { geographies: UnknownRecord[]; outline: UnknownRecord; borders: UnknownRecord }) => React.ReactNode;
+        parseGeographies?: (geos: UnknownRecord[]) => UnknownRecord[];
     }
 
     export const Geographies: React.FC<GeographiesProps>;
 
     export interface GeographyProps {
-        geography: any;
+        geography: UnknownRecord;
         onMouseEnter?: React.MouseEventHandler;
         onMouseLeave?: React.MouseEventHandler;
         onMouseDown?: React.MouseEventHandler;
