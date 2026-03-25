@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import { IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react"
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about NextGridIT and its approach to network infrastructure, security, and compliance-aware support for businesses in Upstate South Carolina.",
+  alternates: {
+    canonical: "/about/",
+  },
+};
 
 export default function AboutPage() {
   return (

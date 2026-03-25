@@ -1,20 +1,40 @@
 "use client"
 
+import * as React from "react"
 import Spline from "@splinetool/react-spline"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { IconMapPin, IconPhone, IconServerCog, IconShieldLock } from "@tabler/icons-react"
 
 export function HeroSection() {
+  const [showScene, setShowScene] = React.useState(false)
+
+  React.useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)")
+    const updateSceneState = () => setShowScene(mediaQuery.matches)
+
+    updateSceneState()
+    mediaQuery.addEventListener("change", updateSceneState)
+
+    return () => mediaQuery.removeEventListener("change", updateSceneState)
+  }, [])
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] z-10 mix-blend-multiply pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-[#00f0ff]/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[40vw] h-[40vw] bg-[#39ff14]/5 blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="absolute right-0 top-0 w-full lg:w-2/3 h-full z-0 opacity-60 lg:opacity-100">
-        <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
-      </div>
+      {showScene ? (
+        <div className="absolute right-0 top-0 w-full lg:w-2/3 h-full z-0 opacity-60 lg:opacity-100">
+          <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+        </div>
+      ) : (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute right-[12%] top-[18%] h-48 w-48 rounded-full bg-[#00f0ff]/10 blur-[80px]" />
+          <div className="absolute right-[28%] bottom-[18%] h-56 w-56 rounded-full bg-[#39ff14]/10 blur-[90px]" />
+        </div>
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-3xl">

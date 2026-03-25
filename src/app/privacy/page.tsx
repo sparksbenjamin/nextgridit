@@ -1,3 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Review the NextGridIT privacy policy for how inquiry and project information is handled.",
+  alternates: {
+    canonical: "/privacy/",
+  },
+};
+
 export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">

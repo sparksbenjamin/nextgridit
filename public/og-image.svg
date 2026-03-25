@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#050505"/>
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="url(#bg)" stroke="rgba(57,255,20,0.2)"/>
+  <path d="M40 170H1160" stroke="rgba(57,255,20,0.08)"/>
+  <path d="M40 300H1160" stroke="rgba(57,255,20,0.08)"/>
+  <path d="M40 430H1160" stroke="rgba(57,255,20,0.08)"/>
+  <path d="M300 40V590" stroke="rgba(57,255,20,0.08)"/>
+  <path d="M620 40V590" stroke="rgba(57,255,20,0.08)"/>
+  <path d="M940 40V590" stroke="rgba(57,255,20,0.08)"/>
+  <rect x="92" y="92" width="94" height="94" rx="6" fill="#050505" stroke="#39ff14"/>
+  <text x="112" y="151" fill="#39ff14" font-family="monospace" font-size="44" font-weight="700">NX</text>
+  <text x="92" y="255" fill="#E5E7EB" font-family="Arial, sans-serif" font-size="64" font-weight="700">NextGridIT</text>
+  <text x="92" y="330" fill="#00f0ff" font-family="Arial, sans-serif" font-size="42" font-weight="700">Network Infrastructure, Security, and IT Support</text>
+  <text x="92" y="394" fill="#D1D5DB" font-family="Arial, sans-serif" font-size="28">Serving Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina</text>
+  <text x="92" y="456" fill="#9CA3AF" font-family="monospace" font-size="24">Travel available for larger projects and specialty engagements.</text>
+  <text x="92" y="518" fill="#39ff14" font-family="monospace" font-size="28">nextgridit.com</text>
+  <defs>
+    <linearGradient id="bg" x1="40" y1="40" x2="1160" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08161A"/>
+      <stop offset="0.55" stop-color="#111111"/>
+      <stop offset="1" stop-color="#0C1410"/>
+    </linearGradient>
+  </defs>
+</svg>

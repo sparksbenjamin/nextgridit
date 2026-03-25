@@ -9,6 +9,7 @@ import { IconMenu2, IconX } from "@tabler/icons-react"
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const pathname = usePathname()
+  const mobileMenuId = "mobile-navigation"
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -34,7 +35,7 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav aria-label="Primary" className="hidden md:flex space-x-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href
               return (
@@ -71,6 +72,9 @@ export function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls={mobileMenuId}
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
               className="p-2 rounded-md text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
             >
               {isOpen ? <IconX className="w-6 h-6" /> : <IconMenu2 className="w-6 h-6" />}
@@ -81,12 +85,13 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       <div
+        id={mobileMenuId}
         className={cn(
           "md:hidden absolute w-full bg-[#050505] border-b border-[#39ff14]/20 transition-all duration-300 ease-in-out origin-top overflow-hidden",
           isOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"
         )}
       >
-        <div className="px-4 space-y-4">
+        <nav aria-label="Mobile" className="px-4 space-y-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -109,7 +114,7 @@ export function Navbar() {
               GET A QUOTE
             </Link>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   )
