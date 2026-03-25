@@ -1,37 +1,55 @@
-<!-- Deployment Trigger: Edge Runtime & Build Partitioning Fix -->
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a Next.js site configured for deployment to Cloudflare Workers using the OpenNext Cloudflare adapter.
 
-## Getting Started
+## Local Development
 
-First, run the development server:
+Start the normal Next.js dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To preview the site in the Cloudflare Workers runtime locally:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run preview
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Cloudflare Deploy
 
-## Learn More
+Production deploy:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run deploy
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Non-production preview upload:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run deploy:preview
+```
 
-## Deploy on Vercel
+## Required Cloudflare Credentials
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Wrangler requires Cloudflare credentials for non-interactive deploys.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create a local `.env` file from `.env.example`, or set these in Cloudflare Workers Builds:
+
+```bash
+CLOUDFLARE_API_TOKEN=your_token_here
+CLOUDFLARE_ACCOUNT_ID=your_account_id_here
+```
+
+If you are configuring Cloudflare Workers Builds in the dashboard, use:
+
+- Build command: `npm install && npm run build`
+- Deploy command: `npm run deploy`
+- Non-production branch deploy command: `npm run deploy:preview`
+
+The API token should have permission to deploy Workers for the target account. `CLOUDFLARE_ACCOUNT_ID` is supported by Wrangler as an environment variable and helps ensure the deploy targets the correct account.
+
+References:
+
+- [Next.js on Workers](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
+- [Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/)
+- [Wrangler system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/)
+- [OpenNext Cloudflare get started](https://opennext.js.org/cloudflare/get-started)
