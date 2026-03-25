@@ -1,15 +1,16 @@
 name = "nextgridit"
-main = ".open-next/worker.js"
-compatibility_date = "2024-12-30"
-compatibility_flags = [ "nodejs_compat", "global_fetch_strictly_public" ]
+main = "src/worker.ts"
+compatibility_date = "2026-03-25"
 workers_dev = true
 preview_urls = true
 keep_vars = true
 
 [assets]
-directory = ".open-next/assets"
+directory = "out"
 binding = "ASSETS"
+not_found_handling = "404-page"
 
-[[services]]
-binding = "WORKER_SELF_REFERENCE"
-service = "nextgridit"
+[[routes]]
+pattern = "www.nextgridit.com"
+zone_name = "nextgridit.com"
+custom_domain = true

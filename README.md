@@ -1,4 +1,4 @@
-This is a Next.js site configured for deployment to Cloudflare Workers using the OpenNext Cloudflare adapter.
+This is a statically exported Next.js site configured for deployment to Cloudflare Workers with static assets.
 
 ## Local Development
 
@@ -45,11 +45,13 @@ If you are configuring Cloudflare Workers Builds in the dashboard, use:
 - Deploy command: `npm run deploy`
 - Non-production branch deploy command: `npm run deploy:preview`
 
+This project intentionally uses static export because the site is fully static and the OpenNext server bundle exceeded Cloudflare's free-plan Worker size limit. The Worker now just serves the generated `out` assets.
+
 The API token should have permission to deploy Workers for the target account. `CLOUDFLARE_ACCOUNT_ID` is supported by Wrangler as an environment variable and helps ensure the deploy targets the correct account.
 
 References:
 
-- [Next.js on Workers](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
+- [Next.js static export guide](https://nextjs.org/docs/app/guides/static-exports)
+- [Cloudflare Workers static assets](https://developers.cloudflare.com/workers/static-assets/)
 - [Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/)
 - [Wrangler system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/)
-- [OpenNext Cloudflare get started](https://opennext.js.org/cloudflare/get-started)
