@@ -1,32 +1,32 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { IconShieldCheck, IconNetwork, IconCloudLock, IconDeviceDesktopAnalytics, IconChevronRight } from "@tabler/icons-react"
+import { IconChevronRight, IconCloudLock, IconDeviceDesktopAnalytics, IconNetwork, IconShieldCheck } from "@tabler/icons-react"
 
 const services = [
   {
-    title: "Enterprise Cybersecurity",
-    description: "Military-grade threat detection, continuous monitoring, and zero-trust architecture scaled for small business environments.",
+    title: "Security Hardening",
+    description: "Reduce avoidable risk with practical security improvements for endpoints, identities, networks, and business-critical systems.",
     icon: <IconShieldCheck className="w-8 h-8 text-[#39ff14]" />,
-    features: ["24/7 Threat Hunting", "Endpoint Protection", "Penetration Testing"]
+    features: ["Security reviews", "Firewall and access controls", "Baseline hardening"]
   },
   {
-    title: "Advanced Network Architecture",
-    description: "Resilient, high-bandwidth network designs that eliminate downtime and support rapid business scaling without bottlenecks.",
+    title: "Network Infrastructure",
+    description: "Plan, deploy, and improve reliable business networks that support growth, uptime, and day-to-day operations without unnecessary complexity.",
     icon: <IconNetwork className="w-8 h-8 text-[#00f0ff]" />,
-    features: ["SD-WAN Implementation", "VLAN Segmentation", "Redundant Routing"]
+    features: ["Ubiquiti and network upgrades", "Segmentation and routing", "Wi-Fi and site connectivity"]
   },
   {
-    title: "Secure Cloud Transitions",
-    description: "Seamless migration of on-premise infrastructure to hardened cloud environments (AWS/Azure) with end-to-end encryption.",
+    title: "Compliance Support",
+    description: "Build cleaner documentation, stronger controls, and more defensible processes for compliance-aware environments such as healthcare and regulated organizations.",
     icon: <IconCloudLock className="w-8 h-8 text-[#b026ff]" />,
-    features: ["Zero-Downtime Migration", "Cloud Identity Access", "Data Sovereignty"]
+    features: ["HIPAA-aware support", "Policy and documentation help", "Operational gap review"]
   },
   {
-    title: "Proactive Managed IT",
-    description: "We don&apos;t just fix what&apos;s broken; we anticipate failures and patch vulnerabilities before they impact your operations.",
+    title: "Managed IT Guidance",
+    description: "Get dependable operational support, planning, and issue resolution from a team that understands both infrastructure and business impact.",
     icon: <IconDeviceDesktopAnalytics className="w-8 h-8 text-white" />,
-    features: ["Automated Patch Management", "Asset Lifecycle Tracking", "Predictive Alerts"]
+    features: ["Project planning", "Operational support", "Strategic improvements"]
   }
 ]
 
@@ -36,11 +36,11 @@ export function ServicesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-mono font-bold text-white mb-4">
-            CORE <span className="text-[#39ff14]">CAPABILITIES</span>
+            CORE <span className="text-[#39ff14]">SERVICES</span>
           </h2>
           <div className="w-24 h-1 bg-[#39ff14] mx-auto mb-6 shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
           <p className="text-gray-400 font-sans text-lg">
-            We deploy the exact toolchains and protocols used by Fortune 500 companies, engineered specifically for the agility of emerging businesses.
+            NextGridIT focuses on the infrastructure, security, and support work that helps local organizations stay stable, secure, and easier to operate.
           </p>
         </div>
 

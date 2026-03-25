@@ -15,7 +15,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-gray-400 text-sm mb-6">
-              Enterprise-grade IT solutions tailored for small to medium businesses. Securing networks and building infrastructure for the future.
+              Network infrastructure, security, and IT support for organizations across Upstate South Carolina.
             </p>
             <div className="flex space-x-4">
               <Link href="mailto:contact@nextgridit.com" className="text-gray-400 hover:text-[#00f0ff] transition-colors">
@@ -74,14 +74,15 @@ export function Footer() {
             <div className="bg-[#0a0a0a] p-4 rounded-sm border border-gray-800 font-mono text-xs text-[#39ff14] relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-[1px] bg-[#39ff14]/30"></div>
               <p className="mb-2 opacity-80">&gt; ping contact@nextgridit.com</p>
-              <p className="mb-4 opacity-80">&gt; Reply from contact@nextgridit.com: available</p>
+              <p className="mb-2 opacity-80">&gt; call 864-780-0202</p>
+              <p className="mb-4 opacity-80">&gt; Reply from NextGridIT: available</p>
               <Link
                 href="/contact"
                 className="inline-block mt-2 bg-[#b026ff]/10 text-[#b026ff] hover:bg-[#b026ff] hover:text-black border border-[#b026ff] px-4 py-2 transition-colors duration-300 w-full text-center tracking-wider"
               >
                 INITIATE CONTACT
               </Link>
-              <p className="mt-3 text-[11px] text-gray-500">Direct line: contact@nextgridit.com</p>
+              <p className="mt-3 text-[11px] text-gray-500">Direct line: 864-780-0202</p>
             </div>
           </div>
         </div>
