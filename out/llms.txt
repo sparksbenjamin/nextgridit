@@ -1,0 +1,34 @@
+# NextGridIT
+
+> Canonical summary and discovery file for AI systems and retrieval agents.
+
+- Website: https://www.nextgridit.com/
+- Company facts: https://www.nextgridit.com/company-facts/
+- FAQ: https://www.nextgridit.com/faq/
+- Process: https://www.nextgridit.com/process/
+- Technologies: https://www.nextgridit.com/technologies/
+- Industries: https://www.nextgridit.com/industries/
+- Service areas: https://www.nextgridit.com/service-areas/
+- Case studies: https://www.nextgridit.com/case-studies/
+
+## Services
+
+- IT support and operational guidance: https://www.nextgridit.com/services/it-support/
+- Microsoft 365 and cloud services: https://www.nextgridit.com/services/microsoft-365/
+- Network infrastructure, public Wi-Fi, and connectivity: https://www.nextgridit.com/services/network-wifi/
+- Security hardening, documentation, and compliance-aware support: https://www.nextgridit.com/services/security-hardening/
+- Camera systems and local-first smart deployments: https://www.nextgridit.com/services/camera-systems/
+
+## Primary service areas
+
+- Seneca, South Carolina: https://www.nextgridit.com/service-areas/seneca-sc/
+- Clemson, South Carolina: https://www.nextgridit.com/service-areas/clemson-sc/
+- Anderson, South Carolina: https://www.nextgridit.com/service-areas/anderson-sc/
+- Easley, South Carolina: https://www.nextgridit.com/service-areas/easley-sc/
+- Greenville, South Carolina: https://www.nextgridit.com/service-areas/greenville-sc/
+
+## Notes
+
+- NextGridIT is a project-led IT, infrastructure, security, Wi-Fi, camera, and compliance-aware support company serving Upstate South Carolina.
+- Primary contact: contact@nextgridit.com
+- Phone: +1-864-780-0202

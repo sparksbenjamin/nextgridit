@@ -1,0 +1,35 @@
+# NextGridIT Full Reference
+
+NextGridIT provides network infrastructure, security hardening, Microsoft 365 administration, public Wi-Fi, camera systems, and project-led IT support for organizations in Upstate South Carolina.
+
+Primary service cities: Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.
+
+Primary industries: medical offices, healthcare-adjacent practices, small and mid-sized businesses, municipalities, campgrounds, and multi-site properties.
+
+Service pages:
+- https://www.nextgridit.com/services/it-support/
+- https://www.nextgridit.com/services/microsoft-365/
+- https://www.nextgridit.com/services/network-wifi/
+- https://www.nextgridit.com/services/security-hardening/
+- https://www.nextgridit.com/services/camera-systems/
+
+Resource pages:
+- https://www.nextgridit.com/faq/
+- https://www.nextgridit.com/process/
+- https://www.nextgridit.com/technologies/
+- https://www.nextgridit.com/company-facts/
+- https://www.nextgridit.com/case-studies/
+- https://www.nextgridit.com/industries/
+- https://www.nextgridit.com/service-areas/
+
+Contact:
+- Email: contact@nextgridit.com
+- Phone: +1-864-780-0202
+- Contact page: https://www.nextgridit.com/contact/
+
+Operating model:
+- Project-led
+- Business-first
+- Local-first where practical
+- Documentation-aware
+- Compliance-aware for HIPAA, PCI DSS, and NIST-informed environments
