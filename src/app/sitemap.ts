@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllGuides } from "@/lib/guides";
 import { industries, locations, services, technologyCatalog } from "@/lib/site-data";
 
 export const dynamic = "force-static";
@@ -6,6 +7,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.nextgridit.com";
   const lastModified = new Date();
+  const guides = getAllGuides();
 
   return [
     { url: `${base}/`, priority: 1, lastModified },
@@ -38,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/case-studies/`, priority: 0.76, lastModified },
     { url: `${base}/company-facts/`, priority: 0.72, lastModified },
     { url: `${base}/compliance/`, priority: 0.85, lastModified },
+    { url: `${base}/guides/`, priority: 0.8, lastModified },
+    ...guides.map((guide) => ({
+      url: `${base}/guides/${guide.slug}/`,
+      priority: 0.76,
+      lastModified: new Date(guide.updatedAt ?? guide.publishedAt),
+    })),
     { url: `${base}/project-fit/`, priority: 0.84, lastModified },
     { url: `${base}/local-first/`, priority: 0.83, lastModified },
     { url: `${base}/about/`, priority: 0.8, lastModified },

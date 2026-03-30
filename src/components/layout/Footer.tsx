@@ -57,6 +57,7 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Compliance & Frameworks", href: "/compliance" },
+                { label: "Guides", href: "/guides" },
                 { label: "Project Fit", href: "/project-fit" },
                 { label: "Local-First Systems", href: "/local-first" },
                 { label: "Case Studies", href: "/case-studies" },
@@ -79,9 +80,16 @@ export function Footer() {
             <div className="theme-terminal relative overflow-hidden rounded-2xl p-4 font-mono text-xs group">
               <div className="absolute left-0 top-0 h-[1px] w-full bg-[var(--accent-soft)]"></div>
               <p className="mb-2 opacity-80">&gt; local coverage: /service-areas</p>
+              <p className="mb-2 opacity-80">&gt; field guides: /guides</p>
               <p className="mb-2 opacity-80">&gt; industry focus: /industries</p>
               <p className="mb-4 opacity-80">&gt; project questions: /faq</p>
               <div className="grid gap-2">
+                <Link
+                  href="/guides"
+                  className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
+                >
+                  VIEW GUIDES
+                </Link>
                 <Link
                   href="/faq"
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"

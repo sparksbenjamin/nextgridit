@@ -11,7 +11,8 @@
     "deploy:preview": "npm run upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "site:sync": "powershell -ExecutionPolicy Bypass -File ./scripts/site-sync.ps1"
   },
   "dependencies": {
     "@splinetool/react-spline": "^4.1.0",
@@ -20,10 +21,13 @@
     "clsx": "^2.1.1",
     "d3-geo": "^3.1.1",
     "framer-motion": "^12.35.2",
+    "gray-matter": "^4.0.3",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-markdown": "^10.1.0",
     "react-simple-maps": "^3.0.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.5.0",
     "topojson-client": "^3.1.0"
   },

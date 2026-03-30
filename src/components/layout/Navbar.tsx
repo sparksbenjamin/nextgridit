@@ -18,6 +18,7 @@ export function Navbar() {
     { href: "/service-areas", label: "Service Areas" },
     { href: "/industries", label: "Industries" },
     { href: "/compliance", label: "Compliance" },
+    { href: "/guides", label: "Guides" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ]
@@ -50,7 +51,10 @@ export function Navbar() {
 
           <nav aria-label="Primary" className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`)
               return (
                 <Link
                   key={link.href}
@@ -104,19 +108,26 @@ export function Navbar() {
         )}
       >
         <nav aria-label="Mobile" className="px-4 space-y-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={cn(
-                "block font-mono text-xl uppercase tracking-wider",
-                pathname === link.href ? "theme-accent-strong" : "theme-copy"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname === link.href || pathname.startsWith(`${link.href}/`)
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "block font-mono text-xl uppercase tracking-wider",
+                  isActive ? "theme-accent-strong" : "theme-copy"
+                )}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
           <div className="border-t border-[var(--border)] pt-4">
             <Link
               href="/contact"

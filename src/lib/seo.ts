@@ -115,6 +115,41 @@ export function createCollectionPageSchema(options: {
   };
 }
 
+export function createArticleSchema(options: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+  keywords?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: options.title,
+    description: options.description,
+    url: `${siteConfig.url}${options.path}`,
+    mainEntityOfPage: `${siteConfig.url}${options.path}`,
+    datePublished: options.datePublished,
+    dateModified: options.dateModified ?? options.datePublished,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/og-image.svg`,
+      },
+    },
+    ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
+  };
+}
+
 export function createFaqSchema(
   items: Array<{ question: string; answer: string }>,
 ) {

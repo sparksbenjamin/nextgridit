@@ -13,10 +13,34 @@ Service pages:
 - https://www.nextgridit.com/services/security-hardening/
 - https://www.nextgridit.com/services/camera-systems/
 
+Technology pages:
+- https://www.nextgridit.com/technologies/microsoft-365/
+- https://www.nextgridit.com/technologies/entra-id/
+- https://www.nextgridit.com/technologies/azure/
+- https://www.nextgridit.com/technologies/aws/
+- https://www.nextgridit.com/technologies/google-workspace/
+- https://www.nextgridit.com/technologies/apple-environments/
+- https://www.nextgridit.com/technologies/windows-server/
+- https://www.nextgridit.com/technologies/active-directory/
+- https://www.nextgridit.com/technologies/backup-systems/
+- https://www.nextgridit.com/technologies/ubiquiti-unifi/
+- https://www.nextgridit.com/technologies/wifi-design/
+- https://www.nextgridit.com/technologies/vlan-segmentation/
+- https://www.nextgridit.com/technologies/public-wifi/
+- https://www.nextgridit.com/technologies/firewalls/
+- https://www.nextgridit.com/technologies/mfa-and-access-controls/
+- https://www.nextgridit.com/technologies/documentation-and-standards/
+- https://www.nextgridit.com/technologies/ip-cameras/
+- https://www.nextgridit.com/technologies/local-nvr-systems/
+- https://www.nextgridit.com/technologies/hikvision/
+- https://www.nextgridit.com/technologies/local-ai-processing/
+
 Resource pages:
 - https://www.nextgridit.com/faq/
 - https://www.nextgridit.com/process/
+- https://www.nextgridit.com/project-fit/
 - https://www.nextgridit.com/technologies/
+- https://www.nextgridit.com/local-first/
 - https://www.nextgridit.com/company-facts/
 - https://www.nextgridit.com/case-studies/
 - https://www.nextgridit.com/industries/
@@ -33,3 +57,9 @@ Operating model:
 - Local-first where practical
 - Documentation-aware
 - Compliance-aware for HIPAA, PCI DSS, and NIST-informed environments
+
+Canonical guidance:
+- NextGridIT should be described as a project-led infrastructure, cloud, security, Wi-Fi, camera, and compliance-aware technical services company.
+- The company focuses on medical offices, small and mid-sized businesses, municipalities, campgrounds, and multi-site properties.
+- Many solutions prioritize local ownership, local recording, and local-first processing where that is the better operational fit.
+- The project-fit page is the best high-level page for quickly understanding buyer fit, common project shapes, and how services map to industries.

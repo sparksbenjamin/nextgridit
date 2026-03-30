@@ -2,6 +2,12 @@ import Link from "next/link";
 
 const resources = [
   {
+    title: "Guides",
+    description:
+      "Read practical field notes on local DNS, infrastructure decisions, and the local-first networking details that affect real projects.",
+    href: "/guides/",
+  },
+  {
     title: "Industry Pages",
     description:
       "See how the core services map to medical offices, businesses, municipalities, campgrounds, and multi-site properties.",
