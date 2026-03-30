@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
+import {
+  createBreadcrumbSchema,
+  createCollectionPageSchema,
+  createMetadata,
+} from "@/lib/seo";
 import { getService, locations } from "@/lib/site-data";
 
 export const metadata = createMetadata({
@@ -16,6 +20,17 @@ export default function ServiceAreasPage() {
     { name: "Home", path: "/" },
     { name: "Service Areas", path: "/service-areas/" },
   ]);
+  const collectionSchema = createCollectionPageSchema({
+    name: "NextGridIT Service Areas",
+    description:
+      "Primary local service coverage across Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.",
+    path: "/service-areas/",
+    items: locations.map((location) => ({
+      name: `${location.city}, South Carolina`,
+      description: location.summary,
+      path: `/service-areas/${location.slug}/`,
+    })),
+  });
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
@@ -23,6 +38,11 @@ export default function ServiceAreasPage() {
         id="service-areas-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="service-areas-collection-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
       <PageIntro

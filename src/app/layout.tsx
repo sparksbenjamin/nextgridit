@@ -4,7 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { services, siteConfig } from "@/lib/site-data";
+import { locations, services, siteConfig, technologyCatalog } from "@/lib/site-data";
 
 const themeInitScript = `
   (() => {
@@ -85,6 +85,18 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
+const knowledgeAreas = Array.from(
+  new Set([
+    ...services.map((service) => service.title),
+    ...technologyCatalog.map((technology) => technology.name),
+    "HIPAA-aware IT support",
+    "PCI DSS-informed support",
+    "NIST-informed security practices",
+    "Public Wi-Fi",
+    "Local-first camera systems",
+  ]),
+);
+
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -94,16 +106,23 @@ const localBusinessSchema = {
   url: siteConfig.url,
   telephone: siteConfig.phone,
   email: siteConfig.email,
-  areaServed: siteConfig.serviceArea.map((city) => ({
+  areaServed: locations.map((location) => ({
     "@type": "City",
-    name: city,
+    name: location.city,
+    url: `${siteConfig.url}/service-areas/${location.slug}/`,
     containedInPlace: {
       "@type": "State",
       name: "South Carolina",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: location.coordinates[1],
+      longitude: location.coordinates[0],
+    },
   })),
   description: siteConfig.tagline,
   sameAs: siteConfig.sameAs,
+  knowsAbout: knowledgeAreas,
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -150,6 +169,7 @@ const organizationSchema = {
   telephone: siteConfig.phone,
   sameAs: siteConfig.sameAs,
   foundingDate: siteConfig.founded,
+  knowsAbout: knowledgeAreas,
 };
 
 export default function RootLayout({

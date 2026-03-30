@@ -4,7 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
 import { LocationAreaMap } from "@/components/ui/LocationAreaMap";
-import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
+import {
+  createBreadcrumbSchema,
+  createItemListSchema,
+  createMetadata,
+  createPlaceSchema,
+} from "@/lib/seo";
 import { getLocation, getService, industries, locations } from "@/lib/site-data";
 
 type Params = {
@@ -51,6 +56,26 @@ export default async function ServiceAreaDetailPage({
     { name: "Service Areas", path: "/service-areas/" },
     { name: `${location.city}, SC`, path: `/service-areas/${location.slug}/` },
   ]);
+  const placeSchema = createPlaceSchema({
+    city: location.city,
+    county: location.county,
+    description: location.description,
+    path: `/service-areas/${location.slug}/`,
+    latitude: location.coordinates[1],
+    longitude: location.coordinates[0],
+  });
+  const localServicesSchema = createItemListSchema({
+    name: `Common NextGridIT services in ${location.city}, South Carolina`,
+    path: `/service-areas/${location.slug}/`,
+    items: location.relatedServices
+      .map((serviceSlug) => getService(serviceSlug))
+      .filter((service) => service !== undefined)
+      .map((service) => ({
+        name: service.title,
+        description: service.summary,
+        path: `/services/${service.slug}/`,
+      })),
+  });
 
   const relatedIndustries = industries.filter((industry) =>
     industry.relatedServices.some((serviceSlug) =>
@@ -64,6 +89,16 @@ export default async function ServiceAreaDetailPage({
         id={`service-area-breadcrumb-${location.slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id={`service-area-place-${location.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }}
+      />
+      <Script
+        id={`service-area-services-${location.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localServicesSchema) }}
       />
 
       <PageIntro

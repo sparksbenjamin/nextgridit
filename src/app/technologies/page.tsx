@@ -2,7 +2,11 @@ import Link from "next/link";
 import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import { TechnologiesFilterClient } from "@/components/pages/TechnologiesFilterClient";
-import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
+import {
+  createBreadcrumbSchema,
+  createCollectionPageSchema,
+  createMetadata,
+} from "@/lib/seo";
 import { services, technologies, technologyCatalog } from "@/lib/site-data";
 
 export const metadata = createMetadata({
@@ -17,6 +21,17 @@ export default function TechnologiesPage() {
     { name: "Home", path: "/" },
     { name: "Technologies", path: "/technologies/" },
   ]);
+  const collectionSchema = createCollectionPageSchema({
+    name: "NextGridIT Technologies",
+    description:
+      "Technology overview covering cloud platforms, infrastructure, networking, security tooling, and camera systems supported by NextGridIT.",
+    path: "/technologies/",
+    items: technologyCatalog.map((technology) => ({
+      name: technology.name,
+      description: technology.summary,
+      path: `/technologies/${technology.slug}/`,
+    })),
+  });
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
@@ -24,6 +39,11 @@ export default function TechnologiesPage() {
         id="technologies-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="technologies-collection-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
       <PageIntro

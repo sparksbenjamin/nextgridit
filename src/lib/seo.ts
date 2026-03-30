@@ -7,6 +7,12 @@ type MetadataOptions = {
   path: string;
 };
 
+type SchemaListItem = {
+  name: string;
+  path?: string;
+  description?: string;
+};
+
 export function createMetadata({
   title,
   description,
@@ -60,6 +66,55 @@ export function createBreadcrumbSchema(
   };
 }
 
+function buildItemListEntity(items: SchemaListItem[]) {
+  return {
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+      ...(item.path ? { item: `${siteConfig.url}${item.path}` } : {}),
+    })),
+  };
+}
+
+export function createItemListSchema(options: {
+  name: string;
+  items: SchemaListItem[];
+  path?: string;
+  description?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    ...buildItemListEntity(options.items),
+    name: options.name,
+    ...(options.description ? { description: options.description } : {}),
+    ...(options.path ? { url: `${siteConfig.url}${options.path}` } : {}),
+  };
+}
+
+export function createCollectionPageSchema(options: {
+  name: string;
+  description: string;
+  path: string;
+  items: SchemaListItem[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: options.name,
+    description: options.description,
+    url: `${siteConfig.url}${options.path}`,
+    isPartOf: {
+      "@id": `${siteConfig.url}/#website`,
+    },
+    mainEntity: buildItemListEntity(options.items),
+  };
+}
+
 export function createFaqSchema(
   items: Array<{ question: string; answer: string }>,
 ) {
@@ -74,6 +129,42 @@ export function createFaqSchema(
         text: item.answer,
       },
     })),
+  };
+}
+
+export function createPlaceSchema(options: {
+  city: string;
+  county: string;
+  description: string;
+  path: string;
+  latitude: number;
+  longitude: number;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    name: `${options.city}, South Carolina`,
+    description: options.description,
+    url: `${siteConfig.url}${options.path}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: options.city,
+      addressRegion: "SC",
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: options.latitude,
+      longitude: options.longitude,
+    },
+    containedInPlace: {
+      "@type": "AdministrativeArea",
+      name: options.county,
+      containedInPlace: {
+        "@type": "State",
+        name: "South Carolina",
+      },
+    },
   };
 }
 

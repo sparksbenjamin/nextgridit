@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
+import {
+  createBreadcrumbSchema,
+  createCollectionPageSchema,
+  createMetadata,
+} from "@/lib/seo";
 import { getService, industries } from "@/lib/site-data";
 
 export const metadata = createMetadata({
@@ -16,6 +20,17 @@ export default function IndustriesPage() {
     { name: "Home", path: "/" },
     { name: "Industries", path: "/industries/" },
   ]);
+  const collectionSchema = createCollectionPageSchema({
+    name: "NextGridIT Industries",
+    description:
+      "Industry overview covering medical offices, small businesses, municipalities, campgrounds, and multi-site properties.",
+    path: "/industries/",
+    items: industries.map((industry) => ({
+      name: industry.title,
+      description: industry.summary,
+      path: `/industries/${industry.slug}/`,
+    })),
+  });
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
@@ -23,6 +38,11 @@ export default function IndustriesPage() {
         id="industries-breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="industries-collection-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
       <PageIntro

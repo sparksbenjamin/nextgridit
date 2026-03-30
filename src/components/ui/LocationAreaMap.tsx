@@ -96,10 +96,22 @@ export const LocationAreaMap = memo(function LocationAreaMap({
                     />
                   </>
                 ) : (
-                  <>
+                  <a
+                    href={`/service-areas/${location.slug}/`}
+                    aria-label={`View ${location.city}, South Carolina service area`}
+                  >
+                    <title>{location.city}, South Carolina</title>
                     <circle r={10} fill="var(--accent-alt-soft)" opacity={0.28} />
-                    <circle r={4.5} fill="var(--accent-alt)" opacity={0.7} />
-                  </>
+                    <circle r={4.5} fill="var(--accent-alt)" opacity={0.85} className="cursor-pointer" />
+                    <circle
+                      r={14}
+                      fill="transparent"
+                      stroke="var(--accent-alt)"
+                      strokeWidth={0.8}
+                      opacity={0.55}
+                      className="cursor-pointer"
+                    />
+                  </a>
                 )}
               </Marker>
             );
@@ -120,6 +132,9 @@ export const LocationAreaMap = memo(function LocationAreaMap({
           </p>
           <p className="theme-copy">
             Nearby: {currentLocation.nearbyCities.join(", ")}
+          </p>
+          <p className="theme-copy">
+            Click a nearby city pin to switch maps.
           </p>
         </div>
       </div>

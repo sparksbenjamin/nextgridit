@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.nextgridit.com";
-  const lastModified = new Date("2026-03-30");
+  const lastModified = new Date();
 
   return [
     { url: `${base}/`, priority: 1, lastModified },

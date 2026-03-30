@@ -17,6 +17,44 @@ const initialFormState: FormState = {
   details: "",
 };
 
+const intakeSteps = [
+  {
+    step: "01",
+    title: "Share the basics",
+    description:
+      "Start with your city, organization name, timeline, and the main issue you want solved first.",
+    signal: "Best first details: location, user count, buildings, and your biggest pain point.",
+  },
+  {
+    step: "02",
+    title: "Environment review",
+    description:
+      "We look at the current setup, inherited vendors, and where the biggest operational risk or drag is showing up.",
+    signal: "Useful context: platforms in use, known outages, weak Wi-Fi, or camera/security gaps.",
+  },
+  {
+    step: "03",
+    title: "Prioritized next steps",
+    description:
+      "The initial response is meant to clarify fit and point toward the most useful next action instead of forcing a generic package.",
+    signal: "That might be a scoped project, a deeper assessment, or a targeted remediation plan.",
+  },
+  {
+    step: "04",
+    title: "Move into project work",
+    description:
+      "Once the direction is clear, the project can move into implementation, cleanup, documentation, and handoff.",
+    signal: "Typical scopes include cloud cleanup, Wi-Fi redesign, security hardening, cameras, and infrastructure work.",
+  },
+] as const;
+
+const intakeChecklist = [
+  "City or project site",
+  "How many users or buildings are involved",
+  "Main system problem to solve first",
+  "Current platforms, vendors, or inherited issues",
+] as const;
+
 export function ContactPageClient() {
   const [form, setForm] = useState<FormState>(initialFormState);
 
@@ -63,6 +101,48 @@ export function ContactPageClient() {
             </p>
           </div>
 
+          <section className="mb-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
+            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="theme-accent-strong mb-2 font-mono text-xs uppercase tracking-[0.26em]">
+                  Intake Flow
+                </p>
+                <h2 className="theme-heading font-mono text-xl font-bold uppercase tracking-wide">
+                  How the first step usually works
+                </h2>
+              </div>
+              <p className="theme-soft max-w-md font-sans text-sm leading-relaxed">
+                The goal is a cleaner project start, not a generic sales script.
+                Email is the fastest way to establish fit and get the right next
+                move in front of you.
+              </p>
+            </div>
+
+            <div className="relative grid gap-4 md:grid-cols-4">
+              <div className="absolute left-8 right-8 top-6 hidden h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent md:block" />
+              {intakeSteps.map((step) => (
+                <div key={step.step} className="relative">
+                  <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)]">
+                    <span className="theme-heading font-mono text-sm font-bold tracking-[0.2em]">
+                      {step.step}
+                    </span>
+                  </div>
+                  <div className="rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-4">
+                    <h3 className="theme-heading mb-2 font-mono text-base font-bold">
+                      {step.title}
+                    </h3>
+                    <p className="theme-copy text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                    <p className="theme-soft mt-3 text-xs leading-relaxed">
+                      {step.signal}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <form className="space-y-6 font-mono" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="company" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Company Name</label>
@@ -104,6 +184,19 @@ export function ContactPageClient() {
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
+
+          <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
+            <p className="theme-accent-strong mb-3 font-mono text-xs uppercase tracking-[0.24em]">
+              Helpful first-email details
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {intakeChecklist.map((item) => (
+                <span key={item} className="theme-chip px-4 py-2 text-sm">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="space-y-8">
@@ -122,7 +215,7 @@ export function ContactPageClient() {
           <div className="glass-panel flex h-[400px] flex-col border border-[var(--border)] p-8">
             <h3 className="theme-heading mb-2 font-mono text-xl uppercase tracking-wider">Local <span className="theme-accent">Service Area</span></h3>
             <p className="theme-copy mb-4 font-sans text-sm">
-              Primary local coverage includes Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina. Travel is available for larger projects and specialty engagements. Click a city pin to jump to that local page.
+              Primary local coverage includes Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina. Travel is available for larger projects and specialty engagements. Each pin jumps to the matching local page.
             </p>
             <div className="relative min-h-[250px] w-full flex-grow overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)]">
               <MapChart />

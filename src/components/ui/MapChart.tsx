@@ -32,7 +32,7 @@ const MapChart = () => {
         }}
         className="w-full h-auto max-h-[400px]"
       >
-        <ZoomableGroup center={[-81, 33.8]} zoom={1} minZoom={1} maxZoom={5}>
+        <ZoomableGroup center={[-82.65, 34.72]} zoom={1.18} minZoom={1.18} maxZoom={5}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               (geographies as MapGeography[]).map((geo) => {
