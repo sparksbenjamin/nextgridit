@@ -3,6 +3,7 @@ import Script from "next/script";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
+import { LocationAreaMap } from "@/components/ui/LocationAreaMap";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { getLocation, getService, industries, locations } from "@/lib/site-data";
 
@@ -71,6 +72,33 @@ export default async function ServiceAreaDetailPage({
         accent="South Carolina"
         description={location.description}
       />
+
+      <section className="glass-panel mb-16 grid gap-8 border border-[var(--border)] p-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+            General area around {location.city}
+          </h2>
+          <p className="theme-copy mb-6 leading-relaxed">
+            This simple map highlights the general area of {location.city},{" "}
+            South Carolina within the broader Upstate service region. It is meant
+            as a quick local reference rather than a street-level coverage map.
+          </p>
+          <div className="space-y-3">
+            <div className="theme-chip px-5 py-4 leading-relaxed">
+              County: {location.county}
+            </div>
+            <div className="theme-chip px-5 py-4 leading-relaxed">
+              Nearby service cities: {location.nearbyCities.join(", ")}
+            </div>
+            <div className="theme-chip px-5 py-4 leading-relaxed">
+              Best for organizations that want on-site project work with an
+              Upstate South Carolina focus.
+            </div>
+          </div>
+        </div>
+
+        <LocationAreaMap currentSlug={location.slug} />
+      </section>
 
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="glass-panel border border-[var(--border)] p-8">

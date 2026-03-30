@@ -313,6 +313,9 @@ export type LocationPage = {
   title: string;
   summary: string;
   description: string;
+  county: string;
+  coordinates: [number, number];
+  nearbyCities: string[];
   focus: string[];
   relatedServices: string[];
 };
@@ -326,6 +329,9 @@ export const locations: LocationPage[] = [
       "Local IT, network, Wi-Fi, security, and camera support for organizations in and around Seneca, South Carolina.",
     description:
       "NextGridIT supports businesses and public-facing organizations in Seneca with project-led IT, Wi-Fi, infrastructure, security, and camera services. Seneca is one of the primary local service areas for on-site work and ongoing technical support.",
+    county: "Oconee County",
+    coordinates: [-82.96, 34.68194],
+    nearbyCities: ["Clemson", "Anderson", "Greenville"],
     focus: ["Local on-site support", "Business infrastructure projects", "Wi-Fi and network upgrades"],
     relatedServices: ["it-support", "network-wifi", "camera-systems"],
   },
@@ -337,6 +343,9 @@ export const locations: LocationPage[] = [
       "Microsoft 365, infrastructure, security, and compliance-aware support for organizations in Clemson, South Carolina.",
     description:
       "NextGridIT helps Clemson organizations improve Microsoft 365 administration, network reliability, and security posture with practical project-led support. The local service model is designed for organizations that need steady hands and clear follow-through.",
+    county: "Pickens and Anderson Counties",
+    coordinates: [-82.814777, 34.68493],
+    nearbyCities: ["Seneca", "Anderson", "Greenville"],
     focus: ["Microsoft 365 cleanup", "Security and identity support", "Project-led IT guidance"],
     relatedServices: ["microsoft-365", "security-hardening", "it-support"],
   },
@@ -348,6 +357,9 @@ export const locations: LocationPage[] = [
       "Infrastructure, Wi-Fi, security hardening, and support services for organizations in Anderson, South Carolina.",
     description:
       "NextGridIT supports Anderson-area organizations with network upgrades, business IT support, segmented Wi-Fi, security improvements, and documentation-driven cleanup projects. Travel and on-site work are available where it supports the project.",
+    county: "Anderson County",
+    coordinates: [-82.64167, 34.50333],
+    nearbyCities: ["Clemson", "Greenville", "Seneca"],
     focus: ["Network upgrades", "Support and cleanup projects", "Security posture improvements"],
     relatedServices: ["network-wifi", "security-hardening", "it-support"],
   },
@@ -359,6 +371,9 @@ export const locations: LocationPage[] = [
       "Infrastructure, cloud, support, and camera deployments for businesses and properties in Easley, South Carolina.",
     description:
       "NextGridIT provides Easley-area organizations with infrastructure planning, IT support, Microsoft 365 help, and local-first camera deployments. Engagements are tailored to the needs of each site rather than pushed into a generic package.",
+    county: "Pickens County",
+    coordinates: [-82.60694, 34.82333],
+    nearbyCities: ["Greenville", "Anderson", "Clemson"],
     focus: ["Camera planning and installs", "Infrastructure cleanup", "Cloud and support projects"],
     relatedServices: ["camera-systems", "microsoft-365", "it-support"],
   },
@@ -370,6 +385,9 @@ export const locations: LocationPage[] = [
       "Business-focused IT support, cloud administration, Wi-Fi, and security services for Greenville, South Carolina.",
     description:
       "NextGridIT works with Greenville-area businesses and organizations that need a technically strong partner for infrastructure projects, Microsoft 365 support, network design, and practical security improvements. The goal is cleaner systems and more dependable operations.",
+    county: "Greenville County",
+    coordinates: [-82.3940104, 34.8526176],
+    nearbyCities: ["Easley", "Anderson", "Clemson"],
     focus: ["Business IT support", "Cloud administration", "Network and security projects"],
     relatedServices: ["it-support", "microsoft-365", "network-wifi"],
   },
