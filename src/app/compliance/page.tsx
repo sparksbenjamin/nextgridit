@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import {
   IconChecklist,
   IconCreditCard,
   IconHeartbeat,
   IconShieldCheck,
 } from "@tabler/icons-react";
-import { createMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Compliance and Frameworks",
@@ -55,8 +56,18 @@ const frameworks = [
 ];
 
 export default function CompliancePage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Compliance and Frameworks", path: "/compliance/" },
+  ]);
+
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+      <Script
+        id="compliance-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-4xl mb-14">
         <p className="theme-accent-strong mb-4 text-sm font-mono uppercase tracking-[0.3em]">
           Compliance and frameworks
@@ -123,6 +134,12 @@ export default function CompliancePage() {
           <p className="theme-copy leading-relaxed">
             That includes infrastructure choices, camera deployments, and custom local AI processing options where on-site control matters more than handing everything to a third-party platform.
           </p>
+          <Link
+            href="/local-first/"
+            className="theme-accent mt-6 inline-block font-mono text-sm uppercase tracking-[0.2em]"
+          >
+            Explore local-first systems
+          </Link>
         </div>
       </section>
     </div>

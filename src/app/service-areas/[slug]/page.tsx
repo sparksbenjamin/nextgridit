@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
-import { getLocation, getService, locations } from "@/lib/site-data";
+import { getLocation, getService, industries, locations } from "@/lib/site-data";
 
 type Params = {
   slug: string;
@@ -50,6 +50,12 @@ export default async function ServiceAreaDetailPage({
     { name: "Service Areas", path: "/service-areas/" },
     { name: `${location.city}, SC`, path: `/service-areas/${location.slug}/` },
   ]);
+
+  const relatedIndustries = industries.filter((industry) =>
+    industry.relatedServices.some((serviceSlug) =>
+      location.relatedServices.includes(serviceSlug),
+    ),
+  );
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
@@ -107,6 +113,45 @@ export default async function ServiceAreaDetailPage({
             })}
           </div>
         </aside>
+      </section>
+
+      <section className="mt-16 grid gap-8 lg:grid-cols-2">
+        <div className="glass-panel border border-[var(--border)] p-8">
+          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+            Industries commonly supported here
+          </h2>
+          <div className="space-y-4">
+            {relatedIndustries.map((industry) => (
+              <Link
+                key={industry.slug}
+                href={`/industries/${industry.slug}/`}
+                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
+              >
+                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
+                  {industry.title}
+                </h3>
+                <p className="theme-copy text-sm leading-relaxed">{industry.summary}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="glass-panel border border-[var(--border)] p-8">
+          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+            Planning work in {location.city}?
+          </h2>
+          <p className="theme-copy mb-6 leading-relaxed">
+            Include the project site address, target timeline, and whether the
+            work is primarily cloud, networking, Wi-Fi, camera, or security
+            related. That makes it much easier to scope the next step quickly.
+          </p>
+          <Link
+            href="/contact/"
+            className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+          >
+            Start the Conversation
+          </Link>
+        </div>
       </section>
     </div>
   );

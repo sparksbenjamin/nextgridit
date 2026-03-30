@@ -1,5 +1,6 @@
+import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { siteConfig, technologies } from "@/lib/site-data";
 
 const facts = [
@@ -23,8 +24,18 @@ export const metadata = createMetadata({
 });
 
 export default function CompanyFactsPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Company Facts", path: "/company-facts/" },
+  ]);
+
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+      <Script
+        id="company-facts-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageIntro
         eyebrow="Canonical Facts"
         title="Company"

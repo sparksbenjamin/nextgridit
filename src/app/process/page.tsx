@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
 const processSteps = [
   {
@@ -33,8 +34,18 @@ export const metadata = createMetadata({
 });
 
 export default function ProcessPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Process", path: "/process/" },
+  ]);
+
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+      <Script
+        id="process-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageIntro
         eyebrow="How Work Starts"
         title="Project"

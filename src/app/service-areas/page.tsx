@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { getService, locations } from "@/lib/site-data";
 
 export const metadata = createMetadata({
@@ -11,8 +12,19 @@ export const metadata = createMetadata({
 });
 
 export default function ServiceAreasPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Service Areas", path: "/service-areas/" },
+  ]);
+
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+      <Script
+        id="service-areas-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       <PageIntro
         eyebrow="Coverage"
         title="Service"
@@ -62,6 +74,29 @@ export default function ServiceAreasPage() {
           </section>
         ))}
       </div>
+
+      <section className="glass-panel mt-16 grid gap-8 border border-[var(--border)] p-8 lg:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+            Local coverage with project travel when it makes sense
+          </h2>
+          <p className="theme-copy leading-relaxed">
+            These city pages are intended to make local relevance clearer for
+            organizations that want nearby support, on-site project work, and a
+            provider that understands the Upstate South Carolina market. Travel is
+            still available when the project scope justifies it.
+          </p>
+        </div>
+        <div className="space-y-4">
+          <Link href="/contact/" className="button-primary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+            Start a Local Project
+          </Link>
+          <div className="theme-copy rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 text-sm leading-relaxed">
+            Best intake details: city, organization type, timeline, and whether
+            the project is cloud, network, Wi-Fi, camera, or security-focused.
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

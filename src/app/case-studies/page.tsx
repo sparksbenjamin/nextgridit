@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { caseStudies } from "@/lib/site-data";
 
 export const metadata = createMetadata({
@@ -11,8 +12,18 @@ export const metadata = createMetadata({
 });
 
 export default function CaseStudiesPage() {
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Case Studies", path: "/case-studies/" },
+  ]);
+
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+      <Script
+        id="case-studies-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageIntro
         eyebrow="Representative Work"
         title="Case"

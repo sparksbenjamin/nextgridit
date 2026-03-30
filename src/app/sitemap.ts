@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { industries, locations, services } from "@/lib/site-data";
+import { industries, locations, services, technologyCatalog } from "@/lib/site-data";
 
 export const dynamic = "force-static";
 
@@ -28,11 +28,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
     })),
     { url: `${base}/technologies/`, priority: 0.78, lastModified },
+    ...technologyCatalog.map((technology) => ({
+      url: `${base}/technologies/${technology.slug}/`,
+      priority: 0.74,
+      lastModified,
+    })),
     { url: `${base}/faq/`, priority: 0.84, lastModified },
     { url: `${base}/process/`, priority: 0.7, lastModified },
     { url: `${base}/case-studies/`, priority: 0.76, lastModified },
     { url: `${base}/company-facts/`, priority: 0.72, lastModified },
     { url: `${base}/compliance/`, priority: 0.85, lastModified },
+    { url: `${base}/local-first/`, priority: 0.83, lastModified },
     { url: `${base}/about/`, priority: 0.8, lastModified },
     { url: `${base}/contact/`, priority: 0.9, lastModified },
     { url: `${base}/privacy/`, priority: 0.4, lastModified },

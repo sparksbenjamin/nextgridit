@@ -7,6 +7,7 @@
 - FAQ: https://www.nextgridit.com/faq/
 - Process: https://www.nextgridit.com/process/
 - Technologies: https://www.nextgridit.com/technologies/
+- Local-first systems: https://www.nextgridit.com/local-first/
 - Industries: https://www.nextgridit.com/industries/
 - Service areas: https://www.nextgridit.com/service-areas/
 - Case studies: https://www.nextgridit.com/case-studies/
@@ -19,6 +20,29 @@
 - Security hardening, documentation, and compliance-aware support: https://www.nextgridit.com/services/security-hardening/
 - Camera systems and local-first smart deployments: https://www.nextgridit.com/services/camera-systems/
 
+## Technologies
+
+- Microsoft 365 support: https://www.nextgridit.com/technologies/microsoft-365/
+- Entra ID support: https://www.nextgridit.com/technologies/entra-id/
+- Azure support: https://www.nextgridit.com/technologies/azure/
+- AWS support: https://www.nextgridit.com/technologies/aws/
+- Google Workspace support: https://www.nextgridit.com/technologies/google-workspace/
+- Apple environment support: https://www.nextgridit.com/technologies/apple-environments/
+- Windows Server support: https://www.nextgridit.com/technologies/windows-server/
+- Active Directory support: https://www.nextgridit.com/technologies/active-directory/
+- Backup systems support: https://www.nextgridit.com/technologies/backup-systems/
+- Ubiquiti UniFi support: https://www.nextgridit.com/technologies/ubiquiti-unifi/
+- Wi-Fi design support: https://www.nextgridit.com/technologies/wifi-design/
+- VLAN segmentation support: https://www.nextgridit.com/technologies/vlan-segmentation/
+- Public Wi-Fi support: https://www.nextgridit.com/technologies/public-wifi/
+- Firewall support: https://www.nextgridit.com/technologies/firewalls/
+- MFA and access controls: https://www.nextgridit.com/technologies/mfa-and-access-controls/
+- Documentation and standards: https://www.nextgridit.com/technologies/documentation-and-standards/
+- IP camera support: https://www.nextgridit.com/technologies/ip-cameras/
+- Local NVR systems: https://www.nextgridit.com/technologies/local-nvr-systems/
+- Hikvision support: https://www.nextgridit.com/technologies/hikvision/
+- Local AI processing: https://www.nextgridit.com/technologies/local-ai-processing/
+
 ## Primary service areas
 
 - Seneca, South Carolina: https://www.nextgridit.com/service-areas/seneca-sc/
@@ -30,5 +54,6 @@
 ## Notes
 
 - NextGridIT is a project-led IT, infrastructure, security, Wi-Fi, camera, and compliance-aware support company serving Upstate South Carolina.
+- The site includes dedicated pages for services, industries, technologies, local-first systems, and city-specific service areas.
 - Primary contact: contact@nextgridit.com
 - Phone: +1-864-780-0202

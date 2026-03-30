@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { ContactPageClient } from "@/components/pages/ContactPageClient";
-import { createMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",
@@ -10,5 +11,19 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function ContactPage() {
-  return <ContactPageClient />;
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Contact", path: "/contact/" },
+  ]);
+
+  return (
+    <>
+      <Script
+        id="contact-breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ContactPageClient />
+    </>
+  );
 }

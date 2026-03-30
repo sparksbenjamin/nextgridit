@@ -57,6 +57,7 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Compliance & Frameworks", href: "/compliance" },
+                { label: "Local-First Systems", href: "/local-first" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Company Facts", href: "/company-facts" },
                 { label: "Process", href: "/process" },
@@ -100,11 +101,11 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-8 md:flex-row">
           <p className="theme-soft text-center font-mono text-sm md:text-left">
-            &copy; {new Date().getFullYear()} NextgridIT Systems. All rights reserved. <span className="theme-accent-strong">SECURE: true</span>
+            &copy; {new Date().getFullYear()} NextgridIT Systems. Serving Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.
           </p>
           <div className="theme-soft flex gap-4 font-mono text-xs">
-            <span>SYS_STATUS: <span className="theme-accent">ONLINE</span></span>
-            <span>UPTIME: <span className="theme-accent-strong">99.9%</span></span>
+            <span>Email: <span className="theme-accent">contact@nextgridit.com</span></span>
+            <span>Phone: <span className="theme-accent-strong">864-780-0202</span></span>
           </div>
         </div>
       </div>

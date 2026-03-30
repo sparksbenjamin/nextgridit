@@ -28,6 +28,20 @@ export type Service = {
   faq: { question: string; answer: string }[];
 };
 
+export type TechnologyEntry = {
+  slug: string;
+  name: string;
+  category:
+    | "Cloud and Identity"
+    | "Infrastructure"
+    | "Networking and Wi-Fi"
+    | "Security and Compliance"
+    | "Cameras and Local AI";
+  summary: string;
+  relatedServices: string[];
+  relatedIndustries: string[];
+};
+
 export const services: Service[] = [
   {
     slug: "it-support",
@@ -361,23 +375,170 @@ export const locations: LocationPage[] = [
   },
 ];
 
-export const technologies = [
-  "Microsoft 365",
-  "Entra ID",
-  "Azure",
-  "Exchange Online",
-  "Windows Server",
-  "Active Directory",
-  "Ubiquiti UniFi",
-  "Wi-Fi design",
-  "VLAN segmentation",
-  "Firewalls",
-  "Public Wi-Fi",
-  "IP cameras",
-  "Local NVR systems",
-  "Backup systems",
-  "Documentation and standards",
+export const technologyCatalog: TechnologyEntry[] = [
+  {
+    slug: "microsoft-365",
+    name: "Microsoft 365",
+    category: "Cloud and Identity",
+    summary: "Tenant administration, collaboration tooling, email, identity cleanup, and day-to-day cloud support.",
+    relatedServices: ["microsoft-365", "it-support", "security-hardening"],
+    relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
+  },
+  {
+    slug: "entra-id",
+    name: "Entra ID",
+    category: "Cloud and Identity",
+    summary: "Identity, MFA, role cleanup, conditional access planning, and administration standards.",
+    relatedServices: ["microsoft-365", "security-hardening"],
+    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
+  },
+  {
+    slug: "azure",
+    name: "Azure",
+    category: "Cloud and Identity",
+    summary: "Azure-connected workloads, identity integration, migration planning, and administration support.",
+    relatedServices: ["microsoft-365", "it-support"],
+    relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
+  },
+  {
+    slug: "aws",
+    name: "AWS",
+    category: "Cloud and Identity",
+    summary: "Practical support for AWS workloads that are part of the broader client operating environment.",
+    relatedServices: ["microsoft-365", "it-support"],
+    relatedIndustries: ["small-business", "multi-site-properties"],
+  },
+  {
+    slug: "google-workspace",
+    name: "Google Workspace",
+    category: "Cloud and Identity",
+    summary: "Email, collaboration, and account administration in mixed-platform environments.",
+    relatedServices: ["microsoft-365", "it-support"],
+    relatedIndustries: ["small-business", "campgrounds"],
+  },
+  {
+    slug: "apple-environments",
+    name: "Apple Environments",
+    category: "Infrastructure",
+    summary: "Support for Apple devices and mixed-platform environments where local administration still matters.",
+    relatedServices: ["microsoft-365", "it-support"],
+    relatedIndustries: ["small-business", "medical-offices"],
+  },
+  {
+    slug: "windows-server",
+    name: "Windows Server",
+    category: "Infrastructure",
+    summary: "Support for legacy and active Windows Server environments, cleanup, modernization, and role review.",
+    relatedServices: ["it-support", "security-hardening"],
+    relatedIndustries: ["small-business", "medical-offices", "municipalities"],
+  },
+  {
+    slug: "active-directory",
+    name: "Active Directory",
+    category: "Infrastructure",
+    summary: "Directory cleanup, group policy review, account hygiene, and handoff documentation.",
+    relatedServices: ["it-support", "security-hardening", "microsoft-365"],
+    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
+  },
+  {
+    slug: "backup-systems",
+    name: "Backup Systems",
+    category: "Infrastructure",
+    summary: "Backup review, retention planning, recovery expectations, and supportability improvements.",
+    relatedServices: ["it-support", "security-hardening"],
+    relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
+  },
+  {
+    slug: "ubiquiti-unifi",
+    name: "Ubiquiti UniFi",
+    category: "Networking and Wi-Fi",
+    summary: "UniFi switching, Wi-Fi, guest access, routing, and maintainable small-site network design.",
+    relatedServices: ["network-wifi", "camera-systems"],
+    relatedIndustries: ["small-business", "campgrounds", "municipalities"],
+  },
+  {
+    slug: "wifi-design",
+    name: "Wi-Fi Design",
+    category: "Networking and Wi-Fi",
+    summary: "Coverage planning, roaming expectations, client separation, and practical performance tuning.",
+    relatedServices: ["network-wifi"],
+    relatedIndustries: ["campgrounds", "municipalities", "multi-site-properties"],
+  },
+  {
+    slug: "vlan-segmentation",
+    name: "VLAN Segmentation",
+    category: "Networking and Wi-Fi",
+    summary: "Separation of staff, guest, payment, device, and camera traffic for cleaner operations.",
+    relatedServices: ["network-wifi", "security-hardening"],
+    relatedIndustries: ["medical-offices", "municipalities", "campgrounds"],
+  },
+  {
+    slug: "public-wifi",
+    name: "Public Wi-Fi",
+    category: "Networking and Wi-Fi",
+    summary: "Guest access design for municipal, campground, and customer-facing environments.",
+    relatedServices: ["network-wifi"],
+    relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
+  },
+  {
+    slug: "firewalls",
+    name: "Firewalls",
+    category: "Security and Compliance",
+    summary: "Policy review, segmentation coordination, ingress and egress cleanup, and practical rule hardening.",
+    relatedServices: ["network-wifi", "security-hardening"],
+    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
+  },
+  {
+    slug: "mfa-and-access-controls",
+    name: "MFA and Access Controls",
+    category: "Security and Compliance",
+    summary: "Identity hardening and role cleanup tied to practical administration rather than checkbox theater.",
+    relatedServices: ["security-hardening", "microsoft-365"],
+    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
+  },
+  {
+    slug: "documentation-and-standards",
+    name: "Documentation and Standards",
+    category: "Security and Compliance",
+    summary: "Operational documentation, ownership clarity, and cleaner handoff materials for future support.",
+    relatedServices: ["security-hardening", "it-support"],
+    relatedIndustries: ["medical-offices", "municipalities", "multi-site-properties"],
+  },
+  {
+    slug: "ip-cameras",
+    name: "IP Cameras",
+    category: "Cameras and Local AI",
+    summary: "Full camera planning, installation, and integration with the surrounding network environment.",
+    relatedServices: ["camera-systems", "network-wifi"],
+    relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
+  },
+  {
+    slug: "local-nvr-systems",
+    name: "Local NVR Systems",
+    category: "Cameras and Local AI",
+    summary: "Local-first recording, retention, ownership, and operational control close to the site.",
+    relatedServices: ["camera-systems"],
+    relatedIndustries: ["municipalities", "small-business", "multi-site-properties"],
+  },
+  {
+    slug: "hikvision",
+    name: "Hikvision",
+    category: "Cameras and Local AI",
+    summary: "Camera deployments and support where Hikvision equipment is the right fit for the project.",
+    relatedServices: ["camera-systems"],
+    relatedIndustries: ["small-business", "municipalities", "multi-site-properties"],
+  },
+  {
+    slug: "local-ai-processing",
+    name: "Local AI Processing",
+    category: "Cameras and Local AI",
+    summary: "On-site analysis and local-first processing options for visibility workflows where ownership matters.",
+    relatedServices: ["camera-systems"],
+    relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
+  },
 ];
+
+export const technologies = technologyCatalog.map((technology) => technology.name);
 
 export const faqs = [
   {
@@ -409,6 +570,16 @@ export const faqs = [
     question: "How do projects usually start?",
     answer:
       "Projects typically start with an intake conversation, a review of the current environment, and a practical plan focused on the most useful improvements first.",
+  },
+  {
+    question: "Does NextGridIT handle one-time projects or only ongoing support?",
+    answer:
+      "The site is intentionally positioned around project-led engagements. One-time infrastructure, cloud, Wi-Fi, camera, documentation, and hardening work are all valid fits.",
+  },
+  {
+    question: "What kinds of technology brands or platforms are commonly involved?",
+    answer:
+      "Common environments include Microsoft 365, Entra ID, Azure, AWS, Google Workspace, Apple devices, Ubiquiti UniFi, firewalls, IP cameras, local NVR systems, and local-first AI-assisted camera workflows.",
   },
 ];
 
@@ -461,4 +632,8 @@ export function getIndustry(slug: string) {
 
 export function getLocation(slug: string) {
   return locations.find((location) => location.slug === slug);
+}
+
+export function getTechnology(slug: string) {
+  return technologyCatalog.find((technology) => technology.slug === slug);
 }
