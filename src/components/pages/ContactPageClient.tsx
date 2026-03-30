@@ -9,12 +9,16 @@ type FormState = {
   company: string;
   email: string;
   details: string;
+  website: string;
 };
+
+type SubmitState = "idle" | "sending" | "success" | "error";
 
 const initialFormState: FormState = {
   company: "",
   email: "",
   details: "",
+  website: "",
 };
 
 const intakeSteps = [
@@ -57,20 +61,72 @@ const intakeChecklist = [
 
 export function ContactPageClient() {
   const [form, setForm] = useState<FormState>(initialFormState);
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const subject = `NextGridIT inquiry from ${form.company || "Website visitor"}`;
+  function buildMailtoHref(values: FormState) {
+    const subject = `NextGridIT inquiry from ${values.company || "Website visitor"}`;
     const body = [
-      `Company: ${form.company || "Not provided"}`,
-      `Email: ${form.email}`,
+      `Company: ${values.company || "Not provided"}`,
+      `Email: ${values.email}`,
       "",
       "Project details:",
-      form.details,
+      values.details,
     ].join("\n");
 
-    window.location.href = `mailto:contact@nextgridit.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    return `mailto:contact@nextgridit.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  function openMailClient(values: FormState) {
+    window.location.href = buildMailtoHref(values);
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const submittedForm = { ...form };
+
+    setSubmitState("sending");
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(submittedForm),
+      });
+
+      const data = (await response.json().catch(() => null)) as { error?: string } | null;
+
+      if (response.ok) {
+        setForm(initialFormState);
+        setSubmitState("success");
+        setSubmitMessage("Your message was sent directly to NextGridIT.");
+        return;
+      }
+
+      if (response.status >= 500) {
+        openMailClient(submittedForm);
+        setSubmitState("success");
+        setSubmitMessage(
+          "Direct form delivery is not ready yet, so a prefilled email was opened instead.",
+        );
+        return;
+      }
+
+      setSubmitState("error");
+      setSubmitMessage(
+        data?.error ?? "We could not send the form. You can still email us directly below.",
+      );
+    } catch {
+      openMailClient(submittedForm);
+      setSubmitState("success");
+      setSubmitMessage(
+        "We could not reach the direct form service, so a prefilled email was opened instead.",
+      );
+    }
   }
 
   return (
@@ -93,7 +149,9 @@ export function ContactPageClient() {
               START THE PROJECT CONVERSATION BY EMAIL
             </p>
             <p className="theme-soft font-sans text-sm">
-              Send the form to open a prefilled email, or contact us directly at{" "}
+              Send the form to deliver your message directly. If direct delivery is
+              unavailable, we will fall back to a prefilled email. You can also reach
+              us directly at{" "}
               <a className="theme-link" href="mailto:contact@nextgridit.com">
                 contact@nextgridit.com
               </a>
@@ -144,6 +202,17 @@ export function ContactPageClient() {
           </section>
 
           <form className="space-y-6 font-mono" onSubmit={handleSubmit}>
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                id="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.website}
+                onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
+              />
+            </div>
             <div>
               <label htmlFor="company" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Company Name</label>
               <input
@@ -179,8 +248,24 @@ export function ContactPageClient() {
                 placeholder="Tell us about your infrastructure, cloud, Wi-Fi, camera, security, or compliance-related needs..."
               />
             </div>
-            <button type="submit" className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest">
-              <span>Open Project Email</span>
+            {submitMessage ? (
+              <p
+                className={`rounded-2xl border px-4 py-3 text-sm leading-relaxed ${
+                  submitState === "error"
+                    ? "border-amber-500/40 bg-amber-500/10 text-amber-200"
+                    : "border-[var(--border-strong)] bg-[var(--surface-strong)] theme-copy"
+                }`}
+                role="status"
+              >
+                {submitMessage}
+              </p>
+            ) : null}
+            <button
+              type="submit"
+              disabled={submitState === "sending"}
+              className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest disabled:cursor-not-allowed disabled:opacity-70"
+            >
+              <span>{submitState === "sending" ? "Sending..." : "Send Project Request"}</span>
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
