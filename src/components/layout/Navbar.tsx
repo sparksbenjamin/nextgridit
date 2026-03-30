@@ -61,6 +61,11 @@ const navGroups: NavGroup[] = [
         description: "Practical hardening, documentation, and compliance-aware support.",
       },
       {
+        href: "/services/security-audits-pentesting",
+        label: "Pentesting",
+        description: "Black box and trusted-access testing with remediation help.",
+      },
+      {
         href: "/services/camera-systems",
         label: "Camera Systems",
         description: "Local-first camera deployments, coverage planning, and support.",

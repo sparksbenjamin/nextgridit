@@ -37,6 +37,12 @@ const detailedServices = [
     bullets: ["HIPAA-aware support", "NIST-informed security practices", "Documentation, policies, and operational gap review"],
   },
   {
+    id: "security-audits-pentesting",
+    title: "Security Audits and Penetration Testing",
+    description: "Run black box and trusted-access assessments with practical reporting, remediation help, and a clearer picture of what is actually risky in the real environment.",
+    bullets: ["Black box pentests", "Trusted-access internal assessments", "Remediation support and risk review"],
+  },
+  {
     id: "camera-systems",
     title: "Camera Systems and Local-First Smart Deployments",
     description: "Install and support camera systems, smart technology, and custom local-first solutions with options for on-site processing and tailored site design.",
@@ -49,6 +55,7 @@ const icons = {
   "microsoft-365": <IconBrandWindows className="w-10 h-10 text-[#b026ff]" />,
   "network-wifi": <IconRouter className="w-10 h-10 text-[#00f0ff]" />,
   "security-hardening": <IconShieldLock className="w-10 h-10 text-white" />,
+  "security-audits-pentesting": <IconCertificate className="w-10 h-10 text-[#ff9f1c]" />,
   "camera-systems": <IconVideo className="w-10 h-10 text-[#00f0ff]" />,
 }
 
@@ -61,7 +68,7 @@ export function ServicesPageClient() {
         </h1>
         <div className="theme-rule mb-6 h-1 w-24" />
         <p className="theme-copy max-w-3xl font-sans text-lg leading-relaxed">
-          NextGridIT provides project-led infrastructure, cloud, security, Wi-Fi, camera, and operational support services for organizations that need practical technical leadership and cleaner systems without generic MSP packaging.
+          NextGridIT provides project-led infrastructure, cloud, security, audit, Wi-Fi, camera, and operational support services for organizations that need practical technical leadership and cleaner systems without generic MSP packaging.
         </p>
       </div>
 
@@ -118,7 +125,7 @@ export function ServicesPageClient() {
               Frameworks matter when they connect to real systems and real operations.
             </h2>
             <p className="theme-copy leading-relaxed">
-              NextGridIT supports healthcare, public-sector, and business environments with technical guidance informed by HIPAA, PCI DSS, and NIST-based practices. We focus on implementation, documentation, and risk reduction that can be tied back to the systems you actually run.
+              NextGridIT supports healthcare, public-sector, and business environments with technical guidance informed by HIPAA, PCI DSS, and NIST-based practices. We focus on implementation, documentation, security reviews, and risk reduction that can be tied back to the systems you actually run.
             </p>
           </div>
         </div>

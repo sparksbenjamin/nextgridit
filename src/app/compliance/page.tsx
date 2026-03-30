@@ -49,6 +49,7 @@ const frameworks = [
       "Our approach is informed by practical security frameworks, including NIST-aligned thinking, so technical improvements can map back to risk reduction, documentation, and a more defensible operating posture.",
     links: [
       { label: "Security", href: "/services/security-hardening/" },
+      { label: "Security Audits", href: "/services/security-audits-pentesting/" },
       { label: "IT Support", href: "/services/it-support/" },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
     ],

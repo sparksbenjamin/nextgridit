@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import {
+  IconCertificate,
   IconChevronRight,
   IconCloudLock,
   IconDeviceDesktopAnalytics,
@@ -39,6 +40,13 @@ const services = [
     description: "Reduce avoidable risk with practical security improvements, cleaner documentation, and controls that support real-world operations.",
     icon: <IconShieldCheck className="w-8 h-8 text-[#39ff14]" />,
     features: ["HIPAA-aware support", "NIST-informed security practices", "Policy and documentation help"]
+  },
+  {
+    slug: "security-audits-pentesting",
+    title: "Security Audits and Pentesting",
+    description: "Test real exposure with black box and trusted-access assessments that come with remediation help instead of just a findings spreadsheet.",
+    icon: <IconCertificate className="w-8 h-8 text-[#ff9f1c]" />,
+    features: ["Black box pentests", "Trusted-access assessments", "Real-world risk review"]
   },
   {
     slug: "camera-systems",

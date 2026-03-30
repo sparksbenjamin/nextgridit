@@ -15,7 +15,7 @@ export function Footer() {
               </span>
             </div>
             <p className="theme-copy mb-6 text-sm">
-              Network infrastructure, security, and IT support for organizations across Upstate South Carolina.
+              Network infrastructure, security, audits, and IT support for organizations across Upstate South Carolina.
             </p>
             <div className="flex space-x-4">
               <Link href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]">
@@ -40,6 +40,7 @@ export function Footer() {
                 { label: "IT Support", href: "/services/it-support/" },
                 { label: "Cloud Services", href: "/services/microsoft-365/" },
                 { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
+                { label: "Security Audits", href: "/services/security-audits-pentesting/" },
                 { label: "Camera Systems", href: "/services/camera-systems/" },
               ].map((item) => (
                 <li key={item.label}>

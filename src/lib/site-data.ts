@@ -188,6 +188,52 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "security-audits-pentesting",
+    shortLabel: "Security Audits",
+    title: "Security Audits and Penetration Testing",
+    summary:
+      "Black box and trusted-access security testing with remediation help and real-world risk review for each finding.",
+    description:
+      "NextGridIT provides scoped security audits and penetration testing for organizations that need more than a vulnerability dump. Engagements can include black box testing, trusted-access pentests, targeted exposure review, and follow-up remediation support. Each finding is written with practical business context so the client understands what is actually risky, what is mostly noise, and what to fix first.",
+    audience:
+      "Best fit for organizations that need a clearer picture of real exposure before a project, after a major change, before outside review, or as part of a broader security improvement effort.",
+    outcomes: [
+      "Validate external exposure through black box testing that starts from an attacker perspective",
+      "Review internal trust assumptions and escalation paths through trusted-access pentests",
+      "Turn findings into prioritized remediation work with practical business context attached",
+    ],
+    deliverables: [
+      "Scoping notes, rules of engagement, and assessment summary",
+      "Findings report with real-world risk review and remediation guidance",
+      "Optional validation help after fixes are made so the work actually closes out cleanly",
+    ],
+    relatedIndustries: ["small-business", "medical-offices", "municipalities"],
+    relatedLocations: ["greenville-sc", "anderson-sc", "clemson-sc"],
+    technologies: [
+      "Black box testing",
+      "Trusted-access pentesting",
+      "Identity and access review",
+      "Remediation validation",
+    ],
+    faq: [
+      {
+        question: "What is the difference between a black box and a trusted-access pentest?",
+        answer:
+          "A black box engagement starts from the outside with minimal prior knowledge, while a trusted-access pentest assumes some level of internal access so privilege paths, lateral movement, and deeper trust issues can be reviewed.",
+      },
+      {
+        question: "Do you only hand over a report?",
+        answer:
+          "No. The goal is to help the client understand what matters, correct the issues, and validate the fixes rather than disappearing behind a findings spreadsheet.",
+      },
+      {
+        question: "Do you provide a real-world risk review with each finding?",
+        answer:
+          "Yes. Every finding is meant to include practical context around exploitability, likely impact, and why it matters in the client's actual operating environment.",
+      },
+    ],
+  },
+  {
     slug: "camera-systems",
     shortLabel: "Camera Systems",
     title: "Camera Systems and Local-First Smart Deployments",
@@ -247,7 +293,12 @@ export const industries: Industry[] = [
       "Safer identity and email administration",
       "Documentation and operational cleanup",
     ],
-    relatedServices: ["it-support", "microsoft-365", "security-hardening"],
+    relatedServices: [
+      "it-support",
+      "microsoft-365",
+      "security-hardening",
+      "security-audits-pentesting",
+    ],
   },
   {
     slug: "small-business",
@@ -261,7 +312,12 @@ export const industries: Industry[] = [
       "Better cloud and identity administration",
       "Project guidance for growth and cleanup",
     ],
-    relatedServices: ["it-support", "microsoft-365", "network-wifi"],
+    relatedServices: [
+      "it-support",
+      "microsoft-365",
+      "network-wifi",
+      "security-audits-pentesting",
+    ],
   },
   {
     slug: "municipalities",
@@ -275,7 +331,12 @@ export const industries: Industry[] = [
       "Camera planning and infrastructure support",
       "NIST-informed security improvements",
     ],
-    relatedServices: ["network-wifi", "security-hardening", "camera-systems"],
+    relatedServices: [
+      "network-wifi",
+      "security-hardening",
+      "security-audits-pentesting",
+      "camera-systems",
+    ],
   },
   {
     slug: "campgrounds",
@@ -347,7 +408,12 @@ export const locations: LocationPage[] = [
     coordinates: [-82.814777, 34.68493],
     nearbyCities: ["Seneca", "Anderson", "Greenville"],
     focus: ["Microsoft 365 cleanup", "Security and identity support", "Project-led IT guidance"],
-    relatedServices: ["microsoft-365", "security-hardening", "it-support"],
+    relatedServices: [
+      "microsoft-365",
+      "security-hardening",
+      "security-audits-pentesting",
+      "it-support",
+    ],
   },
   {
     slug: "anderson-sc",
@@ -361,7 +427,12 @@ export const locations: LocationPage[] = [
     coordinates: [-82.64167, 34.50333],
     nearbyCities: ["Clemson", "Greenville", "Seneca"],
     focus: ["Network upgrades", "Support and cleanup projects", "Security posture improvements"],
-    relatedServices: ["network-wifi", "security-hardening", "it-support"],
+    relatedServices: [
+      "network-wifi",
+      "security-hardening",
+      "security-audits-pentesting",
+      "it-support",
+    ],
   },
   {
     slug: "easley-sc",
@@ -389,7 +460,12 @@ export const locations: LocationPage[] = [
     coordinates: [-82.3940104, 34.8526176],
     nearbyCities: ["Easley", "Anderson", "Clemson"],
     focus: ["Business IT support", "Cloud administration", "Network and security projects"],
-    relatedServices: ["it-support", "microsoft-365", "network-wifi"],
+    relatedServices: [
+      "it-support",
+      "microsoft-365",
+      "network-wifi",
+      "security-audits-pentesting",
+    ],
   },
 ];
 
@@ -583,6 +659,11 @@ export const faqs = [
     question: "Can NextGridIT help with both networks and cameras?",
     answer:
       "Yes. Camera deployments are often planned alongside switching, Wi-Fi, and broader infrastructure work so the systems fit together cleanly.",
+  },
+  {
+    question: "Does NextGridIT offer security audits or penetration testing?",
+    answer:
+      "Yes. NextGridIT offers scoped security audits, black box pentests, and trusted-access pentests with remediation help and practical risk review for each finding.",
   },
   {
     question: "How do projects usually start?",

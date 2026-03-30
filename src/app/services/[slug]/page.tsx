@@ -80,8 +80,7 @@ export default async function ServiceDetailPage({
 
       <PageIntro
         eyebrow="Service"
-        title={service.shortLabel}
-        accent="Support"
+        title={service.title}
         description={service.description}
       />
 
