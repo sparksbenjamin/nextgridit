@@ -12,8 +12,8 @@ const markets = [
 
 export function TargetAudienceSection() {
   return (
-    <section className="py-24 relative overflow-hidden bg-[#020202]">
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#b026ff]/10 via-transparent to-transparent pointer-events-none" />
+    <section className="relative overflow-hidden py-24">
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--accent-alt-soft)] via-transparent to-transparent" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -24,17 +24,17 @@ export function TargetAudienceSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 uppercase">
+              <h2 className="theme-heading mb-6 font-mono text-3xl font-bold uppercase md:text-5xl">
                 Built for <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b026ff] to-[#00f0ff]">Real-World Environments</span>
+                <span className="bg-gradient-to-r from-[var(--accent-alt)] to-[var(--accent)] bg-clip-text text-transparent">Real-World Environments</span>
               </h2>
 
-              <div className="space-y-6 text-gray-400 font-sans text-lg">
+              <div className="theme-copy space-y-6 font-sans text-lg">
                 <p>
                   NextGridIT is built for organizations that need more than reactive support but do not want to be shoved into a one-size-fits-all MSP model.
                 </p>
                 <p>
-                  <strong className="text-white font-mono">We focus on practical improvements that reduce risk, improve reliability, and support day-to-day operations across business, municipal, and property environments.</strong>
+                  <strong className="theme-heading font-mono">We focus on practical improvements that reduce risk, improve reliability, and support day-to-day operations across business, municipal, and property environments.</strong>
                 </p>
                 <p>
                   Our background includes Microsoft ecosystems, local-first deployments, network modernization, public Wi-Fi, camera systems, compliance-aware support, and multi-site environments that need steady hands and clear communication.
@@ -42,13 +42,13 @@ export function TargetAudienceSection() {
               </div>
 
               <div className="mt-10 flex gap-6 flex-wrap">
-                <div className="border-l-2 border-[#39ff14] pl-4">
-                  <div className="text-3xl font-mono font-bold text-white">20<span className="text-[#39ff14]">+</span></div>
-                  <div className="text-sm text-gray-400 uppercase tracking-widest mt-1">Years in IT</div>
+                <div className="border-l-2 border-[var(--accent-strong)] pl-4">
+                  <div className="theme-heading text-3xl font-mono font-bold">20<span className="theme-accent-strong">+</span></div>
+                  <div className="theme-soft mt-1 text-sm uppercase tracking-widest">Years in IT</div>
                 </div>
-                <div className="border-l-2 border-[#00f0ff] pl-4">
-                  <div className="text-3xl font-mono font-bold text-white">Local</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-widest mt-1">Upstate SC Focus</div>
+                <div className="border-l-2 border-[var(--accent)] pl-4">
+                  <div className="theme-heading text-3xl font-mono font-bold">Local</div>
+                  <div className="theme-soft mt-1 text-sm uppercase tracking-widest">Upstate SC Focus</div>
                 </div>
               </div>
             </motion.div>
@@ -60,36 +60,36 @@ export function TargetAudienceSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative p-1 bg-gradient-to-br from-[#39ff14]/30 via-[#b026ff]/30 to-[#00f0ff]/30 rounded-sm"
+              className="rounded-2xl bg-gradient-to-br from-[var(--accent-alt-soft)] via-[var(--accent-soft)] to-[var(--accent-alt-soft)] p-[1px]"
             >
-              <div className="bg-[#050505] p-8 md:p-12 relative overflow-hidden h-full">
-                <div className="absolute inset-0 cyber-grid opacity-20" />
+              <div className="relative h-full overflow-hidden rounded-[calc(1rem-1px)] bg-[var(--surface-strong)] p-8 md:p-12">
+                <div className="absolute inset-0 cyber-grid opacity-30" />
 
                 <div className="relative z-10 font-mono">
-                  <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-4">
+                  <div className="mb-6 flex items-center gap-2 border-b border-[var(--border)] pb-4">
                     <span className="w-3 h-3 rounded-full bg-red-500" />
                     <span className="w-3 h-3 rounded-full bg-yellow-500" />
                     <span className="w-3 h-3 rounded-full bg-green-500" />
-                    <span className="text-xs text-gray-500 ml-2">engagement_model.sh</span>
+                    <span className="theme-soft ml-2 text-xs">engagement_model.sh</span>
                   </div>
 
                   <div className="space-y-4 text-sm sm:text-base">
-                    <div className="flex justify-between items-center text-gray-400">
+                    <div className="theme-copy flex items-center justify-between">
                       <span>Reactive Vendor Model</span>
-                      <span className="text-red-400">Wait and Fix</span>
+                      <span className="text-amber-500">Wait and Fix</span>
                     </div>
-                    <div className="w-full bg-gray-900 h-[1px]" />
-                    <div className="flex justify-between items-center text-white">
+                    <div className="h-[1px] w-full bg-[var(--border)]" />
+                    <div className="theme-heading flex items-center justify-between">
                       <span>NextGridIT Approach</span>
-                      <span className="text-[#39ff14] drop-shadow-[0_0_5px_rgba(57,255,20,0.5)]">Plan and Improve</span>
+                      <span className="theme-accent-strong">Plan and Improve</span>
                     </div>
 
-                    <div className="pt-6 mt-6 border-t border-white/5 space-y-3">
-                      <p className="text-gray-500">&gt; Identifying best-fit client environments...</p>
-                      <ul className="text-gray-300 space-y-2">
+                    <div className="mt-6 space-y-3 border-t border-[var(--border)] pt-6">
+                      <p className="theme-soft">&gt; Identifying best-fit client environments...</p>
+                      <ul className="theme-copy space-y-2">
                         {markets.map((market) => (
                           <li key={market} className="flex items-center gap-2">
-                            <IconCheck className="w-4 h-4 text-[#00f0ff]" />
+                            <IconCheck className="h-4 w-4 theme-accent" />
                             {market}
                           </li>
                         ))}

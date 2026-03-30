@@ -59,37 +59,37 @@ export default function CompliancePage() {
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
       <div className="max-w-4xl mb-14">
-        <p className="text-sm font-mono uppercase tracking-[0.3em] text-[#39ff14] mb-4">
+        <p className="theme-accent-strong mb-4 text-sm font-mono uppercase tracking-[0.3em]">
           Compliance and frameworks
         </p>
-        <h1 className="text-4xl md:text-5xl font-mono font-bold text-white mb-6 uppercase tracking-wider">
-          Compliance-Aware <span className="text-[#00f0ff]">Technical Support</span>
+        <h1 className="theme-heading mb-6 font-mono text-4xl font-bold uppercase tracking-wider md:text-5xl">
+          Compliance-Aware <span className="theme-accent">Technical Support</span>
         </h1>
-        <div className="w-24 h-1 bg-[#00f0ff] mb-6 shadow-[0_0_10px_rgba(0,240,255,0.5)]" />
-        <p className="text-gray-300 text-lg leading-relaxed">
+        <div className="theme-rule mb-6 h-1 w-24" />
+        <p className="theme-copy text-lg leading-relaxed">
           NextGridIT helps organizations improve real systems and daily operations in ways that support compliance expectations. We focus on technical execution, documentation, and risk reduction rather than empty checklist language.
         </p>
       </div>
 
       <div className="grid gap-8 md:grid-cols-3">
         {frameworks.map((framework) => (
-          <section key={framework.title} className="glass-panel p-8 border border-white/10">
-            <div className="mb-5 inline-flex rounded-sm border border-white/10 bg-black p-4">
+          <section key={framework.title} className="glass-panel border border-[var(--border)] p-8">
+            <div className="mb-5 inline-flex rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-4">
               {framework.icon}
             </div>
-            <h2 className="text-2xl font-mono font-bold text-white mb-4">{framework.title}</h2>
-            <p className="text-sm font-mono uppercase tracking-[0.2em] text-gray-500 mb-3">Common fit</p>
-            <p className="text-gray-300 leading-relaxed mb-5">{framework.appliesTo}</p>
-            <p className="text-sm font-mono uppercase tracking-[0.2em] text-gray-500 mb-3">How we help</p>
-            <p className="text-gray-400 leading-relaxed mb-6">{framework.support}</p>
-            <div className="pt-5 border-t border-white/10">
-              <p className="text-sm font-mono uppercase tracking-[0.2em] text-gray-500 mb-3">Related services</p>
+            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">{framework.title}</h2>
+            <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">Common fit</p>
+            <p className="theme-copy mb-5 leading-relaxed">{framework.appliesTo}</p>
+            <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">How we help</p>
+            <p className="theme-copy mb-6 leading-relaxed">{framework.support}</p>
+            <div className="border-t border-[var(--border)] pt-5">
+              <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">Related services</p>
               <div className="flex flex-wrap gap-2">
                 {framework.links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="border border-[#39ff14]/25 bg-black/40 px-3 py-2 font-mono text-sm text-white transition-colors hover:border-[#39ff14] hover:text-[#39ff14]"
+                    className="theme-chip px-3 py-2 font-mono text-sm hover:border-[var(--border-strong)] hover:text-[var(--accent-strong)]"
                   >
                     {link.label}
                   </Link>
@@ -101,12 +101,12 @@ export default function CompliancePage() {
       </div>
 
       <section className="mt-16 grid gap-8 lg:grid-cols-[1.3fr_0.9fr]">
-        <div className="glass-panel p-8 border border-white/10">
-          <div className="flex items-center gap-3 mb-4 text-[#39ff14] font-mono uppercase tracking-[0.2em] text-sm">
+        <div className="glass-panel border border-[var(--border)] p-8">
+          <div className="theme-accent-strong mb-4 flex items-center gap-3 font-mono text-sm uppercase tracking-[0.2em]">
             <IconChecklist className="w-5 h-5" />
             What this means in practice
           </div>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
+          <div className="theme-copy space-y-4 leading-relaxed">
             <p>
               We do not treat compliance like a disconnected paperwork exercise. We connect security, documentation, identity, networking, Wi-Fi, cameras, and cloud administration to the real operating environment.
             </p>
@@ -116,12 +116,12 @@ export default function CompliancePage() {
           </div>
         </div>
 
-        <div className="glass-panel p-8 border border-white/10">
-          <h2 className="text-2xl font-mono font-bold text-white mb-4">Local-First Mindset</h2>
-          <p className="text-gray-300 leading-relaxed mb-4">
+        <div className="glass-panel border border-[var(--border)] p-8">
+          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">Local-First Mindset</h2>
+          <p className="theme-copy mb-4 leading-relaxed">
             Many of our solutions are designed to keep ownership, visibility, and performance close to the client environment whenever that is the right fit.
           </p>
-          <p className="text-gray-400 leading-relaxed">
+          <p className="theme-copy leading-relaxed">
             That includes infrastructure choices, camera deployments, and custom local AI processing options where on-site control matters more than handing everything to a third-party platform.
           </p>
         </div>

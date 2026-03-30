@@ -3,30 +3,30 @@ import { IconMail, IconMapPin, IconShieldLock } from "@tabler/icons-react"
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#39ff14]/20 bg-[#050505] relative z-10 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent opacity-50" />
+    <footer className="relative z-10 overflow-hidden border-t border-[var(--border)] bg-[var(--background-elevated)]/70">
+      <div className="theme-rule absolute left-0 top-0 h-[1px] w-full opacity-70" />
 
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-1 border-l-2 border-[#b026ff] pl-4">
+          <div className="col-span-1 border-l-2 border-[var(--accent-alt)] pl-4 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <span className="font-mono text-2xl font-bold tracking-wider text-white">
-                NEXT<span className="text-[#b026ff]">GRID</span><span className="text-white/50 text-sm ml-1">IT</span>
+              <span className="theme-heading font-mono text-2xl font-bold tracking-wider">
+                NEXT<span className="theme-accent-alt">GRID</span><span className="theme-soft ml-1 text-sm">IT</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm mb-6">
+            <p className="theme-copy mb-6 text-sm">
               Network infrastructure, security, and IT support for organizations across Upstate South Carolina.
             </p>
             <div className="flex space-x-4">
-              <Link href="mailto:contact@nextgridit.com" className="text-gray-400 hover:text-[#00f0ff] transition-colors">
+              <Link href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]">
                 <span className="sr-only">Email</span>
                 <IconMail className="h-5 w-5" />
               </Link>
-              <Link href="/contact" className="text-gray-400 hover:text-[#b026ff] transition-colors">
+              <Link href="/contact" className="theme-copy hover:text-[var(--accent-alt)]">
                 <span className="sr-only">Contact</span>
                 <IconShieldLock className="h-5 w-5" />
               </Link>
-              <Link href="/contact" className="text-gray-400 hover:text-[#39ff14] transition-colors">
+              <Link href="/contact" className="theme-copy hover:text-[var(--accent-strong)]">
                 <span className="sr-only">Location</span>
                 <IconMapPin className="h-5 w-5" />
               </Link>
@@ -34,7 +34,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-mono text-sm font-semibold text-white tracking-wider uppercase mb-4 opacity-80">Solutions</h3>
+            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Solutions</h3>
             <ul className="space-y-3">
               {[
                 { label: "IT Support", href: "/services#support" },
@@ -43,7 +43,7 @@ export function Footer() {
                 { label: "Camera Systems", href: "/services#camera" },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-gray-400 text-sm hover:text-[#00f0ff] hover:pl-2 transition-all duration-200 flex items-center before:content-['>'] before:text-[#39ff14] before:opacity-0 hover:before:opacity-100 before:-ml-3 before:absolute relative">
+                  <Link href={item.href} className="theme-copy relative flex items-center text-sm transition-all duration-200 before:absolute before:-ml-3 before:text-[var(--accent-strong)] before:opacity-0 before:content-['>'] hover:pl-2 hover:text-[var(--accent)] hover:before:opacity-100">
                     {item.label}
                   </Link>
                 </li>
@@ -52,7 +52,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-mono text-sm font-semibold text-white tracking-wider uppercase mb-4 opacity-80">Company</h3>
+            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Company</h3>
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
@@ -62,7 +62,7 @@ export function Footer() {
                 { label: "Privacy Policy", href: "/privacy" },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-gray-400 text-sm hover:text-[#00f0ff] hover:pl-2 transition-all duration-200">
+                  <Link href={item.href} className="theme-copy text-sm transition-all duration-200 hover:pl-2 hover:text-[var(--accent)]">
                     {item.label}
                   </Link>
                 </li>
@@ -71,30 +71,30 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-mono text-sm font-semibold text-white tracking-wider uppercase mb-4 opacity-80">Terminal</h3>
-            <div className="bg-[#0a0a0a] p-4 rounded-sm border border-gray-800 font-mono text-xs text-[#39ff14] relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-[#39ff14]/30"></div>
-              <p className="mb-2 opacity-80">&gt; ping contact@nextgridit.com</p>
-              <p className="mb-2 opacity-80">&gt; call 864-780-0202</p>
-              <p className="mb-4 opacity-80">&gt; Reply from NextGridIT: project intake ready</p>
+            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">System</h3>
+            <div className="theme-terminal relative overflow-hidden rounded-2xl p-4 font-mono text-xs group">
+              <div className="absolute left-0 top-0 h-[1px] w-full bg-[var(--accent-soft)]"></div>
+              <p className="mb-2 opacity-80">&gt; intake channel: email</p>
+              <p className="mb-2 opacity-80">&gt; response model: project-led</p>
+              <p className="mb-4 opacity-80">&gt; status: project intake ready</p>
               <Link
                 href="/contact"
-                className="inline-block mt-2 bg-[#b026ff]/10 text-[#b026ff] hover:bg-[#b026ff] hover:text-black border border-[#b026ff] px-4 py-2 transition-colors duration-300 w-full text-center tracking-wider"
+                className="button-secondary inline-block mt-2 w-full rounded-full px-4 py-2 text-center tracking-wider"
               >
                 INITIATE CONTACT
               </Link>
-              <p className="mt-3 text-[11px] text-gray-500">Direct line: 864-780-0202</p>
+              <p className="theme-terminal-muted mt-3 text-[11px]">Local-first systems. Practical execution. Clean handoff.</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm font-mono text-center md:text-left">
-            &copy; {new Date().getFullYear()} NextgridIT Systems. All rights reserved. <span className="text-[#39ff14]/50">SECURE: true</span>
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-8 md:flex-row">
+          <p className="theme-soft text-center font-mono text-sm md:text-left">
+            &copy; {new Date().getFullYear()} NextgridIT Systems. All rights reserved. <span className="theme-accent-strong">SECURE: true</span>
           </p>
-          <div className="flex gap-4 text-xs font-mono text-gray-600">
-            <span>SYS_STATUS: <span className="text-[#00f0ff]">ONLINE</span></span>
-            <span>UPTIME: <span className="text-[#39ff14]">99.9%</span></span>
+          <div className="theme-soft flex gap-4 font-mono text-xs">
+            <span>SYS_STATUS: <span className="theme-accent">ONLINE</span></span>
+            <span>UPTIME: <span className="theme-accent-strong">99.9%</span></span>
           </div>
         </div>
       </div>

@@ -45,14 +45,14 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 relative bg-[#050505] border-t border-white/5">
+    <section id="services" className="relative border-t border-[var(--border)] py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-mono font-bold text-white mb-4">
-            CORE <span className="text-[#39ff14]">SERVICES</span>
+          <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
+            CORE <span className="theme-accent-strong">SERVICES</span>
           </h2>
-          <div className="w-24 h-1 bg-[#39ff14] mx-auto mb-6 shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
-          <p className="text-gray-400 font-sans text-lg">
+          <div className="theme-rule mx-auto mb-6 h-1 w-24" />
+          <p className="theme-copy font-sans text-lg">
             NextGridIT delivers business-first infrastructure, cloud, security, and connected systems work for organizations that need practical results instead of generic MSP packaging.
           </p>
         </div>
@@ -65,26 +65,26 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative glass-panel p-8 hover:bg-white/[0.02] transition-colors duration-300 overflow-hidden"
+              className="group relative overflow-hidden glass-panel p-8 transition-colors duration-300 hover:bg-[var(--surface-muted)]"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#39ff14]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-soft)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
               <div className="flex items-start gap-6 relative z-10">
-                <div className="p-3 bg-black border border-white/10 rounded-sm group-hover:border-[#39ff14]/50 transition-colors duration-300">
+                <div className="rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-3 transition-colors duration-300 group-hover:border-[var(--border-strong)]">
                   {service.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-mono font-bold text-white mb-3 group-hover:text-[#00f0ff] transition-colors">
+                  <h3 className="theme-heading mb-3 font-mono text-xl font-bold transition-colors group-hover:text-[var(--accent)]">
                     {service.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="theme-copy mb-6 leading-relaxed">
                     {service.description}
                   </p>
 
                   <ul className="space-y-2">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-sm text-gray-300 font-mono">
-                        <IconChevronRight className="w-4 h-4 text-[#39ff14] opacity-70" />
+                      <li key={feature} className="theme-copy flex items-center gap-2 font-mono text-sm">
+                        <IconChevronRight className="h-4 w-4 theme-accent-strong opacity-70" />
                         {feature}
                       </li>
                     ))}
@@ -92,8 +92,8 @@ export function ServicesSection() {
                 </div>
               </div>
 
-              <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#39ff14]/0 group-hover:border-[#39ff14]/50 transition-all duration-300 transform translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
-              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#00f0ff]/0 group-hover:border-[#00f0ff]/50 transition-all duration-300 transform -translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0" />
+              <div className="absolute right-0 top-0 h-8 w-8 translate-x-2 -translate-y-2 transform border-r-2 border-t-2 border-transparent transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[var(--accent-strong)]/40" />
+              <div className="absolute bottom-0 left-0 h-8 w-8 -translate-x-2 translate-y-2 transform border-b-2 border-l-2 border-transparent transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[var(--accent)]/40" />
             </motion.div>
           ))}
         </div>

@@ -55,11 +55,11 @@ export function ServicesPageClient() {
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
       <div className="mb-16">
-        <h1 className="text-4xl md:text-5xl font-mono font-bold text-white mb-6 uppercase tracking-wider">
-          Service <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#39ff14]">Capabilities</span>
+        <h1 className="theme-heading mb-6 font-mono text-4xl font-bold uppercase tracking-wider md:text-5xl">
+          Service <span className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-strong)] bg-clip-text text-transparent">Capabilities</span>
         </h1>
-        <div className="w-24 h-1 bg-[#00f0ff] mb-6 shadow-[0_0_10px_rgba(0,240,255,0.5)]" />
-        <p className="text-gray-300 font-sans text-lg max-w-3xl leading-relaxed">
+        <div className="theme-rule mb-6 h-1 w-24" />
+        <p className="theme-copy max-w-3xl font-sans text-lg leading-relaxed">
           NextGridIT provides project-led infrastructure, cloud, security, Wi-Fi, camera, and operational support services for organizations that need practical technical leadership and cleaner systems without generic MSP packaging.
         </p>
       </div>
@@ -72,44 +72,44 @@ export function ServicesPageClient() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-panel p-8 border border-white/10 hover:border-[#39ff14]/50 transition-colors duration-300 relative group overflow-hidden scroll-mt-28"
+            className="glass-panel group relative overflow-hidden border border-[var(--border)] p-8 scroll-mt-28 transition-colors duration-300 hover:border-[var(--border-strong)]"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#00f0ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--accent-soft)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-            <div className="mb-6 p-4 bg-black inline-block rounded-sm border border-white/5 shadow-inner">
+            <div className="mb-6 inline-block rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-inner">
               {icons[service.id as keyof typeof icons]}
             </div>
 
-            <h2 className="text-2xl font-mono font-bold text-white mb-4 group-hover:text-[#39ff14] transition-colors">{service.title}</h2>
-            <p className="text-gray-400 font-sans leading-relaxed">{service.description}</p>
+            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold transition-colors group-hover:text-[var(--accent-strong)]">{service.title}</h2>
+            <p className="theme-copy font-sans leading-relaxed">{service.description}</p>
 
-            <ul className="mt-6 space-y-2 text-sm text-gray-300">
+            <ul className="theme-copy mt-6 space-y-2 text-sm">
               {service.bullets.map((bullet) => (
                 <li key={bullet} className="flex items-center gap-2 font-mono">
-                  <span className="h-2 w-2 rounded-full bg-[#39ff14]" />
+                  <span className="h-2 w-2 rounded-full bg-[var(--accent-strong)]" />
                   {bullet}
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 pt-4 border-t border-white/10 flex items-center gap-2 font-mono text-sm text-gray-500">
-              <span className="w-2 h-2 bg-[#b026ff] rounded-full animate-pulse" />
-              ENGAGEMENT: <span className="text-[#00f0ff]">PROJECT-LED</span>
+            <div className="theme-soft mt-8 flex items-center gap-2 border-t border-[var(--border)] pt-4 font-mono text-sm">
+              <span className="h-2 w-2 rounded-full bg-[var(--accent-alt)] animate-pulse" />
+              ENGAGEMENT: <span className="theme-accent">PROJECT-LED</span>
             </div>
           </motion.div>
         ))}
       </div>
 
-      <section className="mt-16 glass-panel p-8 border border-white/10">
+      <section className="glass-panel mt-16 border border-[var(--border)] p-8">
         <div className="max-w-4xl space-y-4">
-          <div className="flex items-center gap-3 text-[#39ff14] font-mono text-sm uppercase tracking-[0.3em]">
+          <div className="theme-accent-strong flex items-center gap-3 font-mono text-sm uppercase tracking-[0.3em]">
             <IconCertificate className="w-5 h-5" />
             Compliance-aware support
           </div>
-          <h2 className="text-2xl md:text-3xl font-mono font-bold text-white">
+          <h2 className="theme-heading font-mono text-2xl font-bold md:text-3xl">
             Frameworks matter when they connect to real systems and real operations.
           </h2>
-          <p className="text-gray-300 leading-relaxed">
+          <p className="theme-copy leading-relaxed">
             NextGridIT supports healthcare, public-sector, and business environments with technical guidance informed by HIPAA, PCI DSS, and NIST-based practices. We focus on implementation, documentation, and risk reduction that can be tied back to the systems you actually run.
           </p>
         </div>

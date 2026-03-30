@@ -5,6 +5,26 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
+const themeInitScript = `
+  (() => {
+    try {
+      const storageKey = "nextgridit-theme";
+      const hackerKey = "nextgridit-hacker-unlocked";
+      const savedTheme = window.localStorage.getItem(storageKey);
+      const hackerUnlocked = window.localStorage.getItem(hackerKey) === "true";
+      const nextTheme =
+        savedTheme === "dark" || savedTheme === "light" || (savedTheme === "hacker" && hackerUnlocked)
+          ? savedTheme
+          : "light";
+      document.documentElement.dataset.theme = nextTheme;
+      document.documentElement.style.colorScheme = nextTheme === "light" ? "light" : "dark";
+    } catch (error) {
+      document.documentElement.dataset.theme = "light";
+      document.documentElement.style.colorScheme = "light";
+    }
+  })();
+`;
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -90,16 +110,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoMono.variable} antialiased cyber-grid min-h-screen selection:bg-[var(--color-brand-green)] selection:text-black`}
+        className={`${inter.variable} ${robotoMono.variable} cyber-grid min-h-screen antialiased`}
       >
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[#39ff14] focus:px-4 focus:py-2 focus:text-black"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:px-4 focus:py-2 focus:text-[var(--selection-text)]"
+          style={{ backgroundColor: "var(--selection-bg)" }}
         >
           Skip to content
         </a>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
         <Script
           id="local-business-schema"
           type="application/ld+json"
