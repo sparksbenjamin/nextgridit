@@ -48,10 +48,6 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="hidden items-center gap-4 md:flex">
-            <ThemeToggle />
-          </div>
-
           <nav aria-label="Primary" className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href
@@ -74,17 +70,19 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="hidden md:flex">
+          <div className="flex items-center gap-2 md:gap-4">
+            <ThemeToggle className="scale-90 origin-right sm:scale-100" />
+            <div className="hidden md:block">
             <Link
               href="/contact"
               className="button-primary relative overflow-hidden rounded-full px-6 py-2.5 font-mono text-sm font-bold uppercase tracking-[0.2em]"
             >
               <span className="relative z-10">START BY EMAIL</span>
             </Link>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle className="scale-90 origin-right" />
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}

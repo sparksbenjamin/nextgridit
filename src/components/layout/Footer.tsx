@@ -76,15 +76,23 @@ export function Footer() {
             <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Resources</h3>
             <div className="theme-terminal relative overflow-hidden rounded-2xl p-4 font-mono text-xs group">
               <div className="absolute left-0 top-0 h-[1px] w-full bg-[var(--accent-soft)]"></div>
-              <p className="mb-2 opacity-80">&gt; canonical facts: /company-facts</p>
-              <p className="mb-2 opacity-80">&gt; AI ingestion: /llms.txt</p>
-              <p className="mb-4 opacity-80">&gt; status: crawl-ready</p>
-              <Link
-                href="/faq"
-                className="button-secondary inline-block mt-2 w-full rounded-full px-4 py-2 text-center tracking-wider"
-              >
-                VIEW FAQ
-              </Link>
+              <p className="mb-2 opacity-80">&gt; local coverage: /service-areas</p>
+              <p className="mb-2 opacity-80">&gt; industry focus: /industries</p>
+              <p className="mb-4 opacity-80">&gt; project questions: /faq</p>
+              <div className="grid gap-2">
+                <Link
+                  href="/faq"
+                  className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
+                >
+                  VIEW FAQ
+                </Link>
+                <Link
+                  href="/process"
+                  className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
+                >
+                  VIEW PROCESS
+                </Link>
+              </div>
               <p className="theme-terminal-muted mt-3 text-[11px]">Local-first systems. Practical execution. Clean handoff.</p>
             </div>
           </div>

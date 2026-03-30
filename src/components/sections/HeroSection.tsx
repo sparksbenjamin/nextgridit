@@ -1,10 +1,9 @@
 "use client"
 
 import * as React from "react"
-import Spline from "@splinetool/react-spline"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { IconMapPin, IconPhone, IconServerCog, IconShieldLock } from "@tabler/icons-react"
+import { IconBinaryTree2, IconMapPin, IconPhone, IconServerCog, IconShieldLock } from "@tabler/icons-react"
 
 export function HeroSection() {
   const [showScene, setShowScene] = React.useState(false)
@@ -35,8 +34,63 @@ export function HeroSection() {
       <div className="pointer-events-none absolute left-1/4 top-1/2 h-[40vw] w-[40vw] -translate-y-1/2 rounded-full blur-[100px]" style={{ backgroundColor: "var(--hero-glow-two)" }} />
 
       {showScene ? (
-        <div className="absolute right-0 top-0 w-full lg:w-2/3 h-full z-0 opacity-60 lg:opacity-100">
-          <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+        <div className="absolute right-0 top-0 z-0 hidden h-full w-full lg:block lg:w-2/3">
+          <div className="absolute inset-y-[14%] right-[10%] left-[18%] rounded-[2rem] border border-[var(--border-strong)] bg-[var(--surface)] shadow-[0_30px_80px_-50px_var(--shadow-color)]" />
+          <div className="absolute inset-y-[18%] right-[14%] left-[22%] overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[var(--surface-strong)]">
+            <div className="absolute inset-0 cyber-grid opacity-40" />
+            <div className="absolute inset-x-0 top-0 h-14 border-b border-[var(--border)] bg-[var(--background-elevated)]/90" />
+            <div className="absolute left-8 top-5 flex items-center gap-2">
+              <span className="h-3 w-3 rounded-full bg-rose-500/70" />
+              <span className="h-3 w-3 rounded-full bg-amber-400/70" />
+              <span className="h-3 w-3 rounded-full bg-emerald-500/70" />
+            </div>
+            <div className="absolute right-8 top-4 rounded-full border border-[var(--border)] px-4 py-2 font-mono text-xs uppercase tracking-[0.24em] theme-accent">
+              Local-first mode
+            </div>
+
+            <div className="absolute inset-x-10 top-24 grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+              <div className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--background-elevated)]/70 p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <IconBinaryTree2 className="h-6 w-6 theme-accent-strong" />
+                  <p className="font-mono text-xs uppercase tracking-[0.28em] theme-copy">
+                    Infrastructure map
+                  </p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    "Identity controls aligned",
+                    "Guest traffic segmented",
+                    "Cameras kept on-site",
+                    "Documentation updated",
+                  ].map((item) => (
+                    <div key={item} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4 font-mono text-sm theme-copy">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-4 rounded-[1.5rem] border border-[var(--border)] bg-[var(--background-elevated)]/70 p-6">
+                <p className="font-mono text-xs uppercase tracking-[0.28em] theme-accent-alt">
+                  Project baseline
+                </p>
+                <div className="space-y-4">
+                  {[
+                    ["Medical", "HIPAA-aware cloud and identity cleanup"],
+                    ["Municipal", "Public Wi-Fi and camera infrastructure"],
+                    ["Property", "Reliable connectivity across buildings"],
+                  ].map(([label, value]) => (
+                    <div key={label} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4">
+                      <p className="mb-1 font-mono text-xs uppercase tracking-[0.24em] theme-soft">
+                        {label}
+                      </p>
+                      <p className="text-sm theme-copy">{value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="absolute inset-0 z-0 pointer-events-none">
@@ -68,7 +122,7 @@ export function HeroSection() {
             Network Infrastructure,
             <br />
             <span className="text-glow-cyan bg-gradient-to-r from-[var(--accent)] to-[var(--accent-strong)] bg-clip-text text-transparent">
-              Security, and IT Support
+              Security, Cloud, and Connected Systems
             </span>
           </motion.h1>
 

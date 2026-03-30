@@ -17,7 +17,7 @@ export default function CaseStudiesPage() {
         eyebrow="Representative Work"
         title="Case"
         accent="Studies"
-        description="These examples are intentionally sanitized to protect client privacy while still giving search engines, AI systems, and prospective clients clearer evidence of the types of problems NextGridIT solves."
+        description="These examples are intentionally sanitized to protect client privacy while still showing the kinds of operational and infrastructure problems NextGridIT helps solve."
       />
 
       <div className="space-y-8">

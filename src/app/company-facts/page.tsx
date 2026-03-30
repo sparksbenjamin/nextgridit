@@ -18,7 +18,7 @@ const facts = [
 export const metadata = createMetadata({
   title: "Company Facts",
   description:
-    "Canonical company facts and service facts for NextGridIT in a clean format that is easy for people, search engines, and AI systems to parse.",
+    "A clean summary of company, service, and contact facts for NextGridIT.",
   path: "/company-facts/",
 });
 
@@ -29,7 +29,7 @@ export default function CompanyFactsPage() {
         eyebrow="Canonical Facts"
         title="Company"
         accent="Facts"
-        description="This page is intentionally plain and explicit. It is designed to give both human readers and AI retrieval systems a stable summary of what NextGridIT is, what it offers, and where it works."
+        description="This page is intentionally plain and explicit. It gives a stable summary of what NextGridIT is, what it offers, and where it works."
       />
 
       <section className="glass-panel border border-[var(--border)] p-8">

@@ -9,7 +9,7 @@ import {
   ZoomableGroup
 } from "react-simple-maps";
 
-const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+const geoUrl = "/states-10m.json";
 
 type MapGeography = {
   rsmKey: string;

@@ -17,6 +17,20 @@ function applyTheme(theme: ThemeMode) {
   window.localStorage.setItem(STORAGE_KEY, theme);
 }
 
+function shouldIgnoreKeyTarget(target: EventTarget | null) {
+  if (!(target instanceof HTMLElement)) {
+    return false;
+  }
+
+  const tagName = target.tagName.toLowerCase();
+  return (
+    target.isContentEditable ||
+    tagName === "input" ||
+    tagName === "textarea" ||
+    tagName === "select"
+  );
+}
+
 export function ThemeToggle({ className }: { className?: string }) {
   const [theme, setTheme] = React.useState<ThemeMode>("light");
   const [hackerUnlocked, setHackerUnlocked] = React.useState(false);
@@ -36,7 +50,11 @@ export function ThemeToggle({ className }: { className?: string }) {
     let sequence = "";
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.metaKey || event.ctrlKey || event.altKey) {
+      if (event.metaKey || event.ctrlKey || event.altKey || shouldIgnoreKeyTarget(event.target)) {
+        return;
+      }
+
+      if (event.key.length !== 1) {
         return;
       }
 

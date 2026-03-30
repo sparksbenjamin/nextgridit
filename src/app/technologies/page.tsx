@@ -17,7 +17,7 @@ export default function TechnologiesPage() {
         eyebrow="Technology Stack"
         title="Supported"
         accent="Technologies"
-        description="This page lists the types of platforms, infrastructure, and systems NextGridIT commonly works with so both people and machine readers can connect the service offering to specific technology categories."
+        description="A practical view of the platforms, infrastructure, and system types that commonly show up in NextGridIT projects."
       />
 
       <section className="glass-panel border border-[var(--border)] p-8">

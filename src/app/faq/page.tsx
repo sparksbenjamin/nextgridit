@@ -25,7 +25,7 @@ export default function FaqPage() {
         eyebrow="Questions"
         title="Frequently Asked"
         accent="Questions"
-        description="This page gives search engines, AI systems, and prospective clients a clean answer set about what NextGridIT does, who it supports, and where it works."
+        description="Straight answers about how NextGridIT works, what kinds of projects are a fit, and how engagements typically begin."
       />
 
       <div className="space-y-5">
