@@ -41,6 +41,14 @@ Many authentication systems assume clocks are reasonably close. If they are not,
 
 This matters especially in environments with Active Directory, Microsoft 365 integrations, VPN access, or other identity-sensitive systems. In a Windows domain, the time hierarchy should be intentional, and domain members should not be wandering off to random public sources.
 
+### The practical "15-minute" problem
+
+People sometimes describe this as a "15-minute to live" issue, but the more accurate idea is clock-skew tolerance. Many systems will tolerate a little drift, but once devices are far enough apart, security and authentication workflows start to fail in ways that feel random.
+
+A useful plain-language rule is this: if clocks are off by several minutes, you are already in dangerous territory. Around the 5-minute mark, systems like Kerberos can begin to fail. By the time you get closer to 10 or 15 minutes apart, logs become much harder to trust, scheduled work can misfire, certificate checks get riskier, and users may start seeing login or token problems that do not immediately look like time-sync issues.
+
+That is why NTP should not be treated like a nice extra. The goal is not to be "close enough eventually." The goal is to keep the whole environment consistently aligned so those drift windows never become operational problems.
+
 ### Certificates, encryption, and secure apps
 
 Certificates and secure sessions depend on valid time. If a system thinks it is too far in the past or future, it may reject a certificate, treat a token as expired, or fail to establish a secure connection cleanly.
