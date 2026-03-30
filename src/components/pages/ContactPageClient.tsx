@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { IconArrowRight, IconMail, IconPhone } from "@tabler/icons-react";
 import MapChart from "@/components/ui/MapChart";
 
@@ -136,6 +137,17 @@ export function ContactPageClient() {
             <div className="theme-accent-alt mt-4 flex items-center gap-2 font-mono text-sm">
               <span className="h-2 w-2 rounded-full bg-[var(--accent-alt)] animate-ping" />
               STATUS: ACCEPTING NEW PROJECTS
+            </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/faq/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                FAQ
+              </Link>
+              <Link href="/process/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                Process
+              </Link>
+              <Link href="/service-areas/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                Service Areas
+              </Link>
             </div>
           </div>
         </div>

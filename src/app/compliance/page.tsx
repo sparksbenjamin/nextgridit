@@ -6,15 +6,14 @@ import {
   IconHeartbeat,
   IconShieldCheck,
 } from "@tabler/icons-react";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Compliance and Frameworks",
   description:
     "Explore the compliance-aware support and framework-informed technical services NextGridIT offers across HIPAA, PCI DSS, and NIST-aligned environments.",
-  alternates: {
-    canonical: "/compliance/",
-  },
-};
+  path: "/compliance/",
+});
 
 const frameworks = [
   {
@@ -24,9 +23,9 @@ const frameworks = [
     support:
       "We help with secure Microsoft 365 administration, access controls, documentation, infrastructure cleanup, backups, endpoint posture, and practical coordination with the systems you already rely on.",
     links: [
-      { label: "IT Support", href: "/services#support" },
-      { label: "Cloud Services", href: "/services#cloud" },
-      { label: "Security", href: "/services#security" },
+      { label: "IT Support", href: "/services/it-support/" },
+      { label: "Cloud Services", href: "/services/microsoft-365/" },
+      { label: "Security", href: "/services/security-hardening/" },
     ],
   },
   {
@@ -36,9 +35,9 @@ const frameworks = [
     support:
       "We help with segmentation, public or guest Wi-Fi separation, access control improvements, documentation, and infrastructure decisions that support safer payment environments.",
     links: [
-      { label: "Network & Wi-Fi", href: "/services#network" },
-      { label: "Security", href: "/services#security" },
-      { label: "Camera Systems", href: "/services#camera" },
+      { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
+      { label: "Security", href: "/services/security-hardening/" },
+      { label: "Camera Systems", href: "/services/camera-systems/" },
     ],
   },
   {
@@ -48,9 +47,9 @@ const frameworks = [
     support:
       "Our approach is informed by practical security frameworks, including NIST-aligned thinking, so technical improvements can map back to risk reduction, documentation, and a more defensible operating posture.",
     links: [
-      { label: "Security", href: "/services#security" },
-      { label: "IT Support", href: "/services#support" },
-      { label: "Cloud Services", href: "/services#cloud" },
+      { label: "Security", href: "/services/security-hardening/" },
+      { label: "IT Support", href: "/services/it-support/" },
+      { label: "Cloud Services", href: "/services/microsoft-365/" },
     ],
   },
 ];

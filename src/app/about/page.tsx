@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react"
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "About",
   description:
     "Learn about NextGridIT and its approach to network infrastructure, security, and compliance-aware support for businesses in Upstate South Carolina.",
-  alternates: {
-    canonical: "/about/",
-  },
-};
+  path: "/about/",
+});
 
 export default function AboutPage() {
   return (
@@ -94,6 +94,14 @@ export default function AboutPage() {
           <div className="theme-copy space-y-4 leading-relaxed">
             <p>Experience includes improving network uptime in legacy environments, leading multi-site IT operations, supporting cloud and hybrid migrations, and helping teams clean up infrastructure that had become difficult to manage.</p>
             <p>Because client environments are private, NextGridIT does not publicly identify clients or publish sensitive implementation details. We focus on practical outcomes, confidentiality, and long-term support.</p>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <Link href="/case-studies/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+              View Case Studies
+            </Link>
+            <Link href="/company-facts/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+              Company Facts
+            </Link>
           </div>
         </div>
       </section>

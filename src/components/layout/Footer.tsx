@@ -37,10 +37,10 @@ export function Footer() {
             <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Solutions</h3>
             <ul className="space-y-3">
               {[
-                { label: "IT Support", href: "/services#support" },
-                { label: "Cloud Services", href: "/services#cloud" },
-                { label: "Network & Wi-Fi", href: "/services#network" },
-                { label: "Camera Systems", href: "/services#camera" },
+                { label: "IT Support", href: "/services/it-support/" },
+                { label: "Cloud Services", href: "/services/microsoft-365/" },
+                { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
+                { label: "Camera Systems", href: "/services/camera-systems/" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="theme-copy relative flex items-center text-sm transition-all duration-200 before:absolute before:-ml-3 before:text-[var(--accent-strong)] before:opacity-0 before:content-['>'] hover:pl-2 hover:text-[var(--accent)] hover:before:opacity-100">
@@ -57,7 +57,9 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Compliance & Frameworks", href: "/compliance" },
-                { label: "Case Studies", href: "/about#case-studies" },
+                { label: "Case Studies", href: "/case-studies" },
+                { label: "Company Facts", href: "/company-facts" },
+                { label: "Process", href: "/process" },
                 { label: "Contact", href: "/contact" },
                 { label: "Privacy Policy", href: "/privacy" },
               ].map((item) => (
@@ -71,17 +73,17 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">System</h3>
+            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Resources</h3>
             <div className="theme-terminal relative overflow-hidden rounded-2xl p-4 font-mono text-xs group">
               <div className="absolute left-0 top-0 h-[1px] w-full bg-[var(--accent-soft)]"></div>
-              <p className="mb-2 opacity-80">&gt; intake channel: email</p>
-              <p className="mb-2 opacity-80">&gt; response model: project-led</p>
-              <p className="mb-4 opacity-80">&gt; status: project intake ready</p>
+              <p className="mb-2 opacity-80">&gt; canonical facts: /company-facts</p>
+              <p className="mb-2 opacity-80">&gt; AI ingestion: /llms.txt</p>
+              <p className="mb-4 opacity-80">&gt; status: crawl-ready</p>
               <Link
-                href="/contact"
+                href="/faq"
                 className="button-secondary inline-block mt-2 w-full rounded-full px-4 py-2 text-center tracking-wider"
               >
-                INITIATE CONTACT
+                VIEW FAQ
               </Link>
               <p className="theme-terminal-muted mt-3 text-[11px]">Local-first systems. Practical execution. Clean handoff.</p>
             </div>

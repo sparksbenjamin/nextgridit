@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import {
   IconChevronRight,
   IconCloudLock,
@@ -12,30 +13,35 @@ import {
 
 const services = [
   {
+    slug: "it-support",
     title: "IT Support and Operational Guidance",
     description: "Project-based IT support and ongoing technical guidance for organizations that need reliable execution without hiring a full internal team.",
     icon: <IconDeviceDesktopAnalytics className="w-8 h-8 text-white" />,
     features: ["Small business support", "Vendor coordination", "Operational cleanup"]
   },
   {
+    slug: "microsoft-365",
     title: "Microsoft 365 and Cloud Services",
     description: "Set up, secure, and improve cloud platforms with a local-first mindset that keeps environments practical, documented, and easier to support.",
     icon: <IconCloudLock className="w-8 h-8 text-[#b026ff]" />,
     features: ["Microsoft 365 and Entra", "Azure and AWS support", "Google and Apple environments"]
   },
   {
+    slug: "network-wifi",
     title: "Network Infrastructure and Wi-Fi",
     description: "Design, deploy, and improve wired and wireless networks for offices, municipalities, campgrounds, and multi-building properties.",
     icon: <IconNetwork className="w-8 h-8 text-[#00f0ff]" />,
     features: ["Ubiquiti and UniFi deployments", "Public Wi-Fi and segmentation", "Coverage and connectivity improvements"]
   },
   {
+    slug: "security-hardening",
     title: "Security Hardening and Documentation",
     description: "Reduce avoidable risk with practical security improvements, cleaner documentation, and controls that support real-world operations.",
     icon: <IconShieldCheck className="w-8 h-8 text-[#39ff14]" />,
     features: ["HIPAA-aware support", "NIST-informed security practices", "Policy and documentation help"]
   },
   {
+    slug: "camera-systems",
     title: "Camera and Custom Local-First Solutions",
     description: "Build camera systems, smart technology, and custom on-site solutions with an emphasis on local processing, ownership, and fit-for-purpose design.",
     icon: <IconVideo className="w-8 h-8 text-[#39ff14]" />,
@@ -75,7 +81,9 @@ export function ServicesSection() {
                 </div>
                 <div>
                   <h3 className="theme-heading mb-3 font-mono text-xl font-bold transition-colors group-hover:text-[var(--accent)]">
-                    {service.title}
+                    <Link href={`/services/${service.slug}/`} className="hover:text-[var(--accent)]">
+                      {service.title}
+                    </Link>
                   </h3>
                   <p className="theme-copy mb-6 leading-relaxed">
                     {service.description}
@@ -92,10 +100,28 @@ export function ServicesSection() {
                 </div>
               </div>
 
+              <div className="relative z-10 mt-6">
+                <Link
+                  href={`/services/${service.slug}/`}
+                  className="theme-accent font-mono text-sm uppercase tracking-[0.2em]"
+                >
+                  View service page
+                </Link>
+              </div>
+
               <div className="absolute right-0 top-0 h-8 w-8 translate-x-2 -translate-y-2 transform border-r-2 border-t-2 border-transparent transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[var(--accent-strong)]/40" />
               <div className="absolute bottom-0 left-0 h-8 w-8 -translate-x-2 translate-y-2 transform border-b-2 border-l-2 border-transparent transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:border-[var(--accent)]/40" />
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Link href="/services/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+            Browse All Services
+          </Link>
+          <Link href="/technologies/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+            Supported Technologies
+          </Link>
         </div>
       </div>
     </section>

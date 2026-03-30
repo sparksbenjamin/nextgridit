@@ -1,13 +1,26 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { IconCheck } from "@tabler/icons-react"
 
 const markets = [
-  "Medical offices that need HIPAA-aware IT support and cleaner cloud administration",
-  "Small and mid-sized businesses with 5 to 100 users and no internal IT staff",
-  "Municipal and public-sector teams improving public Wi-Fi, cameras, and cybersecurity posture",
-  "Campgrounds and multi-building properties that need reliable guest connectivity and segmented networks",
+  {
+    label: "Medical offices that need HIPAA-aware IT support and cleaner cloud administration",
+    href: "/industries/medical-offices/",
+  },
+  {
+    label: "Small and mid-sized businesses with 5 to 100 users and no internal IT staff",
+    href: "/industries/small-business/",
+  },
+  {
+    label: "Municipal and public-sector teams improving public Wi-Fi, cameras, and cybersecurity posture",
+    href: "/industries/municipalities/",
+  },
+  {
+    label: "Campgrounds and multi-building properties that need reliable guest connectivity and segmented networks",
+    href: "/industries/campgrounds/",
+  },
 ]
 
 export function TargetAudienceSection() {
@@ -88,9 +101,11 @@ export function TargetAudienceSection() {
                       <p className="theme-soft">&gt; Identifying best-fit client environments...</p>
                       <ul className="theme-copy space-y-2">
                         {markets.map((market) => (
-                          <li key={market} className="flex items-center gap-2">
+                          <li key={market.href} className="flex items-center gap-2">
                             <IconCheck className="h-4 w-4 theme-accent" />
-                            {market}
+                            <Link href={market.href} className="theme-link">
+                              {market.label}
+                            </Link>
                           </li>
                         ))}
                       </ul>

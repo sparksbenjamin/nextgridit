@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Privacy Policy",
   description:
     "Review the NextGridIT privacy policy for how inquiry and project information is handled.",
-  alternates: {
-    canonical: "/privacy/",
-  },
-};
+  path: "/privacy/",
+});
 
 export default function PrivacyPage() {
   return (

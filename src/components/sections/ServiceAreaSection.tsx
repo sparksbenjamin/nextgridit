@@ -1,4 +1,12 @@
-const cities = ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"];
+import Link from "next/link";
+
+const cities = [
+  { label: "Seneca, SC", href: "/service-areas/seneca-sc/" },
+  { label: "Clemson, SC", href: "/service-areas/clemson-sc/" },
+  { label: "Anderson, SC", href: "/service-areas/anderson-sc/" },
+  { label: "Easley, SC", href: "/service-areas/easley-sc/" },
+  { label: "Greenville, SC", href: "/service-areas/greenville-sc/" },
+];
 
 export function ServiceAreaSection() {
   return (
@@ -15,15 +23,28 @@ export function ServiceAreaSection() {
 
           <div className="flex flex-wrap gap-3 mb-8">
             {cities.map((city) => (
-              <span key={city} className="theme-chip px-4 py-2 font-mono text-sm tracking-wide">
-                {city}, SC
-              </span>
+              <Link
+                key={city.href}
+                href={city.href}
+                className="theme-chip px-4 py-2 font-mono text-sm tracking-wide"
+              >
+                {city.label}
+              </Link>
             ))}
           </div>
 
           <p className="theme-copy max-w-3xl leading-relaxed">
             Travel is available for larger projects and specialty engagements outside Upstate South Carolina, especially for municipal work, multi-building properties, campgrounds, and infrastructure-heavy deployments that need on-site planning and execution.
           </p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/service-areas/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+              View Service Areas
+            </Link>
+            <Link href="/company-facts/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+              Company Facts
+            </Link>
+          </div>
         </div>
       </div>
     </section>

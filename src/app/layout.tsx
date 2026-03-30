@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { services, siteConfig } from "@/lib/site-data";
 
 const themeInitScript = `
   (() => {
@@ -36,13 +37,12 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.nextgridit.com"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: "NextGridIT | Network Infrastructure, Security, and IT Support",
     template: "%s | NextGridIT",
   },
-  description:
-    "Business-first IT, cloud, security, Wi-Fi, camera, and compliance-aware support for medical offices, SMBs, municipalities, and properties across Upstate South Carolina.",
+  description: siteConfig.tagline,
   keywords: [
     "IT support Upstate South Carolina",
     "network infrastructure Greenville SC",
@@ -59,10 +59,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "NextGridIT | Network Infrastructure, Security, and IT Support",
-    description:
-      "Business-first IT, cloud, security, Wi-Fi, camera, and compliance-aware support for organizations in Upstate South Carolina.",
-    url: "https://www.nextgridit.com",
-    siteName: "NextGridIT",
+    description: siteConfig.tagline,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: "en_US",
     type: "website",
     images: [
@@ -77,31 +76,80 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "NextGridIT | Network Infrastructure, Security, and IT Support",
-    description:
-      "Local-first IT infrastructure, security, cloud, camera, and support services for Upstate South Carolina organizations.",
+    description: siteConfig.tagline,
     images: ["/og-image.svg"],
   },
   icons: {
     icon: "/favicon.ico",
   },
+  category: "technology",
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "NextGridIT",
-  url: "https://www.nextgridit.com",
-  telephone: "+1-864-780-0202",
-  email: "contact@nextgridit.com",
-  areaServed: [
-    "Seneca, South Carolina",
-    "Clemson, South Carolina",
-    "Anderson, South Carolina",
-    "Easley, South Carolina",
-    "Greenville, South Carolina",
+  "@id": `${siteConfig.url}/#localbusiness`,
+  name: siteConfig.name,
+  legalName: siteConfig.legalName,
+  url: siteConfig.url,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  areaServed: siteConfig.serviceArea.map((city) => ({
+    "@type": "City",
+    name: city,
+    containedInPlace: {
+      "@type": "State",
+      name: "South Carolina",
+    },
+  })),
+  description: siteConfig.tagline,
+  sameAs: siteConfig.sameAs,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: siteConfig.email,
+      telephone: siteConfig.phone,
+      areaServed: "US-SC",
+      availableLanguage: ["English"],
+    },
   ],
-  description:
-    "Business-first IT, cloud, Wi-Fi, camera, and compliance-aware support for organizations across Upstate South Carolina.",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "NextGridIT Services",
+    itemListElement: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.summary,
+        url: `${siteConfig.url}/services/${service.slug}/`,
+      },
+    })),
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteConfig.url}/#website`,
+  url: siteConfig.url,
+  name: siteConfig.name,
+  description: siteConfig.tagline,
+  inLanguage: "en-US",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteConfig.url}/#organization`,
+  name: siteConfig.name,
+  legalName: siteConfig.legalName,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  telephone: siteConfig.phone,
+  sameAs: siteConfig.sameAs,
+  foundingDate: siteConfig.founded,
 };
 
 export default function RootLayout({
@@ -124,6 +172,16 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <Script
           id="local-business-schema"
           type="application/ld+json"
