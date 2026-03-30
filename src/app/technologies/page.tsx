@@ -3,7 +3,7 @@ import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import { TechnologiesFilterClient } from "@/components/pages/TechnologiesFilterClient";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
-import { services, technologies } from "@/lib/site-data";
+import { services, technologies, technologyCatalog } from "@/lib/site-data";
 
 export const metadata = createMetadata({
   title: "Technologies",
@@ -52,6 +52,25 @@ export default function TechnologiesPage() {
         </div>
       </section>
 
+      <section className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+        {[
+          "Cloud and Identity",
+          "Infrastructure",
+          "Networking and Wi-Fi",
+          "Security and Compliance",
+          "Cameras and Local AI",
+        ].map((category) => (
+          <div key={category} className="glass-panel border border-[var(--border)] p-6">
+            <p className="theme-accent-strong mb-2 font-mono text-xs uppercase tracking-[0.24em]">
+              {category}
+            </p>
+            <p className="theme-heading font-mono text-3xl font-bold">
+              {technologyCatalog.filter((technology) => technology.category === category).length}
+            </p>
+          </div>
+        ))}
+      </section>
+
       <section className="mt-16">
         <TechnologiesFilterClient />
       </section>
@@ -90,12 +109,20 @@ export default function TechnologiesPage() {
           is to send the current stack, location, and project goal through the
           contact page.
         </p>
-        <Link
-          href="/contact/"
-          className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-        >
-          Start the Conversation
-        </Link>
+        <div className="flex flex-wrap gap-4">
+          <Link
+            href="/contact/"
+            className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+          >
+            Start the Conversation
+          </Link>
+          <Link
+            href="/project-fit/"
+            className="button-secondary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+          >
+            Review Project Fit
+          </Link>
+        </div>
       </section>
     </div>
   );

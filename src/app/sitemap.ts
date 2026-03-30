@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/case-studies/`, priority: 0.76, lastModified },
     { url: `${base}/company-facts/`, priority: 0.72, lastModified },
     { url: `${base}/compliance/`, priority: 0.85, lastModified },
+    { url: `${base}/project-fit/`, priority: 0.84, lastModified },
     { url: `${base}/local-first/`, priority: 0.83, lastModified },
     { url: `${base}/about/`, priority: 0.8, lastModified },
     { url: `${base}/contact/`, priority: 0.9, lastModified },

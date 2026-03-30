@@ -1,8 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react"
+import { IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
+
+const aboutHighlights = [
+  {
+    title: "Security and Operations",
+    description:
+      "Experience across incident response, hardening, infrastructure support, and long-term operational improvement.",
+    icon: <IconShieldCheck className="theme-accent-alt h-6 w-6" />,
+  },
+  {
+    title: "Network and Infrastructure",
+    description:
+      "Built on real-world experience with Microsoft environments, Active Directory, Azure, SQL, virtualization, firewalls, and multi-site networking.",
+    icon: <IconNetwork className="theme-accent-strong h-6 w-6" />,
+  },
+  {
+    title: "Compliance-Aware Background",
+    description:
+      "Comfortable supporting regulated and documentation-heavy environments, including healthcare-related systems and compliance-oriented operations.",
+    icon: <IconCertificate className="theme-accent h-6 w-6" />,
+  },
+  {
+    title: "Local and Travel-Ready",
+    description:
+      "Focused on Seneca, Clemson, Anderson, Easley, and Greenville, with travel available for larger or specialized engagements.",
+    icon: <IconWorld className="theme-accent-alt h-6 w-6" />,
+  },
+];
 
 export const metadata: Metadata = createMetadata({
   title: "About",
@@ -50,49 +77,32 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="glass-panel relative overflow-hidden border border-[var(--border)] p-8">
+        <div
+          className="glass-panel relative overflow-hidden border p-8"
+          style={{ borderColor: "var(--border)" }}
+        >
           <div className="absolute right-0 top-0 h-32 w-32 rounded-full blur-3xl" style={{ backgroundColor: "var(--accent-alt-soft)" }} />
 
           <div className="space-y-8 relative z-10">
-            <div className="flex items-start gap-4">
-              <div className="mt-1 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-3">
-                <IconShieldCheck className="theme-accent-alt h-6 w-6" />
+            {aboutHighlights.map((item) => (
+              <div key={item.title} className="flex items-start gap-4">
+                <div
+                  className="mt-1 rounded-xl border p-3"
+                  style={{
+                    borderColor: "var(--border)",
+                    backgroundColor: "var(--surface-strong)",
+                  }}
+                >
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 className="theme-heading mb-1 font-mono text-xl font-bold">
+                    {item.title}
+                  </h3>
+                  <p className="theme-copy font-sans text-sm">{item.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="theme-heading mb-1 font-mono text-xl font-bold">Security and Operations</h3>
-                <p className="theme-copy font-sans text-sm">Experience across incident response, hardening, infrastructure support, and long-term operational improvement.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="mt-1 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-3">
-                <IconNetwork className="theme-accent-strong h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="theme-heading mb-1 font-mono text-xl font-bold">Network and Infrastructure</h3>
-                <p className="theme-copy font-sans text-sm">Built on real-world experience with Microsoft environments, Active Directory, Azure, SQL, virtualization, firewalls, and multi-site networking.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="mt-1 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-3">
-                <IconCertificate className="theme-accent h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="theme-heading mb-1 font-mono text-xl font-bold">Compliance-Aware Background</h3>
-                <p className="theme-copy font-sans text-sm">Comfortable supporting regulated and documentation-heavy environments, including healthcare-related systems and compliance-oriented operations.</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="mt-1 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-3">
-                <IconWorld className="theme-accent-alt h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="theme-heading mb-1 font-mono text-xl font-bold">Local and Travel-Ready</h3>
-                <p className="theme-copy font-sans text-sm">Focused on Seneca, Clemson, Anderson, Easley, and Greenville, with travel available for larger or specialized engagements.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -117,5 +127,5 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

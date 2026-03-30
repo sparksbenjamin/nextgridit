@@ -137,6 +137,9 @@ export function ServicesPageClient() {
             <Link href="/technologies/" className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]">
               Technology coverage
             </Link>
+            <Link href="/project-fit/" className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]">
+              Project fit guide
+            </Link>
             <Link href="/faq/" className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]">
               Frequently asked questions
             </Link>

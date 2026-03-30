@@ -145,6 +145,9 @@ export function ContactPageClient() {
               <Link href="/process/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
                 Process
               </Link>
+              <Link href="/project-fit/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
+                Project Fit
+              </Link>
               <Link href="/service-areas/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
                 Service Areas
               </Link>

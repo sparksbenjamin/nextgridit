@@ -20,6 +20,12 @@ const resources = [
     href: "/case-studies/",
   },
   {
+    title: "Project Fit",
+    description:
+      "Use the fit guide to see which organizations, project types, and technical environments line up best with NextGridIT.",
+    href: "/project-fit/",
+  },
+  {
     title: "Local-First Systems",
     description:
       "Understand the local-first mindset behind camera systems, recording ownership, and on-site AI-assisted workflows.",

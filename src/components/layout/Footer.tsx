@@ -57,6 +57,7 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Compliance & Frameworks", href: "/compliance" },
+                { label: "Project Fit", href: "/project-fit" },
                 { label: "Local-First Systems", href: "/local-first" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Company Facts", href: "/company-facts" },
