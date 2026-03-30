@@ -14,12 +14,13 @@ export function generateStaticParams() {
   return locations.map((location) => ({ slug: location.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: Params;
-}): Metadata {
-  const location = getLocation(params.slug);
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const location = getLocation(slug);
 
   if (!location) {
     return {};
@@ -32,8 +33,13 @@ export function generateMetadata({
   });
 }
 
-export default function ServiceAreaDetailPage({ params }: { params: Params }) {
-  const location = getLocation(params.slug);
+export default async function ServiceAreaDetailPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
+  const location = getLocation(slug);
 
   if (!location) {
     notFound();
