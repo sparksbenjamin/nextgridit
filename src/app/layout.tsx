@@ -207,6 +207,25 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
+        <Script id="freshsales-tracking" strategy="afterInteractive">
+          {`
+            (() => {
+              const existingScript = document.querySelector(
+                'script[src="https://fw-cdn.com/16007206/7027400.js"]',
+              );
+
+              if (existingScript) {
+                return;
+              }
+
+              const script = document.createElement("script");
+              script.src = "https://fw-cdn.com/16007206/7027400.js";
+              script.async = true;
+              script.setAttribute("chat", "false");
+              document.body.appendChild(script);
+            })();
+          `}
+        </Script>
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
           <main id="main-content" className="flex-grow pt-20">{children}</main>
