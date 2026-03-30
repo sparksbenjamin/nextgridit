@@ -10,7 +10,7 @@ export function ServiceAreaSection() {
           </h2>
           <div className="w-24 h-1 bg-[#00f0ff] mb-6 shadow-[0_0_10px_rgba(0,240,255,0.5)]" />
           <p className="text-gray-300 text-lg leading-relaxed mb-8">
-            NextGridIT primarily serves businesses in Upstate South Carolina, with local support centered around the communities where fast on-site response matters most.
+            NextGridIT primarily serves businesses and public-facing organizations in Upstate South Carolina, with local support centered around the communities where on-site response, infrastructure work, and property deployments matter most.
           </p>
 
           <div className="flex flex-wrap gap-3 mb-8">
@@ -22,7 +22,7 @@ export function ServiceAreaSection() {
           </div>
 
           <p className="text-gray-400 leading-relaxed max-w-3xl">
-            Travel is available for larger projects and specialty engagements outside Upstate South Carolina, especially when infrastructure, compliance, or security work requires on-site planning and execution.
+            Travel is available for larger projects and specialty engagements outside Upstate South Carolina, especially for municipal work, multi-building properties, campgrounds, and infrastructure-heavy deployments that need on-site planning and execution.
           </p>
         </div>
       </div>

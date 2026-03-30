@@ -14,7 +14,8 @@ export function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
-    { href: "/about", label: "About Us" },
+    { href: "/compliance", label: "Compliance" },
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ]
 
@@ -63,7 +64,7 @@ export function Navbar() {
               href="/contact"
               className="relative px-6 py-2.5 font-mono text-sm font-bold text-black bg-[#39ff14] hover:bg-[#00f0ff] transition-colors duration-300 overflow-hidden group"
             >
-              <span className="relative z-10 transition-colors duration-300">GET A QUOTE</span>
+              <span className="relative z-10 transition-colors duration-300">START BY EMAIL</span>
               <div className="absolute inset-0 h-full w-full border-2 border-inherit translate-x-1.5 translate-y-1.5 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
             </Link>
           </div>
@@ -111,7 +112,7 @@ export function Navbar() {
               onClick={() => setIsOpen(false)}
               className="inline-block w-full text-center px-6 py-3 font-mono text-sm font-bold text-black bg-[#39ff14] hover:bg-[#00f0ff] transition-colors duration-300"
             >
-              GET A QUOTE
+              START BY EMAIL
             </Link>
           </div>
         </nav>

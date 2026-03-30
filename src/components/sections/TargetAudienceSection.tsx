@@ -3,6 +3,13 @@
 import { motion } from "framer-motion"
 import { IconCheck } from "@tabler/icons-react"
 
+const markets = [
+  "Medical offices that need HIPAA-aware IT support and cleaner cloud administration",
+  "Small and mid-sized businesses with 5 to 100 users and no internal IT staff",
+  "Municipal and public-sector teams improving public Wi-Fi, cameras, and cybersecurity posture",
+  "Campgrounds and multi-building properties that need reliable guest connectivity and segmented networks",
+]
+
 export function TargetAudienceSection() {
   return (
     <section className="py-24 relative overflow-hidden bg-[#020202]">
@@ -19,18 +26,18 @@ export function TargetAudienceSection() {
             >
               <h2 className="text-3xl md:text-5xl font-mono font-bold text-white mb-6 uppercase">
                 Built for <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b026ff] to-[#00f0ff]">Growing Organizations</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b026ff] to-[#00f0ff]">Real-World Environments</span>
               </h2>
 
               <div className="space-y-6 text-gray-400 font-sans text-lg">
                 <p>
-                  NextGridIT is designed for organizations that need more than break-fix support but do not want to maintain a full internal infrastructure and security team.
+                  NextGridIT is built for organizations that need more than reactive support but do not want to be shoved into a one-size-fits-all MSP model.
                 </p>
                 <p>
-                  <strong className="text-white font-mono">We focus on practical improvements that reduce risk, improve reliability, and support day-to-day operations.</strong>
+                  <strong className="text-white font-mono">We focus on practical improvements that reduce risk, improve reliability, and support day-to-day operations across business, municipal, and property environments.</strong>
                 </p>
                 <p>
-                  Our background includes multi-site environments, Microsoft ecosystems, network modernization, compliance-minded deployments, and long-term operational support for organizations that need steady hands and clear communication.
+                  Our background includes Microsoft ecosystems, local-first deployments, network modernization, public Wi-Fi, camera systems, compliance-aware support, and multi-site environments that need steady hands and clear communication.
                 </p>
               </div>
 
@@ -78,12 +85,14 @@ export function TargetAudienceSection() {
                     </div>
 
                     <div className="pt-6 mt-6 border-t border-white/5 space-y-3">
-                      <p className="text-gray-500">&gt; Reviewing operational priorities...</p>
+                      <p className="text-gray-500">&gt; Identifying best-fit client environments...</p>
                       <ul className="text-gray-300 space-y-2">
-                        <li className="flex items-center gap-2"><IconCheck className="w-4 h-4 text-[#00f0ff]" />Network upgrades and modernization</li>
-                        <li className="flex items-center gap-2"><IconCheck className="w-4 h-4 text-[#00f0ff]" />Security hardening and policy alignment</li>
-                        <li className="flex items-center gap-2"><IconCheck className="w-4 h-4 text-[#00f0ff]" />Compliance-aware documentation</li>
-                        <li className="flex items-center gap-2"><IconCheck className="w-4 h-4 text-[#00f0ff]" />Reliable support for daily operations</li>
+                        {markets.map((market) => (
+                          <li key={market} className="flex items-center gap-2">
+                            <IconCheck className="w-4 h-4 text-[#00f0ff]" />
+                            {market}
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>

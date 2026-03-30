@@ -67,7 +67,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-400 font-mono max-w-2xl mb-8 leading-relaxed"
           >
-            NextGridIT helps businesses in Seneca, Clemson, Anderson, Easley, and Greenville build reliable networks, strengthen security, and modernize day-to-day IT operations without enterprise-sized overhead.
+            NextGridIT helps medical offices, small businesses, municipal teams, and multi-building properties build reliable networks, strengthen security, modernize cloud systems, and deploy local-first technology without enterprise-sized overhead.
           </motion.p>
 
           <motion.div
@@ -97,7 +97,7 @@ export function HeroSection() {
               className="group relative px-8 py-4 bg-[#39ff14] text-black font-mono font-bold uppercase tracking-wider overflow-hidden inline-flex items-center justify-center gap-2 border border-[#39ff14] hover:shadow-[0_0_20px_rgba(57,255,20,0.4)] transition-all duration-300"
             >
               <IconShieldLock className="w-5 h-5 z-10" />
-              <span className="relative z-10">Request a Quote</span>
+              <span className="relative z-10">Start by Email</span>
               <div className="absolute inset-0 h-full w-full bg-[#00f0ff] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             </Link>
 

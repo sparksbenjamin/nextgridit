@@ -1,32 +1,45 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { IconChevronRight, IconCloudLock, IconDeviceDesktopAnalytics, IconNetwork, IconShieldCheck } from "@tabler/icons-react"
+import {
+  IconChevronRight,
+  IconCloudLock,
+  IconDeviceDesktopAnalytics,
+  IconNetwork,
+  IconShieldCheck,
+  IconVideo,
+} from "@tabler/icons-react"
 
 const services = [
   {
-    title: "Security Hardening",
-    description: "Reduce avoidable risk with practical security improvements for endpoints, identities, networks, and business-critical systems.",
-    icon: <IconShieldCheck className="w-8 h-8 text-[#39ff14]" />,
-    features: ["Security reviews", "Firewall and access controls", "Baseline hardening"]
-  },
-  {
-    title: "Network Infrastructure",
-    description: "Plan, deploy, and improve reliable business networks that support growth, uptime, and day-to-day operations without unnecessary complexity.",
-    icon: <IconNetwork className="w-8 h-8 text-[#00f0ff]" />,
-    features: ["Ubiquiti and network upgrades", "Segmentation and routing", "Wi-Fi and site connectivity"]
-  },
-  {
-    title: "Compliance Support",
-    description: "Build cleaner documentation, stronger controls, and more defensible processes for compliance-aware environments such as healthcare and regulated organizations.",
-    icon: <IconCloudLock className="w-8 h-8 text-[#b026ff]" />,
-    features: ["HIPAA-aware support", "Policy and documentation help", "Operational gap review"]
-  },
-  {
-    title: "Managed IT Guidance",
-    description: "Get dependable operational support, planning, and issue resolution from a team that understands both infrastructure and business impact.",
+    title: "IT Support and Operational Guidance",
+    description: "Project-based IT support and ongoing technical guidance for organizations that need reliable execution without hiring a full internal team.",
     icon: <IconDeviceDesktopAnalytics className="w-8 h-8 text-white" />,
-    features: ["Project planning", "Operational support", "Strategic improvements"]
+    features: ["Small business support", "Vendor coordination", "Operational cleanup"]
+  },
+  {
+    title: "Microsoft 365 and Cloud Services",
+    description: "Set up, secure, and improve cloud platforms with a local-first mindset that keeps environments practical, documented, and easier to support.",
+    icon: <IconCloudLock className="w-8 h-8 text-[#b026ff]" />,
+    features: ["Microsoft 365 and Entra", "Azure and AWS support", "Google and Apple environments"]
+  },
+  {
+    title: "Network Infrastructure and Wi-Fi",
+    description: "Design, deploy, and improve wired and wireless networks for offices, municipalities, campgrounds, and multi-building properties.",
+    icon: <IconNetwork className="w-8 h-8 text-[#00f0ff]" />,
+    features: ["Ubiquiti and UniFi deployments", "Public Wi-Fi and segmentation", "Coverage and connectivity improvements"]
+  },
+  {
+    title: "Security Hardening and Documentation",
+    description: "Reduce avoidable risk with practical security improvements, cleaner documentation, and controls that support real-world operations.",
+    icon: <IconShieldCheck className="w-8 h-8 text-[#39ff14]" />,
+    features: ["HIPAA-aware support", "NIST-informed security practices", "Policy and documentation help"]
+  },
+  {
+    title: "Camera and Custom Local-First Solutions",
+    description: "Build camera systems, smart technology, and custom on-site solutions with an emphasis on local processing, ownership, and fit-for-purpose design.",
+    icon: <IconVideo className="w-8 h-8 text-[#39ff14]" />,
+    features: ["Camera install and service", "Custom local AI options", "Residential and specialty projects"]
   }
 ]
 
@@ -40,11 +53,11 @@ export function ServicesSection() {
           </h2>
           <div className="w-24 h-1 bg-[#39ff14] mx-auto mb-6 shadow-[0_0_10px_rgba(57,255,20,0.5)]" />
           <p className="text-gray-400 font-sans text-lg">
-            NextGridIT focuses on the infrastructure, security, and support work that helps local organizations stay stable, secure, and easier to operate.
+            NextGridIT delivers business-first infrastructure, cloud, security, and connected systems work for organizations that need practical results instead of generic MSP packaging.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}

@@ -37,10 +37,10 @@ export function Footer() {
             <h3 className="font-mono text-sm font-semibold text-white tracking-wider uppercase mb-4 opacity-80">Solutions</h3>
             <ul className="space-y-3">
               {[
-                { label: "Network Architecture", href: "/services#network" },
-                { label: "Cybersecurity", href: "/services#security" },
-                { label: "Compliance & Auditing", href: "/services#compliance" },
-                { label: "Managed IT", href: "/services#managed" },
+                { label: "IT Support", href: "/services#support" },
+                { label: "Cloud Services", href: "/services#cloud" },
+                { label: "Network & Wi-Fi", href: "/services#network" },
+                { label: "Camera Systems", href: "/services#camera" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="text-gray-400 text-sm hover:text-[#00f0ff] hover:pl-2 transition-all duration-200 flex items-center before:content-['>'] before:text-[#39ff14] before:opacity-0 hover:before:opacity-100 before:-ml-3 before:absolute relative">
@@ -56,6 +56,7 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
+                { label: "Compliance & Frameworks", href: "/compliance" },
                 { label: "Case Studies", href: "/about#case-studies" },
                 { label: "Contact", href: "/contact" },
                 { label: "Privacy Policy", href: "/privacy" },
@@ -75,7 +76,7 @@ export function Footer() {
               <div className="absolute top-0 left-0 w-full h-[1px] bg-[#39ff14]/30"></div>
               <p className="mb-2 opacity-80">&gt; ping contact@nextgridit.com</p>
               <p className="mb-2 opacity-80">&gt; call 864-780-0202</p>
-              <p className="mb-4 opacity-80">&gt; Reply from NextGridIT: available</p>
+              <p className="mb-4 opacity-80">&gt; Reply from NextGridIT: project intake ready</p>
               <Link
                 href="/contact"
                 className="inline-block mt-2 bg-[#b026ff]/10 text-[#b026ff] hover:bg-[#b026ff] hover:text-black border border-[#b026ff] px-4 py-2 transition-colors duration-300 w-full text-center tracking-wider"

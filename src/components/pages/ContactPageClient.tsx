@@ -51,7 +51,7 @@ export function ContactPageClient() {
 
           <div className="mb-8">
             <p className="text-gray-300 font-mono text-sm border-l-2 border-[#39ff14] pl-3 mb-2">
-              REQUEST A QUOTE OR START A CONVERSATION
+              START THE PROJECT CONVERSATION BY EMAIL
             </p>
             <p className="text-gray-500 font-sans text-sm">
               Send the form to open a prefilled email, or contact us directly at{" "}
@@ -95,11 +95,11 @@ export function ContactPageClient() {
                 value={form.details}
                 onChange={(event) => setForm((current) => ({ ...current, details: event.target.value }))}
                 className="w-full bg-black/50 border border-white/10 p-3 text-white focus:border-[#39ff14] focus:bg-black outline-none transition-all placeholder-gray-700 resize-none"
-                placeholder="Tell us about your infrastructure, support, networking, or security needs..."
+                placeholder="Tell us about your infrastructure, cloud, Wi-Fi, camera, security, or compliance-related needs..."
               />
             </div>
             <button type="submit" className="bg-[#39ff14]/10 text-[#39ff14] border border-[#39ff14] font-bold px-6 py-3 hover:bg-[#39ff14] hover:text-black transition-all duration-300 w-full uppercase tracking-widest mt-4 flex justify-center items-center gap-2 group">
-              <span>Open Email Draft</span>
+              <span>Open Project Email</span>
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
@@ -114,7 +114,7 @@ export function ContactPageClient() {
             <div className="space-y-3 text-gray-400 font-sans leading-relaxed">
               <p>Email: <a className="text-[#39ff14] hover:text-[#00f0ff] transition-colors" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a></p>
               <p className="flex items-center gap-2"><IconPhone className="w-4 h-4 text-[#00f0ff]" /><a className="text-[#39ff14] hover:text-[#00f0ff] transition-colors" href="tel:8647800202">864-780-0202</a></p>
-              <p>If you already know what you need, reach out directly with your location, timeline, and the main problem you want solved.</p>
+              <p>If you already know what you need, reach out directly with your location, timeline, and the main problem you want solved. We currently emphasize custom projects and tailored support engagements.</p>
             </div>
           </div>
 
@@ -131,7 +131,7 @@ export function ContactPageClient() {
           <div className="glass-panel p-8 border border-white/5 border-l-[#b026ff]">
             <h3 className="text-xl font-mono text-white mb-2 uppercase tracking-wider">Infrastructure and <span className="text-[#b026ff]">Compliance Support</span></h3>
             <p className="text-gray-400 font-sans leading-relaxed">
-              NextGridIT supports infrastructure improvement, security hardening, and compliance-aware environments for organizations that need reliable technical execution without overcomplicating operations.
+              NextGridIT supports infrastructure improvement, security hardening, cloud services, camera deployments, and compliance-aware environments for organizations that need reliable technical execution without overcomplicating operations.
             </p>
             <div className="mt-4 flex items-center gap-2 text-sm text-[#b026ff] font-mono">
               <span className="w-2 h-2 rounded-full bg-[#b026ff] animate-ping" />

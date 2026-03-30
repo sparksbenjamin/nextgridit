@@ -1,36 +1,54 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { IconCertificate, IconRouter, IconServerCog, IconShieldLock } from "@tabler/icons-react"
+import {
+  IconBrandWindows,
+  IconCertificate,
+  IconRouter,
+  IconServerCog,
+  IconShieldLock,
+  IconVideo,
+} from "@tabler/icons-react"
 
 const detailedServices = [
   {
+    id: "support",
+    title: "IT Support and Operational Guidance",
+    description: "Support day-to-day systems, reduce recurring issues, and bring structure to the technology side of the business without sounding like just another MSP.",
+    bullets: ["Business-first troubleshooting", "Vendor and project coordination", "Cleanup and stabilization work"],
+  },
+  {
+    id: "cloud",
+    title: "Microsoft 365 and Cloud Services",
+    description: "Plan, improve, and support cloud environments across Microsoft, Azure, AWS, Google, and Apple ecosystems where practical administration and local ownership still matter.",
+    bullets: ["Microsoft 365 and Entra administration", "Cloud migration and tenant cleanup", "Identity, access, and collaboration support"],
+  },
+  {
     id: "network",
-    title: "Network Infrastructure and Ubiquiti Deployments",
-    description: "Design, upgrade, and support business networks with a focus on reliability, maintainability, and right-sized infrastructure. This includes Ubiquiti environments, segmentation, wireless planning, and multi-site connectivity."
-  },
-  {
-    id: "managed",
-    title: "Managed IT and Operational Support",
-    description: "Support day-to-day systems, reduce recurring issues, and bring structure to the technology side of the business. The goal is not just fixing problems, but making the environment easier to manage over time."
-  },
-  {
-    id: "compliance",
-    title: "Compliance-Aware Reviews and Documentation",
-    description: "Help organizations improve technical documentation, align controls more clearly, and strengthen their operational posture for compliance-aware environments, including healthcare-related systems."
+    title: "Network Infrastructure, Public Wi-Fi, and Connectivity",
+    description: "Design, upgrade, and support reliable business and property networks with a focus on Ubiquiti and UniFi environments, segmented access, and multi-building coverage.",
+    bullets: ["Office and municipal network refreshes", "Public and guest Wi-Fi deployments", "Campground and property connectivity design"],
   },
   {
     id: "security",
-    title: "Security Hardening and Risk Reduction",
-    description: "Review systems, improve access controls, harden infrastructure, and reduce common operational security gaps without burying the business in unnecessary complexity."
-  }
+    title: "Security Hardening, Documentation, and Compliance-Aware Support",
+    description: "Review systems, improve access controls, clean up documentation, and reduce common security gaps while keeping the environment practical to operate.",
+    bullets: ["HIPAA-aware support", "NIST-informed security practices", "Documentation, policies, and operational gap review"],
+  },
+  {
+    id: "camera",
+    title: "Camera Systems and Local-First Smart Deployments",
+    description: "Install and support camera systems, smart technology, and custom local-first solutions with options for on-site processing and tailored site design.",
+    bullets: ["Full camera install and service", "Custom local AI video processing", "Residential and specialty system design"],
+  },
 ]
 
 const icons = {
+  support: <IconServerCog className="w-10 h-10 text-[#39ff14]" />,
+  cloud: <IconBrandWindows className="w-10 h-10 text-[#b026ff]" />,
   network: <IconRouter className="w-10 h-10 text-[#00f0ff]" />,
-  managed: <IconServerCog className="w-10 h-10 text-[#39ff14]" />,
-  compliance: <IconCertificate className="w-10 h-10 text-[#b026ff]" />,
-  security: <IconShieldLock className="w-10 h-10 text-white" />
+  security: <IconShieldLock className="w-10 h-10 text-white" />,
+  camera: <IconVideo className="w-10 h-10 text-[#00f0ff]" />,
 }
 
 export function ServicesPageClient() {
@@ -42,7 +60,7 @@ export function ServicesPageClient() {
         </h1>
         <div className="w-24 h-1 bg-[#00f0ff] mb-6 shadow-[0_0_10px_rgba(0,240,255,0.5)]" />
         <p className="text-gray-300 font-sans text-lg max-w-3xl leading-relaxed">
-          NextGridIT provides infrastructure, security, and IT support services for organizations that need practical technical leadership, cleaner systems, and more dependable day-to-day operations.
+          NextGridIT provides project-led infrastructure, cloud, security, Wi-Fi, camera, and operational support services for organizations that need practical technical leadership and cleaner systems without generic MSP packaging.
         </p>
       </div>
 
@@ -65,13 +83,37 @@ export function ServicesPageClient() {
             <h2 className="text-2xl font-mono font-bold text-white mb-4 group-hover:text-[#39ff14] transition-colors">{service.title}</h2>
             <p className="text-gray-400 font-sans leading-relaxed">{service.description}</p>
 
+            <ul className="mt-6 space-y-2 text-sm text-gray-300">
+              {service.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-center gap-2 font-mono">
+                  <span className="h-2 w-2 rounded-full bg-[#39ff14]" />
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+
             <div className="mt-8 pt-4 border-t border-white/10 flex items-center gap-2 font-mono text-sm text-gray-500">
               <span className="w-2 h-2 bg-[#b026ff] rounded-full animate-pulse" />
-              SERVICE: <span className="text-[#00f0ff]">AVAILABLE</span>
+              ENGAGEMENT: <span className="text-[#00f0ff]">PROJECT-LED</span>
             </div>
           </motion.div>
         ))}
       </div>
+
+      <section className="mt-16 glass-panel p-8 border border-white/10">
+        <div className="max-w-4xl space-y-4">
+          <div className="flex items-center gap-3 text-[#39ff14] font-mono text-sm uppercase tracking-[0.3em]">
+            <IconCertificate className="w-5 h-5" />
+            Compliance-aware support
+          </div>
+          <h2 className="text-2xl md:text-3xl font-mono font-bold text-white">
+            Frameworks matter when they connect to real systems and real operations.
+          </h2>
+          <p className="text-gray-300 leading-relaxed">
+            NextGridIT supports healthcare, public-sector, and business environments with technical guidance informed by HIPAA, PCI DSS, and NIST-based practices. We focus on implementation, documentation, and risk reduction that can be tied back to the systems you actually run.
+          </p>
+        </div>
+      </section>
     </div>
   )
 }

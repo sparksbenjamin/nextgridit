@@ -22,14 +22,16 @@ export const metadata: Metadata = {
     template: "%s | NextGridIT",
   },
   description:
-    "Network infrastructure, security, and IT support for businesses in Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.",
+    "Business-first IT, cloud, security, Wi-Fi, camera, and compliance-aware support for medical offices, SMBs, municipalities, and properties across Upstate South Carolina.",
   keywords: [
     "IT support Upstate South Carolina",
     "network infrastructure Greenville SC",
     "cybersecurity Seneca SC",
-    "managed IT Clemson SC",
+    "Microsoft 365 support Clemson SC",
     "compliance support Anderson SC",
     "Ubiquiti support Easley SC",
+    "public Wi-Fi South Carolina",
+    "camera systems Upstate SC",
     "NextGridIT",
   ],
   alternates: {
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "NextGridIT | Network Infrastructure, Security, and IT Support",
     description:
-      "Network infrastructure, security, and IT support for businesses in Upstate South Carolina.",
+      "Business-first IT, cloud, security, Wi-Fi, camera, and compliance-aware support for organizations in Upstate South Carolina.",
     url: "https://www.nextgridit.com",
     siteName: "NextGridIT",
     locale: "en_US",
@@ -56,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NextGridIT | Network Infrastructure, Security, and IT Support",
     description:
-      "Local IT infrastructure, security, and support for Upstate South Carolina businesses.",
+      "Local-first IT infrastructure, security, cloud, camera, and support services for Upstate South Carolina organizations.",
     images: ["/og-image.svg"],
   },
   icons: {
@@ -79,7 +81,7 @@ const localBusinessSchema = {
     "Greenville, South Carolina",
   ],
   description:
-    "Network infrastructure, security, and IT support for businesses across Upstate South Carolina.",
+    "Business-first IT, cloud, Wi-Fi, camera, and compliance-aware support for organizations across Upstate South Carolina.",
 };
 
 export default function RootLayout({
