@@ -122,7 +122,7 @@ export function ContactPageClient() {
           <div className="glass-panel flex h-[400px] flex-col border border-[var(--border)] p-8">
             <h3 className="theme-heading mb-2 font-mono text-xl uppercase tracking-wider">Local <span className="theme-accent">Service Area</span></h3>
             <p className="theme-copy mb-4 font-sans text-sm">
-              Primary local coverage includes Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina. Travel is available for larger projects and specialty engagements.
+              Primary local coverage includes Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina. Travel is available for larger projects and specialty engagements. Click a city pin to jump to that local page.
             </p>
             <div className="relative min-h-[250px] w-full flex-grow overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)]">
               <MapChart />

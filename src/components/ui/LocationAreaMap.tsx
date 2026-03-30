@@ -30,6 +30,12 @@ export const LocationAreaMap = memo(function LocationAreaMap({
     return null;
   }
 
+  const visibleLocations = locations.filter(
+    (location) =>
+      location.slug === currentSlug ||
+      currentLocation.nearbyCities.includes(location.city),
+  );
+
   return (
     <div className="relative flex h-full min-h-[320px] items-center justify-center overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-4">
       <div
@@ -43,9 +49,14 @@ export const LocationAreaMap = memo(function LocationAreaMap({
           rotate: [81.0, -33.8, 0],
           scale: 4500,
         }}
-        className="relative z-10 w-full max-w-[420px]"
+        className="relative z-10 w-full max-w-[520px]"
       >
-        <ZoomableGroup center={[-81, 33.8]} zoom={1} minZoom={1} maxZoom={1}>
+        <ZoomableGroup
+          center={currentLocation.coordinates}
+          zoom={3.1}
+          minZoom={3.1}
+          maxZoom={3.1}
+        >
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               (geographies as MapGeography[])
@@ -67,17 +78,17 @@ export const LocationAreaMap = memo(function LocationAreaMap({
             }
           </Geographies>
 
-          {locations.map((location) => {
+          {visibleLocations.map((location) => {
             const isCurrent = location.slug === currentSlug;
 
             return (
               <Marker key={location.slug} coordinates={location.coordinates}>
                 {isCurrent ? (
                   <>
-                    <circle r={18} fill="var(--accent-soft)" opacity={0.35} />
+                    <circle r={28} fill="var(--accent-soft)" opacity={0.3} />
                     <circle r={9} fill="var(--accent)" />
                     <circle
-                      r={22}
+                      r={32}
                       fill="transparent"
                       stroke="var(--accent)"
                       strokeWidth={1.2}
@@ -85,7 +96,10 @@ export const LocationAreaMap = memo(function LocationAreaMap({
                     />
                   </>
                 ) : (
-                  <circle r={4.5} fill="var(--accent-alt)" opacity={0.55} />
+                  <>
+                    <circle r={10} fill="var(--accent-alt-soft)" opacity={0.28} />
+                    <circle r={4.5} fill="var(--accent-alt)" opacity={0.7} />
+                  </>
                 )}
               </Marker>
             );
@@ -95,7 +109,7 @@ export const LocationAreaMap = memo(function LocationAreaMap({
 
       <div className="theme-terminal absolute bottom-4 right-4 rounded-2xl p-4 font-mono text-xs backdrop-blur-sm">
         <p className="theme-copy mb-2 uppercase tracking-[0.18em]">
-          General Area
+          Local Area
         </p>
         <div className="space-y-2">
           <p className="theme-copy">

@@ -8,6 +8,7 @@ import {
   Marker,
   ZoomableGroup
 } from "react-simple-maps";
+import { locations } from "@/lib/site-data";
 
 const geoUrl = "/states-10m.json";
 
@@ -58,15 +59,32 @@ const MapChart = () => {
             }
           </Geographies>
 
-          <Marker coordinates={[-82.3940, 34.8526]}>
-            <circle r={8} fill="var(--accent)" className="animate-pulse" />
-            <circle r={20} fill="transparent" stroke="var(--accent)" strokeWidth={1} className="animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]" />
-          </Marker>
-
-          <circle cx={0} cy={0} r={0} fill="none" />
-          <Marker coordinates={[-82.3940, 34.8526]}>
-            <circle r={60} fill="var(--accent-soft)" stroke="var(--accent)" strokeWidth={1} strokeDasharray="4 4" opacity={0.35} />
-          </Marker>
+          {locations.map((location) => (
+            <Marker key={location.slug} coordinates={location.coordinates}>
+              <a
+                href={`/service-areas/${location.slug}/`}
+                aria-label={`View ${location.city}, South Carolina service area`}
+              >
+                <title>{location.city}, South Carolina</title>
+                <circle r={7} fill="var(--accent)" className="animate-pulse cursor-pointer" />
+                <circle
+                  r={18}
+                  fill="transparent"
+                  stroke="var(--accent)"
+                  strokeWidth={1}
+                  className="animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"
+                />
+                <circle
+                  r={28}
+                  fill="var(--accent-soft)"
+                  stroke="var(--accent)"
+                  strokeWidth={0.8}
+                  strokeDasharray="4 4"
+                  opacity={0.18}
+                />
+              </a>
+            </Marker>
+          ))}
         </ZoomableGroup>
       </ComposableMap>
 
@@ -79,7 +97,7 @@ const MapChart = () => {
           <span className="flex h-3 w-3 items-center justify-center rounded-full border border-[var(--accent)] bg-transparent">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
           </span>
-          <span className="theme-copy">HQ: Upstate SC</span>
+          <span className="theme-copy">Click Any City Pin</span>
         </div>
       </div>
     </div>
