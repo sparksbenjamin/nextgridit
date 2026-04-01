@@ -15,8 +15,19 @@ export function Footer() {
               </span>
             </div>
             <p className="theme-copy mb-6 text-sm">
-              Network infrastructure, security, audits, and IT support for organizations across Upstate South Carolina.
+              Global infrastructure deployment, managed security, private AI, and intelligence-led research with a rapid-response base in Upstate South Carolina.
             </p>
+            <div className="mb-6 flex flex-wrap gap-2">
+              <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
+                150+ country logistics
+              </span>
+              <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
+                Private AI ready
+              </span>
+              <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
+                MSRC research active
+              </span>
+            </div>
             <div className="flex space-x-4">
               <Link href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]">
                 <span className="sr-only">Email</span>
@@ -37,11 +48,11 @@ export function Footer() {
             <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Solutions</h3>
             <ul className="space-y-3">
               {[
-                { label: "IT Support", href: "/services/it-support/" },
-                { label: "Cloud Services", href: "/services/microsoft-365/" },
+                { label: "Managed Security & Infrastructure", href: "/services/it-support/" },
+                { label: "Identity & Cloud", href: "/services/microsoft-365/" },
                 { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
-                { label: "Security Audits", href: "/services/security-audits-pentesting/" },
-                { label: "Camera Systems", href: "/services/camera-systems/" },
+                { label: "Exposure Research", href: "/services/security-audits-pentesting/" },
+                { label: "Private AI Systems", href: "/services/camera-systems/" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="theme-copy relative flex items-center text-sm transition-all duration-200 before:absolute before:-ml-3 before:text-[var(--accent-strong)] before:opacity-0 before:content-['>'] hover:pl-2 hover:text-[var(--accent)] hover:before:opacity-100">
@@ -58,6 +69,7 @@ export function Footer() {
               {[
                 { label: "About Us", href: "/about" },
                 { label: "Compliance & Frameworks", href: "/compliance" },
+                { label: "NextGrid Labs", href: "/labs" },
                 { label: "Guides", href: "/guides" },
                 { label: "Project Fit", href: "/project-fit" },
                 { label: "Local-First Systems", href: "/local-first" },
@@ -80,11 +92,18 @@ export function Footer() {
             <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Resources</h3>
             <div className="theme-terminal relative overflow-hidden rounded-2xl p-4 font-mono text-xs group">
               <div className="absolute left-0 top-0 h-[1px] w-full bg-[var(--accent-soft)]"></div>
-              <p className="mb-2 opacity-80">&gt; local coverage: /service-areas</p>
+              <p className="mb-2 opacity-80">&gt; labs endpoint: /labs</p>
+              <p className="mb-2 opacity-80">&gt; surface scan: /labs/#surface-scan</p>
               <p className="mb-2 opacity-80">&gt; field guides: /guides</p>
-              <p className="mb-2 opacity-80">&gt; industry focus: /industries</p>
+              <p className="mb-2 opacity-80">&gt; local coverage: /service-areas</p>
               <p className="mb-4 opacity-80">&gt; project questions: /faq</p>
               <div className="grid gap-2">
+                <Link
+                  href="/labs"
+                  className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
+                >
+                  VIEW LABS
+                </Link>
                 <Link
                   href="/guides"
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
@@ -97,21 +116,15 @@ export function Footer() {
                 >
                   VIEW FAQ
                 </Link>
-                <Link
-                  href="/process"
-                  className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
-                >
-                  VIEW PROCESS
-                </Link>
               </div>
-              <p className="theme-terminal-muted mt-3 text-[11px]">Local-first systems. Practical execution. Clean handoff.</p>
+              <p className="theme-terminal-muted mt-3 text-[11px]">Global logistics. Private intelligence. Controlled execution.</p>
             </div>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-8 md:flex-row">
           <p className="theme-soft text-center font-mono text-sm md:text-left">
-            &copy; {new Date().getFullYear()} NextgridIT Systems. Serving Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.
+            &copy; {new Date().getFullYear()} NextgridIT Systems. South Carolina-based. Built for global infrastructure and intelligence-led security work.
           </p>
           <div className="theme-soft flex gap-4 font-mono text-xs">
             <span>Email: <span className="theme-accent">contact@nextgridit.com</span></span>

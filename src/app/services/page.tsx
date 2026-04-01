@@ -11,7 +11,7 @@ import { services } from "@/lib/site-data";
 export const metadata: Metadata = createMetadata({
   title: "Services",
   description:
-    "Explore NextGridIT services including project-led IT support, Microsoft 365, network infrastructure, security audits, pentesting, public Wi-Fi, cameras, and compliance-aware technical guidance.",
+    "Explore NextGridIT services across managed security and infrastructure, cloud identity, global deployment logistics, exposure research, private AI systems, and compliance-aware delivery.",
   path: "/services/",
 });
 
@@ -23,7 +23,7 @@ export default function ServicesPage() {
   const collectionSchema = createCollectionPageSchema({
     name: "NextGridIT Services",
     description:
-      "Overview of service lines including IT support, Microsoft 365, network infrastructure, security hardening, security audits, penetration testing, and camera systems.",
+      "Overview of service lines including managed security and infrastructure, Microsoft 365, global deployment logistics, security hardening, exposure research, and private AI systems.",
     path: "/services/",
     items: services.map((service) => ({
       name: service.title,

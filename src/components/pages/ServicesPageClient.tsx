@@ -14,21 +14,21 @@ import {
 const detailedServices = [
   {
     id: "it-support",
-    title: "IT Support and Operational Guidance",
-    description: "Support day-to-day systems, reduce recurring issues, and bring structure to the technology side of the business without sounding like just another MSP.",
-    bullets: ["Business-first troubleshooting", "Vendor and project coordination", "Cleanup and stabilization work"],
+    title: "Managed Security and Infrastructure",
+    description: "Oversee identity, mail, hardening, baseline controls, and day-to-day infrastructure operations without defaulting to a commodity MSP model.",
+    bullets: ["Security-minded operations", "Vendor and ownership governance", "Cleanup, hardening, and stabilization"],
   },
   {
     id: "microsoft-365",
-    title: "Microsoft 365 and Cloud Services",
-    description: "Plan, improve, and support cloud environments across Microsoft, Azure, AWS, Google, and Apple ecosystems where practical administration and local ownership still matter.",
-    bullets: ["Microsoft 365 and Entra administration", "Cloud migration and tenant cleanup", "Identity, access, and collaboration support"],
+    title: "Identity, Mail, and Cloud Platforms",
+    description: "Plan, improve, and support Microsoft, Azure, AWS, Google, and Apple ecosystems with a focus on ownership, security, and lower attack surface.",
+    bullets: ["Microsoft 365 and Entra administration", "Cloud migration and tenant cleanup", "Identity and mail control support"],
   },
   {
     id: "network-wifi",
-    title: "Network Infrastructure, Public Wi-Fi, and Connectivity",
-    description: "Design, upgrade, and support reliable business and property networks with a focus on Ubiquiti and UniFi environments, segmented access, and multi-building coverage.",
-    bullets: ["Office and municipal network refreshes", "Public and guest Wi-Fi deployments", "Campground and property connectivity design"],
+    title: "Global Deployment Logistics and Networking",
+    description: "Design, stage, and support reliable business and property networks with the operational discipline needed for regional or global rollout programs.",
+    bullets: ["Field dispatch coordination", "Public and guest Wi-Fi deployments", "Infrastructure rollout planning"],
   },
   {
     id: "security-hardening",
@@ -38,15 +38,15 @@ const detailedServices = [
   },
   {
     id: "security-audits-pentesting",
-    title: "Security Audits and Penetration Testing",
+    title: "Exposure Research and Penetration Testing",
     description: "Run black box and trusted-access assessments with practical reporting, remediation help, and a clearer picture of what is actually risky in the real environment.",
-    bullets: ["Black box pentests", "Trusted-access internal assessments", "Remediation support and risk review"],
+    bullets: ["Black box pentests", "Trusted-access internal assessments", "Risk review and exposure context"],
   },
   {
     id: "camera-systems",
-    title: "Camera Systems and Local-First Smart Deployments",
-    description: "Install and support camera systems, smart technology, and custom local-first solutions with options for on-site processing and tailored site design.",
-    bullets: ["Full camera install and service", "Custom local AI video processing", "Residential and specialty system design"],
+    title: "Private AI, Cameras, and Local Intelligence Systems",
+    description: "Install and support camera systems, smart technology, and private intelligence workflows with options for on-site processing and controlled analysis.",
+    bullets: ["Full camera install and service", "Custom local AI processing", "Specialty visibility system design"],
   },
 ]
 
@@ -68,7 +68,7 @@ export function ServicesPageClient() {
         </h1>
         <div className="theme-rule mb-6 h-1 w-24" />
         <p className="theme-copy max-w-3xl font-sans text-lg leading-relaxed">
-          NextGridIT provides project-led infrastructure, cloud, security, audit, Wi-Fi, camera, and operational support services for organizations that need practical technical leadership and cleaner systems without generic MSP packaging.
+          NextGridIT provides managed security and infrastructure, identity, deployment logistics, exposure research, private AI, and operational support services for organizations that need practical technical leadership without generic MSP packaging.
         </p>
       </div>
 
@@ -122,7 +122,7 @@ export function ServicesPageClient() {
               Compliance-aware support
             </div>
             <h2 className="theme-heading font-mono text-2xl font-bold md:text-3xl">
-              Frameworks matter when they connect to real systems and real operations.
+              Frameworks matter when they connect to real systems, intelligence workflows, and real operations.
             </h2>
             <p className="theme-copy leading-relaxed">
               NextGridIT supports healthcare, public-sector, and business environments with technical guidance informed by HIPAA, PCI DSS, and NIST-based practices. We focus on implementation, documentation, security reviews, and risk reduction that can be tied back to the systems you actually run.
@@ -140,6 +140,9 @@ export function ServicesPageClient() {
             </Link>
             <Link href="/service-areas/" className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]">
               Service area pages
+            </Link>
+            <Link href="/labs/" className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]">
+              NextGrid Labs
             </Link>
             <Link href="/technologies/" className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]">
               Technology coverage

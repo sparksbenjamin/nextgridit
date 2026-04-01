@@ -1,49 +1,49 @@
-import Link from "next/link";
+import Link from "next/link"
 
 const resources = [
   {
+    title: "NextGrid Labs",
+    description:
+      "Explore the intelligence layer with active research positioning, telemetry concepts, and the instant surface scan experience.",
+    href: "/labs/",
+  },
+  {
     title: "Guides",
     description:
-      "Read practical field notes on local DNS, infrastructure decisions, and the local-first networking details that affect real projects.",
+      "Read practical field notes on infrastructure decisions, identity posture, and the technical details that influence real-world risk.",
     href: "/guides/",
   },
   {
-    title: "Industry Pages",
+    title: "Compliance",
     description:
-      "See how the core services map to medical offices, businesses, municipalities, campgrounds, and multi-site properties.",
-    href: "/industries/",
-  },
-  {
-    title: "Service Areas",
-    description:
-      "Review the local coverage pages for Seneca, Clemson, Anderson, Easley, and Greenville.",
-    href: "/service-areas/",
+      "Review how the operating model aligns with HIPAA, PCI DSS, NIST-style security thinking, and private analysis requirements.",
+    href: "/compliance/",
   },
   {
     title: "Case Studies",
     description:
-      "Read sanitized examples of network cleanup, Microsoft 365 reset work, and local-first visibility projects.",
+      "Read sanitized examples of cleanup, infrastructure redesign, and operating-environment improvement work.",
     href: "/case-studies/",
   },
   {
     title: "Project Fit",
     description:
-      "Use the fit guide to see which organizations, project types, and technical environments line up best with NextGridIT.",
+      "See which environments benefit most from managed security and infrastructure, deployment logistics, and intelligence-led support.",
     href: "/project-fit/",
   },
   {
-    title: "Local-First Systems",
+    title: "Service Areas",
     description:
-      "Understand the local-first mindset behind camera systems, recording ownership, and on-site AI-assisted workflows.",
-    href: "/local-first/",
+      "Review rapid-response coverage across Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.",
+    href: "/service-areas/",
   },
   {
     title: "Process and FAQ",
     description:
-      "Understand how projects start, how work is scoped, and what kinds of engagements are the best fit.",
+      "Understand how discovery starts, how engagements are scoped, and what happens after a surface scan or intake request.",
     href: "/process/",
   },
-];
+]
 
 export function ResourcesSection() {
   return (
@@ -51,13 +51,11 @@ export function ResourcesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-14 max-w-3xl">
           <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
-            Supporting <span className="theme-accent">Pages</span>
+            Research and <span className="theme-accent">Operating Notes</span>
           </h2>
           <div className="theme-rule mb-6 h-1 w-24" />
           <p className="theme-copy text-lg leading-relaxed">
-            Beyond the main service overview, these pages help clarify fit,
-            process, local coverage, and the kinds of problems NextGridIT is built
-            to solve.
+            Beyond the service overview, these pages explain how NextGridIT combines logistics, security, private AI, and intelligence-led operating discipline.
           </p>
         </div>
 
@@ -67,9 +65,7 @@ export function ResourcesSection() {
               <h3 className="theme-heading mb-3 font-mono text-2xl font-bold">
                 {resource.title}
               </h3>
-              <p className="theme-copy mb-6 leading-relaxed">
-                {resource.description}
-              </p>
+              <p className="theme-copy mb-6 leading-relaxed">{resource.description}</p>
               <Link
                 href={resource.href}
                 className="button-secondary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
@@ -81,5 +77,5 @@ export function ResourcesSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

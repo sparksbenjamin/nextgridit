@@ -39,26 +39,26 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NextGridIT | Network Infrastructure, Security, and IT Support",
+    default: "NextGridIT | Global Infrastructure. Elite Intelligence.",
     template: "%s | NextGridIT",
   },
   description: siteConfig.tagline,
   keywords: [
-    "IT support Upstate South Carolina",
-    "network infrastructure Greenville SC",
-    "cybersecurity Seneca SC",
-    "Microsoft 365 support Clemson SC",
-    "compliance support Anderson SC",
-    "Ubiquiti support Easley SC",
-    "public Wi-Fi South Carolina",
-    "camera systems Upstate SC",
+    "global infrastructure deployment",
+    "managed security and infrastructure",
+    "vulnerability research",
+    "attack surface management",
+    "private AI security",
+    "threat intelligence",
+    "cybersecurity Greenville SC",
+    "network infrastructure South Carolina",
     "NextGridIT",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "NextGridIT | Network Infrastructure, Security, and IT Support",
+    title: "NextGridIT | Global Infrastructure. Elite Intelligence.",
     description: siteConfig.tagline,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NextGridIT | Network Infrastructure, Security, and IT Support",
+    title: "NextGridIT | Global Infrastructure. Elite Intelligence.",
     description: siteConfig.tagline,
     images: ["/og-image.svg"],
   },
@@ -89,7 +89,12 @@ const knowledgeAreas = Array.from(
   new Set([
     ...services.map((service) => service.title),
     ...technologyCatalog.map((technology) => technology.name),
-    "HIPAA-aware IT support",
+    "Attack surface management",
+    "Vulnerability research",
+    "Private AI",
+    "Threat intelligence",
+    "Global hardware deployment",
+    "HIPAA-aware support",
     "PCI DSS-informed support",
     "NIST-informed security practices",
     "Public Wi-Fi",
@@ -97,10 +102,10 @@ const knowledgeAreas = Array.from(
   ]),
 );
 
-const localBusinessSchema = {
+const professionalServiceSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${siteConfig.url}/#localbusiness`,
+  "@type": "ProfessionalService",
+  "@id": `${siteConfig.url}/#professionalservice`,
   name: siteConfig.name,
   legalName: siteConfig.legalName,
   url: siteConfig.url,
@@ -203,10 +208,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
         <Script
-          id="local-business-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
+        id="local-business-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
+      />
         <script
           id="freshsales-tracking"
           src="https://fw-cdn.com/16007206/7027400.js"

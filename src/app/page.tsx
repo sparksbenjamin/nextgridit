@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/sections/HeroSection";
+import { PrivateAISection } from "@/components/sections/PrivateAISection";
 import { ResourcesSection } from "@/components/sections/ResourcesSection";
 import { ServiceAreaSection } from "@/components/sections/ServiceAreaSection";
 import { TargetAudienceSection } from "@/components/sections/TargetAudienceSection";
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <TargetAudienceSection />
       <ServicesSection />
+      <PrivateAISection />
       <ResourcesSection />
       <ServiceAreaSection />
     </div>

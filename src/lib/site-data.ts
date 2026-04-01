@@ -9,7 +9,7 @@ export const siteConfig = {
   serviceArea: ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"],
   founded: "2026",
   tagline:
-    "Network infrastructure, security, cloud, Wi-Fi, camera, and compliance-aware IT support for Upstate South Carolina organizations.",
+    "Deploying hardware in 150+ countries while advancing managed security, vulnerability research, and private AI-driven intelligence.",
   sameAs: ["https://github.com/sparksbenjamin/nextgridit"],
 } as const;
 
@@ -45,37 +45,37 @@ export type TechnologyEntry = {
 export const services: Service[] = [
   {
     slug: "it-support",
-    shortLabel: "IT Support",
-    title: "IT Support and Operational Guidance",
+    shortLabel: "Managed Security",
+    title: "Managed Security and Infrastructure",
     summary:
-      "Project-led IT support for organizations that need practical troubleshooting, cleanup, and technical leadership.",
+      "Integrated security oversight, infrastructure governance, and operator-led technical leadership for organizations with real exposure to manage.",
     description:
-      "NextGridIT provides business-first IT support for organizations that need a reliable technical partner without a generic MSP contract. Engagements can include day-to-day systems support, environment cleanup, vendor coordination, project planning, and documentation improvements that make the environment easier to run.",
+      "NextGridIT provides managed security and infrastructure support for organizations that need clear operational ownership without a generic MSP contract. Engagements can include identity and mail controls, vendor coordination, environment cleanup, baseline hardening, infrastructure oversight, and documentation that makes the environment easier to defend and operate.",
     audience:
-      "Best fit for small businesses, municipal teams, property operators, and healthcare-adjacent organizations that need experienced infrastructure support and clear communication.",
+      "Best fit for distributed operators, regulated teams, growing businesses, and infrastructure-heavy environments that need experienced security-minded execution and clear communication.",
     outcomes: [
-      "Reduce recurring support issues and operational surprises",
-      "Stabilize aging systems before they become expensive emergencies",
-      "Create cleaner documentation, ownership, and follow-through across vendors",
+      "Reduce recurring security and infrastructure surprises across the operating environment",
+      "Create tighter ownership around identity, mail, networking, and vendor coordination",
+      "Establish a cleaner operational baseline for future audits, growth, and incident response",
     ],
     deliverables: [
-      "Technical assessment and prioritized remediation list",
-      "Support and project coordination recommendations",
-      "Documentation cleanup and operational handoff notes",
+      "Security and infrastructure assessment with prioritized remediation guidance",
+      "Managed operations recommendations across identity, networking, and vendor workflows",
+      "Documentation cleanup, ownership mapping, and defensible handoff notes",
     ],
     relatedIndustries: ["small-business", "municipalities", "medical-offices"],
     relatedLocations: ["seneca-sc", "clemson-sc", "anderson-sc"],
     technologies: ["Microsoft 365", "Windows", "Active Directory", "Backup systems"],
     faq: [
       {
-        question: "Do you replace an internal IT team?",
+        question: "Do you replace an internal security or IT team?",
         answer:
-          "Not necessarily. NextGridIT can supplement a small internal team, coordinate with vendors, or provide hands-on support where no internal IT staff exists.",
+          "Not necessarily. NextGridIT can supplement internal teams, coordinate with outside providers, or provide hands-on managed security and infrastructure leadership where no dedicated team exists.",
       },
       {
-        question: "Is support only for emergencies?",
+        question: "Is this just break-fix support under a different name?",
         answer:
-          "No. The focus is on fixing current issues while also reducing the conditions that keep creating them.",
+          "No. The model is designed around reducing exposure, improving control, and creating better operating conditions rather than waiting for emergencies to stack up.",
       },
     ],
   },
@@ -638,17 +638,17 @@ export const faqs = [
   {
     question: "What kinds of organizations does NextGridIT support?",
     answer:
-      "NextGridIT works with medical offices, small and mid-sized businesses, municipalities, campgrounds, and multi-site properties across Upstate South Carolina.",
+      "NextGridIT supports regulated organizations, distributed operations, multi-site environments, public-sector teams, and businesses that need both infrastructure execution and intelligence-led security work.",
   },
   {
     question: "What geographic areas does NextGridIT serve?",
     answer:
-      "Primary local coverage includes Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina, with travel available for larger projects and specialty engagements.",
+      "NextGridIT maintains rapid-response coverage across Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina, while supporting larger logistics-led deployments and specialty security engagements across broader regions and global programs.",
   },
   {
     question: "Does NextGridIT provide managed services contracts?",
     answer:
-      "The site positions NextGridIT as project-led and business-first rather than as a generic one-size-fits-all MSP. Support can still include ongoing guidance where it makes sense.",
+      "NextGridIT is positioned around managed security and infrastructure leadership rather than commodity MSP packaging. Ongoing support is available where it improves security posture, ownership, and execution quality.",
   },
   {
     question: "What compliance-related environments does NextGridIT support?",
@@ -678,7 +678,7 @@ export const faqs = [
   {
     question: "What kinds of technology brands or platforms are commonly involved?",
     answer:
-      "Common environments include Microsoft 365, Entra ID, Azure, AWS, Google Workspace, Apple devices, Ubiquiti UniFi, firewalls, IP cameras, local NVR systems, and local-first AI-assisted camera workflows.",
+      "Common environments include Microsoft 365, Entra ID, Azure, AWS, Google Workspace, Apple devices, Ubiquiti UniFi, firewalls, IP cameras, local NVR systems, and private AI workflows built around on-premise model execution.",
   },
 ];
 

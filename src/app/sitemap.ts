@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: `${base}/`, priority: 1, lastModified },
+    { url: `${base}/labs/`, priority: 0.96, lastModified },
     { url: `${base}/services/`, priority: 0.95, lastModified },
     ...services.map((service) => ({
       url: `${base}/services/${service.slug}/`,

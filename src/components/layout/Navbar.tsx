@@ -33,17 +33,17 @@ const navGroups: NavGroup[] = [
   {
     id: "services",
     label: "Services",
-    description: "Core delivery areas, specialist services, and platform coverage.",
+    description: "Managed infrastructure, security research, deployment logistics, and platform coverage.",
     overview: {
       href: "/services",
       label: "Browse all services",
-      description: "See the full service lineup and how each engagement is framed.",
+      description: "See the full service lineup across managed security, infrastructure, logistics, and research.",
     },
     links: [
       {
         href: "/services/it-support",
-        label: "IT Support",
-        description: "Project-led troubleshooting, cleanup, and operational guidance.",
+        label: "Managed Security & Infrastructure",
+        description: "Integrated security oversight, environment cleanup, and infrastructure leadership.",
       },
       {
         href: "/services/microsoft-365",
@@ -62,8 +62,8 @@ const navGroups: NavGroup[] = [
       },
       {
         href: "/services/security-audits-pentesting",
-        label: "Pentesting",
-        description: "Black box and trusted-access testing with remediation help.",
+        label: "Exposure Research",
+        description: "Black box testing, surface analysis, and remediation guidance.",
       },
       {
         href: "/services/camera-systems",
@@ -81,7 +81,7 @@ const navGroups: NavGroup[] = [
   {
     id: "fit",
     label: "Who We Help",
-    description: "Industries, service geography, compliance-aware work, and project fit.",
+    description: "Distributed operators, regulated environments, local field coverage, and project fit.",
     overview: {
       href: "/industries",
       label: "Explore industries",
@@ -114,17 +114,22 @@ const navGroups: NavGroup[] = [
   {
     id: "resources",
     label: "Resources",
-    description: "Planning material, field notes, FAQs, and example outcomes.",
+    description: "Research notes, labs output, planning material, FAQs, and example outcomes.",
     overview: {
-      href: "/guides",
-      label: "Read the guides",
-      description: "Practical content for planning, research, and technical decision-making.",
+      href: "/labs",
+      label: "Visit NextGrid Labs",
+      description: "See active research, telemetry concepts, and the surface scan experience.",
     },
     links: [
       {
+        href: "/labs",
+        label: "NextGrid Labs",
+        description: "Vulnerability research, telemetry, and the surface scan endpoint.",
+      },
+      {
         href: "/guides",
         label: "Guides",
-        description: "Field notes, explainers, and practical write-ups from real work.",
+        description: "Field notes, explainers, and technical write-ups from real work.",
       },
       {
         href: "/case-studies",
@@ -142,12 +147,12 @@ const navGroups: NavGroup[] = [
         description: "Why ownership, on-site control, and practical fit matter.",
       },
     ],
-    matchers: ["/guides", "/case-studies", "/faq", "/local-first"],
+    matchers: ["/labs", "/guides", "/case-studies", "/faq", "/local-first"],
   },
   {
     id: "company",
     label: "Company",
-    description: "Background, process, proof points, and how to get in touch.",
+    description: "Background, delivery process, proof points, and how to get in touch.",
     overview: {
       href: "/about",
       label: "About NextGridIT",
@@ -182,6 +187,8 @@ const navGroups: NavGroup[] = [
 const mobileMenuId = "mobile-navigation"
 const desktopMenuId = "desktop-navigation"
 const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`
+const labsHref = "/labs"
+const surfaceScanHref = "/labs/#surface-scan"
 
 function normalizePath(path: string) {
   if (path !== "/" && path.endsWith("/")) {
@@ -218,6 +225,7 @@ export function Navbar() {
   )
   const activeDesktopGroup =
     navGroups.find((group) => group.id === activeDesktopGroupId) ?? null
+  const isLabsActive = isPathActive(pathname, labsHref)
 
   React.useEffect(() => {
     setIsOpen(false)
@@ -317,6 +325,26 @@ export function Navbar() {
           </div>
 
           <nav aria-label="Primary" className="hidden md:flex items-center gap-2">
+            <Link
+              href={labsHref}
+              onClick={closeMenus}
+              className={cn(
+                "relative inline-flex items-center gap-1 rounded-full px-4 py-3 font-mono text-sm uppercase tracking-[0.18em] transition-colors duration-200",
+                isLabsActive
+                  ? "theme-accent-strong bg-[var(--accent-soft)]"
+                  : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
+              )}
+            >
+              <span>NextGrid Labs</span>
+              <span
+                className={cn(
+                  "absolute inset-x-4 -bottom-px h-[2px] rounded-full transition-opacity duration-200",
+                  isLabsActive
+                    ? "bg-[var(--accent-strong)] opacity-100"
+                    : "bg-[var(--accent)] opacity-0"
+                )}
+              />
+            </Link>
             {navGroups.map((group) => {
               const isHighlighted =
                 activePathGroup?.id === group.id || activeDesktopGroupId === group.id
@@ -360,11 +388,11 @@ export function Navbar() {
             <ThemeToggle className="scale-90 origin-right sm:scale-100" />
             <div className="hidden md:block">
               <Link
-                href="/contact"
+                href={surfaceScanHref}
                 onClick={closeMenus}
                 className="button-primary relative overflow-hidden rounded-full px-6 py-2.5 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
-                <span className="relative z-10">START BY EMAIL</span>
+                <span className="relative z-10">RUN SURFACE SCAN</span>
               </Link>
             </div>
           </div>
@@ -475,11 +503,11 @@ export function Navbar() {
         <div className="max-h-[calc(100vh-5rem)] overflow-y-auto px-4 pb-6 pt-3">
           <div className="grid grid-cols-2 gap-3 border-b border-[var(--border)] pb-4">
             <Link
-              href="/contact"
+              href={surfaceScanHref}
               onClick={closeMenus}
               className="button-primary inline-flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]"
             >
-              Contact
+              Run Surface Scan
             </Link>
             <a
               href={phoneHref}
@@ -488,6 +516,19 @@ export function Navbar() {
               <IconPhone className="h-4 w-4" />
               <span>{siteConfig.phoneDisplay}</span>
             </a>
+          </div>
+
+          <div className="mt-4">
+            <Link
+              href={labsHref}
+              onClick={closeMenus}
+              className={cn(
+                "button-secondary flex w-full items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]",
+                isLabsActive && "border-[var(--accent)] bg-[var(--accent-soft)]"
+              )}
+            >
+              NextGrid Labs
+            </Link>
           </div>
 
           <nav aria-label="Mobile" className="mt-4 space-y-3">
@@ -591,13 +632,13 @@ export function Navbar() {
             </Link>
 
             <div className="border-t border-[var(--border)] pt-4">
-            <Link
-              href="/contact"
-              onClick={closeMenus}
-              className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
-            >
-              START BY EMAIL
-            </Link>
+              <Link
+                href={surfaceScanHref}
+                onClick={closeMenus}
+                className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
+              >
+                RUN SURFACE SCAN
+              </Link>
             </div>
           </nav>
         </div>

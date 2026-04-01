@@ -11,15 +11,15 @@ const facts = [
   `Contact phone: ${siteConfig.phoneDisplay}`,
   `Primary region: ${siteConfig.region}`,
   `Primary cities served: ${siteConfig.serviceArea.join(", ")}, South Carolina`,
-  "Core service categories: IT support, Microsoft 365, network infrastructure, public Wi-Fi, security hardening, camera systems",
+  "Core service categories: managed security and infrastructure, Microsoft 365, deployment logistics, public Wi-Fi, exposure research, camera systems, and private AI workflows",
   "Primary industries: medical offices, small businesses, municipalities, campgrounds, multi-site properties",
-  "Engagement model: project-led, business-first, local-first where practical",
+  "Engagement model: project-led, business-first, intelligence-led, and local-first where practical",
 ];
 
 export const metadata = createMetadata({
   title: "Company Facts",
   description:
-    "A clean summary of company, service, and contact facts for NextGridIT.",
+    "A clean summary of company, service, contact, and operating model facts for NextGridIT.",
   path: "/company-facts/",
 });
 
@@ -40,7 +40,7 @@ export default function CompanyFactsPage() {
         eyebrow="Canonical Facts"
         title="Company"
         accent="Facts"
-        description="This page is intentionally plain and explicit. It gives a stable summary of what NextGridIT is, what it offers, and where it works."
+        description="This page is intentionally plain and explicit. It gives a stable summary of what NextGridIT is, what it offers, and how it operates."
       />
 
       <section className="glass-panel border border-[var(--border)] p-8">

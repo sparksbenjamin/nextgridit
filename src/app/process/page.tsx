@@ -45,7 +45,7 @@ const processSteps = [
 export const metadata = createMetadata({
   title: "Process",
   description:
-    "Learn how NextGridIT approaches IT support, infrastructure projects, security hardening, and documentation-driven handoff.",
+    "Learn how NextGridIT approaches managed security and infrastructure, logistics-led projects, exposure analysis, and documentation-driven handoff.",
   path: "/process/",
 });
 

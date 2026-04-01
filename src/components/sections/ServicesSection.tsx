@@ -15,63 +15,69 @@ import {
 const services = [
   {
     slug: "it-support",
-    title: "IT Support and Operational Guidance",
-    description: "Project-based IT support and ongoing technical guidance for organizations that need reliable execution without hiring a full internal team.",
-    icon: <IconDeviceDesktopAnalytics className="w-8 h-8 text-white" />,
-    features: ["Small business support", "Vendor coordination", "Operational cleanup"]
+    title: "Managed Security & Infrastructure",
+    description:
+      "Operator-led oversight for identity, mail, infrastructure, hardening, and day-to-day technical governance across environments that cannot afford drift.",
+    icon: <IconDeviceDesktopAnalytics className="h-8 w-8 text-white" />,
+    features: ["Security-minded operations", "Identity and mail controls", "Infrastructure governance"],
   },
   {
     slug: "microsoft-365",
-    title: "Microsoft 365 and Cloud Services",
-    description: "Set up, secure, and improve cloud platforms with a local-first mindset that keeps environments practical, documented, and easier to support.",
-    icon: <IconCloudLock className="w-8 h-8 text-[#b026ff]" />,
-    features: ["Microsoft 365 and Entra", "Azure and AWS support", "Google and Apple environments"]
+    title: "Identity, Mail, and Cloud Platforms",
+    description:
+      "Tune Microsoft 365, Entra ID, Azure, Google, and Apple ecosystems for stronger control, cleaner ownership, and lower exposure.",
+    icon: <IconCloudLock className="h-8 w-8 text-[#b026ff]" />,
+    features: ["Microsoft 365 and Entra", "Azure and hybrid identity", "Cross-platform administration"],
   },
   {
     slug: "network-wifi",
-    title: "Network Infrastructure and Wi-Fi",
-    description: "Design, deploy, and improve wired and wireless networks for offices, municipalities, campgrounds, and multi-building properties.",
-    icon: <IconNetwork className="w-8 h-8 text-[#00f0ff]" />,
-    features: ["Ubiquiti and UniFi deployments", "Public Wi-Fi and segmentation", "Coverage and connectivity improvements"]
+    title: "Global Deployment Logistics and Networking",
+    description:
+      "Coordinate staging, dispatch, routing, Wi-Fi, segmentation, and connectivity for regional or global hardware programs that need disciplined execution.",
+    icon: <IconNetwork className="h-8 w-8 text-[#00f0ff]" />,
+    features: ["150+ country deployment support", "Field dispatch coordination", "Network and connectivity design"],
   },
   {
     slug: "security-hardening",
-    title: "Security Hardening and Documentation",
-    description: "Reduce avoidable risk with practical security improvements, cleaner documentation, and controls that support real-world operations.",
-    icon: <IconShieldCheck className="w-8 h-8 text-[#39ff14]" />,
-    features: ["HIPAA-aware support", "NIST-informed security practices", "Policy and documentation help"]
+    title: "Security Hardening and Compliance Alignment",
+    description:
+      "Reduce avoidable risk with practical controls, clearer documentation, and implementation support informed by regulated operating environments.",
+    icon: <IconShieldCheck className="h-8 w-8 text-[#39ff14]" />,
+    features: ["HIPAA-aware support", "NIST-informed practices", "Documentation and policy alignment"],
   },
   {
     slug: "security-audits-pentesting",
-    title: "Security Audits and Pentesting",
-    description: "Test real exposure with black box and trusted-access assessments that come with remediation help instead of just a findings spreadsheet.",
-    icon: <IconCertificate className="w-8 h-8 text-[#ff9f1c]" />,
-    features: ["Black box pentests", "Trusted-access assessments", "Real-world risk review"]
+    title: "Exposure Research and Penetration Testing",
+    description:
+      "Move beyond vulnerability dumps with targeted research, attack-surface reviews, black box testing, and remediation guidance.",
+    icon: <IconCertificate className="h-8 w-8 text-[#ff9f1c]" />,
+    features: ["Black box pentests", "Surface exposure audits", "Real-world risk review"],
   },
   {
     slug: "camera-systems",
-    title: "Camera and Custom Local-First Solutions",
-    description: "Build camera systems, smart technology, and custom on-site solutions with an emphasis on local processing, ownership, and fit-for-purpose design.",
-    icon: <IconVideo className="w-8 h-8 text-[#39ff14]" />,
-    features: ["Camera install and service", "Custom local AI options", "Residential and specialty projects"]
-  }
+    title: "Private AI, Cameras, and Local Intelligence Systems",
+    description:
+      "Design visibility systems and local-first intelligence workflows that keep sensitive footage, prompts, and analysis under tighter control.",
+    icon: <IconVideo className="h-8 w-8 text-[#39ff14]" />,
+    features: ["Private AI workflows", "Camera and sensor infrastructure", "On-site processing options"],
+  },
 ]
 
 export function ServicesSection() {
   return (
     <section id="services" className="relative border-t border-[var(--border)] py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
-            CORE <span className="theme-accent-strong">SERVICES</span>
+            CORE <span className="theme-accent-strong">CAPABILITIES</span>
           </h2>
           <div className="theme-rule mx-auto mb-6 h-1 w-24" />
           <p className="theme-copy font-sans text-lg">
-            NextGridIT delivers business-first infrastructure, cloud, security, and connected systems work for organizations that need practical results instead of generic MSP packaging.
+            NextGridIT blends managed security, infrastructure governance, global deployment logistics, private AI, and research-led exposure analysis into one delivery architecture.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 xl:grid-cols-2">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -79,11 +85,11 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden glass-panel p-8 transition-colors duration-300 hover:bg-[var(--surface-muted)]"
+              className="glass-panel group relative overflow-hidden p-8 transition-colors duration-300 hover:bg-[var(--surface-muted)]"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-soft)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-              <div className="flex items-start gap-6 relative z-10">
+              <div className="relative z-10 flex items-start gap-6">
                 <div className="rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-3 transition-colors duration-300 group-hover:border-[var(--border-strong)]">
                   {service.icon}
                 </div>
@@ -93,9 +99,7 @@ export function ServicesSection() {
                       {service.title}
                     </Link>
                   </h3>
-                  <p className="theme-copy mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <p className="theme-copy mb-6 leading-relaxed">{service.description}</p>
 
                   <ul className="space-y-2">
                     {service.features.map((feature) => (
@@ -124,11 +128,17 @@ export function ServicesSection() {
         </div>
 
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <Link href="/services/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+          <Link
+            href="/services/"
+            className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+          >
             Browse All Services
           </Link>
-          <Link href="/technologies/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
-            Supported Technologies
+          <Link
+            href="/labs/"
+            className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+          >
+            Visit NextGrid Labs
           </Link>
         </div>
       </div>
