@@ -1,8 +1,8 @@
 export const surfaceScanSteps = [
-  "[SYSTEM] Fingerprinting Mail Carrier...",
+  "[INFO] Fingerprinting Mail Carrier (MS365 / Google)...",
   "[RECON] Mapping DNS & Subdomain Surface...",
   "[INTEL] Cross-referencing MSRC Case #108637 templates...",
-  "[AI] Local Qwen 2.5 generating risk brief...",
+  "[AI] Local Qwen 2.5 generating Risk Brief...",
 ] as const
 
 export type SurfaceScanResult = {

@@ -125,7 +125,7 @@ export function HeroSection() {
               style={{ backgroundColor: "var(--accent-alt)" }}
             />
             <span className="theme-copy text-xs font-mono uppercase tracking-[0.28em]">
-              Global deployment operations with intelligence-led security
+              Security intelligence with global deployment execution
             </span>
           </motion.div>
 
@@ -148,7 +148,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="theme-copy mb-8 max-w-2xl font-mono text-lg leading-relaxed sm:text-xl"
           >
-            We deploy hardware in 150+ countries and discover the vulnerabilities the world hasn&apos;t seen yet. Home to MSRC-level vulnerability research and private AI security.
+            Deploying hardware in 150+ countries. Discovering vulnerabilities before the world sees them. Home to MSRC-level research and private, air-gapped AI security.
           </motion.p>
 
           <motion.div

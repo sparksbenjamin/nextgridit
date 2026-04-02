@@ -123,7 +123,7 @@ export function SurfaceScanModule({
     event.preventDefault()
 
     if (!looksLikeBusinessEmail(email)) {
-      setEmailError("Use a business email address to unlock the full brief.")
+      setEmailError("Use a business email address to request the full intelligence brief.")
       return
     }
 
@@ -283,7 +283,7 @@ export function SurfaceScanModule({
                           </div>
                           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                             <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-400">
-                              Technical Brief
+                              Intelligence Brief
                             </p>
                             <ul className="mt-3 space-y-2 text-slate-200">
                               {result.technicalBrief.map((item) => (
@@ -296,7 +296,7 @@ export function SurfaceScanModule({
                         {!isUnlocked ? (
                           <div className="mt-6 rounded-[1.5rem] border border-cyan-400/20 bg-cyan-400/8 p-5">
                             <p className="font-mono text-sm uppercase tracking-[0.22em] text-cyan-100">
-                              Critical findings identified. Enter your business email to unlock the full Technical Exposure Brief.
+                              Critical findings identified. Enter your business email to request the full Intelligence Brief.
                             </p>
                             <form onSubmit={handleUnlockSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row">
                               <input
@@ -305,13 +305,13 @@ export function SurfaceScanModule({
                                 onChange={(event) => setEmail(event.target.value)}
                                 placeholder="name@company.com"
                                 className="min-h-12 flex-1 rounded-2xl border border-white/10 bg-[#091019] px-4 font-mono text-sm text-slate-100 outline-none transition focus:border-cyan-400/40"
-                                aria-label="Enter business email to unlock technical exposure brief"
+                                aria-label="Enter business email to request the full intelligence brief"
                               />
                               <button
                                 type="submit"
                                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-950 transition hover:bg-emerald-200"
                               >
-                                Unlock Full Technical Brief
+                                Request Full Intelligence Brief
                                 <IconArrowRight className="h-4 w-4" />
                               </button>
                             </form>
@@ -322,7 +322,7 @@ export function SurfaceScanModule({
                         ) : (
                           <div className="mt-6 rounded-[1.5rem] border border-emerald-400/20 bg-emerald-400/10 p-5 text-emerald-100">
                             <p className="font-mono text-xs uppercase tracking-[0.24em]">
-                              Full brief unlocked
+                              Intelligence brief requested
                             </p>
                             <p className="mt-2">{result.summary}</p>
                           </div>
