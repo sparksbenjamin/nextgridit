@@ -39,7 +39,7 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NextGridIT | Global Infrastructure. Elite Intelligence.",
+    default: "NextGridIT | Global Infrastructure. Sovereign Intelligence.",
     template: "%s | NextGridIT",
   },
   description: siteConfig.tagline,
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "NextGridIT | Global Infrastructure. Elite Intelligence.",
+    title: "NextGridIT | Global Infrastructure. Sovereign Intelligence.",
     description: siteConfig.tagline,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NextGridIT | Global Infrastructure. Elite Intelligence.",
+    title: "NextGridIT | Global Infrastructure. Sovereign Intelligence.",
     description: siteConfig.tagline,
     images: ["/og-image.svg"],
   },

@@ -32,11 +32,11 @@ type NavGroup = {
 const navGroups: NavGroup[] = [
   {
     id: "services",
-    label: "Services",
+    label: "Global Services",
     description: "Managed infrastructure, security research, deployment logistics, and platform coverage.",
     overview: {
       href: "/services",
-      label: "Browse all services",
+      label: "Browse global services",
       description: "See the full service lineup across managed security, infrastructure, logistics, and research.",
     },
     links: [
@@ -188,7 +188,7 @@ const mobileMenuId = "mobile-navigation"
 const desktopMenuId = "desktop-navigation"
 const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`
 const labsHref = "/labs"
-const surfaceScanHref = "/labs/#surface-scan"
+const surfaceScanHref = "/#active-perimeter-intelligence"
 
 function normalizePath(path: string) {
   if (path !== "/" && path.endsWith("/")) {
@@ -329,10 +329,10 @@ export function Navbar() {
               href={labsHref}
               onClick={closeMenus}
               className={cn(
-                "relative inline-flex items-center gap-1 rounded-full px-4 py-3 font-mono text-sm uppercase tracking-[0.18em] transition-colors duration-200",
+                "relative inline-flex items-center gap-1 rounded-full border px-4 py-3 font-mono text-sm uppercase tracking-[0.18em] transition-colors duration-200",
                 isLabsActive
-                  ? "theme-accent-strong bg-[var(--accent-soft)]"
-                  : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
+                  ? "border-[var(--accent)] theme-accent-strong bg-[var(--accent-soft)]"
+                  : "border-[var(--border-strong)] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
               )}
             >
               <span>NextGrid Labs</span>

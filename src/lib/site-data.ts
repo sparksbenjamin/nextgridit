@@ -9,7 +9,7 @@ export const siteConfig = {
   serviceArea: ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"],
   founded: "2026",
   tagline:
-    "Deploying hardware in 150+ countries while advancing managed security, vulnerability research, and private AI-driven intelligence.",
+    "We deploy hardware in 150+ countries and discover the vulnerabilities the world hasn't seen yet. Home to MSRC-level vulnerability research and private AI security.",
   sameAs: ["https://github.com/sparksbenjamin/nextgridit"],
 } as const;
 

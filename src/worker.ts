@@ -1,3 +1,5 @@
+import { looksLikeDomain, type SurfaceScanResult } from "./lib/surface-scan";
+
 type AssetBinding = {
   fetch(input: Request | URL | string, init?: RequestInit): Promise<Response>;
 };
@@ -25,11 +27,25 @@ type ContactFormPayload = {
   website?: string;
 };
 
+type SurfaceScanPayload = {
+  domain?: string;
+};
+
 type NormalizedContactForm = {
   company: string;
   details: string;
   email: string;
   website: string;
+};
+
+type NormalizedSurfaceScan = {
+  domain: string;
+};
+
+type DnsJsonResponse = {
+  Answer?: Array<{
+    data?: string;
+  }>;
 };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -41,6 +57,8 @@ const JSON_HEADERS = {
 class ContactConfigError extends Error {}
 
 class ContactValidationError extends Error {}
+
+class SurfaceScanValidationError extends Error {}
 
 function jsonResponse(body: unknown, init: ResponseInit = {}) {
   const headers = new Headers(init.headers);
@@ -90,6 +108,21 @@ function parseContactFormPayload(payload: unknown): NormalizedContactForm {
     email,
     website,
   };
+}
+
+function parseSurfaceScanPayload(payload: unknown): NormalizedSurfaceScan {
+  if (payload === null || typeof payload !== "object") {
+    throw new SurfaceScanValidationError("Invalid scan payload.");
+  }
+
+  const candidate = payload as SurfaceScanPayload;
+  const domain = normalizeField(candidate.domain, 255).toLowerCase();
+
+  if (!domain || !looksLikeDomain(domain)) {
+    throw new SurfaceScanValidationError("Enter a valid domain such as example.com.");
+  }
+
+  return { domain };
 }
 
 function getRequiredEnvValue(env: WorkerEnv, key: ContactSecretKey) {
@@ -282,11 +315,169 @@ async function handleContactRequest(request: Request, env: WorkerEnv) {
   }
 }
 
+function extractMxHost(value: string) {
+  const normalized = value.trim().toLowerCase();
+
+  if (!normalized) {
+    return "";
+  }
+
+  const parts = normalized.split(/\s+/);
+  const host = parts[parts.length - 1] ?? "";
+
+  return host.replace(/\.$/, "");
+}
+
+async function lookupMxRecords(domain: string) {
+  const dnsUrl = `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=MX`;
+  const dnsResponse = await fetch(dnsUrl, {
+    headers: {
+      accept: "application/dns-json",
+    },
+  });
+
+  if (!dnsResponse.ok) {
+    throw new Error(`DNS lookup failed with status ${dnsResponse.status}.`);
+  }
+
+  const payload = (await dnsResponse.json()) as DnsJsonResponse;
+
+  return (payload.Answer ?? [])
+    .map((answer) => extractMxHost(answer.data ?? ""))
+    .filter(Boolean);
+}
+
+function buildSurfaceScanResult(domain: string, mxRecords: string[]): SurfaceScanResult {
+  const hasMicrosoft365 = mxRecords.some((record) => record.includes("protection.outlook.com"));
+  const hasGoogleWorkspace = mxRecords.some((record) => record.includes("google.com"));
+
+  if (hasMicrosoft365) {
+    return {
+      domain,
+      environment: "Microsoft 365",
+      finding:
+        "Environment: Microsoft 365. Critical Risk: Potential for Unauthenticated Account Enumeration (MSRC Case 108637 focus).",
+      focus:
+        "Mail flow resolved to protection.outlook.com. Prioritize Autodiscover behavior, account enumeration testing, and tenant-side identity hardening.",
+      riskScore: 82,
+      mxRecords,
+      summary:
+        "The full brief should validate enumeration paths, legacy Autodiscover exposure, and tenant-level mail and identity controls before broader external correlation work begins.",
+      technicalBrief: [
+        "Mail carrier resolved through Microsoft 365 routing.",
+        "External exposure pattern aligns with MSRC Case #108637 research focus.",
+        "Recommended next step: validate enumeration behavior, Autodiscover paths, and Entra identity controls.",
+      ],
+    };
+  }
+
+  if (hasGoogleWorkspace) {
+    return {
+      domain,
+      environment: "Google Workspace",
+      finding:
+        "Environment: Google Workspace. Focus: IAM Delegation & Workspace API Exposure.",
+      focus:
+        "Mail flow resolved to Google-hosted MX infrastructure. Prioritize delegation review, Workspace API exposure, and admin boundary hygiene.",
+      riskScore: 74,
+      mxRecords,
+      summary:
+        "The full brief should validate delegated access, API exposure, workspace admin boundaries, and residual DNS intelligence tied to externally visible collaboration services.",
+      technicalBrief: [
+        "Mail carrier resolved through Google Workspace.",
+        "Initial focus area shifts from Autodiscover research toward IAM delegation and Workspace API exposure.",
+        "Recommended next step: review admin delegation, API surface, and discovery residue across branded subdomains.",
+      ],
+    };
+  }
+
+  return {
+    domain,
+    environment: "Custom or Hybrid Mail",
+    finding:
+      "Environment: Custom or Hybrid Mail. Focus: Mail Routing Residue & External Identity Surface.",
+    focus:
+      "No Microsoft 365 or Google Workspace MX pattern was identified. Prioritize mail routing residue, inherited subdomains, and externally visible identity workflows.",
+    riskScore: 67,
+    mxRecords,
+    summary:
+      "The full brief should classify the mail stack, enumerate inherited DNS pathways, and review external identity and collaboration services before moving into deeper research correlation.",
+    technicalBrief: [
+      "MX routing does not cleanly match Microsoft 365 or Google Workspace.",
+      "Initial reconnaissance should classify the provider and map residual subdomains.",
+      "Recommended next step: baseline passive DNS, MX ownership, and identity-related edge services.",
+    ],
+  };
+}
+
+async function handleSurfaceScanRequest(request: Request) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        Allow: "OPTIONS, POST",
+      },
+    });
+  }
+
+  if (request.method !== "POST") {
+    return jsonResponse(
+      { error: "Method not allowed." },
+      {
+        status: 405,
+        headers: {
+          Allow: "OPTIONS, POST",
+        },
+      },
+    );
+  }
+
+  const contentType = request.headers.get("content-type") ?? "";
+
+  if (!contentType.includes("application/json")) {
+    return jsonResponse(
+      { error: "Use application/json when submitting a surface scan." },
+      { status: 415 },
+    );
+  }
+
+  let scan: NormalizedSurfaceScan;
+
+  try {
+    const payload = (await request.json()) as unknown;
+    scan = parseSurfaceScanPayload(payload);
+  } catch (error) {
+    if (error instanceof SurfaceScanValidationError) {
+      return jsonResponse({ error: error.message }, { status: 400 });
+    }
+
+    return jsonResponse({ error: "Unable to read the scan payload." }, { status: 400 });
+  }
+
+  try {
+    const mxRecords = await lookupMxRecords(scan.domain);
+    const result = buildSurfaceScanResult(scan.domain, mxRecords);
+
+    return jsonResponse(result, { status: 200 });
+  } catch (error) {
+    console.error("Surface scan failed.", error);
+
+    return jsonResponse(
+      { error: "We could not complete the surface scan right now." },
+      { status: 502 },
+    );
+  }
+}
+
 const worker = {
   async fetch(request: Request, env: WorkerEnv) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/api/contact") {
+    if (url.pathname === "/api/surface-scan" || url.pathname === "/api/surface-scan/") {
+      return handleSurfaceScanRequest(request);
+    }
+
+    if (url.pathname === "/api/contact" || url.pathname === "/api/contact/") {
       return handleContactRequest(request, env);
     }
 

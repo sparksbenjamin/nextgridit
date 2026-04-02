@@ -138,7 +138,7 @@ export function HeroSection() {
             Global Infrastructure.
             <br />
             <span className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-strong)] bg-clip-text text-transparent">
-              Elite Intelligence.
+              Sovereign Intelligence.
             </span>
           </motion.h1>
 
@@ -148,22 +148,13 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="theme-copy mb-8 max-w-2xl font-mono text-lg leading-relaxed sm:text-xl"
           >
-            Deploying hardware in 150+ countries. Discovering vulnerabilities before the world sees them.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.24 }}
-            className="theme-copy mb-10 max-w-2xl leading-relaxed"
-          >
-            NextGridIT combines global logistics discipline with managed security and infrastructure oversight, proprietary research workflows, and private AI analysis built for sensitive environments.
+            We deploy hardware in 150+ countries and discover the vulnerabilities the world hasn&apos;t seen yet. Home to MSRC-level vulnerability research and private AI security.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.28 }}
+            transition={{ duration: 0.5, delay: 0.24 }}
             className="theme-copy mb-10 flex flex-col gap-3 font-mono text-sm"
           >
             <div className="flex items-center gap-2">
@@ -183,7 +174,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.28 }}
             className="flex flex-col gap-4 sm:flex-row"
           >
             <Link
@@ -206,7 +197,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.36 }}
+            transition={{ duration: 0.5, delay: 0.32 }}
             className="mt-10 flex flex-wrap gap-3"
           >
             {[
