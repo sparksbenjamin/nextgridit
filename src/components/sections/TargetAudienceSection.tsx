@@ -6,19 +6,19 @@ import { IconCheck } from "@tabler/icons-react"
 
 const operators = [
   {
-    label: "Global rollouts that need hardware staging, dispatch coordination, and cleaner field execution",
-    href: "/services/network-wifi/",
+    label: "Security leaders that need infrastructure hardening tied directly to external exposure",
+    href: "/services/it-support/",
   },
   {
     label: "Security programs that need surface intelligence, exposure validation, and practical risk framing",
     href: "/labs/",
   },
   {
-    label: "Regulated environments that require private AI analysis without handing sensitive data to public tooling",
-    href: "/compliance/",
+    label: "Engineering teams that want private AI copilots without sending code to third-party platforms",
+    href: "/services/private-air-gapped-ai/",
   },
   {
-    label: "Regional organizations that still need local response across Seneca, Clemson, Anderson, Easley, and Greenville",
+    label: "Distributed operators that still need local response across Seneca, Clemson, Anderson, Easley, and Greenville",
     href: "/service-areas/",
   },
 ]
@@ -41,21 +41,21 @@ export function TargetAudienceSection() {
                 Built for
                 <br />
                 <span className="bg-gradient-to-r from-[var(--accent-alt)] to-[var(--accent)] bg-clip-text text-transparent">
-                  Research-Led Operations
+                  High-Exposure Environments
                 </span>
               </h2>
 
               <div className="theme-copy space-y-6 font-sans text-lg">
                 <p>
-                  NextGridIT operates as two coordinated layers: professional global infrastructure delivery and an intelligence program focused on surface exposure, research, and private analysis.
+                  NextGridIT operates as two coordinated layers: infrastructure execution in the field and a research program focused on surface exposure, sovereign intelligence, and private analysis.
                 </p>
                 <p>
                   <strong className="theme-heading font-mono">
-                    The result is a delivery model that can stage hardware, harden environments, and generate higher-context security insight from the same command structure.
+                    The result is a delivery model that can harden environments, investigate emerging weaknesses, and generate higher-context risk insight from the same command structure.
                   </strong>
                 </p>
                 <p>
-                  That is a better fit for organizations that want strong execution without separating logistics, infrastructure, and intelligence into disconnected vendors.
+                  That is a better fit for organizations that want one partner handling infrastructure hardening, perimeter surveillance, and research-led escalation without handing the problem to disconnected vendors.
                 </p>
               </div>
 
@@ -102,12 +102,12 @@ export function TargetAudienceSection() {
                   <div className="space-y-4 text-sm sm:text-base">
                     <div className="theme-copy flex items-center justify-between">
                       <span>Legacy Field Vendor</span>
-                      <span className="text-amber-500">Ship and Forget</span>
+                      <span className="text-amber-500">Install and Forget</span>
                     </div>
                     <div className="h-[1px] w-full bg-[var(--border)]" />
                     <div className="theme-heading flex items-center justify-between">
                       <span>NextGridIT Model</span>
-                      <span className="theme-accent-strong">Deploy and Investigate</span>
+                      <span className="theme-accent-strong">Harden and Investigate</span>
                     </div>
 
                     <div className="mt-6 space-y-3 border-t border-[var(--border)] pt-6">

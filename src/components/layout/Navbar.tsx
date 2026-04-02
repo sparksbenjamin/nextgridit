@@ -32,18 +32,18 @@ type NavGroup = {
 const navGroups: NavGroup[] = [
   {
     id: "services",
-    label: "Global Services",
-    description: "Managed infrastructure, security research, deployment logistics, and platform coverage.",
+    label: "Capabilities",
+    description: "Infrastructure hardening, exposure research, sovereign AI, and deployment execution.",
     overview: {
       href: "/services",
-      label: "Browse global services",
-      description: "See the full service lineup across managed security, infrastructure, logistics, and research.",
+      label: "Browse capabilities",
+      description: "See the full service lineup across hardening, surveillance, labs research, and private AI.",
     },
     links: [
       {
         href: "/services/it-support",
-        label: "Managed Security & Infrastructure",
-        description: "Integrated security oversight, environment cleanup, and infrastructure leadership.",
+        label: "Infrastructure Hardening",
+        description: "Operator-led hardening, perimeter surveillance, and environment control.",
       },
       {
         href: "/services/microsoft-365",
@@ -52,8 +52,8 @@ const navGroups: NavGroup[] = [
       },
       {
         href: "/services/network-wifi",
-        label: "Network & Wi-Fi",
-        description: "Wired, wireless, public Wi-Fi, and segmentation projects.",
+        label: "Infrastructure Delivery",
+        description: "Network operations, segmentation, and deployment execution across sites.",
       },
       {
         href: "/services/security-hardening",
@@ -66,9 +66,14 @@ const navGroups: NavGroup[] = [
         description: "Black box testing, surface analysis, and remediation guidance.",
       },
       {
+        href: "/services/private-air-gapped-ai",
+        label: "Private AI",
+        description: "Air-gapped Qwen and Mistral deployments for coding and threat analysis.",
+      },
+      {
         href: "/services/camera-systems",
-        label: "Camera Systems",
-        description: "Local-first camera deployments, coverage planning, and support.",
+        label: "Perimeter Surveillance",
+        description: "Sensor systems, local capture, and visibility infrastructure.",
       },
       {
         href: "/technologies",
@@ -81,7 +86,7 @@ const navGroups: NavGroup[] = [
   {
     id: "fit",
     label: "Who We Help",
-    description: "Distributed operators, regulated environments, local field coverage, and project fit.",
+    description: "Distributed operators, regulated environments, and exposed environments that need sharper technical control.",
     overview: {
       href: "/industries",
       label: "Explore industries",
@@ -114,7 +119,7 @@ const navGroups: NavGroup[] = [
   {
     id: "resources",
     label: "Resources",
-    description: "Research notes, labs output, planning material, FAQs, and example outcomes.",
+    description: "Research notes, labs output, planning material, FAQs, and technical briefings.",
     overview: {
       href: "/labs",
       label: "Visit NextGrid Labs",
@@ -392,7 +397,7 @@ export function Navbar() {
                 onClick={closeMenus}
                 className="button-primary relative overflow-hidden rounded-full px-6 py-2.5 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
-                <span className="relative z-10">RUN SURFACE SCAN</span>
+                <span className="relative z-10">RUN PERIMETER AUDIT</span>
               </Link>
             </div>
           </div>
@@ -507,7 +512,7 @@ export function Navbar() {
               onClick={closeMenus}
               className="button-primary inline-flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]"
             >
-              Run Surface Scan
+              Run Audit
             </Link>
             <a
               href={phoneHref}
@@ -633,12 +638,12 @@ export function Navbar() {
 
             <div className="border-t border-[var(--border)] pt-4">
               <Link
-                href={surfaceScanHref}
-                onClick={closeMenus}
-                className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
-              >
-                RUN SURFACE SCAN
-              </Link>
+              href={surfaceScanHref}
+              onClick={closeMenus}
+              className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
+            >
+              RUN PERIMETER AUDIT
+            </Link>
             </div>
           </nav>
         </div>

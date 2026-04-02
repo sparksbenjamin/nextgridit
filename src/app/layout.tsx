@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
@@ -16,23 +16,26 @@ const themeInitScript = `
       const nextTheme =
         savedTheme === "dark" || savedTheme === "light" || (savedTheme === "hacker" && hackerUnlocked)
           ? savedTheme
-          : "light";
+          : "dark";
       document.documentElement.dataset.theme = nextTheme;
       document.documentElement.style.colorScheme = nextTheme === "light" ? "light" : "dark";
     } catch (error) {
-      document.documentElement.dataset.theme = "light";
-      document.documentElement.style.colorScheme = "light";
+      document.documentElement.dataset.theme = "dark";
+      document.documentElement.style.colorScheme = "dark";
     }
   })();
 `;
 
-const inter = Inter({
-  variable: "--font-inter",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -44,14 +47,17 @@ export const metadata: Metadata = {
   },
   description: siteConfig.tagline,
   keywords: [
+    "security research and intelligence",
+    "infrastructure hardening",
+    "perimeter surveillance",
     "global infrastructure deployment",
-    "managed security and infrastructure",
     "vulnerability research",
     "attack surface management",
-    "private AI security",
+    "private air-gapped AI",
+    "sovereign AI",
     "threat intelligence",
     "cybersecurity Greenville SC",
-    "network infrastructure South Carolina",
+    "Entra ID research",
     "NextGridIT",
   ],
   alternates: {
@@ -91,9 +97,11 @@ const knowledgeAreas = Array.from(
     ...technologyCatalog.map((technology) => technology.name),
     "Attack surface management",
     "Vulnerability research",
-    "Private AI",
+    "Infrastructure hardening",
+    "Perimeter surveillance",
+    "Private air-gapped AI",
     "Threat intelligence",
-    "Global hardware deployment",
+    "Global infrastructure deployment",
     "HIPAA-aware support",
     "PCI DSS-informed support",
     "NIST-informed security practices",
@@ -185,7 +193,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${robotoMono.variable} cyber-grid min-h-screen antialiased`}
+        className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} cyber-grid min-h-screen antialiased`}
       >
         <a
           href="#main-content"

@@ -11,7 +11,7 @@ const facts = [
   `Contact phone: ${siteConfig.phoneDisplay}`,
   `Primary region: ${siteConfig.region}`,
   `Primary cities served: ${siteConfig.serviceArea.join(", ")}, South Carolina`,
-  "Core service categories: managed security and infrastructure, Microsoft 365, deployment logistics, public Wi-Fi, exposure research, camera systems, and private AI workflows",
+  "Core service categories: infrastructure hardening, Microsoft 365, infrastructure deployment, exposure research, perimeter surveillance, and private AI workflows",
   "Primary industries: medical offices, small businesses, municipalities, campgrounds, multi-site properties",
   "Engagement model: project-led, business-first, intelligence-led, and local-first where practical",
 ];

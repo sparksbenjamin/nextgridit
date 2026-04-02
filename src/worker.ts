@@ -354,19 +354,19 @@ function buildSurfaceScanResult(domain: string, mxRecords: string[]): SurfaceSca
   if (hasMicrosoft365) {
     return {
       domain,
-      environment: "Microsoft 365",
+      environment: "Microsoft 365 / Entra ID",
       finding:
-        "Environment: Microsoft 365. Critical Risk: Potential for Unauthenticated Account Enumeration (MSRC Case 108637 focus).",
+        "MX fingerprinting resolved a Microsoft-hosted mail edge consistent with Microsoft 365 and Entra-connected identity workflows.",
       focus:
-        "Mail flow resolved to protection.outlook.com. Prioritize Autodiscover behavior, account enumeration testing, and tenant-side identity hardening.",
-      riskScore: 82,
+        "Prioritize pre-auth enumeration validation, Autodiscover heuristics, legacy discovery behavior, and tenant-side identity hardening controls.",
+      riskScore: 86,
       mxRecords,
       summary:
-        "The full brief should validate enumeration paths, legacy Autodiscover exposure, and tenant-level mail and identity controls before broader external correlation work begins.",
+        "The full exposure brief should validate public identity signal leakage, legacy discovery behavior, and tenant-level controls before broader external correlation work begins.",
       technicalBrief: [
         "Mail carrier resolved through Microsoft 365 routing.",
-        "External exposure pattern aligns with MSRC Case #108637 research focus.",
-        "Recommended next step: validate enumeration behavior, Autodiscover paths, and Entra identity controls.",
+        "Environment aligns with the current MSRC Case #108637 research focus on unauthenticated enumeration behavior.",
+        "Recommended next step: validate principal discovery paths, Autodiscover behavior, and Entra identity controls.",
       ],
     };
   }
@@ -376,17 +376,17 @@ function buildSurfaceScanResult(domain: string, mxRecords: string[]): SurfaceSca
       domain,
       environment: "Google Workspace",
       finding:
-        "Environment: Google Workspace. Focus: IAM Delegation & Workspace API Exposure.",
+        "MX fingerprinting resolved a Google-hosted mail edge with a lower probability of Entra-linked enumeration paths.",
       focus:
-        "Mail flow resolved to Google-hosted MX infrastructure. Prioritize delegation review, Workspace API exposure, and admin boundary hygiene.",
-      riskScore: 74,
+        "Prioritize delegation review, branded subdomain exposure, identity residue, and admin boundary hygiene across externally visible collaboration services.",
+      riskScore: 71,
       mxRecords,
       summary:
-        "The full brief should validate delegated access, API exposure, workspace admin boundaries, and residual DNS intelligence tied to externally visible collaboration services.",
+        "The full exposure brief should validate delegated access, collaboration surface residue, and identity-related discovery pathways tied to Google-hosted infrastructure.",
       technicalBrief: [
         "Mail carrier resolved through Google Workspace.",
-        "Initial focus area shifts from Autodiscover research toward IAM delegation and Workspace API exposure.",
-        "Recommended next step: review admin delegation, API surface, and discovery residue across branded subdomains.",
+        "Primary research path shifts away from Autodiscover toward IAM delegation and branded discovery residue.",
+        "Recommended next step: review admin delegation, API surface, and exposed identity-adjacent subdomains.",
       ],
     };
   }
@@ -395,17 +395,17 @@ function buildSurfaceScanResult(domain: string, mxRecords: string[]): SurfaceSca
     domain,
     environment: "Custom or Hybrid Mail",
     finding:
-      "Environment: Custom or Hybrid Mail. Focus: Mail Routing Residue & External Identity Surface.",
+      "MX fingerprinting indicates a custom or hybrid mail posture with greater uncertainty across identity-adjacent edge systems.",
     focus:
-      "No Microsoft 365 or Google Workspace MX pattern was identified. Prioritize mail routing residue, inherited subdomains, and externally visible identity workflows.",
-    riskScore: 67,
+      "Prioritize mail routing residue, inherited subdomains, externally visible identity workflows, and evidence of blended SaaS plus legacy infrastructure.",
+    riskScore: 69,
     mxRecords,
     summary:
-      "The full brief should classify the mail stack, enumerate inherited DNS pathways, and review external identity and collaboration services before moving into deeper research correlation.",
+      "The full exposure brief should classify the mail stack, enumerate inherited DNS pathways, and review identity-adjacent services before deeper research correlation.",
     technicalBrief: [
       "MX routing does not cleanly match Microsoft 365 or Google Workspace.",
-      "Initial reconnaissance should classify the provider and map residual subdomains.",
-      "Recommended next step: baseline passive DNS, MX ownership, and identity-related edge services.",
+      "Initial reconnaissance should classify the provider and map residual subdomains and edge services.",
+      "Recommended next step: baseline passive DNS, MX ownership, and public identity-related pathways.",
     ],
   };
 }

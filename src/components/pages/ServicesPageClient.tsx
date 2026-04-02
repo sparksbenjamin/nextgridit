@@ -5,6 +5,7 @@ import Link from "next/link"
 import {
   IconBrandWindows,
   IconCertificate,
+  IconCpu2,
   IconRouter,
   IconServerCog,
   IconShieldLock,
@@ -14,9 +15,9 @@ import {
 const detailedServices = [
   {
     id: "it-support",
-    title: "Managed Security and Infrastructure",
-    description: "Oversee identity, mail, hardening, baseline controls, and day-to-day infrastructure operations without defaulting to a commodity MSP model.",
-    bullets: ["Security-minded operations", "Vendor and ownership governance", "Cleanup, hardening, and stabilization"],
+    title: "Infrastructure Hardening and Perimeter Surveillance",
+    description: "Oversee identity, mail, hardening, baseline controls, and externally visible systems without defaulting to a commodity MSP model.",
+    bullets: ["Perimeter control reviews", "Vendor and ownership governance", "Cleanup, hardening, and stabilization"],
   },
   {
     id: "microsoft-365",
@@ -26,7 +27,7 @@ const detailedServices = [
   },
   {
     id: "network-wifi",
-    title: "Global Deployment Logistics and Networking",
+    title: "Global Infrastructure Deployment and Network Operations",
     description: "Design, stage, and support reliable business and property networks with the operational discipline needed for regional or global rollout programs.",
     bullets: ["Field dispatch coordination", "Public and guest Wi-Fi deployments", "Infrastructure rollout planning"],
   },
@@ -43,10 +44,16 @@ const detailedServices = [
     bullets: ["Black box pentests", "Trusted-access internal assessments", "Risk review and exposure context"],
   },
   {
+    id: "private-air-gapped-ai",
+    title: "Private & Air-Gapped AI Implementation",
+    description: "Deploy Qwen and Mistral for enterprise coding, retrieval, and threat analysis without sending sensitive data to third-party platforms.",
+    bullets: ["Dedicated GPU clusters", "Private coding copilots", "Air-gapped threat-analysis workflows"],
+  },
+  {
     id: "camera-systems",
-    title: "Private AI, Cameras, and Local Intelligence Systems",
-    description: "Install and support camera systems, smart technology, and private intelligence workflows with options for on-site processing and controlled analysis.",
-    bullets: ["Full camera install and service", "Custom local AI processing", "Specialty visibility system design"],
+    title: "Perimeter Surveillance and Sensor Systems",
+    description: "Install and support camera systems, smart sensors, and local visibility infrastructure with options for on-site processing and controlled analysis.",
+    bullets: ["Full camera install and service", "Local capture and retention", "Specialty visibility system design"],
   },
 ]
 
@@ -56,7 +63,8 @@ const icons = {
   "network-wifi": <IconRouter className="w-10 h-10 text-[#00f0ff]" />,
   "security-hardening": <IconShieldLock className="w-10 h-10 text-white" />,
   "security-audits-pentesting": <IconCertificate className="w-10 h-10 text-[#ff9f1c]" />,
-  "camera-systems": <IconVideo className="w-10 h-10 text-[#00f0ff]" />,
+  "private-air-gapped-ai": <IconCpu2 className="w-10 h-10 text-[#39ff14]" />,
+  "camera-systems": <IconVideo className="w-10 h-10 text-[#94a3b8]" />,
 }
 
 export function ServicesPageClient() {
@@ -68,7 +76,7 @@ export function ServicesPageClient() {
         </h1>
         <div className="theme-rule mb-6 h-1 w-24" />
         <p className="theme-copy max-w-3xl font-sans text-lg leading-relaxed">
-          NextGridIT provides managed security and infrastructure, identity, deployment logistics, exposure research, private AI, and operational support services for organizations that need practical technical leadership without generic MSP packaging.
+          NextGridIT provides infrastructure hardening, identity control, exposure research, sovereign AI, surveillance systems, and global infrastructure execution for organizations that need practical technical leadership without generic MSP packaging.
         </p>
       </div>
 

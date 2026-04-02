@@ -9,7 +9,7 @@ export const siteConfig = {
   serviceArea: ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"],
   founded: "2026",
   tagline:
-    "Deploying hardware in 150+ countries. Discovering vulnerabilities before the world sees them. Home to MSRC-level research and private, air-gapped AI security.",
+    "NextGrid IT isn't just boots on the ground in 150+ countries. We are the researchers discovering the vulnerabilities the world hasn't seen yet. Home to MSRC-level research and secure, air-gapped Private AI.",
   sameAs: ["https://github.com/sparksbenjamin/nextgridit"],
 } as const;
 
@@ -45,22 +45,22 @@ export type TechnologyEntry = {
 export const services: Service[] = [
   {
     slug: "it-support",
-    shortLabel: "Managed Security",
-    title: "Managed Security and Infrastructure",
+    shortLabel: "Infrastructure Hardening",
+    title: "Infrastructure Hardening and Perimeter Surveillance",
     summary:
-      "Integrated security oversight, infrastructure governance, and operator-led technical leadership for organizations with real exposure to manage.",
+      "Operator-led hardening across identity, mail, network edges, and externally visible infrastructure for organizations that cannot afford soft perimeter drift.",
     description:
-      "NextGridIT provides managed security and infrastructure support for organizations that need clear operational ownership without a generic MSP contract. Engagements can include identity and mail controls, vendor coordination, environment cleanup, baseline hardening, infrastructure oversight, and documentation that makes the environment easier to defend and operate.",
+      "NextGridIT leads infrastructure hardening and perimeter surveillance programs for organizations that need stronger control without falling into generic MSP packaging. Engagements can include identity and mail controls, externally visible service review, environment cleanup, baseline hardening, edge-system governance, and documentation that makes the environment easier to defend under pressure.",
     audience:
-      "Best fit for distributed operators, regulated teams, growing businesses, and infrastructure-heavy environments that need experienced security-minded execution and clear communication.",
+      "Best fit for distributed operators, regulated teams, growing businesses, and infrastructure-heavy environments that need experienced hardening leadership, cleaner perimeter visibility, and clear technical ownership.",
     outcomes: [
-      "Reduce recurring security and infrastructure surprises across the operating environment",
-      "Create tighter ownership around identity, mail, networking, and vendor coordination",
-      "Establish a cleaner operational baseline for future audits, growth, and incident response",
+      "Reduce recurring exposure across identity, mail, network edge, and inherited infrastructure",
+      "Create tighter ownership around public-facing systems, administrator pathways, and vendor coordination",
+      "Establish a cleaner defensive baseline for future audits, threat response, and controlled growth",
     ],
     deliverables: [
-      "Security and infrastructure assessment with prioritized remediation guidance",
-      "Managed operations recommendations across identity, networking, and vendor workflows",
+      "Infrastructure hardening assessment with prioritized remediation guidance",
+      "Perimeter surveillance recommendations across mail, DNS, identity, and network edge workflows",
       "Documentation cleanup, ownership mapping, and defensible handoff notes",
     ],
     relatedIndustries: ["small-business", "municipalities", "medical-offices"],
@@ -70,12 +70,12 @@ export const services: Service[] = [
       {
         question: "Do you replace an internal security or IT team?",
         answer:
-          "Not necessarily. NextGridIT can supplement internal teams, coordinate with outside providers, or provide hands-on managed security and infrastructure leadership where no dedicated team exists.",
+          "Not necessarily. NextGridIT can supplement internal teams, coordinate with outside providers, or provide hands-on hardening leadership where no dedicated security operations function exists.",
       },
       {
         question: "Is this just break-fix support under a different name?",
         answer:
-          "No. The model is designed around reducing exposure, improving control, and creating better operating conditions rather than waiting for emergencies to stack up.",
+          "No. The model is designed around reducing exposure, improving control, and creating better defensive conditions rather than waiting for emergencies to stack up.",
       },
     ],
   },
@@ -117,22 +117,22 @@ export const services: Service[] = [
   },
   {
     slug: "network-wifi",
-    shortLabel: "Network & Wi-Fi",
-    title: "Network Infrastructure, Public Wi-Fi, and Connectivity",
+    shortLabel: "Infrastructure Delivery",
+    title: "Global Infrastructure Deployment and Network Operations",
     summary:
-      "Wired and wireless network design, upgrades, segmentation, and troubleshooting for business and property environments.",
+      "Wired and wireless infrastructure delivery, segmentation, and network operations for multi-site environments that need disciplined execution across regions.",
     description:
-      "NextGridIT designs, upgrades, and supports business and property networks with a focus on reliable performance, segmented access, and maintainable infrastructure. Work often includes Ubiquiti and UniFi deployments, public and guest Wi-Fi separation, multi-building connectivity planning, firewall coordination, and general network cleanup.",
+      "NextGridIT designs, upgrades, and deploys business and property networks with a focus on reliable performance, segmented access, maintainable infrastructure, and strong execution sequencing. Work often includes Ubiquiti and UniFi deployments, public and guest Wi-Fi separation, multi-building connectivity planning, firewall coordination, and broader field execution planning.",
     audience:
-      "Best fit for offices, municipalities, campgrounds, hospitality-style properties, and multi-building sites where coverage and segmentation matter.",
+      "Best fit for offices, municipalities, campgrounds, hospitality-style properties, and multi-building sites where coverage, segmentation, and coordinated infrastructure rollout matter.",
     outcomes: [
       "Improve Wi-Fi coverage and network reliability",
       "Separate guest, staff, device, and payment traffic more cleanly",
-      "Support future growth with better network documentation and design",
+      "Support future growth with better network documentation, routing discipline, and deployment sequencing",
     ],
     deliverables: [
       "Network assessment and topology guidance",
-      "Coverage, segmentation, and hardware recommendations",
+      "Coverage, segmentation, hardware, and field execution recommendations",
       "Deployment notes and environment documentation",
     ],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
@@ -188,6 +188,42 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "private-air-gapped-ai",
+    shortLabel: "Private AI",
+    title: "Private & Air-Gapped AI Implementation",
+    summary:
+      "Deploy Qwen and Mistral for enterprise coding, threat analysis, and research workflows without sending sensitive data to third-party platforms.",
+    description:
+      "NextGridIT deploys and manages dedicated on-premise GPU clusters for enterprises that need the leverage of modern LLMs without third-party data leakage. Engagements can include model selection, air-gapped inference design, retrieval workflows, coding copilots, threat-analysis pipelines, and operational controls for environments where data privacy is non-negotiable.",
+    audience:
+      "Best fit for security teams, regulated operators, internal engineering groups, and research programs that want private AI capability inside their own physical boundary.",
+    outcomes: [
+      "Operationalize enterprise AI without moving sensitive documents, code, or telemetry to public SaaS",
+      "Create a dedicated inference environment for coding, threat analysis, and research triage",
+      "Give leadership a controlled path to AI adoption that aligns with privacy and security requirements",
+    ],
+    deliverables: [
+      "On-premise GPU cluster architecture and deployment plan",
+      "Qwen and Mistral runtime configuration with secure model serving",
+      "Governance, logging, and workflow design for private AI-assisted operations",
+    ],
+    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
+    relatedLocations: ["greenville-sc", "clemson-sc", "anderson-sc"],
+    technologies: ["Qwen 2.5", "Mistral", "On-prem GPU clusters", "Private retrieval workflows"],
+    faq: [
+      {
+        question: "Is this just another cloud AI subscription with better prompting?",
+        answer:
+          "No. The service is built around dedicated infrastructure, controlled model hosting, and private workflow design so sensitive data stays inside the client environment.",
+      },
+      {
+        question: "Can these systems be fully air-gapped?",
+        answer:
+          "Yes. The architecture can be designed for fully isolated environments where models, prompts, documents, and outputs never traverse third-party infrastructure.",
+      },
+    ],
+  },
+  {
     slug: "security-audits-pentesting",
     shortLabel: "Security Audits",
     title: "Security Audits and Penetration Testing",
@@ -235,22 +271,22 @@ export const services: Service[] = [
   },
   {
     slug: "camera-systems",
-    shortLabel: "Camera Systems",
-    title: "Camera Systems and Local-First Smart Deployments",
+    shortLabel: "Surveillance Systems",
+    title: "Perimeter Surveillance and Sensor Systems",
     summary:
-      "Camera system design, installation, and local-first smart deployments with an emphasis on ownership and practical fit.",
+      "Camera, sensor, and local capture infrastructure designed to extend perimeter visibility without surrendering ownership of the evidence plane.",
     description:
-      "NextGridIT designs and supports camera systems and specialty deployments where on-site visibility, local processing, and tailored coverage matter. Projects can include full camera installs, site planning, integration with broader network infrastructure, and local-first AI-assisted video workflows where appropriate.",
+      "NextGridIT designs and supports surveillance systems and specialty sensor deployments where on-site visibility, local processing, and tailored coverage matter. Projects can include full camera installs, site planning, integration with broader network infrastructure, local NVR design, and controlled AI-assisted video workflows where appropriate.",
     audience:
-      "Best fit for properties, small businesses, municipalities, and specialty sites that need better visibility without handing everything to a third-party cloud platform.",
+      "Best fit for properties, small businesses, municipalities, and specialty sites that need stronger perimeter visibility without handing everything to a third-party cloud platform.",
     outcomes: [
-      "Improve visibility across entrances, public spaces, and operational areas",
-      "Keep more control of footage and system ownership close to the site",
-      "Coordinate camera infrastructure with the underlying network design",
+      "Improve visibility across entrances, public spaces, and operational choke points",
+      "Keep more control of footage, sensor telemetry, and system ownership close to the site",
+      "Coordinate surveillance infrastructure with the underlying network design",
     ],
     deliverables: [
       "Site coverage planning and deployment recommendations",
-      "Camera installation and support scope",
+      "Camera, NVR, and sensor installation scope",
       "Local-first processing and retention guidance where relevant",
     ],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
@@ -626,8 +662,8 @@ export const technologyCatalog: TechnologyEntry[] = [
     slug: "local-ai-processing",
     name: "Local AI Processing",
     category: "Cameras and Local AI",
-    summary: "On-site analysis and local-first processing options for visibility workflows where ownership matters.",
-    relatedServices: ["camera-systems"],
+    summary: "On-site analysis, air-gapped inference, and local-first processing options for visibility and secure AI workflows where ownership matters.",
+    relatedServices: ["camera-systems", "private-air-gapped-ai"],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
   },
 ];
@@ -646,9 +682,9 @@ export const faqs = [
       "NextGridIT maintains rapid-response coverage across Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina, while supporting larger logistics-led deployments and specialty security engagements across broader regions and global programs.",
   },
   {
-    question: "Does NextGridIT provide managed services contracts?",
+    question: "Does NextGridIT provide ongoing support contracts?",
     answer:
-      "NextGridIT is positioned around managed security and infrastructure leadership rather than commodity MSP packaging. Ongoing support is available where it improves security posture, ownership, and execution quality.",
+      "NextGridIT is positioned around infrastructure hardening, exposure research, and project-led execution rather than commodity MSP packaging. Ongoing support is available where it improves surveillance depth, ownership, and execution quality.",
   },
   {
     question: "What compliance-related environments does NextGridIT support?",

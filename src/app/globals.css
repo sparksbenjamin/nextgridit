@@ -1,60 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-roboto-mono);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 @layer base {
   :root,
-  :root[data-theme="light"] {
-    --background: #f5f7fb;
-    --background-elevated: rgba(255, 255, 255, 0.88);
-    --surface: rgba(255, 255, 255, 0.8);
-    --surface-strong: #ffffff;
-    --surface-muted: rgba(236, 241, 248, 0.78);
-    --foreground: #132033;
-    --muted: #4a607b;
-    --muted-soft: #6d819a;
-    --border: rgba(27, 60, 104, 0.12);
-    --border-strong: rgba(27, 60, 104, 0.2);
-    --accent: #1e6ad8;
-    --accent-strong: #114da6;
-    --accent-soft: rgba(30, 106, 216, 0.12);
-    --accent-alt: #14846e;
-    --accent-alt-soft: rgba(20, 132, 110, 0.12);
-    --shadow-color: rgba(17, 36, 66, 0.12);
-    --grid-line: rgba(20, 50, 91, 0.05);
-    --hero-glow-one: rgba(30, 106, 216, 0.1);
-    --hero-glow-two: rgba(20, 132, 110, 0.08);
-    --selection-bg: #1e6ad8;
-    --selection-text: #ffffff;
-    color-scheme: light;
+  :root[data-theme="dark"] {
+    --background: #05080d;
+    --background-elevated: rgba(9, 14, 20, 0.88);
+    --surface: rgba(12, 18, 25, 0.78);
+    --surface-strong: #0d131b;
+    --surface-muted: rgba(16, 23, 32, 0.96);
+    --foreground: #eef6ef;
+    --muted: #a6b3a8;
+    --muted-soft: #708072;
+    --border: rgba(138, 160, 145, 0.16);
+    --border-strong: rgba(181, 229, 196, 0.24);
+    --accent: #00ff41;
+    --accent-strong: #8dffab;
+    --accent-soft: rgba(0, 255, 65, 0.12);
+    --accent-alt: #94a3b8;
+    --accent-alt-soft: rgba(148, 163, 184, 0.14);
+    --shadow-color: rgba(0, 0, 0, 0.32);
+    --grid-line: rgba(129, 151, 138, 0.06);
+    --hero-glow-one: rgba(0, 255, 65, 0.13);
+    --hero-glow-two: rgba(148, 163, 184, 0.12);
+    --selection-bg: #00ff41;
+    --selection-text: #021006;
+    color-scheme: dark;
   }
 
-  :root[data-theme="dark"] {
-    --background: #0f1723;
-    --background-elevated: rgba(17, 25, 39, 0.86);
-    --surface: rgba(18, 28, 43, 0.74);
-    --surface-strong: #162133;
-    --surface-muted: rgba(22, 33, 51, 0.92);
-    --foreground: #ecf2fb;
-    --muted: #b2c1d7;
-    --muted-soft: #8fa1bb;
-    --border: rgba(154, 177, 205, 0.14);
-    --border-strong: rgba(154, 177, 205, 0.24);
-    --accent: #6fb0ff;
-    --accent-strong: #8cc2ff;
-    --accent-soft: rgba(111, 176, 255, 0.14);
-    --accent-alt: #7de1cb;
-    --accent-alt-soft: rgba(125, 225, 203, 0.12);
-    --shadow-color: rgba(0, 0, 0, 0.32);
-    --grid-line: rgba(184, 202, 227, 0.06);
-    --hero-glow-one: rgba(111, 176, 255, 0.16);
-    --hero-glow-two: rgba(125, 225, 203, 0.12);
-    --selection-bg: #6fb0ff;
-    --selection-text: #08111d;
-    color-scheme: dark;
+  :root[data-theme="light"] {
+    --background: #eef1ec;
+    --background-elevated: rgba(249, 251, 248, 0.88);
+    --surface: rgba(255, 255, 255, 0.84);
+    --surface-strong: #ffffff;
+    --surface-muted: rgba(235, 239, 234, 0.92);
+    --foreground: #121914;
+    --muted: #425347;
+    --muted-soft: #627166;
+    --border: rgba(52, 70, 59, 0.12);
+    --border-strong: rgba(52, 70, 59, 0.18);
+    --accent: #0f8a30;
+    --accent-strong: #0d6d28;
+    --accent-soft: rgba(15, 138, 48, 0.1);
+    --accent-alt: #3f5564;
+    --accent-alt-soft: rgba(63, 85, 100, 0.1);
+    --shadow-color: rgba(17, 25, 39, 0.12);
+    --grid-line: rgba(52, 70, 59, 0.05);
+    --hero-glow-one: rgba(15, 138, 48, 0.1);
+    --hero-glow-two: rgba(63, 85, 100, 0.08);
+    --selection-bg: #0f8a30;
+    --selection-text: #ffffff;
+    color-scheme: light;
   }
 
   :root[data-theme="hacker"] {
@@ -90,7 +90,7 @@ html {
 body {
   background:
     radial-gradient(circle at top left, var(--hero-glow-one), transparent 34%),
-    radial-gradient(circle at 80% 20%, var(--hero-glow-two), transparent 28%),
+    radial-gradient(circle at 78% 16%, var(--hero-glow-two), transparent 24%),
     linear-gradient(180deg, var(--background), color-mix(in srgb, var(--background) 82%, black 18%));
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
@@ -130,6 +130,8 @@ textarea {
 
 .theme-heading {
   color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  letter-spacing: -0.03em;
 }
 
 .theme-copy {

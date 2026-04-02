@@ -6,7 +6,7 @@ import { createBreadcrumbSchema, createMetadata } from "@/lib/seo"
 export const metadata: Metadata = createMetadata({
   title: "NextGrid Labs",
   description:
-    "Proprietary vulnerability research, MSRC case tracking, global telemetry concepts, private AI workflows, and instant surface scan previews from NextGridIT.",
+    "MSRC case tracking, Entra ID research, sovereign AI workflows, and instant perimeter audit previews from NextGridIT.",
   path: "/labs/",
 })
 

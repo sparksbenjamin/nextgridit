@@ -12,7 +12,7 @@ import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 export const metadata: Metadata = createMetadata({
   title: "Compliance and Frameworks",
   description:
-    "Explore the compliance-aware support, private analysis posture, and framework-informed technical services NextGridIT offers across HIPAA, PCI DSS, and NIST-aligned environments.",
+    "Explore the compliance-aware posture, private analysis model, and framework-informed technical services NextGridIT offers across HIPAA, PCI DSS, and NIST-aligned environments.",
   path: "/compliance/",
 });
 
@@ -24,7 +24,7 @@ const frameworks = [
     support:
       "We help with secure Microsoft 365 administration, access controls, documentation, infrastructure cleanup, backups, endpoint posture, and practical coordination with the systems you already rely on.",
     links: [
-      { label: "Managed Security", href: "/services/it-support/" },
+      { label: "Infrastructure Hardening", href: "/services/it-support/" },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
       { label: "Security", href: "/services/security-hardening/" },
     ],
@@ -50,7 +50,7 @@ const frameworks = [
     links: [
       { label: "Security", href: "/services/security-hardening/" },
       { label: "Security Audits", href: "/services/security-audits-pentesting/" },
-      { label: "Managed Security", href: "/services/it-support/" },
+      { label: "Infrastructure Hardening", href: "/services/it-support/" },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
     ],
   },

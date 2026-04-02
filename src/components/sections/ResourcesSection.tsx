@@ -28,7 +28,7 @@ const resources = [
   {
     title: "Project Fit",
     description:
-      "See which environments benefit most from managed security and infrastructure, deployment logistics, and intelligence-led support.",
+      "See which environments benefit most from infrastructure hardening, surveillance engineering, and intelligence-led support.",
     href: "/project-fit/",
   },
   {
@@ -55,7 +55,7 @@ export function ResourcesSection() {
           </h2>
           <div className="theme-rule mb-6 h-1 w-24" />
           <p className="theme-copy text-lg leading-relaxed">
-            Beyond the service overview, these pages explain how NextGridIT combines logistics, security, private AI, and intelligence-led operating discipline.
+            Beyond the service overview, these pages explain how NextGridIT combines research, infrastructure hardening, private AI, and intelligence-led operating discipline.
           </p>
         </div>
 

@@ -32,7 +32,7 @@ function shouldIgnoreKeyTarget(target: EventTarget | null) {
 }
 
 export function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = React.useState<ThemeMode>("light");
+  const [theme, setTheme] = React.useState<ThemeMode>("dark");
   const [hackerUnlocked, setHackerUnlocked] = React.useState(false);
 
   React.useEffect(() => {
@@ -44,7 +44,7 @@ export function ThemeToggle({ className }: { className?: string }) {
     setTheme(
       rootTheme === "light" || rootTheme === "dark" || rootTheme === "hacker"
         ? rootTheme
-        : savedTheme ?? "light"
+        : savedTheme ?? "dark"
     );
 
     let sequence = "";
@@ -95,8 +95,8 @@ export function ThemeToggle({ className }: { className?: string }) {
   }
 
   const options: Array<{ mode: ThemeMode; label: string; icon: React.ReactNode }> = [
-    { mode: "light", label: "Light", icon: <IconSun className="h-4 w-4" /> },
     { mode: "dark", label: "Dark", icon: <IconMoon className="h-4 w-4" /> },
+    { mode: "light", label: "Light", icon: <IconSun className="h-4 w-4" /> },
   ];
 
   if (hackerUnlocked) {

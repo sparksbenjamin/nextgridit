@@ -37,7 +37,7 @@ export async function generateMetadata({
 
   return createMetadata({
     title: `${technology.name} Support`,
-    description: `${technology.summary} Learn how NextGridIT applies ${technology.name} across managed security, infrastructure, and deployment programs.`,
+    description: `${technology.summary} Learn how NextGridIT applies ${technology.name} across infrastructure hardening, surveillance, and deployment programs.`,
     path: `/technologies/${technology.slug}/`,
   });
 }

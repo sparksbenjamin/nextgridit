@@ -1,19 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { IconArrowRight, IconShieldLock, IconX } from "@tabler/icons-react"
+import Link from "next/link"
+import { IconArrowRight, IconRefresh, IconShieldLock } from "@tabler/icons-react"
 import { looksLikeDomain, surfaceScanSteps, type SurfaceScanResult } from "@/lib/surface-scan"
-
-const personalDomains = new Set([
-  "gmail.com",
-  "yahoo.com",
-  "outlook.com",
-  "hotmail.com",
-  "icloud.com",
-  "aol.com",
-  "proton.me",
-  "protonmail.com",
-])
 
 type SurfaceScanModuleProps = {
   sectionTitle: string
@@ -27,40 +17,34 @@ function delay(ms: number) {
   })
 }
 
-function looksLikeBusinessEmail(value: string) {
-  const normalized = value.trim().toLowerCase()
-  const match = normalized.match(/^[^\s@]+@([^\s@]+\.[^\s@]+)$/)
-
-  if (!match) {
-    return false
-  }
-
-  return !personalDomains.has(match[1])
-}
-
 export function SurfaceScanModule({
   sectionTitle,
   sectionDescription,
   anchorId,
 }: SurfaceScanModuleProps) {
   const [domain, setDomain] = React.useState("")
-  const [email, setEmail] = React.useState("")
   const [submittedDomain, setSubmittedDomain] = React.useState("")
   const [activeSteps, setActiveSteps] = React.useState(0)
   const [isRunning, setIsRunning] = React.useState(false)
-  const [hasOverlay, setHasOverlay] = React.useState(false)
-  const [isUnlocked, setIsUnlocked] = React.useState(false)
   const [domainError, setDomainError] = React.useState("")
-  const [emailError, setEmailError] = React.useState("")
   const [scanError, setScanError] = React.useState("")
   const [result, setResult] = React.useState<SurfaceScanResult | null>(null)
+  const terminalRef = React.useRef<HTMLDivElement>(null)
 
-  function resetOverlay() {
-    setHasOverlay(false)
-    setIsRunning(false)
-    setIsUnlocked(false)
+  React.useEffect(() => {
+    if (!terminalRef.current) {
+      return
+    }
+
+    terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+  }, [activeSteps, scanError, result])
+
+  function resetScan() {
+    setDomain("")
+    setSubmittedDomain("")
     setActiveSteps(0)
-    setEmailError("")
+    setIsRunning(false)
+    setDomainError("")
     setScanError("")
     setResult(null)
   }
@@ -76,13 +60,10 @@ export function SurfaceScanModule({
     }
 
     setDomainError("")
-    setEmailError("")
     setScanError("")
     setResult(null)
-    setIsUnlocked(false)
     setActiveSteps(0)
     setSubmittedDomain(normalizedDomain)
-    setHasOverlay(true)
     setIsRunning(true)
 
     const scanRequest = fetch("/api/surface-scan", {
@@ -103,7 +84,7 @@ export function SurfaceScanModule({
     })
 
     for (let index = 0; index < surfaceScanSteps.length; index += 1) {
-      await delay(700)
+      await delay(320)
       setActiveSteps(index + 1)
     }
 
@@ -119,225 +100,218 @@ export function SurfaceScanModule({
     }
   }
 
-  function handleUnlockSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    if (!looksLikeBusinessEmail(email)) {
-      setEmailError("Use a business email address to request the full intelligence brief.")
-      return
-    }
-
-    setEmailError("")
-    setIsUnlocked(true)
-  }
-
   return (
-    <section
-      id={anchorId}
-      className="relative border-t border-[var(--border)] py-24"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(9,13,19,0.96),rgba(10,16,22,0.99))] p-6 text-slate-100 shadow-[0_22px_80px_-42px_rgba(0,0,0,0.9)] md:p-8">
-          <div className="absolute inset-0 cyber-grid opacity-10" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
+    <section id={anchorId} className="relative border-t border-[var(--border)] py-24">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 cyber-grid opacity-[0.05]" />
+        <div className="absolute left-[12%] top-0 h-56 w-56 rounded-full blur-[120px]" style={{ backgroundColor: "var(--hero-glow-one)" }} />
+      </div>
 
-          <div className="relative z-10">
-            <div className="max-w-3xl">
-              <p className="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-cyan-200/80">
-                Active perimeter intelligence
-              </p>
-              <h2 className="font-mono text-3xl font-bold text-white md:text-5xl">
-                {sectionTitle}
-              </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">
-                {sectionDescription}
-              </p>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 max-w-3xl">
+          <p className="mb-4 font-mono text-xs uppercase tracking-[0.3em] theme-accent">
+            Active intelligence
+          </p>
+          <h2 className="theme-heading text-4xl font-bold md:text-5xl">{sectionTitle}</h2>
+          <p className="theme-copy mt-4 max-w-2xl text-lg leading-relaxed">
+            {sectionDescription}
+          </p>
+        </div>
+
+        <div className="grid gap-6 xl:grid-cols-[1.02fr_0.98fr]">
+          <section className="glass-panel overflow-hidden rounded-[2rem] border border-[var(--border)]">
+            <div className="flex items-center justify-between gap-4 border-b border-[var(--border)] px-6 py-4">
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-rose-500/80" />
+                <span className="h-3 w-3 rounded-full bg-amber-400/80" />
+                <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
+                <span className="pl-2 font-mono text-xs uppercase tracking-[0.24em] theme-soft">
+                  surface_scan.sh
+                </span>
+              </div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] theme-accent-strong">
+                {isRunning ? "Running" : result ? "Brief staged" : "Idle"}
+              </span>
             </div>
 
-            <form onSubmit={handleScanSubmit} className="mt-8 flex flex-col gap-4 lg:flex-row">
-              <input
-                type="text"
-                value={domain}
-                onChange={(event) => setDomain(event.target.value)}
-                placeholder="Enter Domain for Instant Exposure Audit"
-                className="min-h-14 flex-1 rounded-2xl border border-white/10 bg-[#0b1016] px-5 font-mono text-base text-slate-100 outline-none transition focus:border-cyan-400/40"
-                aria-label="Enter domain for instant exposure audit"
-              />
-              <button
-                type="submit"
-                disabled={isRunning}
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-cyan-400 px-6 font-mono text-sm font-bold uppercase tracking-[0.22em] text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-cyan-400/40"
+            <div className="p-6">
+              <form onSubmit={handleScanSubmit} className="flex flex-col gap-4 sm:flex-row">
+                <input
+                  type="text"
+                  value={domain}
+                  onChange={(event) => setDomain(event.target.value)}
+                  placeholder="[ Enter Domain ]"
+                  className="min-h-14 flex-1 rounded-2xl border border-[var(--border)] bg-[rgba(4,8,13,0.92)] px-5 font-mono text-base text-[var(--foreground)] outline-none transition focus:border-[var(--accent)]"
+                  aria-label="Enter domain for instant perimeter audit"
+                />
+                <button
+                  type="submit"
+                  disabled={isRunning}
+                  className="button-primary inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl px-6 font-mono text-sm font-bold uppercase tracking-[0.22em] disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  <IconShieldLock className="h-5 w-5" />
+                  {isRunning ? "Scanning..." : "Execute Scan"}
+                </button>
+              </form>
+
+              {domainError ? (
+                <p className="mt-3 font-mono text-sm text-rose-300">{domainError}</p>
+              ) : null}
+
+              <div
+                ref={terminalRef}
+                className="mt-6 h-[23rem] overflow-y-auto rounded-[1.5rem] border border-[var(--border)] bg-[#04070b] p-4"
               >
-                <IconShieldLock className="h-5 w-5" />
-                {isRunning ? "Scanning..." : "Run Surface Scan"}
-              </button>
-            </form>
-            {domainError ? (
-              <p className="relative z-10 mt-3 font-mono text-sm text-rose-300">{domainError}</p>
-            ) : null}
-          </div>
+                <div className="space-y-3 font-mono text-sm">
+                  {activeSteps === 0 ? (
+                    <>
+                      <p className="theme-soft">
+                        &gt; waiting for target input...
+                      </p>
+                      <p className="theme-soft">
+                        &gt; accepted input format: apex domain or delegated subdomain
+                      </p>
+                    </>
+                  ) : null}
 
-          {hasOverlay ? (
-            <div className="absolute inset-0 z-20 bg-[rgba(4,8,13,0.94)] backdrop-blur-sm">
-              <div className="flex h-full flex-col justify-between p-6 md:p-8">
-                <div className="mb-6 flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.28em] text-cyan-200/80">
-                      Terminal overlay
-                    </p>
-                    <h3 className="mt-2 font-mono text-2xl font-bold text-white md:text-3xl">
-                      Surface scan for {submittedDomain}
-                    </h3>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-emerald-200">
-                      {isRunning ? "overlay active" : "brief ready"}
-                    </div>
-                    <button
-                      type="button"
-                      onClick={resetOverlay}
-                      disabled={isRunning}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-xs uppercase tracking-[0.2em] text-slate-200 disabled:cursor-not-allowed disabled:opacity-40"
-                    >
-                      <IconX className="h-4 w-4" />
-                      Reset
-                    </button>
-                  </div>
-                </div>
+                  {surfaceScanSteps.slice(0, activeSteps).map((step, index) => {
+                    const isCurrent = isRunning && index === activeSteps - 1
 
-                <div className="grid flex-1 gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-                  <section className="rounded-[1.5rem] border border-white/10 bg-[#0b1016] p-5">
-                    <div className="mb-4 flex items-center gap-2 border-b border-white/10 pb-4 font-mono text-xs uppercase tracking-[0.24em] text-slate-400">
-                      <span className="h-3 w-3 rounded-full bg-rose-400/90" />
-                      <span className="h-3 w-3 rounded-full bg-amber-400/90" />
-                      <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
-                      <span className="ml-2">terminal // perimeter_intel</span>
-                    </div>
-
-                    <div className="space-y-3 font-mono text-sm text-slate-300">
-                      {surfaceScanSteps.map((step, index) => {
-                        const isVisible = activeSteps > index
-                        const isCurrent = isRunning && activeSteps === index + 1
-
-                        return (
-                          <div
-                            key={step}
-                            className={`rounded-xl border px-4 py-3 transition ${
-                              isVisible
-                                ? "border-cyan-400/25 bg-cyan-400/10 text-cyan-50"
-                                : "border-white/8 bg-white/5 text-slate-500"
-                            }`}
-                          >
-                            <div className="flex items-center justify-between gap-3">
-                              <span>{`> ${index + 1}. ${step}`}</span>
-                              <span className="text-[11px] uppercase tracking-[0.2em] text-slate-400">
-                                {isVisible ? (isCurrent ? "running" : "complete") : "queued"}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      })}
-
-                      {scanError ? (
-                        <div className="rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-4 text-rose-200">
-                          {scanError}
+                    return (
+                      <div
+                        key={`${step}-${index}`}
+                        className="rounded-xl border border-[var(--border)] bg-[rgba(7,13,18,0.96)] px-4 py-3"
+                      >
+                        <div className="flex items-center justify-between gap-4">
+                          <span className={isCurrent ? "theme-accent-strong" : "text-slate-200"}>
+                            {step}
+                          </span>
+                          <span className="text-[11px] uppercase tracking-[0.22em] theme-soft">
+                            {isCurrent ? "active" : "logged"}
+                          </span>
                         </div>
-                      ) : null}
-                    </div>
-                  </section>
-
-                  <section className="rounded-[1.5rem] border border-white/10 bg-[#0b1016] p-5">
-                    <div className="mb-5 flex flex-col gap-4 border-b border-white/10 pb-5 sm:flex-row sm:items-center sm:justify-between">
-                      <div>
-                        <p className="font-mono text-xs uppercase tracking-[0.24em] text-slate-400">
-                          Result preview
-                        </p>
-                        <h3 className="mt-2 text-2xl font-semibold text-white">
-                          {result ? result.environment : "Awaiting risk brief"}
-                        </h3>
                       </div>
-                      <div className="rounded-2xl border border-amber-300/20 bg-amber-300/10 px-4 py-3 text-center">
-                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-amber-100/80">
-                          Risk Score
-                        </p>
-                        <p className="mt-1 font-mono text-2xl font-bold text-amber-200">
-                          {result ? `${result.riskScore}/100` : "--/100"}
-                        </p>
+                    )
+                  })}
+
+                  {result ? (
+                    <div className="rounded-xl border border-[var(--accent)]/30 bg-[var(--accent-soft)] px-4 py-3 text-slate-100">
+                      <div className="flex items-center justify-between gap-4">
+                        <span>[RESULT] Exposure profile generated for {result.domain}.</span>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.22em] theme-accent-strong">
+                          complete
+                        </span>
                       </div>
                     </div>
+                  ) : null}
 
-                    {result ? (
-                      <>
-                        <div className={`space-y-4 transition ${isUnlocked ? "" : "select-none blur-sm"}`}>
-                          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                            <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-400">
-                              Environment
-                            </p>
-                            <p className="mt-2 text-slate-200">{result.finding}</p>
-                          </div>
-                          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                            <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-400">
-                              Exposure Focus
-                            </p>
-                            <p className="mt-2 text-slate-200">{result.focus}</p>
-                          </div>
-                          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                            <p className="font-mono text-xs uppercase tracking-[0.22em] text-slate-400">
-                              Intelligence Brief
-                            </p>
-                            <ul className="mt-3 space-y-2 text-slate-200">
-                              {result.technicalBrief.map((item) => (
-                                <li key={item}>{item}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-
-                        {!isUnlocked ? (
-                          <div className="mt-6 rounded-[1.5rem] border border-cyan-400/20 bg-cyan-400/8 p-5">
-                            <p className="font-mono text-sm uppercase tracking-[0.22em] text-cyan-100">
-                              Critical findings identified. Enter your business email to request the full Intelligence Brief.
-                            </p>
-                            <form onSubmit={handleUnlockSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row">
-                              <input
-                                type="email"
-                                value={email}
-                                onChange={(event) => setEmail(event.target.value)}
-                                placeholder="name@company.com"
-                                className="min-h-12 flex-1 rounded-2xl border border-white/10 bg-[#091019] px-4 font-mono text-sm text-slate-100 outline-none transition focus:border-cyan-400/40"
-                                aria-label="Enter business email to request the full intelligence brief"
-                              />
-                              <button
-                                type="submit"
-                                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-emerald-300 px-5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-950 transition hover:bg-emerald-200"
-                              >
-                                Request Full Intelligence Brief
-                                <IconArrowRight className="h-4 w-4" />
-                              </button>
-                            </form>
-                            {emailError ? (
-                              <p className="mt-3 font-mono text-sm text-rose-300">{emailError}</p>
-                            ) : null}
-                          </div>
-                        ) : (
-                          <div className="mt-6 rounded-[1.5rem] border border-emerald-400/20 bg-emerald-400/10 p-5 text-emerald-100">
-                            <p className="font-mono text-xs uppercase tracking-[0.24em]">
-                              Intelligence brief requested
-                            </p>
-                            <p className="mt-2">{result.summary}</p>
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <div className="rounded-2xl border border-dashed border-white/10 px-4 py-8 text-slate-500">
-                        The blurred results preview will appear here once the scan completes.
-                      </div>
-                    )}
-                  </section>
+                  {scanError ? (
+                    <div className="rounded-xl border border-rose-400/30 bg-rose-400/10 px-4 py-3 text-rose-200">
+                      {scanError}
+                    </div>
+                  ) : null}
                 </div>
               </div>
+
+              <div className="mt-5 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={resetScan}
+                  className="button-secondary inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.2em]"
+                >
+                  <IconRefresh className="h-4 w-4" />
+                  Reset
+                </button>
+                {submittedDomain ? (
+                  <span className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-3 font-mono text-xs uppercase tracking-[0.2em] theme-soft">
+                    Target: {submittedDomain}
+                  </span>
+                ) : null}
+              </div>
             </div>
-          ) : null}
+          </section>
+
+          <section className="glass-panel rounded-[2rem] border border-[var(--border)] p-6">
+            <div className="flex items-start justify-between gap-4 border-b border-[var(--border)] pb-5">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.26em] theme-accent">
+                  Exposure brief preview
+                </p>
+                <h3 className="theme-heading mt-3 text-3xl font-bold">
+                  {result ? result.environment : "Awaiting target domain"}
+                </h3>
+              </div>
+              <div className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-center">
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] theme-soft">
+                  Risk Score
+                </p>
+                <p className="theme-heading mt-1 text-3xl font-bold">
+                  {result ? result.riskScore : "--"}
+                </p>
+              </div>
+            </div>
+
+            {result ? (
+              <>
+                <div className="relative mt-6">
+                  <div className="pointer-events-none space-y-4 select-none blur-[6px]">
+                    <div className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-4">
+                      <p className="font-mono text-xs uppercase tracking-[0.22em] theme-soft">
+                        Finding
+                      </p>
+                      <p className="theme-copy mt-3 leading-relaxed">{result.finding}</p>
+                    </div>
+                    <div className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-4">
+                      <p className="font-mono text-xs uppercase tracking-[0.22em] theme-soft">
+                        Exposure Focus
+                      </p>
+                      <p className="theme-copy mt-3 leading-relaxed">{result.focus}</p>
+                    </div>
+                    <div className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-4">
+                      <p className="font-mono text-xs uppercase tracking-[0.22em] theme-soft">
+                        Preview Highlights
+                      </p>
+                      <ul className="mt-3 space-y-2">
+                        {result.technicalBrief.map((item) => (
+                          <li key={item} className="theme-copy">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/88 to-transparent" />
+                </div>
+
+                <div className="mt-6 rounded-[1.75rem] border border-[var(--accent)]/30 bg-[var(--accent-soft)] p-5">
+                  <p className="font-mono text-xs uppercase tracking-[0.24em] theme-accent-strong">
+                    Full report gated
+                  </p>
+                  <p className="theme-copy mt-3 leading-relaxed">
+                    A full exposure brief for <span className="theme-heading">{result.domain}</span>{" "}
+                    includes narrative analysis, enumerated control gaps, and remediation priorities.
+                  </p>
+                  <Link
+                    href="/contact/"
+                    className="button-primary mt-5 inline-flex items-center gap-2 rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+                  >
+                    Request Full Exposure Brief
+                    <IconArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <div className="mt-6 rounded-[1.75rem] border border-dashed border-[var(--border)] bg-[var(--surface)]/40 p-6">
+                <p className="font-mono text-xs uppercase tracking-[0.24em] theme-soft">
+                  Preview staging
+                </p>
+                <p className="theme-copy mt-3 leading-relaxed">
+                  Run a scan to stage a blurred exposure brief with mail-edge classification,
+                  research context, and an instant risk score.
+                </p>
+              </div>
+            )}
+          </section>
         </div>
       </div>
     </section>

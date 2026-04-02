@@ -7,13 +7,13 @@ export function PrivateAISection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="theme-accent mb-4 font-mono text-xs uppercase tracking-[0.28em]">
-            Specialized Services
+            Sovereign AI
           </p>
-          <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
-            Sovereign AI and controlled security compute.
+          <h2 className="theme-heading mb-4 text-3xl font-bold md:text-5xl">
+            Private &amp; air-gapped AI built for coding and threat analysis.
           </h2>
           <p className="theme-copy text-lg leading-relaxed">
-            The intelligence layer is not limited to research. NextGridIT also designs secure compute environments that let enterprises operationalize private AI without surrendering sensitive data to public platforms.
+            Leverage LLMs like Qwen and Mistral for enterprise coding and threat analysis without third-party data leakage. NextGridIT deploys and manages dedicated on-premise GPU clusters for organizations that need privacy, performance, and control.
           </p>
         </div>
 
@@ -23,20 +23,20 @@ export function PrivateAISection() {
               <IconCpu2 className="h-7 w-7 theme-accent-strong" />
             </div>
             <p className="theme-soft mb-3 font-mono text-xs uppercase tracking-[0.24em]">
-              Specialized service
+              Dedicated service
             </p>
-            <h3 className="theme-heading mb-4 font-mono text-3xl font-bold">
-              Sovereign AI Integration
+            <h3 className="theme-heading mb-4 text-3xl font-bold">
+              Private &amp; Air-Gapped AI Implementation
             </h3>
             <p className="theme-copy text-lg leading-relaxed">
-              We design and deploy on-premise, air-gapped LLM clusters for enterprise security. Leverage the power of AI (Qwen/Mistral) without data ever leaving your physical infrastructure. Powered by our dedicated GPU-compute arrays.
+              We design and deploy on-premise, air-gapped LLM clusters for enterprise coding, threat analysis, and research operations. Prompts, source code, internal documents, and telemetry remain inside your physical infrastructure.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {[
                 "Air-gapped LLM clusters",
                 "Qwen and Mistral deployment",
                 "Dedicated GPU compute arrays",
-                "Private risk analysis workflows",
+                "Private threat-analysis workflows",
               ].map((item) => (
                 <span
                   key={item}
@@ -79,10 +79,10 @@ export function PrivateAISection() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/labs/"
+                href="/services/private-air-gapped-ai/"
                 className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
-                Explore Labs
+                View AI Service
               </Link>
               <Link
                 href="/contact/"

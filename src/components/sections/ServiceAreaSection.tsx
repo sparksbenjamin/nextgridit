@@ -9,10 +9,10 @@ const cities = [
 ]
 
 const globalCapabilities = [
-  "150+ country deployment support",
+  "150+ country infrastructure reach",
   "Forward staging and sparing",
-  "Import, customs, and routing coordination",
-  "On-site dispatch and post-install escalation",
+  "Field engineering coordination",
+  "Post-deployment hardening support",
 ]
 
 export function ServiceAreaSection() {
@@ -21,11 +21,11 @@ export function ServiceAreaSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
           <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
-            GLOBAL <span className="theme-accent">LOGISTICS BACKBONE</span>
+            GLOBAL <span className="theme-accent">REACH</span>, LOCAL CONTROL
           </h2>
           <div className="theme-rule mb-6 h-1 w-24" />
           <p className="theme-copy mb-8 text-lg leading-relaxed">
-            NextGridIT is structured for global deployment execution and regional rapid response. Hardware programs can move across broad geographies while South Carolina-based engagements still get direct local coverage where discovery, installation, and escalation speed matter.
+            NextGridIT is structured for global infrastructure execution and regional rapid response. The field footprint matters because it supports research-informed hardening, on-site validation, and tighter follow-through after the install window closes.
           </p>
 
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -44,7 +44,7 @@ export function ServiceAreaSection() {
                 ))}
               </div>
               <p className="theme-copy leading-relaxed">
-                This logistics layer supports infrastructure-heavy programs that need better discipline around deployment sequencing, site readiness, communications, and technical follow-through after install day.
+                This delivery layer supports infrastructure-heavy programs that need better discipline around deployment sequencing, site readiness, communications, and technical follow-through after install day.
               </p>
             </section>
 
@@ -64,7 +64,7 @@ export function ServiceAreaSection() {
                 ))}
               </div>
               <p className="theme-copy leading-relaxed">
-                Local on-site service remains centered around Seneca, Clemson, Anderson, Easley, and Greenville, with travel available for larger projects and specialty engagements outside Upstate South Carolina.
+                Local on-site work remains centered around Seneca, Clemson, Anderson, Easley, and Greenville, with travel available for larger projects and specialty security engagements outside Upstate South Carolina.
               </p>
             </section>
           </div>

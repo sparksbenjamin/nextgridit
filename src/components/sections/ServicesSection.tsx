@@ -6,6 +6,7 @@ import {
   IconCertificate,
   IconChevronRight,
   IconCloudLock,
+  IconCpu2,
   IconDeviceDesktopAnalytics,
   IconNetwork,
   IconShieldCheck,
@@ -15,11 +16,11 @@ import {
 const services = [
   {
     slug: "it-support",
-    title: "Managed Security & Infrastructure",
+    title: "Infrastructure Hardening & Perimeter Surveillance",
     description:
-      "Operator-led oversight for identity, mail, infrastructure, hardening, and day-to-day technical governance across environments that cannot afford drift.",
+      "Operator-led hardening across identity, mail, network edge, and externally visible infrastructure for environments that cannot afford defensive drift.",
     icon: <IconDeviceDesktopAnalytics className="h-8 w-8 text-white" />,
-    features: ["Security-minded operations", "Identity and mail controls", "Infrastructure governance"],
+    features: ["Perimeter control reviews", "Identity and mail hardening", "Infrastructure governance"],
   },
   {
     slug: "microsoft-365",
@@ -31,11 +32,11 @@ const services = [
   },
   {
     slug: "network-wifi",
-    title: "Global Deployment Logistics and Networking",
+    title: "Global Infrastructure Deployment & Network Operations",
     description:
-      "Coordinate staging, dispatch, routing, Wi-Fi, segmentation, and connectivity for regional or global hardware programs that need disciplined execution.",
+      "Coordinate staging, dispatch, routing, Wi-Fi, segmentation, and connectivity for regional or global infrastructure programs that need disciplined execution.",
     icon: <IconNetwork className="h-8 w-8 text-[#00f0ff]" />,
-    features: ["150+ country deployment support", "Field dispatch coordination", "Network and connectivity design"],
+    features: ["150+ country infrastructure reach", "Field dispatch coordination", "Network and connectivity design"],
   },
   {
     slug: "security-hardening",
@@ -54,12 +55,20 @@ const services = [
     features: ["Black box pentests", "Surface exposure audits", "Real-world risk review"],
   },
   {
-    slug: "camera-systems",
-    title: "Private AI, Cameras, and Local Intelligence Systems",
+    slug: "private-air-gapped-ai",
+    title: "Private & Air-Gapped AI Implementation",
     description:
-      "Design visibility systems and local-first intelligence workflows that keep sensitive footage, prompts, and analysis under tighter control.",
-    icon: <IconVideo className="h-8 w-8 text-[#39ff14]" />,
-    features: ["Private AI workflows", "Camera and sensor infrastructure", "On-site processing options"],
+      "Leverage LLMs (Qwen/Mistral) for enterprise coding and threat analysis without third-party data leakage through dedicated on-premise GPU clusters.",
+    icon: <IconCpu2 className="h-8 w-8 text-[#39ff14]" />,
+    features: ["Qwen and Mistral", "Dedicated GPU clusters", "100% data privacy"],
+  },
+  {
+    slug: "camera-systems",
+    title: "Perimeter Surveillance & Sensor Systems",
+    description:
+      "Design local-first surveillance and sensor infrastructure that improves visibility without surrendering the evidence plane to a cloud vendor.",
+    icon: <IconVideo className="h-8 w-8 text-[#94a3b8]" />,
+    features: ["Local capture infrastructure", "Camera and sensor coverage", "On-site retention controls"],
   },
 ]
 
@@ -73,7 +82,7 @@ export function ServicesSection() {
           </h2>
           <div className="theme-rule mx-auto mb-6 h-1 w-24" />
           <p className="theme-copy font-sans text-lg">
-            NextGridIT blends managed security, infrastructure governance, global deployment logistics, private AI, and research-led exposure analysis into one delivery architecture.
+            NextGridIT blends infrastructure hardening, exposure research, sovereign AI, surveillance systems, and global infrastructure execution into one delivery architecture.
           </p>
         </div>
 
