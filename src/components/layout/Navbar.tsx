@@ -32,12 +32,12 @@ type NavGroup = {
 const navGroups: NavGroup[] = [
   {
     id: "services",
-    label: "Capabilities",
+    label: "Services",
     description: "MSP transitions, vendor lockout recovery, HIPAA assessments, security, and infrastructure hardening.",
     overview: {
       href: "/services",
-      label: "Browse capabilities",
-      description: "See the full service lineup across hardening, surveillance, labs research, and private AI.",
+      label: "Browse all services",
+      description: "See the full service lineup across security, compliance, and infrastructure.",
     },
     links: [
       {
@@ -90,33 +90,28 @@ const navGroups: NavGroup[] = [
         label: "Private AI Consulting",
         description: "Guidance on local AI that keeps your data inside your environment.",
       },
-      {
-        href: "/technologies",
-        label: "Technologies",
-        description: "Review the platforms, vendors, and systems NextGridIT supports.",
-      },
     ],
     matchers: ["/services", "/technologies"],
   },
   {
-    id: "fit",
-    label: "Who We Help",
-    description: "Medical practices, small businesses, municipalities, and organizations that need IT they can actually rely on.",
+    id: "solutions",
+    label: "Solutions",
+    description: "Industry-specific guidance, compliance programs, and local service coverage in Upstate SC.",
     overview: {
       href: "/industries",
-      label: "Explore industries",
-      description: "Start with the business types and environments the site is built for.",
+      label: "Explore solutions",
+      description: "Find the right fit for your industry, compliance needs, and location.",
     },
     links: [
       {
         href: "/industries",
         label: "Industries",
-        description: "Medical, municipal, business, campground, and multi-site pages.",
+        description: "Medical, municipal, business, campground, and multi-site.",
       },
       {
         href: "/service-areas",
         label: "Service Areas",
-        description: "Local coverage pages for Seneca, Clemson, Anderson, Easley, and Greenville.",
+        description: "Seneca, Clemson, Anderson, Easley, and Greenville, SC.",
       },
       {
         href: "/compliance",
@@ -128,33 +123,38 @@ const navGroups: NavGroup[] = [
         label: "Project Fit",
         description: "See which projects and operating environments are the strongest fit.",
       },
+      {
+        href: "/technologies",
+        label: "Technologies",
+        description: "Platforms, vendors, and systems NextGridIT supports.",
+      },
     ],
-    matchers: ["/industries", "/service-areas", "/compliance", "/project-fit"],
+    matchers: ["/industries", "/service-areas", "/compliance", "/project-fit", "/technologies"],
   },
   {
     id: "resources",
     label: "Resources",
-    description: "Research notes, labs output, planning material, FAQs, and technical briefings.",
+    description: "Guides, case studies, research, and answers to common questions.",
     overview: {
-      href: "/labs",
-      label: "Visit NextGrid Labs",
-      description: "See active research, telemetry concepts, and the surface scan experience.",
+      href: "/guides",
+      label: "Browse guides",
+      description: "Field notes, explainers, and technical write-ups from real work.",
     },
     links: [
       {
-        href: "/labs",
-        label: "NextGrid Labs",
-        description: "Vulnerability research, telemetry, and the surface scan endpoint.",
-      },
-      {
         href: "/guides",
         label: "Guides",
-        description: "Field notes, explainers, and technical write-ups from real work.",
+        description: "Technical guides and how-to articles from the field.",
       },
       {
         href: "/case-studies",
         label: "Case Studies",
-        description: "Sanitized examples of cleanup, redesign, and rollout work.",
+        description: "Real examples of cleanup, redesign, and rollout work.",
+      },
+      {
+        href: "/labs",
+        label: "NextGrid Labs",
+        description: "Security research, vulnerability discovery, and open source tools.",
       },
       {
         href: "/faq",
@@ -169,45 +169,11 @@ const navGroups: NavGroup[] = [
     ],
     matchers: ["/labs", "/guides", "/case-studies", "/faq", "/local-first"],
   },
-  {
-    id: "company",
-    label: "Company",
-    description: "Background, delivery process, proof points, and how to get in touch.",
-    overview: {
-      href: "/about",
-      label: "About NextGridIT",
-      description: "Get the company overview, positioning, and local operating approach.",
-    },
-    links: [
-      {
-        href: "/about",
-        label: "About",
-        description: "Company background, focus, and operating style.",
-      },
-      {
-        href: "/process",
-        label: "Process",
-        description: "How discovery, scope, and execution usually move forward.",
-      },
-      {
-        href: "/company-facts",
-        label: "Company Facts",
-        description: "Quick facts, coverage, and supported technologies at a glance.",
-      },
-      {
-        href: "/contact",
-        label: "Contact",
-        description: "Start the conversation and outline the project or environment.",
-      },
-    ],
-    matchers: ["/about", "/process", "/company-facts", "/contact"],
-  },
 ]
 
 const mobileMenuId = "mobile-navigation"
 const desktopMenuId = "desktop-navigation"
 const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`
-const labsHref = "/labs"
 const surfaceScanHref = "/contact"
 
 function normalizePath(path: string) {
@@ -245,7 +211,6 @@ export function Navbar() {
   )
   const activeDesktopGroup =
     navGroups.find((group) => group.id === activeDesktopGroupId) ?? null
-  const isLabsActive = isPathActive(pathname, labsHref)
 
   React.useEffect(() => {
     setIsOpen(false)
@@ -344,27 +309,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <nav aria-label="Primary" className="hidden md:flex items-center gap-2">
-            <Link
-              href={labsHref}
-              onClick={closeMenus}
-              className={cn(
-                "relative inline-flex items-center gap-1 rounded-full border px-4 py-3 font-mono text-sm uppercase tracking-[0.18em] transition-colors duration-200",
-                isLabsActive
-                  ? "border-[var(--accent)] theme-accent-strong bg-[var(--accent-soft)]"
-                  : "border-[var(--border-strong)] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
-              )}
-            >
-              <span>NextGrid Labs</span>
-              <span
-                className={cn(
-                  "absolute inset-x-4 -bottom-px h-[2px] rounded-full transition-opacity duration-200",
-                  isLabsActive
-                    ? "bg-[var(--accent-strong)] opacity-100"
-                    : "bg-[var(--accent)] opacity-0"
-                )}
-              />
-            </Link>
+          <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
             {navGroups.map((group) => {
               const isHighlighted =
                 activePathGroup?.id === group.id || activeDesktopGroupId === group.id
@@ -378,7 +323,7 @@ export function Navbar() {
                   aria-haspopup="true"
                   onClick={() => toggleDesktopGroup(group.id)}
                   className={cn(
-                    "relative inline-flex items-center gap-1 rounded-full px-4 py-3 font-mono text-sm uppercase tracking-[0.18em] transition-colors duration-200",
+                    "relative inline-flex items-center gap-1 rounded-full px-3.5 py-2 font-mono text-sm uppercase tracking-[0.14em] transition-colors duration-200",
                     isHighlighted
                       ? "theme-accent-strong bg-[var(--accent-soft)]"
                       : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -387,13 +332,13 @@ export function Navbar() {
                   <span>{group.label}</span>
                   <IconChevronDown
                     className={cn(
-                      "h-4 w-4 transition-transform duration-200",
+                      "h-3.5 w-3.5 transition-transform duration-200",
                       activeDesktopGroupId === group.id && "rotate-180"
                     )}
                   />
                   <span
                     className={cn(
-                      "absolute inset-x-4 -bottom-px h-[2px] rounded-full transition-opacity duration-200",
+                      "absolute inset-x-3 -bottom-px h-[2px] rounded-full transition-opacity duration-200",
                       isHighlighted
                         ? "bg-[var(--accent-strong)] opacity-100"
                         : "bg-[var(--accent)] opacity-0"
@@ -402,24 +347,49 @@ export function Navbar() {
                 </button>
               )
             })}
+            <span className="mx-1 h-5 w-px bg-[var(--border)]" />
+            <Link
+              href="/about"
+              onClick={closeMenus}
+              className={cn(
+                "inline-flex items-center rounded-full px-3.5 py-2 font-mono text-sm uppercase tracking-[0.14em] transition-colors duration-200",
+                isPathActive(pathname, "/about") || isPathActive(pathname, "/process") || isPathActive(pathname, "/company-facts")
+                  ? "theme-accent-strong bg-[var(--accent-soft)]"
+                  : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
+              )}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              onClick={closeMenus}
+              className={cn(
+                "inline-flex items-center rounded-full px-3.5 py-2 font-mono text-sm uppercase tracking-[0.14em] transition-colors duration-200",
+                isPathActive(pathname, "/contact")
+                  ? "theme-accent-strong bg-[var(--accent-soft)]"
+                  : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
+              )}
+            >
+              Contact
+            </Link>
           </nav>
 
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-2 md:gap-3">
             <ThemeToggle className="scale-90 origin-right sm:scale-100" />
             <a
               href={phoneHref}
-              className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] px-4 py-2.5 font-mono text-sm tracking-[0.15em] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)] transition-colors duration-200"
+              className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] px-3 py-2 font-mono text-xs tracking-[0.12em] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)] transition-colors duration-200"
             >
-              <IconPhone className="h-4 w-4" />
+              <IconPhone className="h-3.5 w-3.5" />
               <span>{siteConfig.phoneDisplay}</span>
             </a>
             <div className="hidden md:block">
               <Link
                 href={surfaceScanHref}
                 onClick={closeMenus}
-                className="button-primary relative overflow-hidden rounded-full px-6 py-2.5 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+                className="button-primary relative overflow-hidden rounded-full px-5 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em]"
               >
-                <span className="relative z-10">FREE ASSESSMENT</span>
+                <span className="relative z-10">Free Assessment</span>
               </Link>
             </div>
           </div>
@@ -545,16 +515,26 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 grid grid-cols-2 gap-3">
             <Link
-              href={labsHref}
+              href="/about"
               onClick={closeMenus}
               className={cn(
-                "button-secondary flex w-full items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]",
-                isLabsActive && "border-[var(--accent)] bg-[var(--accent-soft)]"
+                "button-secondary flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]",
+                isPathActive(pathname, "/about") && "border-[var(--accent)] bg-[var(--accent-soft)]"
               )}
             >
-              NextGrid Labs
+              About
+            </Link>
+            <Link
+              href="/contact"
+              onClick={closeMenus}
+              className={cn(
+                "button-secondary flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]",
+                isPathActive(pathname, "/contact") && "border-[var(--accent)] bg-[var(--accent-soft)]"
+              )}
+            >
+              Contact
             </Link>
           </div>
 
