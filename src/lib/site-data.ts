@@ -16,6 +16,12 @@ export const siteConfig = {
   ],
 } as const;
 
+export type ProcessStep = {
+  title: string;
+  description: string;
+  duration: string;
+};
+
 export type Service = {
   slug: string;
   shortLabel: string;
@@ -25,6 +31,11 @@ export type Service = {
   audience: string;
   outcomes: string[];
   deliverables: string[];
+  process: ProcessStep[];
+  pricing: string;
+  delivery: string;
+  buyerPersonas: string[];
+  relatedCaseStudies: string[];
   relatedIndustries: string[];
   relatedLocations: string[];
   technologies: string[];
@@ -66,6 +77,20 @@ export const services: Service[] = [
       "Transition plan with timeline, cutover coordination, and verification steps",
       "Post-transition verification confirming no residual access or orphaned systems",
     ],
+    process: [
+      { title: "Discovery and audit", description: "We catalog everything the MSP currently manages — systems, credentials, vendor relationships, and documentation gaps. You get a clear picture of what you actually own versus what your provider controls.", duration: "1-2 weeks" },
+      { title: "Transition planning", description: "We build a cutover plan with timeline, staffing recommendations, and risk points identified up front. If you need to hire internal IT, we help define the role and support the hiring process.", duration: "1-2 weeks" },
+      { title: "Cutover execution", description: "We coordinate the transition — migrating services, resetting credentials, standing up new management systems, and ensuring the former MSP's access is completely revoked across every system.", duration: "1-3 weeks" },
+      { title: "Verification and handoff", description: "We verify that no residual access exists, all documentation is complete, and your team has everything needed to operate independently going forward.", duration: "1 week" },
+    ],
+    pricing: "Project-based. Typical MSP transition engagements range from $3,000-$8,000 depending on environment complexity and the number of systems involved.",
+    delivery: "Hybrid. On-site for discovery and cutover in Upstate SC; remote for planning, documentation, and follow-up. Travel available for clients outside the region.",
+    buyerPersonas: [
+      "Business owners who feel stuck with an MSP that isn't delivering",
+      "Office managers tired of paying for reactive support with no strategic direction",
+      "Organizations that have grown past break-fix but don't know how to bring IT in-house",
+    ],
+    relatedCaseStudies: ["msp-transition"],
     relatedIndustries: ["small-business", "medical-offices", "municipalities"],
     relatedLocations: ["seneca-sc", "clemson-sc", "greenville-sc"],
     technologies: ["Microsoft 365", "Active Directory", "DNS management", "Backup systems"],
@@ -102,6 +127,20 @@ export const services: Service[] = [
       "System-by-system access recovery with verified credential handoff",
       "Security reset — new administrative credentials, revoked former access, updated documentation",
     ],
+    process: [
+      { title: "Authorization and scoping", description: "We require signed authorization documentation from someone with legal authority for the organization before any recovery work begins. This protects everyone involved and creates a clear paper trail.", duration: "1-2 days" },
+      { title: "System identification", description: "We inventory every system the organization owns but cannot access — network equipment, cameras, cloud accounts, firewalls, domain registrations — and map the recovery path for each.", duration: "1-3 days" },
+      { title: "Access recovery", description: "We recover administrative access system by system, using appropriate methods for each platform. Every recovery is documented and verified.", duration: "1-2 weeks" },
+      { title: "Credential reset and handoff", description: "New administrative credentials are created, former provider access is revoked across every system, and everything is documented and handed over to the organization.", duration: "2-3 days" },
+    ],
+    pricing: "Project-based. Urgent engagements typically range from $2,000-$6,000 depending on the number and type of systems involved. Emergency response available.",
+    delivery: "On-site preferred for authorization and physical system recovery in Upstate SC. Remote available for cloud-based recovery. Emergency response within 24 hours for local clients.",
+    buyerPersonas: [
+      "Municipal leaders who lost access after a vendor walked away",
+      "Business owners whose former IT provider won't hand over credentials",
+      "Property managers locked out of camera and network systems",
+    ],
+    relatedCaseStudies: ["vendor-lockout-recovery"],
     relatedIndustries: ["municipalities", "small-business", "medical-offices"],
     relatedLocations: ["seneca-sc", "anderson-sc", "greenville-sc"],
     technologies: ["Network equipment", "IP cameras and NVR systems", "Firewalls", "Cloud services"],
@@ -138,6 +177,20 @@ export const services: Service[] = [
       "Risk-based remediation roadmap with practical implementation steps",
       "Assessment documentation suitable for compliance records and audit support",
     ],
+    process: [
+      { title: "Scoping and preparation", description: "We define the assessment scope, identify the systems and data flows involved, and coordinate scheduling to minimize disruption to patient care.", duration: "3-5 days" },
+      { title: "Assessment and analysis", description: "We assess the environment against HIPAA Security Rule requirements — covering access controls, encryption, audit logging, backup, physical safeguards, and policy gaps. Findings are mapped to specific regulatory requirements.", duration: "1-2 weeks" },
+      { title: "Risk prioritization", description: "Findings are ranked by real exploitability and business impact, not theoretical severity. You get a clear picture of what matters most and what can wait.", duration: "3-5 days" },
+      { title: "Remediation roadmap", description: "We deliver a practical remediation plan with implementation steps, effort estimates, and documentation suitable for compliance records and audit preparation.", duration: "3-5 days" },
+    ],
+    pricing: "Project-based. HIPAA security assessments for small to mid-sized practices typically range from $3,000-$7,000 depending on the number of systems and locations involved.",
+    delivery: "Hybrid. On-site for physical security review and stakeholder interviews in Upstate SC; remote for technical assessment, analysis, and documentation delivery.",
+    buyerPersonas: [
+      "Practice managers at independent medical offices facing a compliance deadline",
+      "Office administrators who know they need a real assessment, not a form letter",
+      "Healthcare-adjacent organizations (dental, specialty, billing) that handle PHI",
+    ],
+    relatedCaseStudies: [],
     relatedIndustries: ["medical-offices"],
     relatedLocations: ["clemson-sc", "anderson-sc", "greenville-sc"],
     technologies: ["Tenable.sc", "NIST 800-53", "MARS-E", "Archer GRC"],
@@ -174,6 +227,20 @@ export const services: Service[] = [
       "Risk-based remediation roadmap with implementation priority and effort estimates",
       "Optional remediation support and post-fix validation",
     ],
+    process: [
+      { title: "Scoping", description: "We define the assessment boundaries — external, internal, or both — and agree on the systems in scope, timing, and any constraints around production environments.", duration: "2-3 days" },
+      { title: "Scanning and discovery", description: "We run scoped vulnerability scans using the same tools and processes used in enterprise compliance environments. Results are filtered for real findings, not noise.", duration: "3-5 days" },
+      { title: "Analysis and prioritization", description: "Every finding is evaluated for real exploitability and business impact — not just CVSS score. You get a prioritized list that reflects what an actual attacker would target.", duration: "3-5 days" },
+      { title: "Remediation planning and delivery", description: "We deliver a remediation roadmap with clear steps, effort estimates, and priority ordering. Optional follow-up helps you close the gaps and validates that fixes actually work.", duration: "3-5 days" },
+    ],
+    pricing: "Project-based. Vulnerability assessments typically range from $2,500-$6,000 depending on scope (external-only vs. external+internal) and the number of systems involved.",
+    delivery: "Remote-first for scanning and analysis. On-site available for internal scanner deployment and stakeholder briefings in Upstate SC.",
+    buyerPersonas: [
+      "IT directors who know they have gaps but need someone to identify and prioritize them",
+      "Compliance officers who need documented vulnerability findings for audit support",
+      "Business owners who want a security checkup without committing to a full penetration test",
+    ],
+    relatedCaseStudies: [],
     relatedIndustries: ["small-business", "medical-offices", "municipalities"],
     relatedLocations: ["seneca-sc", "anderson-sc", "greenville-sc"],
     technologies: ["Tenable.sc", "NIST 800-53", "Risk-based prioritization", "Remediation tracking"],
@@ -210,6 +277,20 @@ export const services: Service[] = [
       "Perimeter review across mail, DNS, identity, and network edge",
       "Documentation cleanup, ownership mapping, and operational handoff notes",
     ],
+    process: [
+      { title: "Environment review", description: "We audit the current state of identity, mail, DNS, network edge, and inherited infrastructure. The goal is to map what's exposed, what's undocumented, and what's been left in a default or insecure state.", duration: "1-2 weeks" },
+      { title: "Prioritization and planning", description: "Findings are ranked by real risk and business impact. We build a hardening plan that tackles the most dangerous exposures first, with clear steps and effort estimates.", duration: "3-5 days" },
+      { title: "Hardening execution", description: "We work through the hardening plan — tightening access controls, cleaning up defaults, improving documentation, and closing the gaps that create the most risk.", duration: "2-4 weeks" },
+      { title: "Verification and documentation", description: "We verify that hardening changes are effective, document the new baseline, and deliver operational handoff notes that make the environment easier to defend going forward.", duration: "3-5 days" },
+    ],
+    pricing: "Project-based. Infrastructure hardening engagements typically range from $4,000-$10,000 depending on environment complexity and the scope of systems involved.",
+    delivery: "Hybrid. On-site for environment review and stakeholder coordination in Upstate SC; remote for execution, analysis, and documentation. Travel available outside the region.",
+    buyerPersonas: [
+      "Organizations that inherited messy infrastructure and need a stronger defensive baseline",
+      "Businesses that have grown faster than their IT controls can support",
+      "Teams preparing for an audit or compliance review who need their environment defensible",
+    ],
+    relatedCaseStudies: ["m365-admin-reset"],
     relatedIndustries: ["small-business", "municipalities", "medical-offices"],
     relatedLocations: ["seneca-sc", "clemson-sc", "anderson-sc"],
     technologies: ["Microsoft 365", "Active Directory", "DNS", "Firewalls"],
@@ -246,6 +327,20 @@ export const services: Service[] = [
       "Identity and access control improvements",
       "Administration standards and support documentation",
     ],
+    process: [
+      { title: "Tenant review", description: "We audit the current Microsoft 365 tenant — identity configuration, mail settings, account hygiene, license allocation, and security defaults. The goal is to find what's risky, what's wasted, and what's undocumented.", duration: "3-5 days" },
+      { title: "Remediation planning", description: "We build a prioritized plan covering MFA enforcement, stale account cleanup, administrative role tightening, and any migration or consolidation needs.", duration: "2-3 days" },
+      { title: "Execution and cleanup", description: "We work through the remediation plan — enforcing MFA, removing stale accounts, tightening admin roles, cleaning up mail routing, and documenting what the client actually owns.", duration: "1-2 weeks" },
+      { title: "Documentation and handoff", description: "We deliver administration standards, support documentation, and a clean tenant that's easier to manage and defend going forward.", duration: "2-3 days" },
+    ],
+    pricing: "Project-based. Microsoft 365 cleanup and hardening engagements typically range from $2,000-$6,000 depending on tenant size and complexity. Migration projects quoted separately.",
+    delivery: "Remote-first for most Microsoft 365 work. On-site available for planning sessions and stakeholder coordination in Upstate SC.",
+    buyerPersonas: [
+      "Organizations that depend on Microsoft 365 but need cleaner administration",
+      "Businesses recovering from a rushed or neglected tenant setup",
+      "Practices that need better identity controls for compliance",
+    ],
+    relatedCaseStudies: ["m365-admin-reset"],
     relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
     relatedLocations: ["greenville-sc", "easley-sc", "clemson-sc"],
     technologies: ["Microsoft 365", "Entra ID", "Azure", "Exchange Online"],
@@ -282,6 +377,20 @@ export const services: Service[] = [
       "Coverage, segmentation, hardware, and deployment recommendations",
       "Deployment notes and environment documentation",
     ],
+    process: [
+      { title: "Site assessment", description: "We walk the property, evaluate the existing network, identify coverage gaps, and map the physical layout. For outdoor and multi-building sites, this includes signal testing and cable path planning.", duration: "1-3 days" },
+      { title: "Design and planning", description: "We design the network topology — coverage, segmentation, hardware selection, and deployment sequencing. Guest, staff, device, and payment traffic get clean separation from the start.", duration: "3-5 days" },
+      { title: "Deployment", description: "We deploy the network — switching, access points, VLANs, firewalls, and guest access. Deployment is sequenced to minimize downtime and verify coverage at each step.", duration: "1-3 weeks" },
+      { title: "Testing and documentation", description: "We verify coverage, test segmentation, and deliver documentation including topology diagrams, credential records, and deployment notes for future support.", duration: "2-3 days" },
+    ],
+    pricing: "Project-based. Network deployments typically range from $3,000-$12,000 depending on property size, number of buildings, and hardware requirements. Hardware costs are separate and quoted per project.",
+    delivery: "On-site required for assessment and deployment in Upstate SC and surrounding region. Remote available for planning and documentation.",
+    buyerPersonas: [
+      "Property owners who need Wi-Fi that actually works beyond the front desk",
+      "Municipalities that need public Wi-Fi with proper guest separation",
+      "Businesses with flaky networks and no documentation for what they have",
+    ],
+    relatedCaseStudies: [],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
     relatedLocations: ["seneca-sc", "anderson-sc", "greenville-sc"],
     technologies: ["Ubiquiti UniFi", "Firewalls", "VLANs", "Public Wi-Fi"],
@@ -318,6 +427,20 @@ export const services: Service[] = [
       "Findings report with real-world risk review and remediation guidance",
       "Optional validation help after fixes are applied so the work actually closes out cleanly",
     ],
+    process: [
+      { title: "Scoping and rules of engagement", description: "We define the test scope — black box, trusted-access, or targeted — and establish rules of engagement, timing windows, and communication protocols.", duration: "2-3 days" },
+      { title: "Testing and exploitation", description: "We execute the assessment using real-world attack techniques informed by active bug bounty research. Every finding is validated and documented with evidence, not scanner screenshots.", duration: "1-2 weeks" },
+      { title: "Analysis and reporting", description: "Findings are analyzed for real business impact and written with practical remediation guidance. You understand what's actually risky, what's noise, and what to fix first.", duration: "3-5 days" },
+      { title: "Remediation support", description: "Optional follow-up helps your team implement fixes and validates that the work actually closes out cleanly. We don't just hand over a report and disappear.", duration: "1-2 weeks" },
+    ],
+    pricing: "Project-based. Penetration tests typically range from $4,000-$12,000 depending on scope (black box vs. trusted-access vs. targeted), number of systems, and whether remediation support is included.",
+    delivery: "Remote-first for external testing. On-site available for trusted-access testing and debriefings in Upstate SC and surrounding region. Travel available for clients outside the area.",
+    buyerPersonas: [
+      "Organizations that need a clearer picture of real exposure before a project or after a major change",
+      "Compliance-driven teams that need validated findings, not just scanner output",
+      "Companies evaluating their security posture with real-world attack simulation",
+    ],
+    relatedCaseStudies: [],
     relatedIndustries: ["small-business", "medical-offices", "municipalities"],
     relatedLocations: ["greenville-sc", "anderson-sc", "clemson-sc"],
     technologies: [
@@ -359,6 +482,20 @@ export const services: Service[] = [
       "Camera, NVR, and sensor installation scope",
       "Local-first processing and retention guidance where relevant",
     ],
+    process: [
+      { title: "Site survey", description: "We walk the property, identify coverage requirements for entrances, public spaces, and operational areas, and map camera placement, cable paths, and NVR location.", duration: "1-2 days" },
+      { title: "Design and planning", description: "We design the surveillance system — camera selection, NVR capacity, retention policies, and network integration. The preference is local-first control where you own your footage and your system.", duration: "2-3 days" },
+      { title: "Installation", description: "We install cameras, NVR, switching, and cabling. Installation is coordinated with any network work so the systems fit together cleanly from the start.", duration: "1-2 weeks" },
+      { title: "Testing and handoff", description: "We verify coverage, test recording and retention, and deliver documentation including camera maps, credential records, and retention configuration.", duration: "1-2 days" },
+    ],
+    pricing: "Project-based. Camera system deployments typically range from $2,500-$10,000 for labor and configuration. Hardware costs are separate and quoted per project.",
+    delivery: "On-site required for survey and installation in Upstate SC and surrounding region. Remote available for NVR configuration and documentation.",
+    buyerPersonas: [
+      "Property owners who need visibility without surrendering footage to a third-party cloud",
+      "Municipalities that need perimeter and public space surveillance",
+      "Businesses that want camera systems coordinated with their network infrastructure",
+    ],
+    relatedCaseStudies: [],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
     relatedLocations: ["seneca-sc", "easley-sc", "greenville-sc"],
     technologies: ["IP cameras", "Local NVR", "PoE switching", "Local AI processing"],
@@ -395,6 +532,20 @@ export const services: Service[] = [
       "Hardware, model, and infrastructure recommendations",
       "Deployment roadmap with governance and workflow considerations",
     ],
+    process: [
+      { title: "Use case assessment", description: "We evaluate whether local AI fits your specific use case and budget. This is an honest assessment — some workflows work well today, others still need cloud-scale models. You get a clear answer, not vaporware.", duration: "3-5 days" },
+      { title: "Infrastructure planning", description: "For viable use cases, we plan the hardware, model selection, and infrastructure requirements. Many useful models run on consumer-grade hardware — you don't always need expensive GPU clusters.", duration: "3-5 days" },
+      { title: "Deployment design", description: "We design the inference workflow, operational controls, and data governance for your environment. The focus is on keeping your data inside your environment while getting the leverage of modern AI.", duration: "3-5 days" },
+      { title: "Roadmap and handoff", description: "We deliver a practical deployment roadmap with governance considerations, hardware specifications, and a clear timeline. This is a consulting engagement — you own the plan and the infrastructure.", duration: "2-3 days" },
+    ],
+    pricing: "Project-based. Private AI consulting engagements typically range from $3,000-$8,000 depending on use case complexity and infrastructure requirements. Does not include hardware costs.",
+    delivery: "Remote-first for assessment and planning. On-site available for infrastructure review in Upstate SC.",
+    buyerPersonas: [
+      "Organizations exploring AI adoption but concerned about data privacy",
+      "Security teams evaluating private inference options for sensitive workflows",
+      "Businesses that want a realistic assessment of what local AI can actually do for them",
+    ],
+    relatedCaseStudies: [],
     relatedIndustries: ["small-business", "medical-offices"],
     relatedLocations: ["greenville-sc", "clemson-sc", "anderson-sc"],
     technologies: ["Local LLM deployment", "GPU infrastructure", "Private inference workflows"],
@@ -978,6 +1129,7 @@ export const faqs = [
 
 export const caseStudies = [
   {
+    slug: "msp-transition",
     title: "MSP Transition for a Growing Business",
     challenge:
       "A company had outgrown its MSP relationship. The provider was handling support but not driving the IT strategy the business needed. Leadership wanted to bring IT in-house but didn't know where to start — and couldn't risk losing access to anything during the transition.",
@@ -990,6 +1142,7 @@ export const caseStudies = [
     ],
   },
   {
+    slug: "vendor-lockout-recovery",
     title: "Vendor Lockout Recovery for a Municipality",
     challenge:
       "A city's IT provider walked away after deploying the WiFi and camera infrastructure — and took all the administrative credentials with them. The city owned the equipment but couldn't manage it, update it, or even change a password.",
@@ -1002,6 +1155,7 @@ export const caseStudies = [
     ],
   },
   {
+    slug: "m365-admin-reset",
     title: "Microsoft 365 Administration Reset After Organic Growth",
     challenge:
       "Accounts, permissions, and administration responsibilities had grown informally over time, creating risk and day-to-day confusion. No one was sure who had access to what, and the tenant had drifted into an unmanageable state.",
@@ -1029,4 +1183,8 @@ export function getLocation(slug: string) {
 
 export function getTechnology(slug: string) {
   return technologyCatalog.find((technology) => technology.slug === slug);
+}
+
+export function getCaseStudy(slug: string) {
+  return caseStudies.find((cs) => cs.slug === slug);
 }
