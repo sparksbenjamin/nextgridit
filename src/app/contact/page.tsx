@@ -6,7 +6,7 @@ import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 export const metadata: Metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact NextGridIT for network infrastructure, security, compliance-aware support, and IT services in Upstate South Carolina.",
+    "Contact NextGridIT for MSP transitions, vendor lockout recovery, HIPAA assessments, and IT security consulting in Seneca, Clemson, Anderson, Easley, and Greenville, SC. Call 864-780-0202.",
   path: "/contact/",
 });
 

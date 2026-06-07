@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { IconArrowRight, IconMail, IconPhone } from "@tabler/icons-react";
+import { IconArrowRight, IconBrandGoogle, IconMail, IconPhone } from "@tabler/icons-react";
 import MapChart from "@/components/ui/MapChart";
 
 type FormState = {
@@ -239,6 +239,25 @@ export function ContactPageClient() {
               <p>Email: <a className="theme-link" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a></p>
               <p className="flex items-center gap-2"><IconPhone className="theme-accent h-4 w-4" /><a className="theme-link" href="tel:8647800202">864-780-0202</a></p>
               <p>If you already know what you need, reach out directly with your location, timeline, and the main problem you want solved. We currently emphasize custom projects and tailored support engagements.</p>
+            </div>
+          </div>
+
+          <div className="glass-panel border border-[var(--border)] p-8">
+            <div className="flex items-center gap-3 mb-4">
+              <IconBrandGoogle className="theme-accent-alt h-5 w-5" />
+              <h2 className="theme-heading font-mono text-xl uppercase tracking-wider">Find Us on <span className="theme-accent-alt">Google</span></h2>
+            </div>
+            <div className="theme-copy space-y-3 font-sans leading-relaxed">
+              <p>NextGridIT is based in Seneca, South Carolina and serves businesses across Upstate SC. You can find us on Google for directions, reviews, and quick contact.</p>
+              <a
+                href="https://www.google.com/maps/search/NextGridIT+Seneca+SC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-secondary inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-[0.2em]"
+              >
+                <span>View on Google Maps</span>
+                <IconArrowRight className="h-4 w-4" />
+              </a>
             </div>
           </div>
 

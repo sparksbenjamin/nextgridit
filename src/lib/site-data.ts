@@ -14,6 +14,7 @@ export const siteConfig = {
     "https://github.com/sparksbenjamin/nextgridit",
     "https://www.linkedin.com/company/nextgridit",
   ],
+  googleBusinessUrl: "",
 } as const;
 
 export type ProcessStep = {

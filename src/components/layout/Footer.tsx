@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react"
+import { IconBrandGithub, IconBrandLinkedin, IconMail, IconMapPin, IconPhone } from "@tabler/icons-react"
 import { siteConfig } from "@/lib/site-data"
 
 export function Footer() {
@@ -32,16 +32,19 @@ export function Footer() {
               </span>
             </div>
             <div className="flex space-x-4">
-              <a href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]">
-                <span className="sr-only">Email</span>
+              <a href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]" aria-label="Email">
                 <IconMail className="h-5 w-5" />
               </a>
-              <a href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`} className="theme-copy hover:text-[var(--accent-alt)]">
-                <span className="sr-only">Phone</span>
+              <a href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`} className="theme-copy hover:text-[var(--accent-alt)]" aria-label="Phone">
                 <IconPhone className="h-5 w-5" />
               </a>
-              <Link href="/contact" className="theme-copy hover:text-[var(--accent-strong)]">
-                <span className="sr-only">Location</span>
+              <a href="https://www.linkedin.com/company/nextgridit" target="_blank" rel="noopener noreferrer" className="theme-copy hover:text-[var(--accent)]" aria-label="LinkedIn">
+                <IconBrandLinkedin className="h-5 w-5" />
+              </a>
+              <a href="https://github.com/sparksbenjamin/nextgridit" target="_blank" rel="noopener noreferrer" className="theme-copy hover:text-[var(--accent-alt)]" aria-label="GitHub">
+                <IconBrandGithub className="h-5 w-5" />
+              </a>
+              <Link href="/contact" className="theme-copy hover:text-[var(--accent-strong)]" aria-label="Location">
                 <IconMapPin className="h-5 w-5" />
               </Link>
             </div>
@@ -134,9 +137,11 @@ export function Footer() {
           <p className="theme-soft text-center font-mono text-sm md:text-left">
             &copy; {new Date().getFullYear()} NextGridIT Systems LLC. Based in Seneca, SC. Helping Upstate South Carolina businesses take back control of their IT.
           </p>
-          <div className="theme-soft flex gap-4 font-mono text-xs">
-            <span>Email: <span className="theme-accent">contact@nextgridit.com</span></span>
-            <span>Phone: <span className="theme-accent-strong">864-780-0202</span></span>
+          <div className="theme-soft flex flex-wrap items-center justify-center gap-4 font-mono text-xs">
+            <span>Email: <a className="theme-accent hover:underline" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a></span>
+            <span>Phone: <a className="theme-accent-strong hover:underline" href="tel:8647800202">864-780-0202</a></span>
+            <a href="https://www.linkedin.com/company/nextgridit" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)]">LinkedIn</a>
+            <a href="https://github.com/sparksbenjamin/nextgridit" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-alt)]">GitHub</a>
           </div>
         </div>
       </div>

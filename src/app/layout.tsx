@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
 import { locations, services, siteConfig, technologyCatalog } from "@/lib/site-data";
 
 const themeInitScript = `
@@ -283,8 +284,9 @@ export default function RootLayout({
         ></script>
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
-          <main id="main-content" className="flex-grow pt-20">{children}</main>
+          <main id="main-content" className="flex-grow pt-20 pb-16 md:pb-0">{children}</main>
           <Footer />
+          <MobileStickyBar />
         </div>
       </body>
     </html>

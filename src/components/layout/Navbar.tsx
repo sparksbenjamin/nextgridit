@@ -406,6 +406,13 @@ export function Navbar() {
 
           <div className="flex items-center gap-2 md:gap-4">
             <ThemeToggle className="scale-90 origin-right sm:scale-100" />
+            <a
+              href={phoneHref}
+              className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] px-4 py-2.5 font-mono text-sm tracking-[0.15em] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)] transition-colors duration-200"
+            >
+              <IconPhone className="h-4 w-4" />
+              <span>{siteConfig.phoneDisplay}</span>
+            </a>
             <div className="hidden md:block">
               <Link
                 href={surfaceScanHref}
@@ -657,7 +664,7 @@ export function Navbar() {
               onClick={closeMenus}
               className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
             >
-              RUN FREE ASSESSMENT
+              FREE ASSESSMENT
             </Link>
             </div>
           </nav>
