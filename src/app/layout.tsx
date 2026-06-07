@@ -123,6 +123,20 @@ const professionalServiceSchema = {
   url: siteConfig.url,
   telephone: siteConfig.phone,
   email: siteConfig.email,
+  logo: `${siteConfig.url}/og-image.svg`,
+  image: `${siteConfig.url}/og-image.svg`,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Seneca",
+    addressRegion: "SC",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 34.68194,
+    longitude: -82.96,
+  },
   areaServed: locations.map((location) => ({
     "@type": "City",
     name: location.city,
@@ -140,6 +154,30 @@ const professionalServiceSchema = {
   description: siteConfig.tagline,
   sameAs: siteConfig.sameAs,
   knowsAbout: knowledgeAreas,
+  founder: {
+    "@type": "Person",
+    name: "Benjamin Sparks",
+    jobTitle: "Senior Security Analyst and IT Consultant",
+    knowsAbout: [
+      "HIPAA compliance",
+      "NIST 800-53",
+      "MARS-E",
+      "Vulnerability assessment",
+      "Microsoft 365 administration",
+      "Network infrastructure",
+      "Vendor lockout recovery",
+      "MSP transition",
+      "Penetration testing",
+      "Security research",
+    ],
+  },
+  credential: [
+    "100+ IT certifications",
+    "Microsoft MSRC Bug Bounty Researcher",
+    "HackerOne Researcher",
+    "Verizon Business Partner",
+    "SC DHHS Medicaid Compliance",
+  ],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -160,6 +198,7 @@ const professionalServiceSchema = {
         name: service.title,
         description: service.summary,
         url: `${siteConfig.url}/services/${service.slug}/`,
+        areaServed: locations.map((l) => l.city),
       },
     })),
   },
@@ -184,9 +223,21 @@ const organizationSchema = {
   url: siteConfig.url,
   email: siteConfig.email,
   telephone: siteConfig.phone,
+  logo: `${siteConfig.url}/og-image.svg`,
   sameAs: siteConfig.sameAs,
   foundingDate: siteConfig.founded,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Seneca",
+    addressRegion: "SC",
+    addressCountry: "US",
+  },
   knowsAbout: knowledgeAreas,
+  founder: {
+    "@type": "Person",
+    name: "Benjamin Sparks",
+    jobTitle: "Senior Security Analyst and IT Consultant",
+  },
 };
 
 export default function RootLayout({

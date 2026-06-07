@@ -160,6 +160,18 @@ export default async function GuideDetailPage({
               >
                 Compliance and Frameworks
               </Link>
+              <Link
+                href="/service-areas/seneca-sc/"
+                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 text-sm theme-copy hover:border-[var(--border-strong)]"
+              >
+                IT Services in Seneca, SC
+              </Link>
+              <Link
+                href="/contact/"
+                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-4 text-sm theme-copy hover:border-[var(--border-strong)]"
+              >
+                Contact NextGridIT
+              </Link>
             </div>
           </section>
 

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createFaqSchema, createMetadata, createServiceSchema } from "@/lib/seo";
 import { getIndustry, getLocation, getService, services } from "@/lib/site-data";
+import { getAllGuides } from "@/lib/guides";
 
 type Params = {
   slug: string;
@@ -202,6 +203,26 @@ export default async function ServiceDetailPage({
               );
             })}
           </div>
+        </div>
+      </section>
+
+      <section className="mt-16 glass-panel border border-[var(--border)] p-8">
+        <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          Related guides
+        </h2>
+        <div className="space-y-4">
+          {getAllGuides().slice(0, 3).map((guide) => (
+            <Link
+              key={guide.slug}
+              href={`/guides/${guide.slug}/`}
+              className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
+            >
+              <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
+                {guide.title}
+              </h3>
+              <p className="theme-copy text-sm leading-relaxed">{guide.summary}</p>
+            </Link>
+          ))}
         </div>
       </section>
 

@@ -6,6 +6,7 @@ import { PageIntro } from "@/components/content/PageIntro";
 import { LocationAreaMap } from "@/components/ui/LocationAreaMap";
 import {
   createBreadcrumbSchema,
+  createFaqSchema,
   createItemListSchema,
   createMetadata,
   createPlaceSchema,
@@ -76,6 +77,7 @@ export default async function ServiceAreaDetailPage({
         path: `/services/${service.slug}/`,
       })),
   });
+  const faqSchema = createFaqSchema(location.faq);
 
   const relatedIndustries = industries.filter((industry) =>
     industry.relatedServices.some((serviceSlug) =>
@@ -99,6 +101,11 @@ export default async function ServiceAreaDetailPage({
         id={`service-area-services-${location.slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localServicesSchema) }}
+      />
+      <Script
+        id={`service-area-faq-${location.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <PageIntro
@@ -214,6 +221,22 @@ export default async function ServiceAreaDetailPage({
           >
             Start the Conversation
           </Link>
+        </div>
+      </section>
+
+      <section className="glass-panel mt-16 border border-[var(--border)] p-8">
+        <h2 className="theme-heading mb-6 font-mono text-2xl font-bold">
+          Frequently asked questions
+        </h2>
+        <div className="space-y-5">
+          {location.faq.map((item) => (
+            <div key={item.question} className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5">
+              <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
+                {item.question}
+              </h3>
+              <p className="theme-copy leading-relaxed">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

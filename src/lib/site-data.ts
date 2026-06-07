@@ -521,6 +521,7 @@ export type LocationPage = {
   nearbyCities: string[];
   focus: string[];
   relatedServices: string[];
+  faq: { question: string; answer: string }[];
 };
 
 export const locations: LocationPage[] = [
@@ -546,6 +547,28 @@ export const locations: LocationPage[] = [
       "network-wifi",
       "camera-systems",
     ],
+    faq: [
+      {
+        question: "What IT services does NextGridIT offer in Seneca, SC?",
+        answer:
+          "NextGridIT is based in Seneca and provides MSP transition, vendor lockout recovery, network infrastructure, camera systems, HIPAA security assessments, vulnerability assessments, and Microsoft 365 support for businesses across Oconee County.",
+      },
+      {
+        question: "Can NextGridIT help my business transition away from an MSP in Seneca?",
+        answer:
+          "Yes. MSP transition is one of our core services. We help Seneca-area businesses assess their current MSP relationship, plan the transition, ensure all credentials and access are transferred, and set up independent IT management.",
+      },
+      {
+        question: "Do you provide on-site IT support in Seneca?",
+        answer:
+          "Yes. Since NextGridIT is based in Seneca, on-site support is available for local businesses without travel fees. We also provide remote support for ongoing projects.",
+      },
+      {
+        question: "What industries do you serve in Oconee County?",
+        answer:
+          "We work with small businesses, municipalities, healthcare practices, construction companies, and multi-site properties throughout Oconee County and the Seneca area.",
+      },
+    ],
   },
   {
     slug: "clemson-sc",
@@ -568,6 +591,28 @@ export const locations: LocationPage[] = [
       "microsoft-365",
       "infrastructure-hardening",
       "vulnerability-assessment",
+    ],
+    faq: [
+      {
+        question: "Do you provide HIPAA security assessments in Clemson, SC?",
+        answer:
+          "Yes. We perform HIPAA security assessments for independent medical practices and healthcare organizations in the Clemson area that need compliance documentation, risk assessments, and remediation planning outside of the hospital system.",
+      },
+      {
+        question: "Can you help with Microsoft 365 administration for Clemson businesses?",
+        answer:
+          "Yes. We help Clemson-area organizations clean up Microsoft 365 tenants, implement proper identity management with Entra ID, set up conditional access, and improve overall M365 security and administration.",
+      },
+      {
+        question: "What makes NextGridIT different from the university IT department?",
+        answer:
+          "NextGridIT serves the broader Clemson community, not the university itself. We help local businesses, medical practices, and organizations that don't have access to university IT resources. Our focus is on small and mid-sized organizations that need project-based IT and security support.",
+      },
+      {
+        question: "Do you serve healthcare practices not affiliated with the hospital system in Clemson?",
+        answer:
+          "Yes. Many independent practices in the Clemson area are not served by hospital IT departments. We provide HIPAA security assessments, compliance documentation, and IT support specifically for those independent practices.",
+      },
     ],
   },
   {
@@ -592,6 +637,28 @@ export const locations: LocationPage[] = [
       "infrastructure-hardening",
       "msp-transition",
     ],
+    faq: [
+      {
+        question: "What IT services are available in Anderson, SC?",
+        answer:
+          "NextGridIT provides network infrastructure upgrades, vulnerability assessments, security hardening, MSP transitions, and IT support for businesses throughout Anderson County. We focus on practical improvements rather than enterprise-priced solutions.",
+      },
+      {
+        question: "Can you help with ISP coverage gaps in Anderson County?",
+        answer:
+          "Yes. Many Anderson County businesses operate in areas where ISP coverage drops off after the modem is installed. We help design network solutions that work around ISP limitations, including proper Wi-Fi deployment, network segmentation, and connectivity planning.",
+      },
+      {
+        question: "Do you offer vulnerability assessments for Anderson businesses?",
+        answer:
+          "Yes. We run scoped vulnerability assessments using professional scanning tools, deliver a prioritized remediation plan, and can help execute the fixes. This is especially valuable for businesses that don't have dedicated security staff.",
+      },
+      {
+        question: "How much does IT consulting cost in Anderson?",
+        answer:
+          "NextGridIT works on a project-based pricing model. We scope the work upfront and provide a clear estimate before starting. Contact us with your location, timeline, and the main problem you need solved, and we'll provide a straightforward assessment.",
+      },
+    ],
   },
   {
     slug: "easley-sc",
@@ -610,6 +677,28 @@ export const locations: LocationPage[] = [
       "Microsoft 365 administration and cloud projects",
     ],
     relatedServices: ["camera-systems", "microsoft-365", "infrastructure-hardening"],
+    faq: [
+      {
+        question: "What IT services does NextGridIT offer in Easley, SC?",
+        answer:
+          "NextGridIT provides camera system planning and installation, infrastructure cleanup, network support, Microsoft 365 administration, and IT support for businesses in the Easley and Pickens County area.",
+      },
+      {
+        question: "Can you install security camera systems in Easley?",
+        answer:
+          "Yes. We plan and install local-first camera systems that don't require cloud subscriptions. Systems are designed to be maintainable by the business owner, with proper NVR setup, storage planning, and network segmentation.",
+      },
+      {
+        question: "Do you help with Microsoft 365 setup and cleanup in Easley?",
+        answer:
+          "Yes. Many Easley-area businesses set up Microsoft 365 quickly and never properly configured it. We help with tenant cleanup, identity management, email security, and making sure the environment is properly administered.",
+      },
+      {
+        question: "What types of businesses do you work with in Pickens County?",
+        answer:
+          "We work with small businesses, retail, medical offices, construction companies, and multi-site properties throughout Pickens County. Our focus is on organizations that need practical IT support without enterprise pricing.",
+      },
+    ],
   },
   {
     slug: "greenville-sc",
@@ -632,6 +721,28 @@ export const locations: LocationPage[] = [
       "microsoft-365",
       "vulnerability-assessment",
       "security-audits-pentesting",
+    ],
+    faq: [
+      {
+        question: "What IT and security services does NextGridIT offer in Greenville, SC?",
+        answer:
+          "NextGridIT provides HIPAA security assessments, Microsoft 365 migrations, vulnerability assessments, penetration testing, network design, and MSP transition services for Greenville-area businesses.",
+      },
+      {
+        question: "Can you perform a HIPAA security assessment for my Greenville medical practice?",
+        answer:
+          "Yes. We perform HIPAA security assessments for healthcare practices throughout Greenville County. Our assessments include risk analysis, policy gap identification, remediation planning, and compliance documentation aligned with NIST 800-53 and MARS-E frameworks.",
+      },
+      {
+        question: "Do you offer penetration testing in Greenville, SC?",
+        answer:
+          "Yes. We provide penetration testing and vulnerability assessments for Greenville businesses. Our lead consultant has 100+ certifications and active bug bounty experience with Microsoft MSRC and HackerOne, bringing real-world security research depth to every engagement.",
+      },
+      {
+        question: "Can you help my Greenville business transition away from an MSP?",
+        answer:
+          "Yes. MSP transition is one of our core services. We help Greenville businesses evaluate their current MSP relationship, plan the transition, manage the credential and access handoff, and establish independent IT operations.",
+      },
     ],
   },
 ];
