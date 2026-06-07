@@ -33,7 +33,7 @@ const navGroups: NavGroup[] = [
   {
     id: "services",
     label: "Capabilities",
-    description: "Infrastructure hardening, exposure research, sovereign AI, and deployment execution.",
+    description: "MSP transitions, vendor lockout recovery, HIPAA assessments, security, and infrastructure hardening.",
     overview: {
       href: "/services",
       label: "Browse capabilities",
@@ -41,39 +41,54 @@ const navGroups: NavGroup[] = [
     },
     links: [
       {
-        href: "/services/it-support",
+        href: "/services/msp-transition",
+        label: "MSP Transition",
+        description: "Fire your MSP and take back control of your IT.",
+      },
+      {
+        href: "/services/vendor-lockout-recovery",
+        label: "Vendor Lockout Recovery",
+        description: "Break back into systems you own when a provider walks away.",
+      },
+      {
+        href: "/services/hipaa-security-assessment",
+        label: "HIPAA Assessment",
+        description: "Real security assessments for medical practices.",
+      },
+      {
+        href: "/services/vulnerability-assessment",
+        label: "Vulnerability Assessment",
+        description: "Find and prioritize what's actually vulnerable in your environment.",
+      },
+      {
+        href: "/services/infrastructure-hardening",
         label: "Infrastructure Hardening",
-        description: "Operator-led hardening, perimeter surveillance, and environment control.",
+        description: "Close gaps in identity, mail, network edges, and inherited systems.",
       },
       {
         href: "/services/microsoft-365",
         label: "Microsoft 365",
-        description: "Tenant cleanup, identity work, and cloud administration help.",
+        description: "Tenant cleanup, identity hardening, and migration support.",
       },
       {
         href: "/services/network-wifi",
-        label: "Infrastructure Delivery",
-        description: "Network operations, segmentation, and deployment execution across sites.",
-      },
-      {
-        href: "/services/security-hardening",
-        label: "Security",
-        description: "Practical hardening, documentation, and compliance-aware support.",
+        label: "Network & Wi-Fi",
+        description: "Reliable network deployment and Wi-Fi for businesses.",
       },
       {
         href: "/services/security-audits-pentesting",
-        label: "Exposure Research",
-        description: "Black box testing, surface analysis, and remediation guidance.",
-      },
-      {
-        href: "/services/private-air-gapped-ai",
-        label: "Private AI",
-        description: "Air-gapped Qwen and Mistral deployments for coding and threat analysis.",
+        label: "Penetration Testing",
+        description: "Black box and trusted-access testing with remediation help.",
       },
       {
         href: "/services/camera-systems",
-        label: "Perimeter Surveillance",
-        description: "Sensor systems, local capture, and visibility infrastructure.",
+        label: "Camera Systems",
+        description: "Local-first camera and surveillance infrastructure.",
+      },
+      {
+        href: "/services/private-ai",
+        label: "Private AI Consulting",
+        description: "Guidance on local AI that keeps your data inside your environment.",
       },
       {
         href: "/technologies",
@@ -86,7 +101,7 @@ const navGroups: NavGroup[] = [
   {
     id: "fit",
     label: "Who We Help",
-    description: "Distributed operators, regulated environments, and exposed environments that need sharper technical control.",
+    description: "Medical practices, small businesses, municipalities, and organizations that need IT they can actually rely on.",
     overview: {
       href: "/industries",
       label: "Explore industries",
@@ -193,7 +208,7 @@ const mobileMenuId = "mobile-navigation"
 const desktopMenuId = "desktop-navigation"
 const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`
 const labsHref = "/labs"
-const surfaceScanHref = "/#active-perimeter-intelligence"
+const surfaceScanHref = "/contact"
 
 function normalizePath(path: string) {
   if (path !== "/" && path.endsWith("/")) {
@@ -397,7 +412,7 @@ export function Navbar() {
                 onClick={closeMenus}
                 className="button-primary relative overflow-hidden rounded-full px-6 py-2.5 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
-                <span className="relative z-10">RUN PERIMETER AUDIT</span>
+                <span className="relative z-10">FREE ASSESSMENT</span>
               </Link>
             </div>
           </div>
@@ -512,7 +527,7 @@ export function Navbar() {
               onClick={closeMenus}
               className="button-primary inline-flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]"
             >
-              Run Audit
+              Free Assessment
             </Link>
             <a
               href={phoneHref}
@@ -642,7 +657,7 @@ export function Navbar() {
               onClick={closeMenus}
               className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
             >
-              RUN PERIMETER AUDIT
+              RUN FREE ASSESSMENT
             </Link>
             </div>
           </nav>

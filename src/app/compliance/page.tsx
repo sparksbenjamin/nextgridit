@@ -24,9 +24,9 @@ const frameworks = [
     support:
       "We help with secure Microsoft 365 administration, access controls, documentation, infrastructure cleanup, backups, endpoint posture, and practical coordination with the systems you already rely on.",
     links: [
-      { label: "Infrastructure Hardening", href: "/services/it-support/" },
+      { label: "HIPAA Assessment", href: "/services/hipaa-security-assessment/" },
+      { label: "Infrastructure Hardening", href: "/services/infrastructure-hardening/" },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
-      { label: "Security", href: "/services/security-hardening/" },
     ],
   },
   {
@@ -37,7 +37,7 @@ const frameworks = [
       "We help with segmentation, public or guest Wi-Fi separation, access control improvements, documentation, and infrastructure decisions that support safer payment environments.",
     links: [
       { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
-      { label: "Security", href: "/services/security-hardening/" },
+      { label: "Vulnerability Assessment", href: "/services/vulnerability-assessment/" },
       { label: "Camera Systems", href: "/services/camera-systems/" },
     ],
   },
@@ -48,9 +48,9 @@ const frameworks = [
     support:
       "Our approach is informed by practical security frameworks, including NIST-aligned thinking, so technical improvements can map back to risk reduction, documentation, and a more defensible operating posture.",
     links: [
-      { label: "Security", href: "/services/security-hardening/" },
-      { label: "Security Audits", href: "/services/security-audits-pentesting/" },
-      { label: "Infrastructure Hardening", href: "/services/it-support/" },
+      { label: "Infrastructure Hardening", href: "/services/infrastructure-hardening/" },
+      { label: "Penetration Testing", href: "/services/security-audits-pentesting/" },
+      { label: "Vulnerability Assessment", href: "/services/vulnerability-assessment/" },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
     ],
   },

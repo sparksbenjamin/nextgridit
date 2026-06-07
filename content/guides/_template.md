@@ -3,12 +3,11 @@ title: Guide title
 summary: One short summary sentence for the guide listing and page metadata.
 publishedAt: 2026-03-30
 updatedAt: 2026-03-30
-tags:
-  - Topic
-  - Networking
+tags: None
 eyebrow: Field Guide
+description: Start with a short introduction.
+last_updated: 2026-06-07
 ---
-
 Start with a short introduction.
 
 ## What this is

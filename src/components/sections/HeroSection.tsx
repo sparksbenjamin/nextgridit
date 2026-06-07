@@ -4,57 +4,57 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import {
   IconArrowRight,
-  IconBinaryTree2,
-  IconCpu2,
+  IconCertificate,
+  IconLockOpen,
   IconServerCog,
   IconShieldLock,
 } from "@tabler/icons-react"
 
 const statCards = [
   {
-    label: "Countries in reach",
-    value: "150+",
+    label: "Years in IT",
+    value: "20+",
     icon: <IconServerCog className="h-5 w-5 theme-accent-strong" />,
   },
   {
-    label: "Research threads",
-    value: "MSRC",
-    icon: <IconBinaryTree2 className="h-5 w-5 theme-accent-strong" />,
+    label: "Certifications",
+    value: "100+",
+    icon: <IconCertificate className="h-5 w-5 theme-accent-strong" />,
   },
   {
-    label: "Private AI",
-    value: "Air-Gapped",
-    icon: <IconCpu2 className="h-5 w-5 theme-accent-strong" />,
-  },
-]
-
-const warRoomFeed = [
-  {
-    label: "MSRC",
-    body: "Case #108637 pinned to pre-auth identity and mail-discovery telemetry.",
-  },
-  {
-    label: "INTEL",
-    body: "Perimeter watchlists synchronized across exposure, DNS residue, and tenant fingerprinting.",
-  },
-  {
-    label: "AI",
-    body: "Qwen and Mistral clusters ready for isolated coding and threat-analysis workloads.",
+    label: "Medical offices assessed",
+    value: "100+",
+    icon: <IconShieldLock className="h-5 w-5 theme-accent-strong" />,
   },
 ]
 
-const signalBoard = [
+const recentWork = [
   {
-    title: "Discovery plane",
-    copy: "Enumerating how public identity and mail-discovery workflows leak tenant and principal signals before auth.",
+    label: "RECOVERY",
+    body: "Municipality vendor lockout resolved. Full system access returned to city ownership with authorized documentation.",
   },
   {
-    title: "Exposure plane",
-    copy: "Correlating MX fingerprints, DNS residue, and externally visible control surfaces into a single posture brief.",
+    label: "TRANSITION",
+    body: "Business MSP separation completed. All credentials verified, former provider access confirmed revoked across every system.",
   },
   {
-    title: "Decision plane",
-    copy: "Generating private, air-gapped recommendations without handing source material to third-party AI platforms.",
+    label: "ASSESSMENT",
+    body: "HIPAA security assessment delivered for medical practice. Findings prioritized by real exploitability, not theoretical severity.",
+  },
+]
+
+const capabilities = [
+  {
+    title: "MSP Transition",
+    copy: "Fire your MSP and take back control of your IT. We manage the full transition so nothing gets left behind.",
+  },
+  {
+    title: "Vendor Lockout Recovery",
+    copy: "When your IT provider walks away with your credentials, we break back in and hand you the keys — legally.",
+  },
+  {
+    title: "Security Assessment",
+    copy: "Find what's actually vulnerable in your environment and get a prioritized plan to fix it, not a report that sits on a shelf.",
   },
 ]
 
@@ -85,7 +85,7 @@ export function HeroSection() {
             >
               <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_18px_var(--accent)]" />
               <span className="font-mono text-xs uppercase tracking-[0.28em] theme-copy">
-                NextGrid Labs // War Room Active
+                Upstate South Carolina // IT That Shows Up
               </span>
             </motion.div>
 
@@ -95,9 +95,9 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className="theme-heading text-5xl font-bold leading-[0.92] sm:text-6xl lg:text-7xl"
             >
-              Global Infrastructure.
+              Your IT.
               <br />
-              <span className="theme-accent-strong">Sovereign Intelligence.</span>
+              <span className="theme-accent-strong">Under Your Control.</span>
             </motion.h1>
 
             <motion.p
@@ -106,9 +106,9 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.14 }}
               className="theme-copy mt-6 max-w-2xl font-mono text-lg leading-relaxed sm:text-xl"
             >
-              NextGrid IT isn&apos;t just boots on the ground in 150+ countries. We are the
-              researchers discovering the vulnerabilities the world hasn&apos;t seen yet. Home
-              to MSRC-level research and secure, air-gapped Private AI.
+              MSP transitions, vendor lockout recovery, HIPAA security assessments,
+              and infrastructure hardening for businesses in Upstate South Carolina.
+              We help you take back control of your IT — and keep it.
             </motion.p>
 
             <motion.div
@@ -118,19 +118,19 @@ export function HeroSection() {
               className="mt-8 flex flex-col gap-4 sm:flex-row"
             >
               <Link
-                href="/labs/"
+                href="/contact/"
                 className="button-primary inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
                 <IconShieldLock className="h-5 w-5" />
-                <span>Run Instant Perimeter Audit</span>
+                <span>Get a Free Assessment</span>
               </Link>
 
               <Link
-                href="/contact/"
+                href="/services/"
                 className="button-secondary inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
                 <IconArrowRight className="h-5 w-5 theme-accent" />
-                <span>Request Exposure Brief</span>
+                <span>View Our Services</span>
               </Link>
             </motion.div>
 
@@ -148,7 +148,7 @@ export function HeroSection() {
                   <div className="mb-4 flex items-center justify-between">
                     {card.icon}
                     <span className="font-mono text-[11px] uppercase tracking-[0.24em] theme-soft">
-                      Live
+                      Verified
                     </span>
                   </div>
                   <p className="theme-heading text-2xl font-bold">{card.value}</p>
@@ -173,29 +173,30 @@ export function HeroSection() {
                   <span className="h-3 w-3 rounded-full bg-amber-400/80" />
                   <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
                   <span className="pl-2 font-mono text-xs uppercase tracking-[0.24em] theme-soft">
-                    war_room.console
+                    what_we_do.console
                   </span>
                 </div>
                 <div className="rounded-full border border-[var(--border)] bg-[var(--accent-soft)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] theme-accent-strong">
-                  Secure Session
+                  Seneca, SC
                 </div>
               </div>
 
               <div className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
                 <section className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--background-elevated)]/80 p-5">
                   <p className="font-mono text-xs uppercase tracking-[0.26em] theme-accent">
-                    Research command
+                    Core services
                   </p>
                   <h2 className="theme-heading mt-3 text-3xl font-bold">
-                    MSRC Case #108637
+                    Take Back Control
                   </h2>
                   <p className="theme-copy mt-3 text-sm leading-6">
-                    Pre-auth identity intelligence focused on unauthenticated enumeration
-                    conditions across Entra-linked discovery flows and mail-edge behavior.
+                    From MSP transitions and vendor lockout recovery to HIPAA
+                    assessments and infrastructure hardening — real solutions for
+                    businesses that need IT they can actually rely on.
                   </p>
 
                   <div className="mt-5 space-y-3">
-                    {signalBoard.map((item) => (
+                    {capabilities.map((item) => (
                       <div
                         key={item.title}
                         className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4"
@@ -211,11 +212,11 @@ export function HeroSection() {
 
                 <section className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--background-elevated)]/80 p-5">
                   <p className="font-mono text-xs uppercase tracking-[0.26em] theme-accent">
-                    War room feed
+                    Recent work
                   </p>
 
                   <div className="mt-4 space-y-3">
-                    {warRoomFeed.map((item) => (
+                    {recentWork.map((item) => (
                       <div
                         key={item.label}
                         className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4"
@@ -231,17 +232,17 @@ export function HeroSection() {
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4">
                       <p className="font-mono text-[11px] uppercase tracking-[0.22em] theme-soft">
-                        Audit class
+                        Service area
                       </p>
                       <p className="theme-heading mt-2 text-lg font-bold">
-                        Perimeter Intelligence
+                        Upstate SC
                       </p>
                     </div>
                     <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4">
                       <p className="font-mono text-[11px] uppercase tracking-[0.22em] theme-soft">
-                        Compute mode
+                        Compliance
                       </p>
-                      <p className="theme-heading mt-2 text-lg font-bold">Air-Gapped GPU</p>
+                      <p className="theme-heading mt-2 text-lg font-bold">HIPAA / NIST</p>
                     </div>
                   </div>
                 </section>

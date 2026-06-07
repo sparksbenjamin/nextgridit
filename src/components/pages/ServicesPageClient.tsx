@@ -6,65 +6,90 @@ import {
   IconBrandWindows,
   IconCertificate,
   IconCpu2,
+  IconHeartbeat,
+  IconLockOpen,
+  IconNetwork,
+  IconReplace,
   IconRouter,
   IconServerCog,
-  IconShieldLock,
+  IconShieldCheck,
   IconVideo,
 } from "@tabler/icons-react"
 
 const detailedServices = [
   {
-    id: "it-support",
-    title: "Infrastructure Hardening and Perimeter Surveillance",
-    description: "Oversee identity, mail, hardening, baseline controls, and externally visible systems without defaulting to a commodity MSP model.",
-    bullets: ["Perimeter control reviews", "Vendor and ownership governance", "Cleanup, hardening, and stabilization"],
+    id: "msp-transition",
+    title: "MSP Transition & Vendor Independence",
+    description: "Fire your MSP and take back control of your IT. We manage the full transition — from auditing what they manage to verifying they no longer have access.",
+    bullets: ["MSP dependency audit and documentation", "Transition coordination and cutover", "Post-transition verification and credential reset"],
+  },
+  {
+    id: "vendor-lockout-recovery",
+    title: "Vendor Lockout Recovery",
+    description: "When your IT provider walks away with your credentials, we break back in and hand you the keys. Every engagement starts with proper authorization documentation.",
+    bullets: ["Authorized system access recovery", "Legal documentation and signoff", "New credential sets and security controls"],
+  },
+  {
+    id: "hipaa-security-assessment",
+    title: "HIPAA Security Assessment",
+    description: "Real security assessments for medical practices — findings prioritized by actual risk, not theoretical severity. Based on experience assessing 100+ medical offices and daily Medicaid compliance work.",
+    bullets: ["HIPAA Security Rule mapping", "Risk-based remediation prioritization", "Audit-ready documentation"],
+  },
+  {
+    id: "vulnerability-assessment",
+    title: "Vulnerability Assessment & Remediation Planning",
+    description: "Enterprise-grade vulnerability assessment using the same tools and process used in compliance environments — sized and priced for your business.",
+    bullets: ["Tenable.sc scanning and assessment", "Risk-based prioritization", "Optional remediation support"],
+  },
+  {
+    id: "infrastructure-hardening",
+    title: "Infrastructure Hardening & Security Cleanup",
+    description: "Close the gaps in identity, mail, network edges, and inherited infrastructure. A deliberate effort to reduce your attack surface and operational confusion.",
+    bullets: ["Identity and mail hardening", "Perimeter review and cleanup", "Documentation and ownership mapping"],
   },
   {
     id: "microsoft-365",
-    title: "Identity, Mail, and Cloud Platforms",
-    description: "Plan, improve, and support Microsoft, Azure, AWS, Google, and Apple ecosystems with a focus on ownership, security, and lower attack surface.",
-    bullets: ["Microsoft 365 and Entra administration", "Cloud migration and tenant cleanup", "Identity and mail control support"],
+    title: "Microsoft 365 & Cloud Services",
+    description: "Tenant cleanup, MFA rollout, identity hardening, and migration support. 4,000+ Microsoft 365 accounts migrated with zero data loss.",
+    bullets: ["Tenant review and remediation", "Identity and access controls", "Cloud migration planning"],
   },
   {
     id: "network-wifi",
-    title: "Global Infrastructure Deployment and Network Operations",
-    description: "Design, stage, and support reliable business and property networks with the operational discipline needed for regional or global rollout programs.",
-    bullets: ["Field dispatch coordination", "Public and guest Wi-Fi deployments", "Infrastructure rollout planning"],
-  },
-  {
-    id: "security-hardening",
-    title: "Security Hardening, Documentation, and Compliance-Aware Support",
-    description: "Review systems, improve access controls, clean up documentation, and reduce common security gaps while keeping the environment practical to operate.",
-    bullets: ["HIPAA-aware support", "NIST-informed security practices", "Documentation, policies, and operational gap review"],
+    title: "Network Infrastructure & Wi-Fi Deployment",
+    description: "Reliable network deployment, segmentation, and Wi-Fi for businesses that need connectivity that actually works. Past projects include full coverage under budget and multi-site WAN upgrades with zero downtime.",
+    bullets: ["Ubiquiti UniFi deployments", "Guest and staff segmentation", "Multi-building connectivity planning"],
   },
   {
     id: "security-audits-pentesting",
-    title: "Exposure Research and Penetration Testing",
-    description: "Run black box and trusted-access assessments with practical reporting, remediation help, and a clearer picture of what is actually risky in the real environment.",
-    bullets: ["Black box pentests", "Trusted-access internal assessments", "Risk review and exposure context"],
-  },
-  {
-    id: "private-air-gapped-ai",
-    title: "Private & Air-Gapped AI Implementation",
-    description: "Deploy Qwen and Mistral for enterprise coding, retrieval, and threat analysis without sending sensitive data to third-party platforms.",
-    bullets: ["Dedicated GPU clusters", "Private coding copilots", "Air-gapped threat-analysis workflows"],
+    title: "Penetration Testing & Security Audits",
+    description: "Black box and trusted-access testing with real-world risk review. Active bug bounty researcher on Microsoft and HackerOne platforms keeps methodology current.",
+    bullets: ["Black box pentests", "Trusted-access assessments", "Remediation validation"],
   },
   {
     id: "camera-systems",
-    title: "Perimeter Surveillance and Sensor Systems",
-    description: "Install and support camera systems, smart sensors, and local visibility infrastructure with options for on-site processing and controlled analysis.",
-    bullets: ["Full camera install and service", "Local capture and retention", "Specialty visibility system design"],
+    title: "Camera Systems & Surveillance Infrastructure",
+    description: "Local-first camera and sensor infrastructure. You own your footage, your retention policies, and your system. No mandatory cloud dependency.",
+    bullets: ["Camera planning and installation", "Local NVR design and deployment", "Network-integrated design"],
+  },
+  {
+    id: "private-ai",
+    title: "Private AI Consulting",
+    description: "Guidance on deploying local AI that keeps your data inside your environment. Consulting and planning — realistic assessment of what local AI can and cannot do for you today.",
+    bullets: ["AI readiness assessment", "Hardware and model recommendations", "Deployment roadmap"],
   },
 ]
 
-const icons = {
-  "it-support": <IconServerCog className="w-10 h-10 text-[#39ff14]" />,
+const icons: Record<string, React.ReactNode> = {
+  "msp-transition": <IconReplace className="w-10 h-10 text-[#39ff14]" />,
+  "vendor-lockout-recovery": <IconLockOpen className="w-10 h-10 text-[#ff9f1c]" />,
+  "hipaa-security-assessment": <IconHeartbeat className="w-10 h-10 text-[#b026ff]" />,
+  "vulnerability-assessment": <IconCertificate className="w-10 h-10 text-[#ff9f1c]" />,
+  "infrastructure-hardening": <IconServerCog className="w-10 h-10 text-white" />,
   "microsoft-365": <IconBrandWindows className="w-10 h-10 text-[#b026ff]" />,
   "network-wifi": <IconRouter className="w-10 h-10 text-[#00f0ff]" />,
-  "security-hardening": <IconShieldLock className="w-10 h-10 text-white" />,
-  "security-audits-pentesting": <IconCertificate className="w-10 h-10 text-[#ff9f1c]" />,
-  "private-air-gapped-ai": <IconCpu2 className="w-10 h-10 text-[#39ff14]" />,
+  "security-audits-pentesting": <IconShieldCheck className="w-10 h-10 text-[#39ff14]" />,
   "camera-systems": <IconVideo className="w-10 h-10 text-[#94a3b8]" />,
+  "private-ai": <IconCpu2 className="w-10 h-10 text-[#39ff14]" />,
 }
 
 export function ServicesPageClient() {
@@ -76,7 +101,9 @@ export function ServicesPageClient() {
         </h1>
         <div className="theme-rule mb-6 h-1 w-24" />
         <p className="theme-copy max-w-3xl font-sans text-lg leading-relaxed">
-          NextGridIT provides infrastructure hardening, identity control, exposure research, sovereign AI, surveillance systems, and global infrastructure execution for organizations that need practical technical leadership without generic MSP packaging.
+          From MSP transitions and vendor lockout recovery to HIPAA security assessments
+          and infrastructure hardening — NextGridIT helps Upstate South Carolina businesses
+          take back control of their IT.
         </p>
       </div>
 
@@ -92,7 +119,7 @@ export function ServicesPageClient() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--accent-soft)] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             <div className="mb-6 inline-block rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-inner">
-              {icons[service.id as keyof typeof icons]}
+              {icons[service.id]}
             </div>
 
             <h2 className="theme-heading mb-4 font-mono text-2xl font-bold transition-colors group-hover:text-[var(--accent-strong)]">{service.title}</h2>
@@ -130,10 +157,13 @@ export function ServicesPageClient() {
               Compliance-aware support
             </div>
             <h2 className="theme-heading font-mono text-2xl font-bold md:text-3xl">
-              Frameworks matter when they connect to real systems, intelligence workflows, and real operations.
+              Frameworks matter when they connect to real systems and real operations.
             </h2>
             <p className="theme-copy leading-relaxed">
-              NextGridIT supports healthcare, public-sector, and business environments with technical guidance informed by HIPAA, PCI DSS, and NIST-based practices. We focus on implementation, documentation, security reviews, and risk reduction that can be tied back to the systems you actually run.
+              NextGridIT supports healthcare, public-sector, and business environments with
+              technical guidance informed by HIPAA, PCI DSS, MARS-E, and NIST 800-53. This
+              comes from direct daily experience in Medicaid compliance operations — not from
+              reading a framework document once.
             </p>
           </div>
         </div>

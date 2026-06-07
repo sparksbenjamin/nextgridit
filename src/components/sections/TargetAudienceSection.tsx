@@ -4,21 +4,21 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { IconCheck } from "@tabler/icons-react"
 
-const operators = [
+const audiences = [
   {
-    label: "Security leaders that need infrastructure hardening tied directly to external exposure",
-    href: "/services/it-support/",
+    label: "Businesses that want to fire their MSP and bring IT in-house",
+    href: "/services/msp-transition/",
   },
   {
-    label: "Security programs that need surface intelligence, exposure validation, and practical risk framing",
-    href: "/labs/",
+    label: "Organizations locked out of their own systems by a former vendor",
+    href: "/services/vendor-lockout-recovery/",
   },
   {
-    label: "Engineering teams that want private AI copilots without sending code to third-party platforms",
-    href: "/services/private-air-gapped-ai/",
+    label: "Medical practices that need a real HIPAA security assessment",
+    href: "/services/hipaa-security-assessment/",
   },
   {
-    label: "Distributed operators that still need local response across Seneca, Clemson, Anderson, Easley, and Greenville",
+    label: "Companies across Seneca, Clemson, Anderson, Easley, and Greenville that need IT help that actually shows up",
     href: "/service-areas/",
   },
 ]
@@ -41,40 +41,46 @@ export function TargetAudienceSection() {
                 Built for
                 <br />
                 <span className="bg-gradient-to-r from-[var(--accent-alt)] to-[var(--accent)] bg-clip-text text-transparent">
-                  High-Exposure Environments
+                  Upstate SC Businesses
                 </span>
               </h2>
 
               <div className="theme-copy space-y-6 font-sans text-lg">
                 <p>
-                  NextGridIT operates as two coordinated layers: infrastructure execution in the field and a research program focused on surface exposure, sovereign intelligence, and private analysis.
+                  NextGridIT works with local businesses, medical practices, municipalities,
+                  and organizations that need a technically strong partner who actually shows up
+                  and fixes things.
                 </p>
                 <p>
                   <strong className="theme-heading font-mono">
-                    The result is a delivery model that can harden environments, investigate emerging weaknesses, and generate higher-context risk insight from the same command structure.
+                    The goal is always the same: make you the owner of your own IT, with
+                    systems you understand, credentials you control, and documentation that
+                    actually exists.
                   </strong>
                 </p>
                 <p>
-                  That is a better fit for organizations that want one partner handling infrastructure hardening, perimeter surveillance, and research-led escalation without handing the problem to disconnected vendors.
+                  Whether it's transitioning away from an MSP that isn't delivering, recovering
+                  from a vendor that walked away, or getting a real security assessment for your
+                  practice — we handle the work that generic IT support can't or won't.
                 </p>
               </div>
 
               <div className="mt-10 flex flex-wrap gap-6">
                 <div className="border-l-2 border-[var(--accent-strong)] pl-4">
                   <div className="theme-heading text-3xl font-mono font-bold">
-                    150<span className="theme-accent-strong">+</span>
+                    20<span className="theme-accent-strong">+</span>
                   </div>
                   <div className="theme-soft mt-1 text-sm uppercase tracking-widest">
-                    Countries Supported
+                    Years in IT
                   </div>
                 </div>
                 <div className="border-l-2 border-[var(--accent)] pl-4">
-                  <div className="theme-heading text-3xl font-mono font-bold">20<span className="theme-accent">+</span></div>
-                  <div className="theme-soft mt-1 text-sm uppercase tracking-widest">Years in IT</div>
+                  <div className="theme-heading text-3xl font-mono font-bold">100<span className="theme-accent">+</span></div>
+                  <div className="theme-soft mt-1 text-sm uppercase tracking-widest">Certifications</div>
                 </div>
                 <div className="border-l-2 border-[var(--accent-alt)] pl-4">
-                  <div className="theme-heading text-3xl font-mono font-bold">Private</div>
-                  <div className="theme-soft mt-1 text-sm uppercase tracking-widest">AI Integration</div>
+                  <div className="theme-heading text-3xl font-mono font-bold">DHHS</div>
+                  <div className="theme-soft mt-1 text-sm uppercase tracking-widest">Medicaid Compliance</div>
                 </div>
               </div>
             </motion.div>
@@ -96,28 +102,28 @@ export function TargetAudienceSection() {
                     <span className="h-3 w-3 rounded-full bg-red-500" />
                     <span className="h-3 w-3 rounded-full bg-yellow-500" />
                     <span className="h-3 w-3 rounded-full bg-green-500" />
-                    <span className="theme-soft ml-2 text-xs">operating_model.sh</span>
+                    <span className="theme-soft ml-2 text-xs">who_we_help.sh</span>
                   </div>
 
                   <div className="space-y-4 text-sm sm:text-base">
                     <div className="theme-copy flex items-center justify-between">
-                      <span>Legacy Field Vendor</span>
-                      <span className="text-amber-500">Install and Forget</span>
+                      <span>Generic IT Support</span>
+                      <span className="text-amber-500">Reactive & Generic</span>
                     </div>
                     <div className="h-[1px] w-full bg-[var(--border)]" />
                     <div className="theme-heading flex items-center justify-between">
-                      <span>NextGridIT Model</span>
-                      <span className="theme-accent-strong">Harden and Investigate</span>
+                      <span>NextGridIT</span>
+                      <span className="theme-accent-strong">Own Your IT</span>
                     </div>
 
                     <div className="mt-6 space-y-3 border-t border-[var(--border)] pt-6">
-                      <p className="theme-soft">&gt; identifying best-fit operating environments...</p>
+                      <p className="theme-soft">&gt; identifying best-fit clients...</p>
                       <ul className="theme-copy space-y-2">
-                        {operators.map((operator) => (
-                          <li key={operator.href} className="flex items-center gap-2">
+                        {audiences.map((audience) => (
+                          <li key={audience.href} className="flex items-center gap-2">
                             <IconCheck className="h-4 w-4 theme-accent" />
-                            <Link href={operator.href} className="theme-link">
-                              {operator.label}
+                            <Link href={audience.href} className="theme-link">
+                              {audience.label}
                             </Link>
                           </li>
                         ))}

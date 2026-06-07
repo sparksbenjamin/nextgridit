@@ -7,68 +7,95 @@ import {
   IconChevronRight,
   IconCloudLock,
   IconCpu2,
-  IconDeviceDesktopAnalytics,
+  IconHeartbeat,
+  IconLockOpen,
   IconNetwork,
+  IconReplace,
+  IconServerCog,
   IconShieldCheck,
   IconVideo,
 } from "@tabler/icons-react"
 
 const services = [
   {
-    slug: "it-support",
-    title: "Infrastructure Hardening & Perimeter Surveillance",
+    slug: "msp-transition",
+    title: "MSP Transition & Vendor Independence",
     description:
-      "Operator-led hardening across identity, mail, network edge, and externally visible infrastructure for environments that cannot afford defensive drift.",
-    icon: <IconDeviceDesktopAnalytics className="h-8 w-8 text-white" />,
-    features: ["Perimeter control reviews", "Identity and mail hardening", "Infrastructure governance"],
+      "Fire your MSP and take back control of your IT. We manage the full transition — from auditing what they manage to verifying they no longer have access.",
+    icon: <IconReplace className="h-8 w-8 text-[#39ff14]" />,
+    features: ["MSP dependency audit", "Transition coordination", "Post-transition verification"],
+  },
+  {
+    slug: "vendor-lockout-recovery",
+    title: "Vendor Lockout Recovery",
+    description:
+      "When your IT provider walks away and takes your credentials, we break back in and hand you the keys — with proper authorization documentation.",
+    icon: <IconLockOpen className="h-8 w-8 text-[#ff9f1c]" />,
+    features: ["Authorized system recovery", "Credential reset and handoff", "Legal documentation trail"],
+  },
+  {
+    slug: "hipaa-security-assessment",
+    title: "HIPAA Security Assessment",
+    description:
+      "Real security assessments for medical practices — findings prioritized by actual risk, not theoretical severity. Based on experience assessing 100+ medical offices.",
+    icon: <IconHeartbeat className="h-8 w-8 text-[#b026ff]" />,
+    features: ["HIPAA Security Rule mapping", "Risk-based remediation plan", "Audit-ready documentation"],
+  },
+  {
+    slug: "vulnerability-assessment",
+    title: "Vulnerability Assessment & Remediation",
+    description:
+      "Find what's actually vulnerable in your environment and get a plan to fix it. Enterprise-grade tools and process, sized for your business.",
+    icon: <IconCertificate className="h-8 w-8 text-[#ff9f1c]" />,
+    features: ["Tenable.sc scanning", "Risk-based prioritization", "Remediation planning"],
+  },
+  {
+    slug: "infrastructure-hardening",
+    title: "Infrastructure Hardening & Security Cleanup",
+    description:
+      "Close the gaps in identity, mail, network edges, and inherited infrastructure. Not break-fix — a deliberate effort to reduce your attack surface.",
+    icon: <IconServerCog className="h-8 w-8 text-white" />,
+    features: ["Identity and mail controls", "Perimeter review", "Documentation and ownership cleanup"],
   },
   {
     slug: "microsoft-365",
-    title: "Identity, Mail, and Cloud Platforms",
+    title: "Microsoft 365 & Cloud Services",
     description:
-      "Tune Microsoft 365, Entra ID, Azure, Google, and Apple ecosystems for stronger control, cleaner ownership, and lower exposure.",
+      "Tenant cleanup, MFA rollout, identity hardening, and migration support. 4,000+ accounts migrated with zero data loss.",
     icon: <IconCloudLock className="h-8 w-8 text-[#b026ff]" />,
-    features: ["Microsoft 365 and Entra", "Azure and hybrid identity", "Cross-platform administration"],
+    features: ["Tenant cleanup and hardening", "Identity and access controls", "Migration planning"],
   },
   {
     slug: "network-wifi",
-    title: "Global Infrastructure Deployment & Network Operations",
+    title: "Network Infrastructure & Wi-Fi",
     description:
-      "Coordinate staging, dispatch, routing, Wi-Fi, segmentation, and connectivity for regional or global infrastructure programs that need disciplined execution.",
+      "Reliable network deployment, segmentation, and Wi-Fi for businesses that need connectivity that actually works across the property.",
     icon: <IconNetwork className="h-8 w-8 text-[#00f0ff]" />,
-    features: ["150+ country infrastructure reach", "Field dispatch coordination", "Network and connectivity design"],
-  },
-  {
-    slug: "security-hardening",
-    title: "Security Hardening and Compliance Alignment",
-    description:
-      "Reduce avoidable risk with practical controls, clearer documentation, and implementation support informed by regulated operating environments.",
-    icon: <IconShieldCheck className="h-8 w-8 text-[#39ff14]" />,
-    features: ["HIPAA-aware support", "NIST-informed practices", "Documentation and policy alignment"],
+    features: ["Ubiquiti UniFi deployments", "Guest and staff segmentation", "Multi-building connectivity"],
   },
   {
     slug: "security-audits-pentesting",
-    title: "Exposure Research and Penetration Testing",
+    title: "Penetration Testing & Security Audits",
     description:
-      "Move beyond vulnerability dumps with targeted research, attack-surface reviews, black box testing, and remediation guidance.",
-    icon: <IconCertificate className="h-8 w-8 text-[#ff9f1c]" />,
-    features: ["Black box pentests", "Surface exposure audits", "Real-world risk review"],
-  },
-  {
-    slug: "private-air-gapped-ai",
-    title: "Private & Air-Gapped AI Implementation",
-    description:
-      "Leverage LLMs (Qwen/Mistral) for enterprise coding and threat analysis without third-party data leakage through dedicated on-premise GPU clusters.",
-    icon: <IconCpu2 className="h-8 w-8 text-[#39ff14]" />,
-    features: ["Qwen and Mistral", "Dedicated GPU clusters", "100% data privacy"],
+      "Black box and trusted-access testing with real-world risk review. Active bug bounty researcher on Microsoft and HackerOne platforms.",
+    icon: <IconShieldCheck className="h-8 w-8 text-[#39ff14]" />,
+    features: ["Black box pentests", "Trusted-access reviews", "Remediation validation"],
   },
   {
     slug: "camera-systems",
-    title: "Perimeter Surveillance & Sensor Systems",
+    title: "Camera Systems & Surveillance",
     description:
-      "Design local-first surveillance and sensor infrastructure that improves visibility without surrendering the evidence plane to a cloud vendor.",
+      "Local-first camera and sensor infrastructure. You own your footage, your retention policies, and your system.",
     icon: <IconVideo className="h-8 w-8 text-[#94a3b8]" />,
-    features: ["Local capture infrastructure", "Camera and sensor coverage", "On-site retention controls"],
+    features: ["Camera planning and install", "Local NVR design", "Network-integrated deployment"],
+  },
+  {
+    slug: "private-ai",
+    title: "Private AI Consulting",
+    description:
+      "Guidance on deploying local AI that keeps your data inside your environment. Consulting and planning — not vaporware promises.",
+    icon: <IconCpu2 className="h-8 w-8 text-[#39ff14]" />,
+    features: ["AI readiness assessment", "Hardware and model guidance", "Deployment roadmap"],
   },
 ]
 
@@ -78,11 +105,13 @@ export function ServicesSection() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
-            CORE <span className="theme-accent-strong">CAPABILITIES</span>
+            OUR <span className="theme-accent-strong">SERVICES</span>
           </h2>
           <div className="theme-rule mx-auto mb-6 h-1 w-24" />
           <p className="theme-copy font-sans text-lg">
-            NextGridIT blends infrastructure hardening, exposure research, sovereign AI, surveillance systems, and global infrastructure execution into one delivery architecture.
+            From MSP transitions and vendor lockout recovery to HIPAA assessments and
+            infrastructure hardening — we help Upstate SC businesses take back control
+            of their IT.
           </p>
         </div>
 
@@ -144,10 +173,10 @@ export function ServicesSection() {
             Browse All Services
           </Link>
           <Link
-            href="/labs/"
-            className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+            href="/contact/"
+            className="button-primary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
           >
-            Visit NextGrid Labs
+            Get a Free Assessment
           </Link>
         </div>
       </div>

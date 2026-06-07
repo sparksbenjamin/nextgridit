@@ -3,14 +3,11 @@ title: Why Local NTP Matters More Than Most Networks Realize
 summary: Time sync affects logs, authentication, certificates, cameras, and troubleshooting, which makes local NTP a much more important service than it first appears.
 publishedAt: 2026-03-30
 updatedAt: 2026-03-30
-tags:
-  - NTP
-  - Time Sync
-  - Security
-  - Networking
+tags: None
 eyebrow: Infrastructure Guide
+description: "NTP is one of those services people usually only notice after something breaks. When clocks drift, the symptoms can look random: login problems, bad timestamps, certificate errors, camera footage that is hard to trust, or logs that no longer line up across systems."
+last_updated: 2026-06-07
 ---
-
 NTP is one of those services people usually only notice after something breaks. When clocks drift, the symptoms can look random: login problems, bad timestamps, certificate errors, camera footage that is hard to trust, or logs that no longer line up across systems.
 
 That is why time sync deserves more attention than it usually gets. In a well-run environment, NTP is not an extra feature. It is part of the baseline that makes everything else easier to operate.

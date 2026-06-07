@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { IconMail, IconMapPin, IconShieldLock } from "@tabler/icons-react"
+import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react"
+import { siteConfig } from "@/lib/site-data"
 
 export function Footer() {
   return (
@@ -15,28 +16,30 @@ export function Footer() {
               </span>
             </div>
             <p className="theme-copy mb-6 text-sm">
-              Security research, infrastructure hardening, perimeter surveillance, and sovereign AI implementation with a rapid-response base in Upstate South Carolina.
+              Helping Upstate South Carolina businesses take back control of their IT —
+              from MSP transitions and vendor lockout recovery to HIPAA security
+              assessments and infrastructure hardening.
             </p>
             <div className="mb-6 flex flex-wrap gap-2">
               <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
-                150+ country reach
+                20+ years experience
               </span>
               <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
-                Air-gapped AI
+                HIPAA / NIST / MARS-E
               </span>
               <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
-                MSRC research active
+                Bug bounty researcher
               </span>
             </div>
             <div className="flex space-x-4">
-              <Link href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]">
+              <a href="mailto:contact@nextgridit.com" className="theme-copy hover:text-[var(--accent)]">
                 <span className="sr-only">Email</span>
                 <IconMail className="h-5 w-5" />
-              </Link>
-              <Link href="/contact" className="theme-copy hover:text-[var(--accent-alt)]">
-                <span className="sr-only">Contact</span>
-                <IconShieldLock className="h-5 w-5" />
-              </Link>
+              </a>
+              <a href={`tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`} className="theme-copy hover:text-[var(--accent-alt)]">
+                <span className="sr-only">Phone</span>
+                <IconPhone className="h-5 w-5" />
+              </a>
               <Link href="/contact" className="theme-copy hover:text-[var(--accent-strong)]">
                 <span className="sr-only">Location</span>
                 <IconMapPin className="h-5 w-5" />
@@ -45,15 +48,19 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Solutions</h3>
+            <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Services</h3>
             <ul className="space-y-3">
               {[
-                { label: "Infrastructure Hardening", href: "/services/it-support/" },
-                { label: "Identity & Cloud", href: "/services/microsoft-365/" },
-                { label: "Infrastructure Delivery", href: "/services/network-wifi/" },
-                { label: "Exposure Research", href: "/services/security-audits-pentesting/" },
-                { label: "Private AI Systems", href: "/services/private-air-gapped-ai/" },
-                { label: "Perimeter Surveillance", href: "/services/camera-systems/" },
+                { label: "MSP Transition", href: "/services/msp-transition/" },
+                { label: "Vendor Lockout Recovery", href: "/services/vendor-lockout-recovery/" },
+                { label: "HIPAA Assessment", href: "/services/hipaa-security-assessment/" },
+                { label: "Vulnerability Assessment", href: "/services/vulnerability-assessment/" },
+                { label: "Infrastructure Hardening", href: "/services/infrastructure-hardening/" },
+                { label: "Microsoft 365", href: "/services/microsoft-365/" },
+                { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
+                { label: "Penetration Testing", href: "/services/security-audits-pentesting/" },
+                { label: "Camera Systems", href: "/services/camera-systems/" },
+                { label: "Private AI Consulting", href: "/services/private-ai/" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className="theme-copy relative flex items-center text-sm transition-all duration-200 before:absolute before:-ml-3 before:text-[var(--accent-strong)] before:opacity-0 before:content-['>'] hover:pl-2 hover:text-[var(--accent)] hover:before:opacity-100">
@@ -93,10 +100,10 @@ export function Footer() {
             <h3 className="theme-heading mb-4 font-mono text-sm font-semibold uppercase tracking-wider opacity-80">Resources</h3>
             <div className="theme-terminal relative overflow-hidden rounded-2xl p-4 font-mono text-xs group">
               <div className="absolute left-0 top-0 h-[1px] w-full bg-[var(--accent-soft)]"></div>
-              <p className="mb-2 opacity-80">&gt; labs endpoint: /labs</p>
-              <p className="mb-2 opacity-80">&gt; surface scan: /labs/#surface-scan</p>
+              <p className="mb-2 opacity-80">&gt; msp transition: /services/msp-transition</p>
+              <p className="mb-2 opacity-80">&gt; vendor lockout: /services/vendor-lockout-recovery</p>
+              <p className="mb-2 opacity-80">&gt; hipaa assessment: /services/hipaa-security-assessment</p>
               <p className="mb-2 opacity-80">&gt; field guides: /guides</p>
-              <p className="mb-2 opacity-80">&gt; sovereign ai: /services/private-air-gapped-ai</p>
               <p className="mb-4 opacity-80">&gt; project questions: /faq</p>
               <div className="grid gap-2">
                 <Link
@@ -118,14 +125,14 @@ export function Footer() {
                   VIEW FAQ
                 </Link>
               </div>
-              <p className="theme-terminal-muted mt-3 text-[11px]">Research first. Private by design. Controlled execution.</p>
+              <p className="theme-terminal-muted mt-3 text-[11px]">Upstate SC. Project-led. Your IT, under your control.</p>
             </div>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-8 md:flex-row">
           <p className="theme-soft text-center font-mono text-sm md:text-left">
-            &copy; {new Date().getFullYear()} NextgridIT Systems. South Carolina-based. Built for security research, sovereign AI, and intelligence-led infrastructure work.
+            &copy; {new Date().getFullYear()} NextGridIT Systems LLC. Based in Seneca, SC. Helping Upstate South Carolina businesses take back control of their IT.
           </p>
           <div className="theme-soft flex gap-4 font-mono text-xs">
             <span>Email: <span className="theme-accent">contact@nextgridit.com</span></span>

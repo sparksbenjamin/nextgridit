@@ -79,7 +79,7 @@ export function PrivateAISection() {
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/services/private-air-gapped-ai/"
+                href="/services/private-ai/"
                 className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
                 View AI Service

@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "NextGridIT",
-  legalName: "NextGridIT Systems",
+  legalName: "NextGridIT Systems LLC",
   url: "https://www.nextgridit.com",
   phone: "+1-864-780-0202",
   phoneDisplay: "864-780-0202",
@@ -9,8 +9,11 @@ export const siteConfig = {
   serviceArea: ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"],
   founded: "2026",
   tagline:
-    "NextGrid IT isn't just boots on the ground in 150+ countries. We are the researchers discovering the vulnerabilities the world hasn't seen yet. Home to MSRC-level research and secure, air-gapped Private AI.",
-  sameAs: ["https://github.com/sparksbenjamin/nextgridit"],
+    "Helping Upstate South Carolina businesses take back control of their IT — from MSP transitions and vendor lockout recovery to HIPAA security assessments and vulnerability remediation.",
+  sameAs: [
+    "https://github.com/sparksbenjamin/nextgridit",
+    "https://www.linkedin.com/company/nextgridit",
+  ],
 } as const;
 
 export type Service = {
@@ -44,33 +47,177 @@ export type TechnologyEntry = {
 
 export const services: Service[] = [
   {
-    slug: "it-support",
-    shortLabel: "Infrastructure Hardening",
-    title: "Infrastructure Hardening and Perimeter Surveillance",
+    slug: "msp-transition",
+    shortLabel: "MSP Transition",
+    title: "MSP Transition and Vendor Independence",
     summary:
-      "Operator-led hardening across identity, mail, network edges, and externally visible infrastructure for organizations that cannot afford soft perimeter drift.",
+      "We help you take back control of your IT — from firing your MSP to standing up your own systems, ensuring nothing gets left behind.",
     description:
-      "NextGridIT leads infrastructure hardening and perimeter surveillance programs for organizations that need stronger control without falling into generic MSP packaging. Engagements can include identity and mail controls, externally visible service review, environment cleanup, baseline hardening, edge-system governance, and documentation that makes the environment easier to defend under pressure.",
+      "Many businesses outgrow their MSP but don't know how to leave. NextGridIT guides organizations through the full transition: auditing what the MSP currently manages, identifying the right internal hires or replacement systems, coordinating the cutover, and verifying that the former provider no longer has access to anything. The goal is a clean break where you own every system, every credential, and every document.",
     audience:
-      "Best fit for distributed operators, regulated teams, growing businesses, and infrastructure-heavy environments that need experienced hardening leadership, cleaner perimeter visibility, and clear technical ownership.",
+      "Best fit for small and mid-sized businesses that feel stuck with an MSP that isn't delivering, organizations that have grown past break-fix support, and companies that want to bring IT in-house but need someone to manage the transition.",
     outcomes: [
-      "Reduce recurring exposure across identity, mail, network edge, and inherited infrastructure",
-      "Create tighter ownership around public-facing systems, administrator pathways, and vendor coordination",
-      "Establish a cleaner defensive baseline for future audits, threat response, and controlled growth",
+      "Complete separation from the former MSP with verified credential and access revocation",
+      "Clear ownership of all systems, documentation, and administrative access",
+      "A supported hiring process for internal IT staff or a path to a better provider relationship",
+    ],
+    deliverables: [
+      "MSP dependency audit — what they manage, what you own, where the gaps are",
+      "Transition plan with timeline, cutover coordination, and verification steps",
+      "Post-transition verification confirming no residual access or orphaned systems",
+    ],
+    relatedIndustries: ["small-business", "medical-offices", "municipalities"],
+    relatedLocations: ["seneca-sc", "clemson-sc", "greenville-sc"],
+    technologies: ["Microsoft 365", "Active Directory", "DNS management", "Backup systems"],
+    faq: [
+      {
+        question: "How do we know if we're ready to leave our MSP?",
+        answer:
+          "If your MSP is reactive instead of proactive, if you can't get a straight answer about what they actually manage, or if you're paying for support but not getting strategic guidance — you're probably ready. We can do an assessment first before committing to a transition.",
+      },
+      {
+        question: "What if we still need some outside support after transitioning?",
+        answer:
+          "That's common. The goal isn't necessarily going fully solo — it's making sure you own your systems and choose your support relationships deliberately instead of being locked in by default.",
+      },
+    ],
+  },
+  {
+    slug: "vendor-lockout-recovery",
+    shortLabel: "Vendor Lockout Recovery",
+    title: "Vendor Lockout Recovery",
+    summary:
+      "When your IT provider walks away and takes your credentials with them, we break back in and hand you the keys — legally.",
+    description:
+      "Vendor lockout happens more often than anyone talks about. A provider walks away, gets fired, or simply stops responding — and suddenly you can't access your own network, cameras, firewall, or cloud services. NextGridIT recovers access to systems you legally own. Every engagement starts with proper authorization documentation so there's a clear paper trail if questions arise later.",
+    audience:
+      "Best fit for municipalities, small businesses, medical practices, and any organization that has lost access to systems they own because a vendor or former IT provider walked away.",
+    outcomes: [
+      "Recovered administrative access to all systems the organization legally owns",
+      "Documented authorization trail protecting both the client and NextGridIT",
+      "New credential sets and access controls that the organization controls going forward",
+    ],
+    deliverables: [
+      "Authorization documentation signed before any recovery work begins",
+      "System-by-system access recovery with verified credential handoff",
+      "Security reset — new administrative credentials, revoked former access, updated documentation",
+    ],
+    relatedIndustries: ["municipalities", "small-business", "medical-offices"],
+    relatedLocations: ["seneca-sc", "anderson-sc", "greenville-sc"],
+    technologies: ["Network equipment", "IP cameras and NVR systems", "Firewalls", "Cloud services"],
+    faq: [
+      {
+        question: "Is it legal to break back into our own systems?",
+        answer:
+          "Yes, when you own the systems and can demonstrate ownership. NextGridIT requires proper authorization documentation before any recovery work begins — signed by someone with legal authority for the organization. This protects everyone involved.",
+      },
+      {
+        question: "What kinds of systems can you recover access to?",
+        answer:
+          "Common targets include network switches, routers, firewalls, wireless controllers, camera systems and NVRs, cloud accounts, and domain registrations. If it's equipment or a service your organization owns, there's usually a path to recovery.",
+      },
+    ],
+  },
+  {
+    slug: "hipaa-security-assessment",
+    shortLabel: "HIPAA Assessment",
+    title: "HIPAA Security Assessment for Medical Practices",
+    summary:
+      "Security assessments for medical offices and healthcare-adjacent practices that need to demonstrate compliance — not just check boxes.",
+    description:
+      "NextGridIT conducts HIPAA security assessments grounded in real-world healthcare experience. Having assessed over 100 medical offices and currently supporting Medicaid compliance operations under MARS-E and NIST 800-53, the assessment process focuses on what actually reduces risk — not what looks good on a compliance shelf. Findings are prioritized by real exploitability and business impact, with a remediation plan your practice can actually execute.",
+    audience:
+      "Best fit for independent medical practices, dental offices, specialty clinics, and healthcare-adjacent organizations in Upstate SC that need a real HIPAA security assessment — not a form letter.",
+    outcomes: [
+      "Identified security gaps mapped to HIPAA Security Rule requirements",
+      "Prioritized remediation plan ordered by real risk, not theoretical severity",
+      "Documentation that supports audit readiness without overwhelming a small practice",
+    ],
+    deliverables: [
+      "Comprehensive security assessment with findings mapped to HIPAA Security Rule",
+      "Risk-based remediation roadmap with practical implementation steps",
+      "Assessment documentation suitable for compliance records and audit support",
+    ],
+    relatedIndustries: ["medical-offices"],
+    relatedLocations: ["clemson-sc", "anderson-sc", "greenville-sc"],
+    technologies: ["Tenable.sc", "NIST 800-53", "MARS-E", "Archer GRC"],
+    faq: [
+      {
+        question: "What's the difference between a HIPAA security assessment and a compliance audit?",
+        answer:
+          "A compliance audit checks whether you meet specific regulatory requirements. A security assessment finds the actual risks in your environment — many of which overlap with compliance requirements, but the focus is on what a real attacker would exploit, not what a checklist asks for.",
+      },
+      {
+        question: "How long does an assessment take?",
+        answer:
+          "Typical engagements run 2-4 weeks depending on the size of the practice and the scope of systems involved. The goal is thoroughness without disrupting patient care.",
+      },
+    ],
+  },
+  {
+    slug: "vulnerability-assessment",
+    shortLabel: "Vulnerability Assessment",
+    title: "Vulnerability Assessment and Remediation Planning",
+    summary:
+      "Find what's actually vulnerable in your environment and get a prioritized plan to fix it — not a 200-page report that sits on a shelf.",
+    description:
+      "NextGridIT provides scoped vulnerability assessments using the same tools and processes used in enterprise compliance environments — Tenable.sc, risk-based prioritization, and cross-team remediation coordination. The difference is the output: findings are ranked by real exploitability and business impact, with a remediation plan your team can actually execute. Optional follow-up helps you close the gaps instead of just cataloging them.",
+    audience:
+      "Best fit for small and mid-sized businesses, medical practices, municipalities, and any organization that knows they have security gaps but needs someone to identify, prioritize, and help fix them.",
+    outcomes: [
+      "Clear visibility into what's actually vulnerable — not just what a scanner flags",
+      "Prioritized remediation plan ordered by real risk and business impact",
+      "Optional validation after fixes are applied to confirm gaps are actually closed",
+    ],
+    deliverables: [
+      "Scoped vulnerability scan and assessment with executive and technical summaries",
+      "Risk-based remediation roadmap with implementation priority and effort estimates",
+      "Optional remediation support and post-fix validation",
+    ],
+    relatedIndustries: ["small-business", "medical-offices", "municipalities"],
+    relatedLocations: ["seneca-sc", "anderson-sc", "greenville-sc"],
+    technologies: ["Tenable.sc", "NIST 800-53", "Risk-based prioritization", "Remediation tracking"],
+    faq: [
+      {
+        question: "What's the difference between a vulnerability assessment and a penetration test?",
+        answer:
+          "A vulnerability assessment scans for known weaknesses and prioritizes them. A penetration test actively tries to exploit those weaknesses to prove real-world impact. Many organizations start with a vulnerability assessment and move to penetration testing for specific high-risk areas.",
+      },
+      {
+        question: "Do we need to install anything on our network?",
+        answer:
+          "It depends on the scope. External assessments require no internal access. Internal assessments may require a scanner deployment, which can be done with minimal footprint and removed after the engagement.",
+      },
+    ],
+  },
+  {
+    slug: "infrastructure-hardening",
+    shortLabel: "Infrastructure Hardening",
+    title: "Infrastructure Hardening and Security Cleanup",
+    summary:
+      "Close the gaps in identity, mail, network edges, and inherited infrastructure before someone else finds them first.",
+    description:
+      "NextGridIT leads infrastructure hardening programs for organizations that need stronger control without falling into generic MSP packaging. Engagements include identity and mail controls, externally visible service review, environment cleanup, baseline hardening, edge-system governance, and documentation that makes the environment easier to defend under pressure. This is not break-fix support — it's a deliberate effort to reduce your attack surface and operational confusion.",
+    audience:
+      "Best fit for organizations that inherited messy infrastructure, businesses that have grown faster than their IT controls, and teams that need a stronger defensive baseline before their next audit or growth phase.",
+    outcomes: [
+      "Reduced exposure across identity, mail, network edge, and inherited infrastructure",
+      "Clearer ownership around public-facing systems, administrator pathways, and vendor coordination",
+      "A defensible baseline for future audits, threat response, and controlled growth",
     ],
     deliverables: [
       "Infrastructure hardening assessment with prioritized remediation guidance",
-      "Perimeter surveillance recommendations across mail, DNS, identity, and network edge workflows",
-      "Documentation cleanup, ownership mapping, and defensible handoff notes",
+      "Perimeter review across mail, DNS, identity, and network edge",
+      "Documentation cleanup, ownership mapping, and operational handoff notes",
     ],
     relatedIndustries: ["small-business", "municipalities", "medical-offices"],
     relatedLocations: ["seneca-sc", "clemson-sc", "anderson-sc"],
-    technologies: ["Microsoft 365", "Windows", "Active Directory", "Backup systems"],
+    technologies: ["Microsoft 365", "Active Directory", "DNS", "Firewalls"],
     faq: [
       {
-        question: "Do you replace an internal security or IT team?",
+        question: "Do you replace an internal IT team?",
         answer:
-          "Not necessarily. NextGridIT can supplement internal teams, coordinate with outside providers, or provide hands-on hardening leadership where no dedicated security operations function exists.",
+          "Not necessarily. NextGridIT can supplement internal teams, coordinate with outside providers, or provide hands-on hardening leadership where no dedicated security function exists.",
       },
       {
         question: "Is this just break-fix support under a different name?",
@@ -86,13 +233,13 @@ export const services: Service[] = [
     summary:
       "Administration, cleanup, security, and migration support across Microsoft 365, Entra ID, Azure, and related cloud systems.",
     description:
-      "NextGridIT helps organizations plan, improve, and support cloud environments with an emphasis on Microsoft 365, Entra ID, Azure, and practical identity administration. Work can include tenant cleanup, MFA rollout support, secure collaboration setup, mailbox and account administration, cloud migration planning, and documentation.",
+      "NextGridIT helps organizations plan, improve, and support cloud environments with an emphasis on Microsoft 365, Entra ID, Azure, and practical identity administration. Work can include tenant cleanup, MFA rollout, secure collaboration setup, mailbox and account administration, cloud migration planning, and documentation. Having migrated over 4,000 Microsoft 365 accounts with zero data loss, the focus is on doing it right the first time.",
     audience:
-      "Best fit for organizations that depend on Microsoft 365 but need cleaner administration, better identity controls, or a safer migration path.",
+      "Best fit for organizations that depend on Microsoft 365 but need cleaner administration, better identity controls, or a safer migration path — especially those recovering from a rushed or neglected setup.",
     outcomes: [
-      "Improve tenant hygiene and account security",
-      "Make Microsoft 365 easier to administer and support",
-      "Reduce risk around identity, email, and collaboration systems",
+      "Improved tenant hygiene and account security",
+      "Easier Microsoft 365 administration and support",
+      "Reduced risk around identity, email, and collaboration systems",
     ],
     deliverables: [
       "Tenant review and remediation roadmap",
@@ -117,22 +264,22 @@ export const services: Service[] = [
   },
   {
     slug: "network-wifi",
-    shortLabel: "Infrastructure Delivery",
-    title: "Global Infrastructure Deployment and Network Operations",
+    shortLabel: "Network & Wi-Fi",
+    title: "Network Infrastructure and Wi-Fi Deployment",
     summary:
-      "Wired and wireless infrastructure delivery, segmentation, and network operations for multi-site environments that need disciplined execution across regions.",
+      "Wired and wireless infrastructure delivery, segmentation, and network operations for businesses that need reliable connectivity.",
     description:
-      "NextGridIT designs, upgrades, and deploys business and property networks with a focus on reliable performance, segmented access, maintainable infrastructure, and strong execution sequencing. Work often includes Ubiquiti and UniFi deployments, public and guest Wi-Fi separation, multi-building connectivity planning, firewall coordination, and broader field execution planning.",
+      "NextGridIT designs, upgrades, and deploys business and property networks with a focus on reliable performance, segmented access, maintainable infrastructure, and strong execution. Work often includes Ubiquiti and UniFi deployments, public and guest Wi-Fi separation, multi-building connectivity planning, firewall coordination, and practical deployment sequencing. Past projects range from full Wi-Fi coverage under budget to multi-site WAN upgrades with zero downtime.",
     audience:
       "Best fit for offices, municipalities, campgrounds, hospitality-style properties, and multi-building sites where coverage, segmentation, and coordinated infrastructure rollout matter.",
     outcomes: [
-      "Improve Wi-Fi coverage and network reliability",
-      "Separate guest, staff, device, and payment traffic more cleanly",
-      "Support future growth with better network documentation, routing discipline, and deployment sequencing",
+      "Improved Wi-Fi coverage and network reliability",
+      "Cleaner separation of guest, staff, device, and payment traffic",
+      "Better network documentation and deployment sequencing for future growth",
     ],
     deliverables: [
       "Network assessment and topology guidance",
-      "Coverage, segmentation, hardware, and field execution recommendations",
+      "Coverage, segmentation, hardware, and deployment recommendations",
       "Deployment notes and environment documentation",
     ],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
@@ -152,96 +299,24 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "security-hardening",
-    shortLabel: "Security",
-    title: "Security Hardening, Documentation, and Compliance-Aware Support",
-    summary:
-      "Practical security improvements, documentation cleanup, and implementation support informed by HIPAA, PCI DSS, and NIST practices.",
-    description:
-      "NextGridIT helps organizations reduce avoidable risk through identity improvements, administrative cleanup, documentation, basic hardening, segmentation guidance, and implementation work that maps back to real operating conditions. The goal is a safer environment that the client can still manage day to day.",
-    audience:
-      "Best fit for organizations that need stronger security posture, better documentation, or a compliance-aware technical partner without enterprise theatrics.",
-    outcomes: [
-      "Close common security gaps in identity, access, networking, and documentation",
-      "Support HIPAA-aware, PCI-aware, and NIST-informed environments",
-      "Create a more defensible operating baseline for future audits and growth",
-    ],
-    deliverables: [
-      "Security posture review and risk-based remediation list",
-      "Documentation, standards, and operational recommendations",
-      "Implementation support for access, segmentation, and system cleanup",
-    ],
-    relatedIndustries: ["medical-offices", "municipalities", "small-business"],
-    relatedLocations: ["clemson-sc", "anderson-sc", "greenville-sc"],
-    technologies: ["MFA", "Access controls", "Firewall policy", "Documentation"],
-    faq: [
-      {
-        question: "Do you provide compliance certification?",
-        answer:
-          "No. NextGridIT provides technical implementation and documentation support that helps clients operate in a more compliance-aware way.",
-      },
-      {
-        question: "What frameworks do you usually align with?",
-        answer:
-          "The work is commonly informed by HIPAA, PCI DSS, and practical NIST-style security thinking depending on the environment.",
-      },
-    ],
-  },
-  {
-    slug: "private-air-gapped-ai",
-    shortLabel: "Private AI",
-    title: "Private & Air-Gapped AI Implementation",
-    summary:
-      "Deploy Qwen and Mistral for enterprise coding, threat analysis, and research workflows without sending sensitive data to third-party platforms.",
-    description:
-      "NextGridIT deploys and manages dedicated on-premise GPU clusters for enterprises that need the leverage of modern LLMs without third-party data leakage. Engagements can include model selection, air-gapped inference design, retrieval workflows, coding copilots, threat-analysis pipelines, and operational controls for environments where data privacy is non-negotiable.",
-    audience:
-      "Best fit for security teams, regulated operators, internal engineering groups, and research programs that want private AI capability inside their own physical boundary.",
-    outcomes: [
-      "Operationalize enterprise AI without moving sensitive documents, code, or telemetry to public SaaS",
-      "Create a dedicated inference environment for coding, threat analysis, and research triage",
-      "Give leadership a controlled path to AI adoption that aligns with privacy and security requirements",
-    ],
-    deliverables: [
-      "On-premise GPU cluster architecture and deployment plan",
-      "Qwen and Mistral runtime configuration with secure model serving",
-      "Governance, logging, and workflow design for private AI-assisted operations",
-    ],
-    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
-    relatedLocations: ["greenville-sc", "clemson-sc", "anderson-sc"],
-    technologies: ["Qwen 2.5", "Mistral", "On-prem GPU clusters", "Private retrieval workflows"],
-    faq: [
-      {
-        question: "Is this just another cloud AI subscription with better prompting?",
-        answer:
-          "No. The service is built around dedicated infrastructure, controlled model hosting, and private workflow design so sensitive data stays inside the client environment.",
-      },
-      {
-        question: "Can these systems be fully air-gapped?",
-        answer:
-          "Yes. The architecture can be designed for fully isolated environments where models, prompts, documents, and outputs never traverse third-party infrastructure.",
-      },
-    ],
-  },
-  {
     slug: "security-audits-pentesting",
-    shortLabel: "Security Audits",
-    title: "Security Audits and Penetration Testing",
+    shortLabel: "Penetration Testing",
+    title: "Vulnerability Assessment and Penetration Testing",
     summary:
       "Black box and trusted-access security testing with remediation help and real-world risk review for each finding.",
     description:
-      "NextGridIT provides scoped security audits and penetration testing for organizations that need more than a vulnerability dump. Engagements can include black box testing, trusted-access pentests, targeted exposure review, and follow-up remediation support. Each finding is written with practical business context so the client understands what is actually risky, what is mostly noise, and what to fix first.",
+      "NextGridIT provides scoped security audits and penetration testing for organizations that need more than a vulnerability dump. Engagements can include black box testing, trusted-access pentests, targeted exposure review, and follow-up remediation support. Each finding is written with practical business context so the client understands what is actually risky, what is mostly noise, and what to fix first. As an active bug bounty researcher on Microsoft and HackerOne platforms, the testing methodology reflects real-world attack techniques — not just scanner output.",
     audience:
       "Best fit for organizations that need a clearer picture of real exposure before a project, after a major change, before outside review, or as part of a broader security improvement effort.",
     outcomes: [
-      "Validate external exposure through black box testing that starts from an attacker perspective",
-      "Review internal trust assumptions and escalation paths through trusted-access pentests",
-      "Turn findings into prioritized remediation work with practical business context attached",
+      "Validated external exposure through black box testing from an attacker perspective",
+      "Reviewed internal trust assumptions and escalation paths through trusted-access pentests",
+      "Prioritized remediation work with practical business context attached to every finding",
     ],
     deliverables: [
       "Scoping notes, rules of engagement, and assessment summary",
       "Findings report with real-world risk review and remediation guidance",
-      "Optional validation help after fixes are made so the work actually closes out cleanly",
+      "Optional validation help after fixes are applied so the work actually closes out cleanly",
     ],
     relatedIndustries: ["small-business", "medical-offices", "municipalities"],
     relatedLocations: ["greenville-sc", "anderson-sc", "clemson-sc"],
@@ -262,27 +337,22 @@ export const services: Service[] = [
         answer:
           "No. The goal is to help the client understand what matters, correct the issues, and validate the fixes rather than disappearing behind a findings spreadsheet.",
       },
-      {
-        question: "Do you provide a real-world risk review with each finding?",
-        answer:
-          "Yes. Every finding is meant to include practical context around exploitability, likely impact, and why it matters in the client's actual operating environment.",
-      },
     ],
   },
   {
     slug: "camera-systems",
     shortLabel: "Surveillance Systems",
-    title: "Perimeter Surveillance and Sensor Systems",
+    title: "Camera Systems and Surveillance Infrastructure",
     summary:
-      "Camera, sensor, and local capture infrastructure designed to extend perimeter visibility without surrendering ownership of the evidence plane.",
+      "Camera, sensor, and local capture infrastructure designed for sites that need visibility without surrendering footage to a third-party cloud.",
     description:
-      "NextGridIT designs and supports surveillance systems and specialty sensor deployments where on-site visibility, local processing, and tailored coverage matter. Projects can include full camera installs, site planning, integration with broader network infrastructure, local NVR design, and controlled AI-assisted video workflows where appropriate.",
+      "NextGridIT designs and supports surveillance systems where on-site visibility, local processing, and tailored coverage matter. Projects include full camera installs, site planning, integration with broader network infrastructure, local NVR design, and controlled AI-assisted video workflows where appropriate. The preference is local-first control — you own your footage, your retention policies, and your system.",
     audience:
       "Best fit for properties, small businesses, municipalities, and specialty sites that need stronger perimeter visibility without handing everything to a third-party cloud platform.",
     outcomes: [
-      "Improve visibility across entrances, public spaces, and operational choke points",
-      "Keep more control of footage, sensor telemetry, and system ownership close to the site",
-      "Coordinate surveillance infrastructure with the underlying network design",
+      "Improved visibility across entrances, public spaces, and operational areas",
+      "More control of footage, sensor telemetry, and system ownership close to the site",
+      "Surveillance infrastructure coordinated with the underlying network design",
     ],
     deliverables: [
       "Site coverage planning and deployment recommendations",
@@ -305,6 +375,42 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    slug: "private-ai",
+    shortLabel: "Private AI",
+    title: "Private and On-Premise AI Consulting",
+    summary:
+      "Guidance on deploying local AI solutions that keep your data inside your environment — from model selection to hardware and workflow design.",
+    description:
+      "NextGridIT consults on private AI deployments for organizations that want the leverage of modern language models without sending sensitive data to third-party platforms. Services include model selection guidance, hardware and infrastructure planning, inference workflow design, and operational controls for environments where data privacy matters. This is a consulting engagement — we help you design and plan the right approach for your environment, whether that's a single GPU workstation or a multi-node cluster.",
+    audience:
+      "Best fit for organizations exploring AI adoption but concerned about data privacy, security teams evaluating private inference options, and businesses that want a realistic assessment of what local AI can and cannot do for them today.",
+    outcomes: [
+      "A realistic assessment of whether local AI fits your use case and budget",
+      "Infrastructure and hardware planning for on-premise model serving",
+      "A practical deployment roadmap instead of vaporware promises",
+    ],
+    deliverables: [
+      "AI readiness assessment — what local AI can realistically do for your environment",
+      "Hardware, model, and infrastructure recommendations",
+      "Deployment roadmap with governance and workflow considerations",
+    ],
+    relatedIndustries: ["small-business", "medical-offices"],
+    relatedLocations: ["greenville-sc", "clemson-sc", "anderson-sc"],
+    technologies: ["Local LLM deployment", "GPU infrastructure", "Private inference workflows"],
+    faq: [
+      {
+        question: "Is local AI ready for production use in small businesses?",
+        answer:
+          "It depends heavily on the use case. Some workflows — document search, code assistance, internal knowledge bases — work well today. Others still need cloud-scale models. An honest assessment of what's real versus what's hype is part of the consulting process.",
+      },
+      {
+        question: "Do we need expensive GPU hardware?",
+        answer:
+          "Not necessarily. Many useful models run on consumer-grade hardware. The right approach depends on your use case, data volume, and performance requirements — which is exactly what the assessment covers.",
+      },
+    ],
+  },
 ];
 
 export type Industry = {
@@ -319,82 +425,82 @@ export type Industry = {
 export const industries: Industry[] = [
   {
     slug: "medical-offices",
-    title: "Medical Offices and Healthcare-Adjacent Practices",
+    title: "Medical Offices and Healthcare Practices",
     summary:
-      "HIPAA-aware infrastructure, Microsoft 365, support, and documentation help for practices that need stable systems.",
+      "HIPAA security assessments, Microsoft 365 cleanup, and compliance-aware support for independent medical practices.",
     description:
-      "Medical offices often need cleaner Microsoft 365 administration, better access controls, more dependable backups, and better operational documentation without adding enterprise overhead. NextGridIT supports the technical side of these environments with practical, confidentiality-aware execution.",
+      "Medical offices often need cleaner Microsoft 365 administration, better access controls, more dependable backups, and better operational documentation — without adding enterprise overhead. NextGridIT supports the technical side of these environments with practical, confidentiality-aware execution grounded in real healthcare compliance experience, including daily Medicaid operations under MARS-E and NIST 800-53.",
     needs: [
-      "HIPAA-aware support for day-to-day systems",
+      "HIPAA security assessments that find real risks, not just check boxes",
       "Safer identity and email administration",
-      "Documentation and operational cleanup",
+      "Documentation and operational cleanup for audit readiness",
     ],
     relatedServices: [
-      "it-support",
+      "hipaa-security-assessment",
       "microsoft-365",
-      "security-hardening",
-      "security-audits-pentesting",
+      "infrastructure-hardening",
+      "vulnerability-assessment",
     ],
   },
   {
     slug: "small-business",
     title: "Small and Mid-Sized Businesses",
     summary:
-      "Practical IT, cloud, security, and network help for businesses that need a dependable technical partner.",
+      "MSP transitions, vendor independence, IT cleanup, and security hardening for businesses that need a technical partner who shows up.",
     description:
-      "Small businesses often outgrow reactive vendor support before they are ready for a full internal IT department. NextGridIT helps bridge that gap with cleanup, planning, and technical execution that improves reliability without overcomplicating the environment.",
+      "Small businesses often outgrow reactive vendor support before they're ready for a full internal IT department. NextGridIT helps bridge that gap with MSP transitions, vendor lockout recovery, infrastructure cleanup, and security hardening that improves reliability without overcomplicating the environment. You don't need enterprise solutions — you need someone who understands your situation and actually fixes things.",
     needs: [
-      "Fewer recurring technical issues",
-      "Better cloud and identity administration",
-      "Project guidance for growth and cleanup",
+      "A clean break from an MSP that isn't delivering",
+      "Security hardening and vulnerability assessments that make sense for your size",
+      "Project guidance for growth and cleanup without overselling",
     ],
     relatedServices: [
-      "it-support",
+      "msp-transition",
+      "vendor-lockout-recovery",
+      "infrastructure-hardening",
       "microsoft-365",
-      "network-wifi",
-      "security-audits-pentesting",
     ],
   },
   {
     slug: "municipalities",
-    title: "Municipal and Public-Sector Teams",
+    title: "Municipal and Public-Sector Organizations",
     summary:
-      "Public Wi-Fi, camera, infrastructure, and security support for local government and public-facing environments.",
+      "Vendor lockout recovery, public Wi-Fi, camera systems, and NIST-informed security for local government operations.",
     description:
-      "Municipal teams often need public-facing connectivity, more reliable infrastructure, stronger operational documentation, and practical security improvements across constrained budgets and mixed environments. NextGridIT supports these needs with a project-led, local-first approach.",
+      "Municipal teams often need public-facing connectivity, more reliable infrastructure, stronger operational documentation, and practical security improvements across constrained budgets. NextGridIT has direct experience helping municipalities recover from vendor abandonment and build infrastructure that the organization actually controls. NIST-informed security improvements fit government compliance requirements without enterprise pricing.",
     needs: [
+      "Recovery from vendor lockout and abandoned IT providers",
       "Public Wi-Fi and segmented network design",
-      "Camera planning and infrastructure support",
-      "NIST-informed security improvements",
+      "NIST-informed security improvements within budget constraints",
     ],
     relatedServices: [
+      "vendor-lockout-recovery",
       "network-wifi",
-      "security-hardening",
-      "security-audits-pentesting",
       "camera-systems",
+      "vulnerability-assessment",
     ],
   },
   {
     slug: "campgrounds",
-    title: "Campgrounds and Guest Connectivity Environments",
+    title: "Campgrounds and Guest Connectivity",
     summary:
-      "Coverage, segmentation, and infrastructure design for properties that need reliable guest connectivity.",
+      "Wi-Fi coverage, guest access separation, and infrastructure design for properties that need reliable connectivity for visitors.",
     description:
-      "Campgrounds and similar guest environments need practical network coverage, guest access separation, equipment planning, and support for multi-building or outdoor connectivity. NextGridIT focuses on realistic deployment planning and maintainable ownership.",
+      "Campgrounds and similar guest environments need practical network coverage, guest access separation, equipment planning, and support for multi-building or outdoor connectivity. In areas where ISPs drop off a modem and call it done, NextGridIT focuses on realistic deployment planning that actually works across the property — not just at the front desk.",
     needs: [
-      "Reliable guest Wi-Fi coverage",
+      "Reliable guest Wi-Fi coverage across the entire property",
       "Staff and guest network separation",
-      "Outdoor and multi-building connectivity planning",
+      "Outdoor and multi-building connectivity planning that goes beyond ISP defaults",
     ],
-    relatedServices: ["network-wifi", "camera-systems", "it-support"],
+    relatedServices: ["network-wifi", "camera-systems", "infrastructure-hardening"],
   },
   {
     slug: "multi-site-properties",
     title: "Multi-Site and Multi-Building Properties",
     summary:
-      "Infrastructure, cloud, support, and camera services for environments with multiple buildings or distributed operations.",
+      "Consistent infrastructure, centralized visibility, and scalable network and camera systems across distributed locations.",
     description:
-      "Multi-site properties and distributed organizations need consistent connectivity, clear ownership, good documentation, and systems that can be supported without confusion. NextGridIT helps create cleaner infrastructure and operating baselines across those environments.",
+      "Multi-site properties and distributed organizations need consistent connectivity, clear ownership, good documentation, and systems that can be supported without confusion. NextGridIT helps create cleaner infrastructure and operating baselines across those environments — whether it's three buildings on one property or offices across the region.",
     needs: [
       "Standardized infrastructure across locations",
       "Centralized visibility and supportability",
@@ -421,85 +527,110 @@ export const locations: LocationPage[] = [
   {
     slug: "seneca-sc",
     city: "Seneca",
-    title: "IT Support and Network Services in Seneca, SC",
+    title: "IT Support, Security, and Network Services in Seneca, SC",
     summary:
-      "Local IT, network, Wi-Fi, security, and camera support for organizations in and around Seneca, South Carolina.",
+      "Local IT, MSP transition, vendor lockout recovery, security assessments, and network support for organizations in and around Seneca, South Carolina.",
     description:
-      "NextGridIT supports businesses and public-facing organizations in Seneca with project-led IT, Wi-Fi, infrastructure, security, and camera services. Seneca is one of the primary local service areas for on-site work and ongoing technical support.",
+      "NextGridIT is based in Seneca and provides on-site IT, security, and network services to businesses and organizations across Oconee County. Seneca sits at the intersection of reliable power (Duke Energy nuclear at Lake Keowee), Tier 1 fiber infrastructure, and proximity to Greenville, Atlanta, and Charlotte — making it a strategic location for both local service delivery and regional infrastructure projects. Whether it's recovering from a vendor lockout, transitioning away from an MSP, or hardening infrastructure for compliance, NextGridIT delivers hands-on support from right here in the community.",
     county: "Oconee County",
     coordinates: [-82.96, 34.68194],
     nearbyCities: ["Clemson", "Anderson", "Greenville"],
-    focus: ["Local on-site support", "Business infrastructure projects", "Wi-Fi and network upgrades"],
-    relatedServices: ["it-support", "network-wifi", "camera-systems"],
+    focus: [
+      "Vendor lockout recovery for municipalities and businesses",
+      "MSP transitions and IT independence",
+      "Network infrastructure and Wi-Fi deployment",
+    ],
+    relatedServices: [
+      "vendor-lockout-recovery",
+      "msp-transition",
+      "network-wifi",
+      "camera-systems",
+    ],
   },
   {
     slug: "clemson-sc",
     city: "Clemson",
-    title: "IT Support and Microsoft 365 Services in Clemson, SC",
+    title: "HIPAA Assessments, Microsoft 365, and IT Security in Clemson, SC",
     summary:
-      "Microsoft 365, infrastructure, security, and compliance-aware support for organizations in Clemson, South Carolina.",
+      "Microsoft 365 administration, HIPAA security assessments, and compliance-aware IT support for organizations in Clemson, South Carolina.",
     description:
-      "NextGridIT helps Clemson organizations improve Microsoft 365 administration, network reliability, and security posture with practical project-led support. The local service model is designed for organizations that need steady hands and clear follow-through.",
+      "Clemson's mix of university-affiliated organizations, healthcare practices, and growing small businesses creates specific IT needs — especially around Microsoft 365 administration and HIPAA compliance for practices that aren't served by the hospital system. NextGridIT helps Clemson organizations improve Microsoft 365 administration, navigate HIPAA security requirements, and build a stronger security posture with practical, project-led support.",
     county: "Pickens and Anderson Counties",
     coordinates: [-82.814777, 34.68493],
     nearbyCities: ["Seneca", "Anderson", "Greenville"],
-    focus: ["Microsoft 365 cleanup", "Security and identity support", "Project-led IT guidance"],
+    focus: [
+      "HIPAA security assessments for independent medical practices",
+      "Microsoft 365 tenant cleanup and identity hardening",
+      "Compliance-aware IT support",
+    ],
     relatedServices: [
+      "hipaa-security-assessment",
       "microsoft-365",
-      "security-hardening",
-      "security-audits-pentesting",
-      "it-support",
+      "infrastructure-hardening",
+      "vulnerability-assessment",
     ],
   },
   {
     slug: "anderson-sc",
     city: "Anderson",
-    title: "Network, Security, and IT Support in Anderson, SC",
+    title: "Network Infrastructure, Security, and IT Support in Anderson, SC",
     summary:
-      "Infrastructure, Wi-Fi, security hardening, and support services for organizations in Anderson, South Carolina.",
+      "Network upgrades, security hardening, vulnerability assessments, and IT support for organizations in Anderson, South Carolina.",
     description:
-      "NextGridIT supports Anderson-area organizations with network upgrades, business IT support, segmented Wi-Fi, security improvements, and documentation-driven cleanup projects. Travel and on-site work are available where it supports the project.",
+      "Anderson's growing business community needs reliable network infrastructure and practical security improvements — not enterprise-priced solutions that don't fit. NextGridIT supports Anderson-area organizations with network upgrades, vulnerability assessments, security hardening, and documentation-driven cleanup projects. With many businesses operating across Anderson County's mix of urban and rural areas, network reliability and ISP coverage gaps are common problems that need hands-on solutions.",
     county: "Anderson County",
     coordinates: [-82.64167, 34.50333],
     nearbyCities: ["Clemson", "Greenville", "Seneca"],
-    focus: ["Network upgrades", "Support and cleanup projects", "Security posture improvements"],
+    focus: [
+      "Network upgrades and ISP coverage gap solutions",
+      "Vulnerability assessments and security hardening",
+      "MSP transitions for growing businesses",
+    ],
     relatedServices: [
       "network-wifi",
-      "security-hardening",
-      "security-audits-pentesting",
-      "it-support",
+      "vulnerability-assessment",
+      "infrastructure-hardening",
+      "msp-transition",
     ],
   },
   {
     slug: "easley-sc",
     city: "Easley",
-    title: "IT Infrastructure and Camera Services in Easley, SC",
+    title: "IT Infrastructure, Camera Systems, and Support in Easley, SC",
     summary:
-      "Infrastructure, cloud, support, and camera deployments for businesses and properties in Easley, South Carolina.",
+      "Infrastructure planning, camera deployments, Microsoft 365 support, and IT services for businesses in Easley, South Carolina.",
     description:
-      "NextGridIT provides Easley-area organizations with infrastructure planning, IT support, Microsoft 365 help, and local-first camera deployments. Engagements are tailored to the needs of each site rather than pushed into a generic package.",
+      "Easley-area businesses often need camera systems, network infrastructure, and practical IT support that scales with their growth. Between Pickens County's mix of small businesses and properties that need surveillance coverage, and organizations that need Microsoft 365 help after a rushed setup, NextGridIT provides tailored engagements — not generic packages pushed through a one-size-fits-all model.",
     county: "Pickens County",
     coordinates: [-82.60694, 34.82333],
     nearbyCities: ["Greenville", "Anderson", "Clemson"],
-    focus: ["Camera planning and installs", "Infrastructure cleanup", "Cloud and support projects"],
-    relatedServices: ["camera-systems", "microsoft-365", "it-support"],
+    focus: [
+      "Camera system planning and installation",
+      "Infrastructure cleanup and network support",
+      "Microsoft 365 administration and cloud projects",
+    ],
+    relatedServices: ["camera-systems", "microsoft-365", "infrastructure-hardening"],
   },
   {
     slug: "greenville-sc",
     city: "Greenville",
-    title: "Business IT, Wi-Fi, and Security Services in Greenville, SC",
+    title: "Business IT, Security Assessments, and Network Services in Greenville, SC",
     summary:
-      "Business-focused IT support, cloud administration, Wi-Fi, and security services for Greenville, South Carolina.",
+      "Business IT support, HIPAA assessments, Microsoft 365, vulnerability assessments, and network services for Greenville, South Carolina.",
     description:
-      "NextGridIT works with Greenville-area businesses and organizations that need a technically strong partner for infrastructure projects, Microsoft 365 support, network design, and practical security improvements. The goal is cleaner systems and more dependable operations.",
+      "Greenville is the economic center of Upstate South Carolina, and its businesses need technically strong IT partners who understand compliance, security, and infrastructure — not just helpdesk ticketing. NextGridIT works with Greenville-area businesses on HIPAA security assessments, Microsoft 365 migrations and cleanup, vulnerability assessments, and network design. Greenville also serves as a hub for organizations across the region that need a security assessment or MSP transition but don't have local expertise in-house.",
     county: "Greenville County",
     coordinates: [-82.3940104, 34.8526176],
     nearbyCities: ["Easley", "Anderson", "Clemson"],
-    focus: ["Business IT support", "Cloud administration", "Network and security projects"],
+    focus: [
+      "HIPAA security assessments for healthcare practices",
+      "Microsoft 365 migration and administration",
+      "Vulnerability assessments and penetration testing",
+    ],
     relatedServices: [
-      "it-support",
+      "hipaa-security-assessment",
       "microsoft-365",
-      "network-wifi",
+      "vulnerability-assessment",
       "security-audits-pentesting",
     ],
   },
@@ -511,7 +642,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Microsoft 365",
     category: "Cloud and Identity",
     summary: "Tenant administration, collaboration tooling, email, identity cleanup, and day-to-day cloud support.",
-    relatedServices: ["microsoft-365", "it-support", "security-hardening"],
+    relatedServices: ["microsoft-365", "infrastructure-hardening", "hipaa-security-assessment"],
     relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
   },
   {
@@ -519,7 +650,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Entra ID",
     category: "Cloud and Identity",
     summary: "Identity, MFA, role cleanup, conditional access planning, and administration standards.",
-    relatedServices: ["microsoft-365", "security-hardening"],
+    relatedServices: ["microsoft-365", "infrastructure-hardening"],
     relatedIndustries: ["medical-offices", "small-business", "municipalities"],
   },
   {
@@ -527,7 +658,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Azure",
     category: "Cloud and Identity",
     summary: "Azure-connected workloads, identity integration, migration planning, and administration support.",
-    relatedServices: ["microsoft-365", "it-support"],
+    relatedServices: ["microsoft-365", "infrastructure-hardening"],
     relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
   },
   {
@@ -535,7 +666,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "AWS",
     category: "Cloud and Identity",
     summary: "Practical support for AWS workloads that are part of the broader client operating environment.",
-    relatedServices: ["microsoft-365", "it-support"],
+    relatedServices: ["microsoft-365", "infrastructure-hardening"],
     relatedIndustries: ["small-business", "multi-site-properties"],
   },
   {
@@ -543,7 +674,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Google Workspace",
     category: "Cloud and Identity",
     summary: "Email, collaboration, and account administration in mixed-platform environments.",
-    relatedServices: ["microsoft-365", "it-support"],
+    relatedServices: ["microsoft-365", "infrastructure-hardening"],
     relatedIndustries: ["small-business", "campgrounds"],
   },
   {
@@ -551,7 +682,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Apple Environments",
     category: "Infrastructure",
     summary: "Support for Apple devices and mixed-platform environments where local administration still matters.",
-    relatedServices: ["microsoft-365", "it-support"],
+    relatedServices: ["microsoft-365", "infrastructure-hardening"],
     relatedIndustries: ["small-business", "medical-offices"],
   },
   {
@@ -559,7 +690,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Windows Server",
     category: "Infrastructure",
     summary: "Support for legacy and active Windows Server environments, cleanup, modernization, and role review.",
-    relatedServices: ["it-support", "security-hardening"],
+    relatedServices: ["infrastructure-hardening", "msp-transition"],
     relatedIndustries: ["small-business", "medical-offices", "municipalities"],
   },
   {
@@ -567,7 +698,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Active Directory",
     category: "Infrastructure",
     summary: "Directory cleanup, group policy review, account hygiene, and handoff documentation.",
-    relatedServices: ["it-support", "security-hardening", "microsoft-365"],
+    relatedServices: ["infrastructure-hardening", "msp-transition", "microsoft-365"],
     relatedIndustries: ["medical-offices", "small-business", "municipalities"],
   },
   {
@@ -575,7 +706,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Backup Systems",
     category: "Infrastructure",
     summary: "Backup review, retention planning, recovery expectations, and supportability improvements.",
-    relatedServices: ["it-support", "security-hardening"],
+    relatedServices: ["infrastructure-hardening", "msp-transition"],
     relatedIndustries: ["medical-offices", "small-business", "multi-site-properties"],
   },
   {
@@ -599,7 +730,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "VLAN Segmentation",
     category: "Networking and Wi-Fi",
     summary: "Separation of staff, guest, payment, device, and camera traffic for cleaner operations.",
-    relatedServices: ["network-wifi", "security-hardening"],
+    relatedServices: ["network-wifi", "infrastructure-hardening"],
     relatedIndustries: ["medical-offices", "municipalities", "campgrounds"],
   },
   {
@@ -611,11 +742,35 @@ export const technologyCatalog: TechnologyEntry[] = [
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
   },
   {
+    slug: "tenable-sc",
+    name: "Tenable.sc",
+    category: "Security and Compliance",
+    summary: "Vulnerability scanning, risk-based prioritization, and remediation tracking used in enterprise compliance environments.",
+    relatedServices: ["vulnerability-assessment", "hipaa-security-assessment"],
+    relatedIndustries: ["medical-offices", "small-business", "municipalities"],
+  },
+  {
+    slug: "nist-800-53",
+    name: "NIST 800-53",
+    category: "Security and Compliance",
+    summary: "Security control assessment and documentation aligned with NIST 800-53 requirements.",
+    relatedServices: ["hipaa-security-assessment", "vulnerability-assessment", "infrastructure-hardening"],
+    relatedIndustries: ["medical-offices", "municipalities"],
+  },
+  {
+    slug: "hipaa-compliance",
+    name: "HIPAA Compliance",
+    category: "Security and Compliance",
+    summary: "HIPAA Security Rule assessments, documentation, and remediation planning for medical practices.",
+    relatedServices: ["hipaa-security-assessment", "infrastructure-hardening"],
+    relatedIndustries: ["medical-offices"],
+  },
+  {
     slug: "firewalls",
     name: "Firewalls",
     category: "Security and Compliance",
     summary: "Policy review, segmentation coordination, ingress and egress cleanup, and practical rule hardening.",
-    relatedServices: ["network-wifi", "security-hardening"],
+    relatedServices: ["network-wifi", "infrastructure-hardening"],
     relatedIndustries: ["medical-offices", "small-business", "municipalities"],
   },
   {
@@ -623,7 +778,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "MFA and Access Controls",
     category: "Security and Compliance",
     summary: "Identity hardening and role cleanup tied to practical administration rather than checkbox theater.",
-    relatedServices: ["security-hardening", "microsoft-365"],
+    relatedServices: ["infrastructure-hardening", "microsoft-365"],
     relatedIndustries: ["medical-offices", "small-business", "municipalities"],
   },
   {
@@ -631,7 +786,7 @@ export const technologyCatalog: TechnologyEntry[] = [
     name: "Documentation and Standards",
     category: "Security and Compliance",
     summary: "Operational documentation, ownership clarity, and cleaner handoff materials for future support.",
-    relatedServices: ["security-hardening", "it-support"],
+    relatedServices: ["infrastructure-hardening", "msp-transition"],
     relatedIndustries: ["medical-offices", "municipalities", "multi-site-properties"],
   },
   {
@@ -651,19 +806,11 @@ export const technologyCatalog: TechnologyEntry[] = [
     relatedIndustries: ["municipalities", "small-business", "multi-site-properties"],
   },
   {
-    slug: "hikvision",
-    name: "Hikvision",
-    category: "Cameras and Local AI",
-    summary: "Camera deployments and support where Hikvision equipment is the right fit for the project.",
-    relatedServices: ["camera-systems"],
-    relatedIndustries: ["small-business", "municipalities", "multi-site-properties"],
-  },
-  {
     slug: "local-ai-processing",
     name: "Local AI Processing",
     category: "Cameras and Local AI",
-    summary: "On-site analysis, air-gapped inference, and local-first processing options for visibility and secure AI workflows where ownership matters.",
-    relatedServices: ["camera-systems", "private-air-gapped-ai"],
+    summary: "On-site analysis and local-first processing options for visibility and secure AI workflows where ownership matters.",
+    relatedServices: ["camera-systems", "private-ai"],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
   },
 ];
@@ -674,22 +821,22 @@ export const faqs = [
   {
     question: "What kinds of organizations does NextGridIT support?",
     answer:
-      "NextGridIT supports regulated organizations, distributed operations, multi-site environments, public-sector teams, and businesses that need both infrastructure execution and intelligence-led security work.",
+      "NextGridIT supports medical practices, small and mid-sized businesses, municipalities, campgrounds, and multi-site properties across Upstate South Carolina. The common thread is organizations that need technically strong, compliance-aware IT support without enterprise overhead.",
   },
   {
     question: "What geographic areas does NextGridIT serve?",
     answer:
-      "NextGridIT maintains rapid-response coverage across Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina, while supporting larger logistics-led deployments and specialty security engagements across broader regions and global programs.",
+      "NextGridIT is based in Seneca, SC and provides on-site services across Seneca, Clemson, Anderson, Easley, and Greenville. Remote and project-based work is available throughout South Carolina and beyond — including travel when the project requires it.",
   },
   {
     question: "Does NextGridIT provide ongoing support contracts?",
     answer:
-      "NextGridIT is positioned around infrastructure hardening, exposure research, and project-led execution rather than commodity MSP packaging. Ongoing support is available where it improves surveillance depth, ownership, and execution quality.",
+      "NextGridIT is built around project-led engagements — MSP transitions, security assessments, vendor lockout recovery, infrastructure hardening, and network deployments. Ongoing support is available where it makes sense, but the goal is to make you self-sufficient, not to keep you on a retainer forever.",
   },
   {
-    question: "What compliance-related environments does NextGridIT support?",
+    question: "What compliance frameworks does NextGridIT work with?",
     answer:
-      "The technical work is commonly informed by HIPAA, PCI DSS, and NIST-style security practices, especially where documentation, identity, segmentation, and operational controls matter.",
+      "The technical work is commonly informed by HIPAA, PCI DSS, NIST 800-53, and MARS-E — especially where documentation, identity, segmentation, and operational controls matter. This comes from direct experience in Medicaid compliance operations.",
   },
   {
     question: "Can NextGridIT help with both networks and cameras?",
@@ -697,62 +844,62 @@ export const faqs = [
       "Yes. Camera deployments are often planned alongside switching, Wi-Fi, and broader infrastructure work so the systems fit together cleanly.",
   },
   {
-    question: "Does NextGridIT offer security audits or penetration testing?",
+    question: "Does NextGridIT offer penetration testing?",
     answer:
-      "Yes. NextGridIT offers scoped security audits, black box pentests, and trusted-access pentests with remediation help and practical risk review for each finding.",
+      "Yes. NextGridIT provides scoped penetration testing — both black box (external attacker perspective) and trusted-access (internal review) — with remediation help and practical risk review for each finding. Active bug bounty research on Microsoft and HackerOne platforms keeps the methodology current.",
   },
   {
     question: "How do projects usually start?",
     answer:
-      "Projects typically start with an intake conversation, a review of the current environment, and a practical plan focused on the most useful improvements first.",
+      "Projects typically start with a conversation about what's not working, a review of the current environment, and a practical plan focused on the most impactful improvements first. No pressure, no hard sell — just an honest assessment of whether NextGridIT is the right fit.",
   },
   {
-    question: "Does NextGridIT handle one-time projects or only ongoing support?",
+    question: "What does vendor lockout recovery involve?",
     answer:
-      "The site is intentionally positioned around project-led engagements. One-time infrastructure, cloud, Wi-Fi, camera, documentation, and hardening work are all valid fits.",
+      "When an IT provider walks away and takes your credentials with them, NextGridIT recovers access to the systems you legally own. Every engagement starts with signed authorization documentation, then proceeds through system-by-system access recovery, credential resets, and verification that the former provider no longer has access.",
   },
   {
-    question: "What kinds of technology brands or platforms are commonly involved?",
+    question: "What kinds of technology platforms does NextGridIT work with?",
     answer:
-      "Common environments include Microsoft 365, Entra ID, Azure, AWS, Google Workspace, Apple devices, Ubiquiti UniFi, firewalls, IP cameras, local NVR systems, and private AI workflows built around on-premise model execution.",
+      "Common environments include Microsoft 365, Entra ID, Azure, Active Directory, Ubiquiti UniFi, IP cameras and NVR systems, Tenable.sc, and various firewall platforms. The focus is on practical, well-supported technology — not trendy solutions that create vendor dependency.",
   },
 ];
 
 export const caseStudies = [
   {
-    title: "Inherited Network Cleanup for a Growing Organization",
+    title: "MSP Transition for a Growing Business",
     challenge:
-      "An organization had a partially documented network with recurring reliability complaints, unclear ownership, and no clean separation between operational devices and guest traffic.",
+      "A company had outgrown its MSP relationship. The provider was handling support but not driving the IT strategy the business needed. Leadership wanted to bring IT in-house but didn't know where to start — and couldn't risk losing access to anything during the transition.",
     approach:
-      "NextGridIT focused on network review, segmentation planning, documentation cleanup, and a phased remediation path that reduced disruption while restoring visibility.",
+      "NextGridIT audited everything the MSP managed, identified the right type of internal IT hire for the organization's size and needs, and supported the company through the hiring process. During the transition, all systems were documented and verified. When the cutover happened, credentials were reset and the former MSP's access was confirmed revoked across every system.",
     outcomes: [
-      "Clearer network boundaries and ownership",
-      "Better supportability for future changes",
-      "A more stable baseline for staff and guest connectivity",
+      "Complete separation from the former MSP with zero access residuals",
+      "New internal IT hire supported through onboarding with full documentation",
+      "All systems under the organization's own control for the first time",
+    ],
+  },
+  {
+    title: "Vendor Lockout Recovery for a Municipality",
+    challenge:
+      "A city's IT provider walked away after deploying the WiFi and camera infrastructure — and took all the administrative credentials with them. The city owned the equipment but couldn't manage it, update it, or even change a password.",
+    approach:
+      "NextGridIT required proper authorization documentation signed by the mayor before any recovery work began, establishing a clear legal paper trail. Access was recovered system by system — network equipment, camera systems, and management platforms. New administrative credentials were created, former provider access was revoked, and everything was documented and handed over.",
+    outcomes: [
+      "Full administrative control returned to the city",
+      "Documented authorization trail protecting both the city and NextGridIT",
+      "New credential sets and security controls that the city owns going forward",
     ],
   },
   {
     title: "Microsoft 365 Administration Reset After Organic Growth",
     challenge:
-      "Accounts, permissions, and administration responsibilities had grown informally over time, creating risk and day-to-day confusion.",
+      "Accounts, permissions, and administration responsibilities had grown informally over time, creating risk and day-to-day confusion. No one was sure who had access to what, and the tenant had drifted into an unmanageable state.",
     approach:
-      "The engagement prioritized tenant review, identity cleanup, safer administration patterns, and documentation that the client could actually use afterward.",
+      "The engagement prioritized tenant review, identity cleanup, safer administration patterns, and documentation that the client could actually use afterward. MFA was enforced, stale accounts were removed, and administrative roles were tightened to the minimum necessary.",
     outcomes: [
-      "Cleaner tenant administration",
-      "More consistent access control practices",
-      "Reduced operational confusion around ownership and change management",
-    ],
-  },
-  {
-    title: "Local-First Visibility for a Property Environment",
-    challenge:
-      "A site needed stronger visibility and coverage without defaulting to a cloud-heavy model that reduced local control.",
-    approach:
-      "NextGridIT aligned camera planning with the broader infrastructure design, focusing on coverage, retention needs, and practical local ownership.",
-    outcomes: [
-      "Better site visibility",
-      "Camera design aligned with the network environment",
-      "A deployment model centered on operational fit rather than trend chasing",
+      "Cleaner tenant administration with documented ownership",
+      "More consistent access control practices with MFA enforced",
+      "Reduced operational confusion around identity and change management",
     ],
   },
 ];
