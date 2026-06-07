@@ -1,7 +1,7 @@
 export const surfaceScanSteps = [
   "[INFO] Detecting Mail Carrier via MX Fingerprinting...",
   "[MATCH] Microsoft 365 / Entra ID Environment Detected.",
-  "[INTEL] Cross-referencing MSRC Case #108637 (Unauthenticated Enumeration)...",
+  "[INTEL] Cross-referencing current identity exposure research (Unauthenticated Enumeration)...",
   "[AI] Qwen 2.5 Coder generating risk posture brief...",
 ] as const
 

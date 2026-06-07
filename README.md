@@ -1,3 +1,9 @@
+---
+Title: README
+tags: []
+description: This is a statically exported Next.js site configured for deployment to Cloudflare Workers with static assets.
+last_updated: 2026-06-07
+---
 This is a statically exported Next.js site configured for deployment to Cloudflare Workers with static assets.
 
 ## Local Development

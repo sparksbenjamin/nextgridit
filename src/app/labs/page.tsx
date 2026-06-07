@@ -4,9 +4,9 @@ import { LabsPageClient } from "@/components/pages/LabsPageClient"
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = createMetadata({
-  title: "NextGrid Labs",
+  title: "NextGrid Labs — Security Research and Vulnerability Discovery",
   description:
-    "MSRC case tracking, Entra ID research, sovereign AI workflows, and instant perimeter audit previews from NextGridIT.",
+    "Active bug bounty research on Microsoft and HackerOne platforms. Identity exposure analysis, vulnerability discovery, and perimeter intelligence from NextGridIT.",
   path: "/labs/",
 })
 

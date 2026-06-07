@@ -365,7 +365,7 @@ function buildSurfaceScanResult(domain: string, mxRecords: string[]): SurfaceSca
         "The full exposure brief should validate public identity signal leakage, legacy discovery behavior, and tenant-level controls before broader external correlation work begins.",
       technicalBrief: [
         "Mail carrier resolved through Microsoft 365 routing.",
-        "Environment aligns with the current MSRC Case #108637 research focus on unauthenticated enumeration behavior.",
+        "Environment aligns with current research on unauthenticated enumeration behavior in public identity endpoints.",
         "Recommended next step: validate principal discovery paths, Autodiscover behavior, and Entra identity controls.",
       ],
     };

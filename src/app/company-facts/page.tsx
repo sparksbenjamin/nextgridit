@@ -11,9 +11,9 @@ const facts = [
   `Contact phone: ${siteConfig.phoneDisplay}`,
   `Primary region: ${siteConfig.region}`,
   `Primary cities served: ${siteConfig.serviceArea.join(", ")}, South Carolina`,
-  "Core service categories: infrastructure hardening, Microsoft 365, infrastructure deployment, exposure research, perimeter surveillance, and private AI workflows",
+  "Core service categories: MSP transition and vendor independence, vendor lockout recovery, HIPAA security assessment, vulnerability assessment and remediation, infrastructure hardening, Microsoft 365, network and Wi-Fi, penetration testing, camera systems, private AI consulting",
   "Primary industries: medical offices, small businesses, municipalities, campgrounds, multi-site properties",
-  "Engagement model: project-led, business-first, intelligence-led, and local-first where practical",
+  "Engagement model: project-led, business-first, local-first where practical, remote and travel available",
 ];
 
 export const metadata = createMetadata({

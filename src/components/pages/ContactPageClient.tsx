@@ -12,8 +12,6 @@ type FormState = {
   website: string;
 };
 
-type SubmitState = "idle" | "sending" | "success" | "error";
-
 const initialFormState: FormState = {
   company: "",
   email: "",
@@ -61,8 +59,7 @@ const intakeChecklist = [
 
 export function ContactPageClient() {
   const [form, setForm] = useState<FormState>(initialFormState);
-  const [submitState, setSubmitState] = useState<SubmitState>("idle");
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   function buildMailtoHref(values: FormState) {
     const subject = `NextGridIT inquiry from ${values.company || "Website visitor"}`;
@@ -77,56 +74,10 @@ export function ContactPageClient() {
     return `mailto:contact@nextgridit.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  function openMailClient(values: FormState) {
-    window.location.href = buildMailtoHref(values);
-  }
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    const submittedForm = { ...form };
-
-    setSubmitState("sending");
-    setSubmitMessage("");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(submittedForm),
-      });
-
-      const data = (await response.json().catch(() => null)) as { error?: string } | null;
-
-      if (response.ok) {
-        setForm(initialFormState);
-        setSubmitState("success");
-        setSubmitMessage("Your message was sent directly to NextGridIT.");
-        return;
-      }
-
-      if (response.status >= 500) {
-        openMailClient(submittedForm);
-        setSubmitState("success");
-        setSubmitMessage(
-          "Direct form delivery is not ready yet, so a prefilled email was opened instead.",
-        );
-        return;
-      }
-
-      setSubmitState("error");
-      setSubmitMessage(
-        data?.error ?? "We could not send the form. You can still email us directly below.",
-      );
-    } catch {
-      openMailClient(submittedForm);
-      setSubmitState("success");
-      setSubmitMessage(
-        "We could not reach the direct form service, so a prefilled email was opened instead.",
-      );
-    }
+    window.location.href = buildMailtoHref(form);
+    setSubmitted(true);
   }
 
   return (
@@ -146,16 +97,15 @@ export function ContactPageClient() {
 
           <div className="mb-8">
             <p className="theme-copy mb-2 border-l-2 border-[var(--accent)] pl-3 font-mono text-sm">
-              START THE PROJECT CONVERSATION BY EMAIL
+              START THE PROJECT CONVERSATION
             </p>
             <p className="theme-soft font-sans text-sm">
-              Send the form to deliver your message directly. If direct delivery is
-              unavailable, we will fall back to a prefilled email. You can also reach
-              us directly at{" "}
+              Fill out the form below and your default email client will open with a
+              pre-filled message to{" "}
               <a className="theme-link" href="mailto:contact@nextgridit.com">
                 contact@nextgridit.com
               </a>
-              .
+              . You can also reach us directly by phone or email at any time.
             </p>
           </div>
 
@@ -248,24 +198,19 @@ export function ContactPageClient() {
                 placeholder="Tell us about your infrastructure, cloud, Wi-Fi, camera, security, or compliance-related needs..."
               />
             </div>
-            {submitMessage ? (
+            {submitted && (
               <p
-                className={`rounded-2xl border px-4 py-3 text-sm leading-relaxed ${
-                  submitState === "error"
-                    ? "border-amber-500/40 bg-amber-500/10 text-amber-200"
-                    : "border-[var(--border-strong)] bg-[var(--surface-strong)] theme-copy"
-                }`}
+                className="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-strong)] theme-copy px-4 py-3 text-sm leading-relaxed"
                 role="status"
               >
-                {submitMessage}
+                Your email client should have opened with a pre-filled message. If it didn&apos;t, email us directly at contact@nextgridit.com.
               </p>
-            ) : null}
+            )}
             <button
               type="submit"
-              disabled={submitState === "sending"}
-              className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest disabled:cursor-not-allowed disabled:opacity-70"
+              className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest"
             >
-              <span>{submitState === "sending" ? "Sending..." : "Send Project Request"}</span>
+              <span>Open Email to NextGridIT</span>
               <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </form>
@@ -310,7 +255,7 @@ export function ContactPageClient() {
           <div className="glass-panel border border-[var(--border)] border-l-[var(--accent-alt)] p-8">
             <h3 className="theme-heading mb-2 font-mono text-xl uppercase tracking-wider">Infrastructure and <span className="theme-accent-alt">Compliance Support</span></h3>
             <p className="theme-copy font-sans leading-relaxed">
-              NextGridIT supports infrastructure improvement, security hardening, cloud services, camera deployments, and compliance-aware environments for organizations that need reliable technical execution without overcomplicating operations.
+              NextGridIT supports MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, cloud services, camera deployments, and infrastructure hardening for organizations that need technically strong execution.
             </p>
             <div className="theme-accent-alt mt-4 flex items-center gap-2 font-mono text-sm">
               <span className="h-2 w-2 rounded-full bg-[var(--accent-alt)] animate-ping" />

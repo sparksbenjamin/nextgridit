@@ -1,32 +1,32 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react";
+import { IconBug, IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
 const aboutHighlights = [
   {
-    title: "Security and Operations",
+    title: "Security and Vulnerability Research",
     description:
-      "Experience across incident response, hardening, infrastructure support, and long-term operational improvement.",
-    icon: <IconShieldCheck className="theme-accent-alt h-6 w-6" />,
+      "Active bug bounty researcher on Microsoft MSRC and HackerOne platforms. Daily work in vulnerability assessment, remediation prioritization, and security operations using Tenable.sc and enterprise compliance tooling.",
+    icon: <IconBug className="theme-accent-alt h-6 w-6" />,
   },
   {
     title: "Network and Infrastructure",
     description:
-      "Built on real-world experience with Microsoft environments, Active Directory, Azure, SQL, virtualization, firewalls, and multi-site networking.",
+      "Built on real-world experience with Microsoft 365 and Azure environments, Active Directory, SQL Server, virtualization, firewalls, BGP/MPLS, and multi-site networking — including a 4,000-account O365 migration with zero data loss.",
     icon: <IconNetwork className="theme-accent-strong h-6 w-6" />,
   },
   {
-    title: "Compliance-Aware Background",
+    title: "Compliance and Regulated Environments",
     description:
-      "Comfortable supporting regulated and documentation-heavy environments, including healthcare-related systems and compliance-oriented operations.",
+      "Daily experience in DHHS Medicaid compliance operations — HIPAA, PCI DSS, NIST 800-53, MARS-E, and FedRAMP. Has assessed 100+ medical offices and understands what auditors actually look for vs. what checkbox compliance misses.",
     icon: <IconCertificate className="theme-accent h-6 w-6" />,
   },
   {
     title: "Local and Travel-Ready",
     description:
-      "Focused on Seneca, Clemson, Anderson, Easley, and Greenville, with travel available for larger or specialized engagements.",
+      "Based in Seneca, SC. On-site work across Seneca, Clemson, Anderson, Easley, and Greenville. Remote and project-based work available nationwide — travel when the project requires it.",
     icon: <IconWorld className="theme-accent-alt h-6 w-6" />,
   },
 ];
@@ -34,7 +34,7 @@ const aboutHighlights = [
 export const metadata: Metadata = createMetadata({
   title: "About",
   description:
-    "Learn about NextGridIT and its approach to network infrastructure, security, and compliance-aware support for businesses in Upstate South Carolina.",
+    "NextGridIT: IT security consulting in Upstate South Carolina. MSP transitions, vendor lockout recovery, HIPAA assessments, and vulnerability remediation from 20+ years of hands-on experience.",
   path: "/about/",
 });
 
@@ -64,16 +64,16 @@ export default function AboutPage() {
             NextGridIT was built to bring experienced infrastructure, security, and operations support to organizations that need serious technical help without enterprise-sized overhead.
           </p>
           <p>
-            The company draws on more than 20 years of hands-on IT experience across network engineering, systems administration, security, support leadership, cloud migrations, compliance-aware environments, and multi-site operations.
+            The company draws on more than 20 years of hands-on IT experience across network engineering, systems administration, security research, support leadership, cloud migrations, compliance-aware environments, and multi-site operations. Over 100 certifications back that experience — not as wall decoration, but as proof of continuous learning across the domains that matter to clients.
           </p>
           <p>
-            Our work is grounded in practical outcomes: stronger networks, cleaner systems, better visibility, better documentation, and fewer operational surprises.
+            The work is grounded in practical outcomes: organizations that own their own IT, systems with documentation that actually exists, networks that stay up, and security postures based on real risk rather than theoretical severity.
           </p>
           <p className="theme-heading my-8 border-l-2 border-[var(--accent-alt)] py-2 pl-4 font-mono">
-            NextGridIT exists to help businesses in Upstate South Carolina build technology environments that are stable, secure, and easier to run.
+            NextGridIT exists to help businesses in Upstate South Carolina build technology environments that are stable, secure, and actually under their control.
           </p>
           <p>
-            We focus on long-term usefulness over buzzwords. That means recommending the right level of infrastructure, security, and process for each organization instead of forcing every client into the same package.
+            That means recommending the right level of infrastructure, security, and process for each organization instead of forcing every client into the same package. It also means doing the work that generic IT support can&apos;t or won&apos;t — like MSP transitions, vendor lockout recovery, and real compliance assessments.
           </p>
         </div>
 
@@ -113,8 +113,17 @@ export default function AboutPage() {
             Representative <span className="theme-accent-strong">Results</span>
           </h2>
           <div className="theme-copy space-y-4 leading-relaxed">
-            <p>Experience includes improving network uptime in legacy environments, leading multi-site IT operations, supporting cloud and hybrid migrations, and helping teams clean up infrastructure that had become difficult to manage.</p>
-            <p>Because client environments are private, NextGridIT does not publicly identify clients or publish sensitive implementation details. We focus on practical outcomes, confidentiality, and long-term support.</p>
+            <p>
+              Work includes transitioning businesses away from MSPs they had outgrown, recovering
+              access to city infrastructure after a vendor walked away, cleaning up Microsoft 365
+              tenants that had drifted into unmanageable states, and delivering HIPAA security
+              assessments for medical practices that needed findings prioritized by real risk.
+            </p>
+            <p>
+              Because client environments are private, NextGridIT does not publicly identify clients
+              or publish sensitive implementation details. Case studies on this site are sanitized
+              but specific enough to show what actually happened and what the outcomes were.
+            </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link href="/case-studies/" className="button-secondary rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">

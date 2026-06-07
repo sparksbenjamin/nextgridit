@@ -2,45 +2,39 @@ import Link from "next/link"
 
 const resources = [
   {
-    title: "NextGrid Labs",
-    description:
-      "Explore the intelligence layer with active research positioning, telemetry concepts, and the instant surface scan experience.",
-    href: "/labs/",
-  },
-  {
     title: "Guides",
     description:
-      "Read practical field notes on infrastructure decisions, identity posture, and the technical details that influence real-world risk.",
+      "Practical field notes on infrastructure decisions, HIPAA compliance, MSP transitions, and the technical details that affect your daily operations.",
     href: "/guides/",
-  },
-  {
-    title: "Compliance",
-    description:
-      "Review how the operating model aligns with HIPAA, PCI DSS, NIST-style security thinking, and private analysis requirements.",
-    href: "/compliance/",
   },
   {
     title: "Case Studies",
     description:
-      "Read sanitized examples of cleanup, infrastructure redesign, and operating-environment improvement work.",
+      "Real examples of MSP transitions, vendor lockout recovery, and security cleanup work — sanitized but specific enough to show what actually happened.",
     href: "/case-studies/",
+  },
+  {
+    title: "Compliance",
+    description:
+      "How NextGridIT's work aligns with HIPAA, PCI DSS, NIST 800-53, and MARS-E — especially for organizations in regulated industries.",
+    href: "/compliance/",
+  },
+  {
+    title: "NextGrid Labs",
+    description:
+      "Active security research, vulnerability discovery, and the perimeter scan tool. Bug bounty work on Microsoft and HackerOne platforms.",
+    href: "/labs/",
   },
   {
     title: "Project Fit",
     description:
-      "See which environments benefit most from infrastructure hardening, surveillance engineering, and intelligence-led support.",
+      "Which environments benefit most from infrastructure hardening, security assessments, and IT ownership work — and how to tell if it's a fit.",
     href: "/project-fit/",
-  },
-  {
-    title: "Service Areas",
-    description:
-      "Review rapid-response coverage across Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.",
-    href: "/service-areas/",
   },
   {
     title: "Process and FAQ",
     description:
-      "Understand how discovery starts, how engagements are scoped, and what happens after a surface scan or intake request.",
+      "How projects start, how engagements are scoped, and answers to the most common questions about working with NextGridIT.",
     href: "/process/",
   },
 ]
@@ -51,11 +45,11 @@ export function ResourcesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-14 max-w-3xl">
           <h2 className="theme-heading mb-4 font-mono text-3xl font-bold md:text-5xl">
-            Research and <span className="theme-accent">Operating Notes</span>
+            Resources and <span className="theme-accent">Reference</span>
           </h2>
           <div className="theme-rule mb-6 h-1 w-24" />
           <p className="theme-copy text-lg leading-relaxed">
-            Beyond the service overview, these pages explain how NextGridIT combines research, infrastructure hardening, private AI, and intelligence-led operating discipline.
+            Guides, case studies, and compliance references for organizations that want to understand their IT environment better before, during, and after a project.
           </p>
         </div>
 
@@ -70,7 +64,7 @@ export function ResourcesSection() {
                 href={resource.href}
                 className="button-secondary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
               >
-                Explore Page
+                Explore
               </Link>
             </section>
           ))}
