@@ -2,11 +2,33 @@
 
 import {
   IconBug,
+  IconBrandGithub,
   IconCpu2,
   IconShieldLock,
   IconTargetArrow,
 } from "@tabler/icons-react"
 import { SurfaceScanModule } from "@/components/scan/SurfaceScanModule"
+
+const openSourceProjects = [
+  {
+    name: "DNS Blocking",
+    slug: "DNS_Blocking",
+    description: "Practical DNS-level blocking for network security. Filter malicious domains, ads, and tracking at the DNS layer without expensive appliances.",
+    tags: ["DNS", "Network Security", "Self-Hosted"],
+  },
+  {
+    name: "Aegis SSH MCP",
+    slug: "Aegis-SSH-MCP",
+    description: "MCP server for SSH operations. Enables AI agents and automation workflows to execute remote commands, transfer files, and manage server infrastructure securely.",
+    tags: ["MCP", "SSH", "AI Automation"],
+  },
+  {
+    name: "Aegis API MCP",
+    slug: "Aegis-API-MCP",
+    description: "MCP server for API interactions. Connect AI agents to REST and GraphQL endpoints with structured request handling and response parsing.",
+    tags: ["MCP", "API", "AI Automation"],
+  },
+]
 
 const researchAreas = [
   {
@@ -156,6 +178,52 @@ export function LabsPageClient() {
                 or client data leave the controlled environment.
               </p>
             </section>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[var(--border)]">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mb-8 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.28em] theme-accent">
+            <IconBrandGithub className="h-5 w-5" />
+            Open Source Projects
+          </div>
+          <h2 className="theme-heading text-3xl font-bold">
+            Tools We Build
+          </h2>
+          <p className="theme-copy mt-4 max-w-3xl leading-relaxed">
+            Security and automation tools from NextGridIT. Open source, self-hosted, no vendor lock-in.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {openSourceProjects.map((project) => (
+              <a
+                key={project.slug}
+                href={`https://github.com/nextgridit-team/${project.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-[1.75rem] border border-[var(--border)] bg-[var(--surface)]/90 p-6 transition-all hover:border-[var(--accent)] hover:shadow-[0_0_30px_-10px_var(--accent)]"
+              >
+                <h3 className="theme-heading text-lg font-bold group-hover:theme-accent">
+                  {project.name}
+                </h3>
+                <p className="theme-copy mt-3 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[var(--border)] bg-[var(--background-elevated)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.2em] theme-soft"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-4 font-mono text-xs uppercase tracking-[0.2em] theme-accent group-hover:underline">
+                  View on GitHub →
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>

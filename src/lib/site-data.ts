@@ -11,7 +11,7 @@ export const siteConfig = {
   tagline:
     "Helping Upstate South Carolina businesses take back control of their IT — from MSP transitions and vendor lockout recovery to HIPAA security assessments and vulnerability remediation.",
   sameAs: [
-    "https://github.com/sparksbenjamin/nextgridit",
+    "https://github.com/nextgridit-team",
     "https://www.linkedin.com/company/nextgridit",
   ],
   googleBusinessUrl: "",

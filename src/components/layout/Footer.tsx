@@ -41,7 +41,7 @@ export function Footer() {
               <a href="https://www.linkedin.com/company/nextgridit" target="_blank" rel="noopener noreferrer" className="theme-copy hover:text-[var(--accent)]" aria-label="LinkedIn">
                 <IconBrandLinkedin className="h-5 w-5" />
               </a>
-              <a href="https://github.com/sparksbenjamin/nextgridit" target="_blank" rel="noopener noreferrer" className="theme-copy hover:text-[var(--accent-alt)]" aria-label="GitHub">
+              <a href="https://github.com/nextgridit-team" target="_blank" rel="noopener noreferrer" className="theme-copy hover:text-[var(--accent-alt)]" aria-label="GitHub">
                 <IconBrandGithub className="h-5 w-5" />
               </a>
               <Link href="/contact" className="theme-copy hover:text-[var(--accent-strong)]" aria-label="Location">
@@ -141,7 +141,7 @@ export function Footer() {
             <span>Email: <a className="theme-accent hover:underline" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a></span>
             <span>Phone: <a className="theme-accent-strong hover:underline" href="tel:8647800202">864-780-0202</a></span>
             <a href="https://www.linkedin.com/company/nextgridit" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent)]">LinkedIn</a>
-            <a href="https://github.com/sparksbenjamin/nextgridit" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-alt)]">GitHub</a>
+            <a href="https://github.com/nextgridit-team" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--accent-alt)]">GitHub</a>
           </div>
         </div>
       </div>
