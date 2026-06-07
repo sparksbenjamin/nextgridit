@@ -3,7 +3,7 @@ import Script from "next/script";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
-import { LocationAreaMap } from "@/components/ui/LocationAreaMap";
+import { LocationAreaMap } from "@/components/ui/LazyLocationAreaMap";
 import {
   createBreadcrumbSchema,
   createFaqSchema,

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -39,6 +39,12 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0f",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -89,6 +95,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  manifest: "/manifest.json",
   category: "technology",
 };
 

@@ -1,0 +1,16 @@
+{
+  "name": "NextGridIT - IT Security Consulting",
+  "short_name": "NextGridIT",
+  "description": "IT security consulting in Upstate South Carolina. MSP transitions, vendor lockout recovery, HIPAA assessments, and vulnerability remediation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#00ff88",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

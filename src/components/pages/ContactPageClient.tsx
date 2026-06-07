@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { IconArrowRight, IconBrandGoogle, IconMail, IconPhone } from "@tabler/icons-react";
-import MapChart from "@/components/ui/MapChart";
+import { MapChart } from "@/components/ui/LazyMapChart";
 
 type FormState = {
   company: string;

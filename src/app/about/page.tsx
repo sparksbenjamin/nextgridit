@@ -77,32 +77,35 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div
-          className="glass-panel relative overflow-hidden border p-8"
-          style={{ borderColor: "var(--border)" }}
-        >
-          <div className="absolute right-0 top-0 h-32 w-32 rounded-full blur-3xl" style={{ backgroundColor: "var(--accent-alt-soft)" }} />
+        <div className="space-y-6">
+          {/* Photo slot: Replace with real photo of Ben or work environment */}
+          <div
+            className="glass-panel relative overflow-hidden border p-8"
+            style={{ borderColor: "var(--border)" }}
+          >
+            <div className="absolute right-0 top-0 h-32 w-32 rounded-full blur-3xl" style={{ backgroundColor: "var(--accent-alt-soft)" }} />
 
-          <div className="space-y-8 relative z-10">
-            {aboutHighlights.map((item) => (
-              <div key={item.title} className="flex items-start gap-4">
-                <div
-                  className="mt-1 rounded-xl border p-3"
-                  style={{
-                    borderColor: "var(--border)",
-                    backgroundColor: "var(--surface-strong)",
-                  }}
-                >
-                  {item.icon}
+            <div className="space-y-8 relative z-10">
+              {aboutHighlights.map((item) => (
+                <div key={item.title} className="flex items-start gap-4">
+                  <div
+                    className="mt-1 rounded-xl border p-3"
+                    style={{
+                      borderColor: "var(--border)",
+                      backgroundColor: "var(--surface-strong)",
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="theme-heading mb-1 font-mono text-xl font-bold">
+                      {item.title}
+                    </h3>
+                    <p className="theme-copy font-sans text-sm">{item.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="theme-heading mb-1 font-mono text-xl font-bold">
-                    {item.title}
-                  </h3>
-                  <p className="theme-copy font-sans text-sm">{item.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
