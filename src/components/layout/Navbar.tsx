@@ -134,7 +134,7 @@ const navGroups: NavGroup[] = [
   {
     id: "resources",
     label: "Resources",
-    description: "Guides, case studies, research, and answers to common questions.",
+    description: "Guides, policy starter kit, case studies, research, and answers to common questions.",
     overview: {
       href: "/guides",
       label: "Browse guides",
@@ -145,6 +145,11 @@ const navGroups: NavGroup[] = [
         href: "/guides",
         label: "Guides",
         description: "Technical guides and how-to articles from the field.",
+      },
+      {
+        href: "/resources/policy-starter-kit",
+        label: "Policy Starter Kit",
+        description: "AI, mobile, password, vendor access, offboarding, and MSP transition templates.",
       },
       {
         href: "/case-studies",
@@ -167,7 +172,7 @@ const navGroups: NavGroup[] = [
         description: "Why ownership, on-site control, and practical fit matter.",
       },
     ],
-    matchers: ["/labs", "/guides", "/case-studies", "/faq", "/local-first"],
+    matchers: ["/labs", "/guides", "/resources", "/case-studies", "/faq", "/local-first"],
   },
 ]
 

@@ -82,6 +82,7 @@ export function Footer() {
                 { label: "Compliance & Frameworks", href: "/compliance" },
                 { label: "NextGrid Labs", href: "/labs" },
                 { label: "Guides", href: "/guides" },
+                { label: "Policy Starter Kit", href: "/resources/policy-starter-kit" },
                 { label: "Project Fit", href: "/project-fit" },
                 { label: "Local-First Systems", href: "/local-first" },
                 { label: "Case Studies", href: "/case-studies" },
@@ -106,6 +107,7 @@ export function Footer() {
               <p className="mb-2 opacity-80">&gt; msp transition: /services/msp-transition</p>
               <p className="mb-2 opacity-80">&gt; vendor lockout: /services/vendor-lockout-recovery</p>
               <p className="mb-2 opacity-80">&gt; hipaa assessment: /services/hipaa-security-assessment</p>
+              <p className="mb-2 opacity-80">&gt; policy kit: /resources/policy-starter-kit</p>
               <p className="mb-2 opacity-80">&gt; field guides: /guides</p>
               <p className="mb-4 opacity-80">&gt; project questions: /faq</p>
               <div className="grid gap-2">
@@ -120,6 +122,12 @@ export function Footer() {
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
                 >
                   VIEW GUIDES
+                </Link>
+                <Link
+                  href="/resources/policy-starter-kit"
+                  className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
+                >
+                  VIEW POLICY KIT
                 </Link>
                 <Link
                   href="/faq"

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllGuides } from "@/lib/guides";
+import { getAllPolicies } from "@/lib/policies";
 import { industries, locations, services, technologyCatalog } from "@/lib/site-data";
 
 export const dynamic = "force-static";
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.nextgridit.com";
   const lastModified = new Date();
   const guides = getAllGuides();
+  const policies = getAllPolicies();
 
   return [
     { url: `${base}/`, priority: 1, lastModified },
@@ -46,6 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/guides/${guide.slug}/`,
       priority: 0.76,
       lastModified: new Date(guide.updatedAt ?? guide.publishedAt),
+    })),
+    { url: `${base}/resources/policy-starter-kit/`, priority: 0.78, lastModified },
+    ...policies.map((policy) => ({
+      url: `${base}/resources/policy-starter-kit/${policy.slug}/`,
+      priority: 0.74,
+      lastModified: new Date(policy.updatedAt ?? policy.publishedAt),
     })),
     { url: `${base}/project-fit/`, priority: 0.84, lastModified },
     { url: `${base}/local-first/`, priority: 0.83, lastModified },

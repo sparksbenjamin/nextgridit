@@ -8,6 +8,12 @@ const resources = [
     href: "/guides/",
   },
   {
+    title: "Policy Starter Kit",
+    description:
+      "Plain-language AI, mobile device, password, vendor access, offboarding, and MSP transition starter policies with PDF downloads.",
+    href: "/resources/policy-starter-kit/",
+  },
+  {
     title: "Case Studies",
     description:
       "Real examples of MSP transitions, vendor lockout recovery, and security cleanup work — sanitized but specific enough to show what actually happened.",
