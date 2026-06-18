@@ -49,9 +49,9 @@ const detailedServices = [
   },
   {
     id: "microsoft-365",
-    title: "Microsoft 365 & Cloud Services",
-    description: "Tenant cleanup, MFA rollout, identity hardening, and migration support. 4,000+ Microsoft 365 accounts migrated with zero data loss.",
-    bullets: ["Tenant review and remediation", "Identity and access controls", "Cloud migration planning"],
+    title: "Microsoft 365 & Hybrid Cloud Services",
+    description: "Tenant cleanup, MFA rollout, identity hardening, hybrid integration, and migration support. 4,000+ Microsoft 365 accounts migrated with zero data loss.",
+    bullets: ["Tenant review and remediation", "Cloud and hybrid workloads", "Migration planning"],
   },
   {
     id: "network-wifi",
@@ -74,8 +74,8 @@ const detailedServices = [
   {
     id: "private-ai",
     title: "Private AI Consulting",
-    description: "Guidance on deploying local AI that keeps your data inside your environment. Consulting and planning — realistic assessment of what local AI can and cannot do for you today.",
-    bullets: ["AI readiness assessment", "Hardware and model recommendations", "Deployment roadmap"],
+    description: "Guidance on deploying AI where it belongs: controlled cloud, hybrid, on-prem, or fully local. Consulting and planning — realistic assessment of what private AI can and cannot do for you today.",
+    bullets: ["AI readiness assessment", "Cloud, hybrid, or local deployment path", "Deployment roadmap"],
   },
 ]
 

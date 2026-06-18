@@ -18,14 +18,14 @@ const principles = [
   {
     title: "Fit over hype",
     description:
-      "Local-first does not mean rejecting every cloud tool. It means choosing the right balance between cloud convenience and on-site control for the project in front of us.",
+      "Local-first does not mean rejecting every cloud tool. It means choosing the right balance between cloud, hybrid, and on-site control for the project in front of us.",
   },
 ];
 
 export const metadata: Metadata = createMetadata({
-  title: "Local-First Systems",
+  title: "Local-First and Hybrid Systems",
   description:
-    "Learn how NextGridIT approaches local-first infrastructure, camera systems, recording, and on-site AI-assisted processing for practical environments.",
+    "Learn how NextGridIT approaches local-first, hybrid, cloud, and on-prem infrastructure for practical environments.",
   path: "/local-first/",
 });
 
@@ -46,8 +46,8 @@ export default function LocalFirstPage() {
       <PageIntro
         eyebrow="Operating Model"
         title="Local-First"
-        accent="Systems"
-        description="NextGridIT favors practical system ownership, local visibility, and on-site control whenever that creates a better operating outcome than defaulting everything into the cloud."
+        accent="and Hybrid Systems"
+        description="NextGridIT supports cloud, hybrid, and on-prem environments, favoring local visibility and on-site control whenever that creates a better operating outcome than defaulting everything into the cloud."
       />
 
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
@@ -64,6 +64,13 @@ export default function LocalFirstPage() {
               run, easier to trust, and easier to support.
             </p>
             <p>
+              It does not mean every workload belongs on-site. Some systems are
+              better in established cloud providers, some belong in a hybrid
+              pattern, and some should stay fully local or isolated. The goal is
+              to place each workload where it best serves security, reliability,
+              supportability, and cost.
+            </p>
+            <p>
               This is especially relevant for camera systems, local NVR
               deployments, on-site image processing, edge infrastructure, and
               environments where connectivity is inconsistent or operational
@@ -74,14 +81,15 @@ export default function LocalFirstPage() {
 
         <aside className="glass-panel border border-[var(--border)] p-8">
           <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Typical local-first project types
+            Typical deployment patterns
           </h2>
           <div className="space-y-4">
             {[
+              "Managed cloud workloads on established providers when public reachability and resilience matter",
+              "Hybrid identity, backup, monitoring, or application patterns that connect cloud and on-prem systems",
               "Camera systems with on-site recording and retention",
               "Custom local AI video workflows where cloud lock-in is a poor fit",
-              "Property and campground environments with coverage and backhaul constraints",
-              "Business and municipal deployments that need dependable local visibility",
+              "Business and municipal deployments that need dependable local visibility without rejecting useful cloud tools",
             ].map((item) => (
               <div key={item} className="theme-chip px-5 py-4 leading-relaxed">
                 {item}

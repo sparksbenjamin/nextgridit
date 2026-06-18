@@ -11,7 +11,7 @@ import { services } from "@/lib/site-data";
 export const metadata: Metadata = createMetadata({
   title: "Services",
   description:
-    "MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, infrastructure hardening, Microsoft 365, network and Wi-Fi, and penetration testing in Upstate South Carolina.",
+    "MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, infrastructure hardening, hybrid cloud, Microsoft 365, network and Wi-Fi, and penetration testing in Upstate South Carolina.",
   path: "/services/",
 });
 
@@ -23,7 +23,7 @@ export default function ServicesPage() {
   const collectionSchema = createCollectionPageSchema({
     name: "NextGridIT Services",
     description:
-      "NextGridIT services: MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, infrastructure hardening, Microsoft 365, network and Wi-Fi, penetration testing, and camera systems.",
+      "NextGridIT services: MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, infrastructure hardening, hybrid cloud, Microsoft 365, network and Wi-Fi, penetration testing, and camera systems.",
     path: "/services/",
     items: services.map((service) => ({
       name: service.title,

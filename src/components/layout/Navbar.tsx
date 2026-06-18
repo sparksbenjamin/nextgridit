@@ -298,23 +298,23 @@ export function Navbar() {
       className="fixed top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background-elevated)]/90 backdrop-blur-xl transition-all duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex-shrink-0">
             <Link href="/" onClick={closeMenus} className="flex items-center gap-2 group">
               <div
                 onClick={unlockHackerTheme}
-                className="brand-mark flex h-10 w-10 items-center justify-center rounded-xl duration-300"
+                className="brand-mark flex h-9 w-9 items-center justify-center rounded-xl duration-300"
                 title="NextGridIT"
               >
-                <span className="font-mono text-xl font-bold leading-none">NX</span>
+                <span className="font-mono text-lg font-bold leading-none">NX</span>
               </div>
-              <span className="font-mono text-xl font-bold tracking-wider theme-heading">
+              <span className="font-mono text-lg font-bold tracking-wider theme-heading lg:text-xl">
                 NEXT<span className="theme-accent-strong">GRID</span><span className="ml-1 text-sm theme-soft">IT</span>
               </span>
             </Link>
           </div>
 
-          <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
+          <nav aria-label="Primary" className="hidden min-w-0 items-center gap-1 md:flex">
             {navGroups.map((group) => {
               const isHighlighted =
                 activePathGroup?.id === group.id || activeDesktopGroupId === group.id
@@ -328,7 +328,7 @@ export function Navbar() {
                   aria-haspopup="true"
                   onClick={() => toggleDesktopGroup(group.id)}
                   className={cn(
-                    "relative inline-flex items-center gap-1 rounded-full px-3.5 py-2 font-mono text-sm uppercase tracking-[0.14em] transition-colors duration-200",
+                    "relative inline-flex items-center gap-1 rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] transition-colors duration-200 lg:px-3.5",
                     isHighlighted
                       ? "theme-accent-strong bg-[var(--accent-soft)]"
                       : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -357,7 +357,7 @@ export function Navbar() {
               href="/about"
               onClick={closeMenus}
               className={cn(
-                "inline-flex items-center rounded-full px-3.5 py-2 font-mono text-sm uppercase tracking-[0.14em] transition-colors duration-200",
+                "inline-flex items-center rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] transition-colors duration-200 lg:px-3.5",
                 isPathActive(pathname, "/about") || isPathActive(pathname, "/process") || isPathActive(pathname, "/company-facts")
                   ? "theme-accent-strong bg-[var(--accent-soft)]"
                   : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -369,7 +369,7 @@ export function Navbar() {
               href="/contact"
               onClick={closeMenus}
               className={cn(
-                "inline-flex items-center rounded-full px-3.5 py-2 font-mono text-sm uppercase tracking-[0.14em] transition-colors duration-200",
+                "inline-flex items-center rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] transition-colors duration-200 lg:px-3.5",
                 isPathActive(pathname, "/contact")
                   ? "theme-accent-strong bg-[var(--accent-soft)]"
                   : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -380,7 +380,9 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2 md:gap-3">
-            <ThemeToggle className="scale-90 origin-right sm:scale-100" />
+            <div className="hidden sm:block">
+              <ThemeToggle className="scale-90 origin-right sm:scale-100" />
+            </div>
             <a
               href={phoneHref}
               className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] px-3 py-2 font-mono text-xs tracking-[0.12em] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)] transition-colors duration-200"
@@ -392,7 +394,7 @@ export function Navbar() {
               <Link
                 href={surfaceScanHref}
                 onClick={closeMenus}
-                className="button-primary relative overflow-hidden rounded-full px-5 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em]"
+                className="button-primary relative overflow-hidden rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.14em] lg:px-5"
               >
                 <span className="relative z-10">Free Assessment</span>
               </Link>
@@ -587,7 +589,7 @@ export function Navbar() {
                   <div
                     className={cn(
                       "overflow-hidden transition-all duration-300",
-                      isExpanded ? "max-h-[40rem]" : "max-h-0"
+                      isExpanded ? "max-h-[56rem]" : "max-h-0"
                     )}
                   >
                     <div className="space-y-3 border-t border-[var(--border)] px-4 pb-4 pt-4">
@@ -623,7 +625,7 @@ export function Navbar() {
                             >
                               {link.label}
                             </span>
-                            <span className="theme-copy mt-2 block text-sm leading-6">
+                            <span className="theme-copy mt-2 hidden text-sm leading-6 sm:block">
                               {link.description}
                             </span>
                           </Link>

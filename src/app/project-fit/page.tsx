@@ -19,7 +19,8 @@ const fitSignals = [
     title: "Best-fit project types",
     items: [
       "Network refreshes, Wi-Fi redesigns, and segmentation work",
-      "Microsoft 365 cleanup, cloud administration, and tenant hardening",
+      "Microsoft 365 cleanup, cloud administration, hybrid integration, and tenant hardening",
+      "Managed cloud workloads where established providers make more sense than residential hosting",
       "Camera systems, local NVR deployments, and local-first AI workflows",
       "Security cleanup, documentation, and compliance-aware remediation",
     ],
@@ -151,14 +152,16 @@ export default function ProjectFitPage() {
           <div className="theme-copy space-y-4 leading-relaxed">
             <p>
               The strongest fit is an organization that needs practical
-              infrastructure, cloud, Wi-Fi, security, camera, or documentation
-              work without being forced into a generic managed services model.
+              infrastructure, cloud, hybrid, on-prem, Wi-Fi, security, camera,
+              or documentation work without being forced into a generic managed
+              services model.
             </p>
             <p>
               That usually means inherited systems, mixed vendors, unclear
               documentation, coverage issues, cloud cleanup, public-facing
-              networks, local-first requirements, or a need to reduce technical
-              risk without creating enterprise overhead.
+              networks, hybrid integration needs, local-first requirements, or
+              a need to reduce technical risk without creating enterprise
+              overhead.
             </p>
           </div>
         </div>
@@ -172,7 +175,7 @@ export default function ProjectFitPage() {
               { label: "Industries", href: "/industries/" },
               { label: "Service Areas", href: "/service-areas/" },
               { label: "Technologies", href: "/technologies/" },
-              { label: "Local-First Systems", href: "/local-first/" },
+              { label: "Local & Hybrid Systems", href: "/local-first/" },
               { label: "Compliance", href: "/compliance/" },
               { label: "Contact", href: "/contact/" },
             ].map((item) => (

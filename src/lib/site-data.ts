@@ -9,7 +9,7 @@ export const siteConfig = {
   serviceArea: ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"],
   founded: "2026",
   tagline:
-    "Helping Upstate South Carolina businesses take back control of their IT — from MSP transitions and vendor lockout recovery to HIPAA security assessments and vulnerability remediation.",
+    "Helping Upstate South Carolina businesses take back control of cloud, hybrid, and on-prem IT — from MSP transitions and vendor lockout recovery to HIPAA security assessments and vulnerability remediation.",
   sameAs: [
     "https://github.com/nextgridit-team",
     "https://www.linkedin.com/company/nextgridit",
@@ -315,13 +315,13 @@ export const services: Service[] = [
     summary:
       "Administration, cleanup, security, and migration support across Microsoft 365, Entra ID, Azure, and related cloud systems.",
     description:
-      "NextGridIT helps organizations plan, improve, and support cloud environments with an emphasis on Microsoft 365, Entra ID, Azure, and practical identity administration. Work can include tenant cleanup, MFA rollout, secure collaboration setup, mailbox and account administration, cloud migration planning, and documentation. Having migrated over 4,000 Microsoft 365 accounts with zero data loss, the focus is on doing it right the first time.",
+      "NextGridIT helps organizations plan, improve, and support cloud, hybrid, and on-prem connected environments with an emphasis on Microsoft 365, Entra ID, Azure, and practical identity administration. Work can include tenant cleanup, MFA rollout, secure collaboration setup, mailbox and account administration, cloud workload planning, hybrid integration, migration support, and documentation. Having migrated over 4,000 Microsoft 365 accounts with zero data loss, the focus is on doing it right the first time.",
     audience:
       "Best fit for organizations that depend on Microsoft 365 but need cleaner administration, better identity controls, or a safer migration path — especially those recovering from a rushed or neglected setup.",
     outcomes: [
       "Improved tenant hygiene and account security",
       "Easier Microsoft 365 administration and support",
-      "Reduced risk around identity, email, and collaboration systems",
+      "Reduced risk around identity, email, collaboration systems, and the workloads connected to them",
     ],
     deliverables: [
       "Tenant review and remediation roadmap",
@@ -1124,7 +1124,7 @@ export const faqs = [
   {
     question: "What kinds of technology platforms does NextGridIT work with?",
     answer:
-      "Common environments include Microsoft 365, Entra ID, Azure, Active Directory, Ubiquiti UniFi, IP cameras and NVR systems, Tenable.sc, and various firewall platforms. The focus is on practical, well-supported technology — not trendy solutions that create vendor dependency.",
+      "Common environments include Microsoft 365, Entra ID, Azure, AWS, Google Workspace, Active Directory, Ubiquiti UniFi, IP cameras and NVR systems, Tenable.sc, private AI workflows, and various firewall platforms. The focus is on practical cloud, hybrid, and on-prem technology choices — not trendy solutions that create vendor dependency.",
   },
 ];
 

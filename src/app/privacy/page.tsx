@@ -30,6 +30,12 @@ export default function PrivacyPage() {
             Inquiry information may be stored in email, notes, or future business systems used to manage communication and project follow-up. Access is limited to what is reasonably necessary to operate the business and deliver services.
           </p>
           <p>
+            The website also loads third-party marketing and sales tracking tooling that may collect technical usage data such as page visits, browser details, device information, and referral context. That information is used to understand inbound interest and follow up on legitimate business inquiries.
+          </p>
+          <p>
+            When you submit the contact form, the message is processed by NextGridIT&apos;s Cloudflare-hosted website worker and delivered to a Microsoft 365 mailbox for business communication and response handling.
+          </p>
+          <p>
             If you would like to request deletion of information you previously shared, contact <a className="theme-link" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a>. Certain records may be retained when necessary for legal, accounting, security, or business continuity purposes.
           </p>
           <p>

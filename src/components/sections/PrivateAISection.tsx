@@ -10,10 +10,10 @@ export function PrivateAISection() {
             Sovereign AI
           </p>
           <h2 className="theme-heading mb-4 text-3xl font-bold md:text-5xl">
-            Private &amp; air-gapped AI built for coding and threat analysis.
+            Private AI deployed in the right place: cloud, hybrid, on-prem, or air-gapped.
           </h2>
           <p className="theme-copy text-lg leading-relaxed">
-            Leverage LLMs like Qwen and Mistral for enterprise coding and threat analysis without third-party data leakage. NextGridIT deploys and manages dedicated on-premise GPU clusters for organizations that need privacy, performance, and control.
+            Leverage LLMs like Qwen and Mistral for enterprise coding and threat analysis without defaulting every workflow into public SaaS. NextGridIT designs and manages private AI deployments around the client&apos;s data sensitivity, latency, budget, and control requirements.
           </p>
         </div>
 
@@ -26,14 +26,15 @@ export function PrivateAISection() {
               Dedicated service
             </p>
             <h3 className="theme-heading mb-4 text-3xl font-bold">
-              Private &amp; Air-Gapped AI Implementation
+              Private AI Implementation
             </h3>
             <p className="theme-copy text-lg leading-relaxed">
-              We design and deploy on-premise, air-gapped LLM clusters for enterprise coding, threat analysis, and research operations. Prompts, source code, internal documents, and telemetry remain inside your physical infrastructure.
+              We design and deploy secure cloud, hybrid, on-prem, and air-gapped LLM systems for enterprise coding, threat analysis, and research operations. Prompts, source code, internal documents, and telemetry follow the deployment boundary that fits the risk.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {[
                 "Air-gapped LLM clusters",
+                "Secure cloud and hybrid AI",
                 "Qwen and Mistral deployment",
                 "Dedicated GPU compute arrays",
                 "Private threat-analysis workflows",
@@ -54,13 +55,13 @@ export function PrivateAISection() {
                 {
                   title: "Air-Gapped Security",
                   description:
-                    "Keep prompts, documents, telemetry, and research notes inside your own physical boundary.",
+                    "Use full isolation where required, or choose a controlled cloud or hybrid path where that is the better operational fit.",
                   icon: <IconShieldLock className="h-5 w-5 theme-accent" />,
                 },
                 {
                   title: "GPU-Backed Compute",
                   description:
-                    "Run serious local inference and retrieval workloads on purpose-built compute arrays instead of consumer-grade experiments.",
+                    "Run serious inference and retrieval workloads on purpose-built compute, whether that lives in a cloud provider, client site, or isolated environment.",
                   icon: <IconServerCog className="h-5 w-5 theme-accent-alt" />,
                 },
               ].map((item) => (

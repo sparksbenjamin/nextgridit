@@ -107,8 +107,9 @@ export function HeroSection() {
               className="theme-copy mt-6 max-w-2xl font-mono text-lg leading-relaxed sm:text-xl"
             >
               MSP transitions, vendor lockout recovery, HIPAA security assessments,
-              and infrastructure hardening for businesses in Upstate South Carolina.
-              We help you take back control of your IT — and keep it.
+              and infrastructure hardening for cloud, hybrid, and on-prem systems
+              in Upstate South Carolina. We help you take back control of your IT
+              — and keep it.
             </motion.p>
 
             <motion.div

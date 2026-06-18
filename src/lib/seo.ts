@@ -35,7 +35,7 @@ export function createMetadata({
       type: "website",
       images: [
         {
-          url: "/og-image.svg",
+          url: "/og-image.png",
           width: 1200,
           height: 630,
           alt: siteConfig.name,
@@ -46,7 +46,7 @@ export function createMetadata({
       card: "summary_large_image",
       title: `${title} | ${siteConfig.name}`,
       description,
-      images: ["/og-image.svg"],
+      images: ["/og-image.png"],
     },
   };
 }
@@ -143,7 +143,7 @@ export function createArticleSchema(options: {
       url: siteConfig.url,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/og-image.svg`,
+        url: `${siteConfig.url}/og-image.png`,
       },
     },
     ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),

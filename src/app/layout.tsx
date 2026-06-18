@@ -61,6 +61,9 @@ export const metadata: Metadata = {
     "vulnerability assessment Anderson SC",
     "network infrastructure Clemson SC",
     "Microsoft 365 migration South Carolina",
+    "hybrid cloud infrastructure",
+    "on-prem infrastructure",
+    "managed cloud workloads",
     "infrastructure hardening",
     "penetration testing Upstate SC",
     "compliance-aware IT support",
@@ -79,7 +82,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "NextGridIT - IT Support and Security for Upstate South Carolina",
@@ -90,7 +93,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NextGridIT | Your IT. Under Your Control.",
     description: siteConfig.tagline,
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -131,8 +134,8 @@ const professionalServiceSchema = {
   url: siteConfig.url,
   telephone: siteConfig.phone,
   email: siteConfig.email,
-  logo: `${siteConfig.url}/og-image.svg`,
-  image: `${siteConfig.url}/og-image.svg`,
+  logo: `${siteConfig.url}/og-image.png`,
+  image: `${siteConfig.url}/og-image.png`,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -231,7 +234,7 @@ const organizationSchema = {
   url: siteConfig.url,
   email: siteConfig.email,
   telephone: siteConfig.phone,
-  logo: `${siteConfig.url}/og-image.svg`,
+  logo: `${siteConfig.url}/og-image.png`,
   sameAs: siteConfig.sameAs,
   foundingDate: siteConfig.founded,
   address: {
@@ -291,7 +294,7 @@ export default function RootLayout({
         ></script>
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
-          <main id="main-content" className="flex-grow pt-20 pb-16 md:pb-0">{children}</main>
+          <main id="main-content" className="flex-grow pt-16 pb-16 md:pb-0">{children}</main>
           <Footer />
           <MobileStickyBar />
         </div>

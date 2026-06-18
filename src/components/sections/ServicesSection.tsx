@@ -59,11 +59,11 @@ const services = [
   },
   {
     slug: "microsoft-365",
-    title: "Microsoft 365 & Cloud Services",
+    title: "Microsoft 365 & Hybrid Cloud Services",
     description:
-      "Tenant cleanup, MFA rollout, identity hardening, and migration support. 4,000+ accounts migrated with zero data loss.",
+      "Tenant cleanup, MFA rollout, identity hardening, hybrid integration, and migration support. 4,000+ accounts migrated with zero data loss.",
     icon: <IconCloudLock className="h-8 w-8 text-[#b026ff]" />,
-    features: ["Tenant cleanup and hardening", "Identity and access controls", "Migration planning"],
+    features: ["Tenant cleanup and hardening", "Cloud and hybrid workloads", "Migration planning"],
   },
   {
     slug: "network-wifi",
@@ -109,9 +109,9 @@ export function ServicesSection() {
           </h2>
           <div className="theme-rule mx-auto mb-6 h-1 w-24" />
           <p className="theme-copy font-sans text-lg">
-            From MSP transitions and vendor lockout recovery to HIPAA assessments and
-            infrastructure hardening — we help Upstate SC businesses take back control
-            of their IT.
+            From MSP transitions and vendor lockout recovery to HIPAA assessments,
+            cloud and on-prem infrastructure, and security hardening — we help
+            Upstate SC businesses take back control of their IT.
           </p>
         </div>
 

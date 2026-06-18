@@ -18,7 +18,7 @@ export function Footer() {
             <p className="theme-copy mb-6 text-sm">
               Helping Upstate South Carolina businesses take back control of their IT —
               from MSP transitions and vendor lockout recovery to HIPAA security
-              assessments and infrastructure hardening.
+              assessments, hybrid cloud, and infrastructure hardening.
             </p>
             <div className="mb-6 flex flex-wrap gap-2">
               <span className="theme-chip px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em]">
@@ -84,7 +84,7 @@ export function Footer() {
                 { label: "Guides", href: "/guides" },
                 { label: "Policy Starter Kit", href: "/resources/policy-starter-kit" },
                 { label: "Project Fit", href: "/project-fit" },
-                { label: "Local-First Systems", href: "/local-first" },
+                { label: "Local & Hybrid Systems", href: "/local-first" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Company Facts", href: "/company-facts" },
                 { label: "Process", href: "/process" },
@@ -143,7 +143,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-8 md:flex-row">
           <p className="theme-soft text-center font-mono text-sm md:text-left">
-            &copy; {new Date().getFullYear()} NextGridIT Systems LLC. Based in Seneca, SC. Helping Upstate South Carolina businesses take back control of their IT.
+            &copy; {new Date().getFullYear()} NextGridIT Systems LLC. Based in Seneca, SC. Helping Upstate South Carolina businesses take back control of cloud, hybrid, and on-prem IT.
           </p>
           <div className="theme-soft flex flex-wrap items-center justify-center gap-4 font-mono text-xs">
             <span>Email: <a className="theme-accent hover:underline" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a></span>
