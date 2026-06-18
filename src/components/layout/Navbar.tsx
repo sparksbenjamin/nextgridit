@@ -176,6 +176,18 @@ const navGroups: NavGroup[] = [
   },
 ]
 
+const mobileMenuLinks = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/service-areas", label: "Service Areas" },
+  { href: "/resources/policy-starter-kit", label: "Policy Kit" },
+  { href: "/guides", label: "Guides" },
+  { href: "/labs", label: "Labs" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+]
+
 const mobileMenuId = "mobile-navigation"
 const desktopMenuId = "desktop-navigation"
 const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`
@@ -206,9 +218,6 @@ function isPathActive(pathname: string, href: string) {
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [activeDesktopGroupId, setActiveDesktopGroupId] = React.useState<string | null>(null)
-  const [expandedMobileGroupId, setExpandedMobileGroupId] = React.useState<string | null>(
-    navGroups[0]?.id ?? null
-  )
   const headerRef = React.useRef<HTMLElement>(null)
   const pathname = normalizePath(usePathname())
   const activePathGroup = navGroups.find((group) =>
@@ -220,8 +229,7 @@ export function Navbar() {
   React.useEffect(() => {
     setIsOpen(false)
     setActiveDesktopGroupId(null)
-    setExpandedMobileGroupId(activePathGroup?.id ?? navGroups[0]?.id ?? null)
-  }, [activePathGroup?.id, pathname])
+  }, [pathname])
 
   React.useEffect(() => {
     if (!isOpen) {
@@ -284,10 +292,6 @@ export function Navbar() {
   }
 
   function toggleMobileMenu() {
-    if (!isOpen) {
-      setExpandedMobileGroupId(activePathGroup?.id ?? navGroups[0]?.id ?? null)
-    }
-
     setActiveDesktopGroupId(null)
     setIsOpen((currentValue) => !currentValue)
   }
@@ -298,17 +302,17 @@ export function Navbar() {
       className="fixed top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background-elevated)]/90 backdrop-blur-xl transition-all duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-14 items-center justify-between gap-3 md:h-16 md:gap-4">
           <div className="flex-shrink-0">
             <Link href="/" onClick={closeMenus} className="flex items-center gap-2 group">
               <div
                 onClick={unlockHackerTheme}
-                className="brand-mark flex h-9 w-9 items-center justify-center rounded-xl duration-300"
+                className="brand-mark flex h-8 w-8 items-center justify-center rounded-xl duration-300 md:h-9 md:w-9"
                 title="NextGridIT"
               >
-                <span className="font-mono text-lg font-bold leading-none">NX</span>
+                <span className="font-mono text-base font-bold leading-none md:text-lg">NX</span>
               </div>
-              <span className="font-mono text-lg font-bold tracking-wider theme-heading lg:text-xl">
+              <span className="font-mono text-base font-bold tracking-wider theme-heading sm:text-lg lg:text-xl">
                 NEXT<span className="theme-accent-strong">GRID</span><span className="ml-1 text-sm theme-soft">IT</span>
               </span>
             </Link>
@@ -408,9 +412,9 @@ export function Navbar() {
               aria-expanded={isOpen}
               aria-controls={mobileMenuId}
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="rounded-md p-2 theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface)] theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
             >
-              {isOpen ? <IconX className="w-6 h-6" /> : <IconMenu2 className="w-6 h-6" />}
+              {isOpen ? <IconX className="h-5 w-5" /> : <IconMenu2 className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -499,161 +503,33 @@ export function Navbar() {
         className={cn(
           "absolute inset-x-0 top-full origin-top overflow-hidden border-b border-[var(--border)] bg-[var(--background-elevated)]/95 transition-all duration-300 ease-in-out md:hidden",
           isOpen
-            ? "pointer-events-auto max-h-[calc(100vh-5rem)] opacity-100"
+            ? "pointer-events-auto max-h-[calc(100vh-3.5rem)] opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
         )}
         aria-hidden={!isOpen}
       >
-        <div className="max-h-[calc(100vh-5rem)] overflow-y-auto px-4 pb-6 pt-3">
-          <div className="grid grid-cols-2 gap-3 border-b border-[var(--border)] pb-4">
-            <Link
-              href={surfaceScanHref}
-              onClick={closeMenus}
-              className="button-primary inline-flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]"
-            >
-              Free Assessment
-            </Link>
-            <a
-              href={phoneHref}
-              className="button-secondary inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]"
-            >
-              <IconPhone className="h-4 w-4" />
-              <span>{siteConfig.phoneDisplay}</span>
-            </a>
-          </div>
-
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <Link
-              href="/about"
-              onClick={closeMenus}
-              className={cn(
-                "button-secondary flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]",
-                isPathActive(pathname, "/about") && "border-[var(--accent)] bg-[var(--accent-soft)]"
-              )}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              onClick={closeMenus}
-              className={cn(
-                "button-secondary flex items-center justify-center rounded-2xl px-4 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]",
-                isPathActive(pathname, "/contact") && "border-[var(--accent)] bg-[var(--accent-soft)]"
-              )}
-            >
-              Contact
-            </Link>
-          </div>
-
-          <nav aria-label="Mobile" className="mt-4 space-y-3">
-            {navGroups.map((group) => {
-              const isExpanded = expandedMobileGroupId === group.id
-              const isGroupHighlighted = activePathGroup?.id === group.id
+        <div className="max-h-[calc(100vh-3.5rem)] overflow-y-auto px-3 pb-28 pt-3">
+          <nav aria-label="Mobile" className="grid gap-2">
+            {mobileMenuLinks.map((link) => {
+              const isActive = isPathActive(pathname, link.href)
 
               return (
-                <section
-                  key={group.id}
-                  className="overflow-hidden rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)]"
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenus}
+                  className={cn(
+                    "flex min-h-12 items-center justify-between rounded-xl border px-4 py-3 font-mono text-sm font-bold uppercase tracking-[0.1em] transition-colors duration-200",
+                    isActive
+                      ? "border-[var(--accent)] bg-[var(--accent-soft)] theme-accent-strong"
+                      : "border-[var(--border)] bg-[var(--surface)] theme-copy hover:border-[var(--border-strong)] hover:bg-[var(--surface-muted)]"
+                  )}
                 >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpandedMobileGroupId((currentGroupId) =>
-                        currentGroupId === group.id ? null : group.id
-                      )
-                    }
-                    aria-expanded={isExpanded}
-                    className="flex w-full items-start justify-between gap-4 px-4 py-4 text-left"
-                  >
-                    <div className="min-w-0">
-                      <p
-                        className={cn(
-                          "font-mono text-sm uppercase tracking-[0.18em]",
-                          isGroupHighlighted ? "theme-accent-strong" : "theme-heading"
-                        )}
-                      >
-                        {group.label}
-                      </p>
-                      <p className="theme-copy mt-2 text-sm leading-6">
-                        {group.description}
-                      </p>
-                    </div>
-                    <IconChevronDown
-                      className={cn(
-                        "mt-0.5 h-5 w-5 shrink-0 theme-soft transition-transform duration-200",
-                        isExpanded && "rotate-180"
-                      )}
-                    />
-                  </button>
-
-                  <div
-                    className={cn(
-                      "overflow-hidden transition-all duration-300",
-                      isExpanded ? "max-h-[56rem]" : "max-h-0"
-                    )}
-                  >
-                    <div className="space-y-3 border-t border-[var(--border)] px-4 pb-4 pt-4">
-                      <Link
-                        href={group.overview.href}
-                        onClick={closeMenus}
-                        className="button-secondary flex items-center justify-between rounded-2xl px-4 py-3 font-mono text-xs font-bold uppercase tracking-[0.18em]"
-                      >
-                        <span>{group.overview.label}</span>
-                        <IconArrowRight className="h-4 w-4" />
-                      </Link>
-
-                      {group.links.map((link) => {
-                        const isActive = isPathActive(pathname, link.href)
-
-                        return (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={closeMenus}
-                            className={cn(
-                              "block rounded-2xl border p-4 transition-colors duration-200",
-                              isActive
-                                ? "border-[var(--accent)] bg-[var(--accent-soft)]"
-                                : "border-[var(--border)] bg-[var(--surface-strong)]"
-                            )}
-                          >
-                            <span
-                              className={cn(
-                                "block font-mono text-sm uppercase tracking-[0.16em]",
-                                isActive ? "theme-accent-strong" : "theme-heading"
-                              )}
-                            >
-                              {link.label}
-                            </span>
-                            <span className="theme-copy mt-2 hidden text-sm leading-6 sm:block">
-                              {link.description}
-                            </span>
-                          </Link>
-                        )
-                      })}
-                    </div>
-                  </div>
-                </section>
+                  <span>{link.label}</span>
+                  <IconArrowRight className="h-4 w-4 shrink-0 theme-soft" />
+                </Link>
               )
             })}
-
-            <Link
-              href="/"
-              onClick={closeMenus}
-              className="button-secondary flex w-full items-center justify-center rounded-2xl px-6 py-3 text-center font-mono text-xs font-bold uppercase tracking-[0.18em]"
-            >
-              Back to Home
-            </Link>
-
-            <div className="border-t border-[var(--border)] pt-4">
-              <Link
-              href={surfaceScanHref}
-              onClick={closeMenus}
-              className="button-primary inline-block w-full rounded-full px-6 py-3 text-center font-mono text-sm font-bold uppercase tracking-[0.2em]"
-            >
-              FREE ASSESSMENT
-            </Link>
-            </div>
           </nav>
         </div>
       </div>
