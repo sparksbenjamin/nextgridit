@@ -6,9 +6,17 @@ updatedAt: 2026-06-07
 tags: HIPAA, security assessment, medical offices, compliance
 eyebrow: Compliance Guide
 description: Preparing for a HIPAA security assessment can feel overwhelming, especially for small medical practices without a dedicated compliance team. This guide breaks down what the assessment actually covers, what documentation you need, and how to close the gaps that auditors find most often in independent practices.
-last_updated: 2026-06-07
+last_updated: 2026-06-22
+related:
+  - [[000 Index]]
+  - [[Hermes Skill Index]]
+  - [[splunk-alert-tuning]]
+  - [[vulnerability-research]]
+  - [[SELinux]]
+  - [[Kubernetes Admission Control Architecture]]
+  - [[Hermetic Container Builds]]
+  - [[Cilium eBPF Network Policy Architecture]]
 ---
-
 Preparing for a HIPAA security assessment can feel overwhelming, especially for small medical practices without a dedicated compliance team. The rules are detailed, the penalties are real, and the guidance often assumes you have a full IT department. Most independent practices do not.
 
 This guide is written for practice managers and office administrators who need to understand what a HIPAA security assessment covers, what to have ready before an auditor walks in, and how to fix the most common problems before they become findings.

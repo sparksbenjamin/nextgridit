@@ -159,8 +159,8 @@ export function LabsPageClient() {
               </h2>
               <p className="theme-copy mt-4 leading-relaxed">
                 The same methodology used in bug bounty research feeds client security assessments,
-                vulnerability prioritization, and remediation planning. Research isn't separate from
-                the services — it's what makes them better than a generic scan-and-report.
+                vulnerability prioritization, and remediation planning. Research isn&apos;t separate from
+                the services — it&apos;s what makes them better than a generic scan-and-report.
               </p>
             </section>
 

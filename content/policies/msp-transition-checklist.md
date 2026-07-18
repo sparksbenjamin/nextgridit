@@ -8,8 +8,9 @@ tags:
   - checklist
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/msp-transition-checklist.pdf
+description: This checklist helps a business prepare to transition away from a managed service provider, recover ownership of systems, and verify that the former provider no longer has access after the transition.
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This checklist helps a business prepare to transition away from a managed service provider, recover ownership of systems, and verify that the former provider no longer has access after the transition.

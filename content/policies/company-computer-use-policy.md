@@ -8,8 +8,9 @@ tags:
   - computer use
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/company-computer-use-policy.pdf
+description: This policy explains how employees may use company computers and business systems. The goal is to keep devices reliable, protect company data, and reduce avoidable security risk.
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This policy explains how employees may use company computers and business systems. The goal is to keep devices reliable, protect company data, and reduce avoidable security risk.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { IconBug, IconCertificate, IconNetwork, IconShieldCheck, IconWorld } from "@tabler/icons-react";
+import { IconBug, IconCertificate, IconNetwork, IconWorld } from "@tabler/icons-react";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
 const aboutHighlights = [

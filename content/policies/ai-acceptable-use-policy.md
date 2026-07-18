@@ -8,8 +8,9 @@ tags:
   - data protection
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/ai-acceptable-use-policy.pdf
+description: This policy explains how employees may use artificial intelligence tools for business work. The goal is to allow useful AI-assisted work while protecting company data, customer information, regulat...
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This policy explains how employees may use artificial intelligence tools for business work. The goal is to allow useful AI-assisted work while protecting company data, customer information, regulated data, credentials, and private business records.

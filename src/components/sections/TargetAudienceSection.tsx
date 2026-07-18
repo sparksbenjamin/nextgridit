@@ -59,9 +59,9 @@ export function TargetAudienceSection() {
                   </strong>
                 </p>
                 <p>
-                  Whether it's transitioning away from an MSP that isn't delivering, recovering
+                  Whether it&apos;s transitioning away from an MSP that isn&apos;t delivering, recovering
                   from a vendor that walked away, or getting a real security assessment for your
-                  practice — we handle the work that generic IT support can't or won't.
+                  practice — we handle the work that generic IT support can&apos;t or won&apos;t.
                 </p>
               </div>
 

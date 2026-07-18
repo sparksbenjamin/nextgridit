@@ -8,7 +8,6 @@ import {
   IconCpu2,
   IconHeartbeat,
   IconLockOpen,
-  IconNetwork,
   IconReplace,
   IconRouter,
   IconServerCog,

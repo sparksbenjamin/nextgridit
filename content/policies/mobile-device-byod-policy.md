@@ -8,8 +8,9 @@ tags:
   - policy
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/mobile-device-byod-policy.pdf
+description: This policy sets expectations for mobile devices used to access company email, files, applications, messaging, customer data, or business systems.
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This policy sets expectations for mobile devices used to access company email, files, applications, messaging, customer data, or business systems.

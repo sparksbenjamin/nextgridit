@@ -8,8 +8,9 @@ tags:
   - checklist
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/employee-offboarding-access-checklist.pdf
+description: This checklist helps small businesses remove access when an employee, contractor, administrator, or vendor contact leaves the company or changes roles.
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This checklist helps small businesses remove access when an employee, contractor, administrator, or vendor contact leaves the company or changes roles.

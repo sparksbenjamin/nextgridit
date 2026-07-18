@@ -44,7 +44,7 @@ export function ServiceAreaSection() {
                 ))}
               </div>
               <p className="theme-copy leading-relaxed">
-                Compliance assessments, security audits, and vulnerability work don't require a local presence. For organizations outside Upstate SC, NextGridIT delivers the same depth remotely — or travels on-site when the project calls for it.
+                Compliance assessments, security audits, and vulnerability work don&apos;t require a local presence. For organizations outside Upstate SC, NextGridIT delivers the same depth remotely — or travels on-site when the project calls for it.
               </p>
             </section>
 

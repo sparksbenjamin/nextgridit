@@ -8,8 +8,9 @@ tags:
   - identity
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/password-and-mfa-policy.pdf
+description: This policy sets minimum expectations for passwords, passphrases, multi-factor authentication, password managers, and account recovery.
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This policy sets minimum expectations for passwords, passphrases, multi-factor authentication, password managers, and account recovery.

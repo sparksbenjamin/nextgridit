@@ -5,7 +5,6 @@ import Link from "next/link"
 import {
   IconArrowRight,
   IconCertificate,
-  IconLockOpen,
   IconServerCog,
   IconShieldLock,
 } from "@tabler/icons-react"
@@ -75,8 +74,8 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="max-w-3xl">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.02fr_0.98fr]">
+          <div className="min-w-0 max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -93,7 +92,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="theme-heading text-5xl font-bold leading-[0.92] sm:text-6xl lg:text-7xl"
+              className="theme-heading max-w-full text-4xl font-bold leading-[0.96] sm:text-6xl lg:text-7xl"
             >
               Your IT.
               <br />

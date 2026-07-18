@@ -8,8 +8,9 @@ tags:
   - policy
 eyebrow: Policy Starter Kit
 pdf: /policy-starter-kit/vendor-access-policy.pdf
+description: This policy explains how vendors, MSPs, contractors, consultants, and support providers may access company systems.
+last_updated: 2026-06-19
 ---
-
 ## Purpose
 
 This policy explains how vendors, MSPs, contractors, consultants, and support providers may access company systems.
