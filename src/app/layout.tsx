@@ -17,7 +17,7 @@ const themeInitScript = `
       const nextTheme =
         savedTheme === "dark" || savedTheme === "light" || (savedTheme === "hacker" && hackerUnlocked)
           ? savedTheme
-          : "dark";
+          : "light";
       document.documentElement.dataset.theme = nextTheme;
       document.documentElement.style.colorScheme = nextTheme === "light" ? "light" : "dark";
     } catch (error) {
@@ -41,7 +41,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0f",
+  themeColor: "#f4f7f1",
   width: "device-width",
   initialScale: 1,
 };
