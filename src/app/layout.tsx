@@ -3,7 +3,7 @@ import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Footer2026 } from "@/components/layout/Footer2026";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
 import { locations, services, siteConfig, technologyCatalog } from "@/lib/site-data";
 
@@ -295,7 +295,7 @@ export default function RootLayout({
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
           <main id="main-content" className="flex-grow pt-16 pb-16 md:pb-0">{children}</main>
-          <Footer />
+          <Footer2026 />
           <MobileStickyBar />
         </div>
       </body>

@@ -299,7 +299,7 @@ export function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background-elevated)]/90 backdrop-blur-xl transition-all duration-300"
+      className="site-header fixed top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background-elevated)]/95 backdrop-blur-xl transition-all duration-300"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between gap-3 md:h-16 md:gap-4">
@@ -312,7 +312,7 @@ export function Navbar() {
               >
                 <span className="font-mono text-base font-bold leading-none md:text-lg">NX</span>
               </div>
-              <span className="font-mono text-base font-bold tracking-wider theme-heading sm:text-lg lg:text-xl">
+              <span className="font-sans text-base font-bold tracking-[-0.04em] theme-heading sm:text-lg lg:text-xl">
                 NEXT<span className="theme-accent-strong">GRID</span><span className="ml-1 text-sm theme-soft">IT</span>
               </span>
             </Link>
@@ -332,7 +332,7 @@ export function Navbar() {
                   aria-haspopup="true"
                   onClick={() => toggleDesktopGroup(group.id)}
                   className={cn(
-                    "relative inline-flex items-center gap-1 rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] transition-colors duration-200 lg:px-3.5",
+                    "relative inline-flex items-center gap-1 rounded-full px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 lg:px-3.5",
                     isHighlighted
                       ? "theme-accent-strong bg-[var(--accent-soft)]"
                       : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -361,7 +361,7 @@ export function Navbar() {
               href="/about"
               onClick={closeMenus}
               className={cn(
-                "inline-flex items-center rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] transition-colors duration-200 lg:px-3.5",
+                "inline-flex items-center rounded-full px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 lg:px-3.5",
                 isPathActive(pathname, "/about") || isPathActive(pathname, "/process") || isPathActive(pathname, "/company-facts")
                   ? "theme-accent-strong bg-[var(--accent-soft)]"
                   : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -373,7 +373,7 @@ export function Navbar() {
               href="/contact"
               onClick={closeMenus}
               className={cn(
-                "inline-flex items-center rounded-full px-3 py-2 font-mono text-xs uppercase tracking-[0.12em] transition-colors duration-200 lg:px-3.5",
+                "inline-flex items-center rounded-full px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 lg:px-3.5",
                 isPathActive(pathname, "/contact")
                   ? "theme-accent-strong bg-[var(--accent-soft)]"
                   : "theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
@@ -389,7 +389,7 @@ export function Navbar() {
             </div>
             <a
               href={phoneHref}
-              className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] px-3 py-2 font-mono text-xs tracking-[0.12em] theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)] transition-colors duration-200"
+              className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-[var(--border-strong)] px-3 py-2 font-sans text-xs font-medium theme-copy hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)] transition-colors duration-200"
             >
               <IconPhone className="h-3.5 w-3.5" />
               <span>{siteConfig.phoneDisplay}</span>
@@ -398,7 +398,7 @@ export function Navbar() {
               <Link
                 href={surfaceScanHref}
                 onClick={closeMenus}
-                className="button-primary relative overflow-hidden rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.14em] lg:px-5"
+                className="button-primary relative overflow-hidden rounded-full px-4 py-2 font-sans text-xs font-bold lg:px-5"
               >
                 <span className="relative z-10">Free Assessment</span>
               </Link>
@@ -412,7 +412,7 @@ export function Navbar() {
               aria-expanded={isOpen}
               aria-controls={mobileMenuId}
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface)] theme-copy hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--surface)] theme-copy shadow-sm hover:bg-[var(--accent-soft)] hover:text-[var(--foreground)]"
             >
               {isOpen ? <IconX className="h-5 w-5" /> : <IconMenu2 className="h-5 w-5" />}
             </button>

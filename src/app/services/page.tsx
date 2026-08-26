@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { ServicesPageClient } from "@/components/pages/ServicesPageClient";
+import { ServicesPage2026 } from "@/components/pages/ServicesPage2026";
 import {
   createBreadcrumbSchema,
   createCollectionPageSchema,
@@ -44,7 +44,7 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
-      <ServicesPageClient />
+      <ServicesPage2026 />
     </>
   );
 }
