@@ -362,42 +362,57 @@ export const services: Service[] = [
   },
   {
     slug: "network-wifi",
-    shortLabel: "Network & Wi-Fi",
-    title: "Network Infrastructure and Wi-Fi Deployment",
+    shortLabel: "Networks, Wi-Fi & Cabling",
+    title: "Business Networks, Wi-Fi & Cabling",
     summary:
-      "Wired and wireless infrastructure delivery, segmentation, and network operations for businesses that need reliable connectivity.",
+      "Business network cabling, Ethernet drops, Wi-Fi deployment, and network cleanup for offices and properties across Upstate South Carolina.",
     description:
-      "NextGridIT designs, upgrades, and deploys business and property networks with a focus on reliable performance, segmented access, maintainable infrastructure, and strong execution. Work often includes Ubiquiti and UniFi deployments, public and guest Wi-Fi separation, multi-building connectivity planning, firewall coordination, and practical deployment sequencing. Past projects range from full Wi-Fi coverage under budget to multi-site WAN upgrades with zero downtime.",
+      "NextGridIT designs, upgrades, and deploys business and property networks, including the cabling that connects them. We install Ethernet cable runs and network drops for desks, access points, cameras, and other business devices; terminate and label connections; and clean up racks and patch panels. Cabling is scoped alongside the equipment and connectivity you need, from a few additional connections to a broader network rollout. Network work also includes Ubiquiti and UniFi deployments, guest Wi-Fi separation, multi-building connectivity planning, and firewall coordination. Past projects range from full Wi-Fi coverage under budget to multi-site WAN upgrades with zero downtime.",
     audience:
-      "Best fit for offices, municipalities, campgrounds, hospitality-style properties, and multi-building sites where coverage, segmentation, and coordinated infrastructure rollout matter.",
+      "Best fit for offices adding desks or moving equipment, owners dealing with unreliable connections or tangled wiring, and properties needing coordinated cabling, Wi-Fi, and network deployment.",
     outcomes: [
       "Improved Wi-Fi coverage and network reliability",
+      "Reliable wired connections with labeled cabling that is easier to maintain",
       "Cleaner separation of guest, staff, device, and payment traffic",
       "Better network documentation and deployment sequencing for future growth",
     ],
     deliverables: [
       "Network assessment and topology guidance",
       "Coverage, segmentation, hardware, and deployment recommendations",
+      "Ethernet cable runs and network drops for desks, access points, and cameras",
+      "Cable termination, patch-panel connections, labeling, and rack cleanup",
+      "Connectivity testing and a record of installed network drops",
       "Deployment notes and environment documentation",
     ],
     process: [
       { title: "Site assessment", description: "We walk the property, evaluate the existing network, identify coverage gaps, and map the physical layout. For outdoor and multi-building sites, this includes signal testing and cable path planning.", duration: "1-3 days" },
-      { title: "Design and planning", description: "We design the network topology — coverage, segmentation, hardware selection, and deployment sequencing. Guest, staff, device, and payment traffic get clean separation from the start.", duration: "3-5 days" },
-      { title: "Deployment", description: "We deploy the network — switching, access points, VLANs, firewalls, and guest access. Deployment is sequenced to minimize downtime and verify coverage at each step.", duration: "1-3 weeks" },
-      { title: "Testing and documentation", description: "We verify coverage, test segmentation, and deliver documentation including topology diagrams, credential records, and deployment notes for future support.", duration: "2-3 days" },
+      { title: "Design and planning", description: "We plan cable routes, drop locations, network topology, coverage, hardware, and deployment sequencing. Guest, staff, device, and payment traffic get clean separation from the start.", duration: "3-5 days" },
+      { title: "Deployment", description: "We install the agreed cabling and network equipment — cable runs, terminations, switching, access points, VLANs, firewalls, and guest access. Deployment is sequenced to minimize downtime and verify connectivity at each step.", duration: "1-3 weeks" },
+      { title: "Testing and documentation", description: "We test installed connections, verify coverage and segmentation, and deliver cable labels, drop records, topology diagrams, and deployment notes appropriate to the project scope.", duration: "2-3 days" },
     ],
-    pricing: "Project-based. Network deployments typically range from $3,000-$12,000 depending on property size, number of buildings, and hardware requirements. Hardware costs are separate and quoted per project.",
+    pricing: "Project-based. Full network deployments typically range from $3,000-$12,000 depending on property size, number of buildings, and hardware requirements. Smaller cabling additions and cleanup are quoted for their specific scope, including drop count, cable routes, and building access. Hardware costs are separate and quoted per project.",
     delivery: "On-site required for assessment and deployment in Upstate SC and surrounding region. Remote available for planning and documentation.",
     buyerPersonas: [
       "Property owners who need Wi-Fi that actually works beyond the front desk",
       "Municipalities that need public Wi-Fi with proper guest separation",
       "Businesses with flaky networks and no documentation for what they have",
+      "Office owners adding workstations, access points, or cameras who need network cabling",
     ],
     relatedCaseStudies: [],
     relatedIndustries: ["municipalities", "campgrounds", "multi-site-properties"],
     relatedLocations: ["seneca-sc", "anderson-sc", "greenville-sc"],
-    technologies: ["Ubiquiti UniFi", "Firewalls", "VLANs", "Public Wi-Fi"],
+    technologies: ["Ethernet cabling", "Patch panels", "Ubiquiti UniFi", "Firewalls", "VLANs", "Public Wi-Fi"],
     faq: [
+      {
+        question: "Do you install business network cabling?",
+        answer:
+          "Yes. We install Ethernet cable runs and network drops, terminate and label connections, organize patch panels and racks, and test connectivity. Cabling is part of our business network and IT infrastructure work, including connections for desks, Wi-Fi access points, and cameras.",
+      },
+      {
+        question: "Can you help with just a few additional network drops?",
+        answer:
+          "Yes. A focused cabling addition or cleanup can be scoped on its own. Tell us what needs connecting, where the equipment will be, and your timeline. We review the site and agree on the work, pricing, and schedule before starting; the full network deployment timeline does not apply to every smaller job.",
+      },
       {
         question: "Can you help with public or guest Wi-Fi separation?",
         answer:

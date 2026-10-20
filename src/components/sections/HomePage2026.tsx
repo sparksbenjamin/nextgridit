@@ -40,11 +40,11 @@ const paths = [
   {
     title: "Build for the everyday.",
     description:
-      "Dependable infrastructure that fits the way your organization actually operates.",
+      "From network cabling to dependable Wi-Fi, infrastructure that fits the way your organization actually operates.",
     icon: IconNetwork,
     links: [
       ["Microsoft 365 & cloud", "/services/microsoft-365/"],
-      ["Networks & Wi-Fi", "/services/network-wifi/"],
+      ["Networks, Wi-Fi & cabling", "/services/network-wifi/"],
     ],
     href: "/services/network-wifi/",
     label: "Strengthen your systems",

@@ -17,7 +17,7 @@
 
 - IT support and operational guidance: https://www.nextgridit.com/services/
 - Microsoft 365 and cloud services: https://www.nextgridit.com/services/microsoft-365/
-- Network infrastructure, public Wi-Fi, and connectivity: https://www.nextgridit.com/services/network-wifi/
+- Business networks, Wi-Fi, Ethernet cabling, and network drops: https://www.nextgridit.com/services/network-wifi/
 - Security hardening, documentation, and compliance-aware support: https://www.nextgridit.com/services/infrastructure-hardening/
 - Camera systems and local-first smart deployments: https://www.nextgridit.com/services/camera-systems/
 

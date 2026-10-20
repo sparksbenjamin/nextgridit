@@ -1,6 +1,6 @@
 # NextGridIT Full Reference
 
-NextGridIT provides network infrastructure, security hardening, Microsoft 365 administration, public Wi-Fi, camera systems, and project-led IT support for organizations in Upstate South Carolina.
+NextGridIT provides business network infrastructure, Ethernet cabling and network drops, security hardening, Microsoft 365 administration, public Wi-Fi, camera systems, and project-led IT support for organizations in Upstate South Carolina.
 
 Primary service cities: Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina.
 

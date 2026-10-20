@@ -16,7 +16,7 @@ const columns = [
       ["MSP transition", "/services/msp-transition/"],
       ["Security assessments", "/services/vulnerability-assessment/"],
       ["Microsoft 365", "/services/microsoft-365/"],
-      ["Networks & Wi-Fi", "/services/network-wifi/"],
+      ["Networks, Wi-Fi & cabling", "/services/network-wifi/"],
       ["Technology platforms", "/technologies/"],
     ],
   },

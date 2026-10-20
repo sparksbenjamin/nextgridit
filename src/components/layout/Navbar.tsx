@@ -28,7 +28,7 @@ const groups = [
       ["Infrastructure hardening", "/services/infrastructure-hardening/"],
       ["Penetration testing", "/services/security-audits-pentesting/"],
       ["Microsoft 365 & cloud", "/services/microsoft-365/"],
-      ["Networks & Wi-Fi", "/services/network-wifi/"],
+      ["Networks, Wi-Fi & cabling", "/services/network-wifi/"],
       ["Camera systems", "/services/camera-systems/"],
       ["Private AI", "/services/private-ai/"],
     ],
