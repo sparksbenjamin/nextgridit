@@ -404,6 +404,7 @@ test("text resizing and reduced motion preserve usable navigation and content", 
   for (const width of [320, 768, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto("/");
+    await page.evaluate(() => document.fonts.ready);
     await page.evaluate(() => {
       document.documentElement.style.fontSize = "200%";
     });
@@ -435,6 +436,17 @@ test("text resizing and reduced motion preserve usable navigation and content", 
         () => getComputedStyle(document.documentElement).scrollBehavior,
       ),
     ).toBe("auto");
+    if (width === 1440) {
+      const trigger = page.getByRole("button", { name: "Open navigation menu" });
+      await trigger.click();
+      await expect(page.locator("main")).toHaveAttribute("inert", "");
+      const lastControl = page.locator("#mobile-navigation").getByRole("button", { name: "Light", exact: true });
+      await lastControl.focus();
+      await expect(lastControl).toBeInViewport();
+      await page.evaluate(() => document.documentElement.style.fontSize = "100%");
+      await expect(page.locator("main")).not.toHaveAttribute("inert", "");
+      await expect(page.locator("#mobile-navigation")).toBeHidden();
+    }
   }
 });
 

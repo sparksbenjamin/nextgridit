@@ -100,13 +100,21 @@ export function Navbar() {
   }
 
   useEffect(() => {
-    const query = window.matchMedia("(min-width: 1100px)");
+    if (!header.current || !mobileTrigger.current) return;
+    const trigger = mobileTrigger.current;
+    let compact = getComputedStyle(trigger).display !== "none";
     const reset = () => {
+      const nextCompact = getComputedStyle(trigger).display !== "none";
+      if (nextCompact === compact) return;
+      compact = nextCompact;
       setIsOpen(false);
       setDesktopGroup(null);
     };
-    query.addEventListener("change", reset);
-    return () => query.removeEventListener("change", reset);
+    // Observe actual layout so text resizing also releases an open menu's
+    // background lock when the header returns to its desktop arrangement.
+    const observer = new ResizeObserver(reset);
+    observer.observe(header.current);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {

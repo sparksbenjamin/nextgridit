@@ -353,6 +353,7 @@ svg {
 
 /* Navigation uses the compact layout until the full set of links fits. */
 .site-header {
+  container: site-navigation / inline-size;
   position: sticky;
   top: 0;
   z-index: 60;
@@ -1372,6 +1373,34 @@ svg {
 }
 @media (min-width: 1100px) {
   .mobile-navigation {
+    display: none;
+  }
+}
+/* em units follow this container's text size, including text-only zoom. */
+@container site-navigation (width < 68.75em) {
+  .header-row {
+    height: auto;
+    min-height: 68px;
+    padding-block: 0.5rem;
+    gap: 1rem;
+  }
+  .desktop-nav,
+  .nav-panel {
+    display: none;
+  }
+  .menu-trigger {
+    display: flex;
+  }
+  .header-cta {
+    margin-left: auto;
+  }
+  .mobile-navigation {
+    display: block;
+    max-height: calc(100dvh - 100%);
+  }
+}
+@container site-navigation (width < 40em) {
+  .header-cta {
     display: none;
   }
 }
