@@ -1,4 +1,4 @@
-import Script from "next/script";
+import { JsonLd } from "@/components/content/JsonLd";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createFaqSchema, createMetadata } from "@/lib/seo";
 import { faqs } from "@/lib/site-data";
@@ -19,16 +19,8 @@ export default function FaqPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="faq-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="faq-page-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd id="faq-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="faq-page-schema" data={faqSchema} />
 
       <PageIntro
         eyebrow="Questions"

@@ -117,3 +117,29 @@ test("API misses return JSON; page requests are delegated to assets", async () =
   assert.equal(response.headers.get("cache-control"), "no-store");
   assert.equal(await (await worker.fetch(new Request("https://www.nextgridit.com/about"), env)).text(), "static asset");
 });
+
+
+test("production aliases redirect permanently without losing path or query", async () => {
+  for (const source of ["http://www.nextgridit.com/services/?ref=test", "https://nextgridit.com/services/?ref=test"]) {
+    const response = await worker.fetch(new Request(source), env);
+    assert.equal(response.status, 308);
+    assert.equal(response.headers.get("location"), "https://www.nextgridit.com/services/?ref=test");
+  }
+});
+
+test("preview assets carry noindex while production assets remain indexable", async () => {
+  for (const host of ["preview.example.workers.dev", "localhost:8787", "www.nextgridit.com"]) {
+    const response = await worker.fetch(new Request(`https://${host}/about/`), env);
+    assert.equal(response.headers.get("x-robots-tag"), host === "www.nextgridit.com" ? null : "noindex, nofollow");
+  }
+});
+
+test("asset normalization is permanent and missing pages keep their 404", async () => {
+  for (const status of [307, 404]) {
+    const response = await worker.fetch(new Request("https://www.nextgridit.com/about"), {
+      ASSETS: { fetch: async () => new Response(null, { status, headers: status === 307 ? { location: "/about/" } : {} }) },
+    });
+    assert.equal(response.status, status === 307 ? 308 : 404);
+    if (status === 307) assert.equal(response.headers.get("location"), "/about/");
+  }
+});

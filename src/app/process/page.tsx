@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import Link from "next/link";
-import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
   createBreadcrumbSchema,
@@ -67,16 +67,8 @@ export default function ProcessPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="process-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="process-itemlist-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(processSchema) }}
-      />
+      <JsonLd id="process-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="process-itemlist-schema" data={processSchema} />
       <PageIntro
         eyebrow="How Work Starts"
         title="Project"

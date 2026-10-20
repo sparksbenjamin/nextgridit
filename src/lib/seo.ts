@@ -130,6 +130,7 @@ export function createArticleSchema(options: {
     description: options.description,
     url: `${siteConfig.url}${options.path}`,
     mainEntityOfPage: `${siteConfig.url}${options.path}`,
+    image: `${siteConfig.url}/og-image.png`,
     datePublished: options.datePublished,
     dateModified: options.dateModified ?? options.datePublished,
     author: {
@@ -217,7 +218,8 @@ export function createServiceSchema(options: {
     description: options.description,
     serviceType: options.serviceType,
     provider: {
-      "@type": "LocalBusiness",
+      "@id": `${siteConfig.url}/#professionalservice`,
+      "@type": "ProfessionalService",
       name: siteConfig.name,
       url: siteConfig.url,
       telephone: siteConfig.phone,

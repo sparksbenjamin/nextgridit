@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import { formatGuideDate, getAllGuides } from "@/lib/guides";
 import {
@@ -44,16 +44,8 @@ export default function GuidesPage() {
 
   return (
     <div className="container mx-auto min-h-[70vh] px-4 py-24">
-      <Script
-        id="guides-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="guides-collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd id="guides-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="guides-collection-schema" data={collectionSchema} />
 
       <PageIntro
         eyebrow="Resource Center"

@@ -1,3 +1,4 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
@@ -49,7 +50,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NextGridIT | Your IT. Under Your Control.",
+    default: "IT Support & Security in Seneca & Upstate SC | NextGridIT",
     template: "%s | NextGridIT",
   },
   description: siteConfig.tagline,
@@ -70,11 +71,8 @@ export const metadata: Metadata = {
     "local AI consulting",
     "NextGridIT",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
-    title: "NextGridIT | Your IT. Under Your Control.",
+    title: "IT Support & Security in Seneca & Upstate SC | NextGridIT",
     description: siteConfig.tagline,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -91,7 +89,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NextGridIT | Your IT. Under Your Control.",
+    title: "IT Support & Security in Seneca & Upstate SC | NextGridIT",
     description: siteConfig.tagline,
     images: ["/og-image.png"],
   },
@@ -136,17 +134,11 @@ const professionalServiceSchema = {
   email: siteConfig.email,
   logo: `${siteConfig.url}/og-image.png`,
   image: `${siteConfig.url}/og-image.png`,
-  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Seneca",
     addressRegion: "SC",
     addressCountry: "US",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 34.68194,
-    longitude: -82.96,
   },
   areaServed: locations.map((location) => ({
     "@type": "City",
@@ -182,13 +174,6 @@ const professionalServiceSchema = {
       "Security research",
     ],
   },
-  credential: [
-    "100+ IT certifications",
-    "Microsoft MSRC Bug Bounty Researcher",
-    "HackerOne Researcher",
-    "Verizon Business Partner",
-    "SC DHHS Medicaid Compliance",
-  ],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -271,21 +256,9 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>
-        <Script
-          id="website-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
-      />
+        <JsonLd id="website-schema" data={websiteSchema} />
+        <JsonLd id="organization-schema" data={organizationSchema} />
+        <JsonLd id="local-business-schema" data={professionalServiceSchema} />
         <script
           id="freshsales-tracking"
           src="https://fw-cdn.com/16007206/7027400.js"

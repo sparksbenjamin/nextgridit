@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import Link from "next/link";
-import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import { TechnologiesFilterClient } from "@/components/pages/TechnologiesFilterClient";
 import {
@@ -35,16 +35,8 @@ export default function TechnologiesPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="technologies-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="technologies-collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd id="technologies-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="technologies-collection-schema" data={collectionSchema} />
 
       <PageIntro
         eyebrow="Technology Stack"

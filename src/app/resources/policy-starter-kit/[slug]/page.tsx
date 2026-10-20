@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/content/MarkdownContent";
 import {
@@ -73,16 +73,8 @@ export default async function PolicyDetailPage({
 
   return (
     <div className="container mx-auto min-h-[70vh] px-4 py-24">
-      <Script
-        id={`policy-breadcrumb-${policy.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id={`policy-article-${policy.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
+      <JsonLd id={`policy-breadcrumb-${policy.slug}`} data={breadcrumbSchema} />
+      <JsonLd id={`policy-article-${policy.slug}`} data={articleSchema} />
 
       <div className="mb-14 max-w-4xl">
         {policy.eyebrow ? (

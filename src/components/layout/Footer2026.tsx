@@ -17,6 +17,12 @@ const companyLinks = [
   ["Project Fit", "/project-fit/"],
   ["Service Areas", "/service-areas/"],
   ["Guides", "/guides/"],
+  ["Technologies", "/technologies/"],
+  ["Compliance", "/compliance/"],
+  ["FAQ", "/faq/"],
+  ["Our Process", "/process/"],
+  ["Local-First Systems", "/local-first/"],
+  ["Company Facts", "/company-facts/"],
   ["Contact", "/contact/"],
 ] as const
 

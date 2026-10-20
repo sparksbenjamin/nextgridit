@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next"
-import Script from "next/script"
 import { LabsPageClient } from "@/components/pages/LabsPageClient"
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo"
 
@@ -18,11 +18,7 @@ export default function LabsPage() {
 
   return (
     <>
-      <Script
-        id="labs-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id="labs-breadcrumb-schema" data={breadcrumbSchema} />
       <LabsPageClient />
     </>
   )

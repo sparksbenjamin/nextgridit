@@ -44,7 +44,7 @@ export function Footer() {
               <a href="https://github.com/nextgridit-team" target="_blank" rel="noopener noreferrer" className="theme-copy hover:text-[var(--accent-alt)]" aria-label="GitHub">
                 <IconBrandGithub className="h-5 w-5" />
               </a>
-              <Link href="/contact" className="theme-copy hover:text-[var(--accent-strong)]" aria-label="Location">
+              <Link href="/contact/" className="theme-copy hover:text-[var(--accent-strong)]" aria-label="Location">
                 <IconMapPin className="h-5 w-5" />
               </Link>
             </div>
@@ -112,25 +112,25 @@ export function Footer() {
               <p className="mb-4 opacity-80">&gt; project questions: /faq</p>
               <div className="grid gap-2">
                 <Link
-                  href="/labs"
+                  href="/labs/"
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
                 >
                   VIEW LABS
                 </Link>
                 <Link
-                  href="/guides"
+                  href="/guides/"
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
                 >
                   VIEW GUIDES
                 </Link>
                 <Link
-                  href="/resources/policy-starter-kit"
+                  href="/resources/policy-starter-kit/"
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
                 >
                   VIEW POLICY KIT
                 </Link>
                 <Link
-                  href="/faq"
+                  href="/faq/"
                   className="button-secondary inline-block w-full rounded-full px-4 py-2 text-center tracking-wider"
                 >
                   VIEW FAQ

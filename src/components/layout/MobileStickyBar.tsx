@@ -15,7 +15,7 @@ export function MobileStickyBar() {
           <span>Call Now</span>
         </a>
         <Link
-          href="/contact"
+          href="/contact/"
           className="flex items-center justify-center gap-2 px-4 py-3 font-mono text-sm font-bold uppercase tracking-wider bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
         >
           Free Assessment

@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { ContactPageClient } from "@/components/pages/ContactPageClient";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
@@ -18,11 +18,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <Script
-        id="contact-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id="contact-breadcrumb-schema" data={breadcrumbSchema} />
       <ContactPageClient />
     </>
   );

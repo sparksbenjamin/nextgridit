@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import Link from "next/link";
-import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
   createBreadcrumbSchema,
@@ -34,16 +34,8 @@ export default function ServiceAreasPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="service-areas-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="service-areas-collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd id="service-areas-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="service-areas-collection-schema" data={collectionSchema} />
 
       <PageIntro
         eyebrow="Coverage"

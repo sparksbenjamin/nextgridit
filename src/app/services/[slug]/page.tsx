@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
-import Script from "next/script";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
@@ -29,7 +29,7 @@ export async function generateMetadata({
 
   return createMetadata({
     title: service.title,
-    description: service.description,
+    description: service.summary,
     path: `/services/${service.slug}/`,
   });
 }
@@ -74,21 +74,9 @@ Please reach out to discuss next steps.`);
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id={`breadcrumb-schema-${service.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id={`faq-schema-${service.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Script
-        id={`service-schema-${service.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+      <JsonLd id={`breadcrumb-schema-${service.slug}`} data={breadcrumbSchema} />
+      <JsonLd id={`faq-schema-${service.slug}`} data={faqSchema} />
+      <JsonLd id={`service-schema-${service.slug}`} data={serviceSchema} />
 
       <PageIntro
         eyebrow="Service"
@@ -357,7 +345,7 @@ Please reach out to discuss next steps.`);
             Email About {service.shortLabel}
           </a>
           <Link
-            href="/contact"
+            href="/contact/"
             className="button-primary inline-block rounded-full border border-[var(--border)] bg-transparent px-8 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em] hover:bg-[var(--surface-strong)]"
           >
             Contact Form

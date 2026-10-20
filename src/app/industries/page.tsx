@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import Link from "next/link";
-import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
   createBreadcrumbSchema,
@@ -34,16 +34,8 @@ export default function IndustriesPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="industries-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="industries-collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd id="industries-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="industries-collection-schema" data={collectionSchema} />
 
       <PageIntro
         eyebrow="Who We Help"

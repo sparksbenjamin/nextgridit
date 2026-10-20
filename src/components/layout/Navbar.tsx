@@ -35,58 +35,58 @@ const navGroups: NavGroup[] = [
     label: "Services",
     description: "MSP transitions, vendor lockout recovery, HIPAA assessments, security, and infrastructure hardening.",
     overview: {
-      href: "/services",
+      href: "/services/",
       label: "Browse all services",
       description: "See the full service lineup across security, compliance, and infrastructure.",
     },
     links: [
       {
-        href: "/services/msp-transition",
+        href: "/services/msp-transition/",
         label: "MSP Transition",
         description: "Fire your MSP and take back control of your IT.",
       },
       {
-        href: "/services/vendor-lockout-recovery",
+        href: "/services/vendor-lockout-recovery/",
         label: "Vendor Lockout Recovery",
         description: "Break back into systems you own when a provider walks away.",
       },
       {
-        href: "/services/hipaa-security-assessment",
+        href: "/services/hipaa-security-assessment/",
         label: "HIPAA Assessment",
         description: "Real security assessments for medical practices.",
       },
       {
-        href: "/services/vulnerability-assessment",
+        href: "/services/vulnerability-assessment/",
         label: "Vulnerability Assessment",
         description: "Find and prioritize what's actually vulnerable in your environment.",
       },
       {
-        href: "/services/infrastructure-hardening",
+        href: "/services/infrastructure-hardening/",
         label: "Infrastructure Hardening",
         description: "Close gaps in identity, mail, network edges, and inherited systems.",
       },
       {
-        href: "/services/microsoft-365",
+        href: "/services/microsoft-365/",
         label: "Microsoft 365",
         description: "Tenant cleanup, identity hardening, and migration support.",
       },
       {
-        href: "/services/network-wifi",
+        href: "/services/network-wifi/",
         label: "Network & Wi-Fi",
         description: "Reliable network deployment and Wi-Fi for businesses.",
       },
       {
-        href: "/services/security-audits-pentesting",
+        href: "/services/security-audits-pentesting/",
         label: "Penetration Testing",
         description: "Black box and trusted-access testing with remediation help.",
       },
       {
-        href: "/services/camera-systems",
+        href: "/services/camera-systems/",
         label: "Camera Systems",
         description: "Local-first camera and surveillance infrastructure.",
       },
       {
-        href: "/services/private-ai",
+        href: "/services/private-ai/",
         label: "Private AI Consulting",
         description: "Guidance on local AI that keeps your data inside your environment.",
       },
@@ -98,33 +98,33 @@ const navGroups: NavGroup[] = [
     label: "Solutions",
     description: "Industry-specific guidance, compliance programs, and local service coverage in Upstate SC.",
     overview: {
-      href: "/industries",
+      href: "/industries/",
       label: "Explore solutions",
       description: "Find the right fit for your industry, compliance needs, and location.",
     },
     links: [
       {
-        href: "/industries",
+        href: "/industries/",
         label: "Industries",
         description: "Medical, municipal, business, campground, and multi-site.",
       },
       {
-        href: "/service-areas",
+        href: "/service-areas/",
         label: "Service Areas",
         description: "Seneca, Clemson, Anderson, Easley, and Greenville, SC.",
       },
       {
-        href: "/compliance",
+        href: "/compliance/",
         label: "Compliance",
         description: "HIPAA, PCI DSS, and NIST-informed implementation guidance.",
       },
       {
-        href: "/project-fit",
+        href: "/project-fit/",
         label: "Project Fit",
         description: "See which projects and operating environments are the strongest fit.",
       },
       {
-        href: "/technologies",
+        href: "/technologies/",
         label: "Technologies",
         description: "Platforms, vendors, and systems NextGridIT supports.",
       },
@@ -136,38 +136,38 @@ const navGroups: NavGroup[] = [
     label: "Resources",
     description: "Guides, policy starter kit, case studies, research, and answers to common questions.",
     overview: {
-      href: "/guides",
+      href: "/guides/",
       label: "Browse guides",
       description: "Field notes, explainers, and technical write-ups from real work.",
     },
     links: [
       {
-        href: "/guides",
+        href: "/guides/",
         label: "Guides",
         description: "Technical guides and how-to articles from the field.",
       },
       {
-        href: "/resources/policy-starter-kit",
+        href: "/resources/policy-starter-kit/",
         label: "Policy Starter Kit",
         description: "AI, mobile, password, vendor access, offboarding, and MSP transition templates.",
       },
       {
-        href: "/case-studies",
+        href: "/case-studies/",
         label: "Case Studies",
         description: "Real examples of cleanup, redesign, and rollout work.",
       },
       {
-        href: "/labs",
+        href: "/labs/",
         label: "NextGrid Labs",
         description: "Security research, vulnerability discovery, and open source tools.",
       },
       {
-        href: "/faq",
+        href: "/faq/",
         label: "FAQ",
         description: "Quick answers about scope, geography, and how projects start.",
       },
       {
-        href: "/local-first",
+        href: "/local-first/",
         label: "Local-First Systems",
         description: "Why ownership, on-site control, and practical fit matter.",
       },
@@ -178,20 +178,20 @@ const navGroups: NavGroup[] = [
 
 const mobileMenuLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/industries", label: "Industries" },
-  { href: "/service-areas", label: "Service Areas" },
-  { href: "/resources/policy-starter-kit", label: "Policy Kit" },
-  { href: "/guides", label: "Guides" },
-  { href: "/labs", label: "Labs" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/services/", label: "Services" },
+  { href: "/industries/", label: "Industries" },
+  { href: "/service-areas/", label: "Service Areas" },
+  { href: "/resources/policy-starter-kit/", label: "Policy Kit" },
+  { href: "/guides/", label: "Guides" },
+  { href: "/labs/", label: "Labs" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
 ]
 
 const mobileMenuId = "mobile-navigation"
 const desktopMenuId = "desktop-navigation"
 const phoneHref = `tel:${siteConfig.phone.replace(/[^\d+]/g, "")}`
-const surfaceScanHref = "/contact"
+const surfaceScanHref = "/contact/"
 
 function normalizePath(path: string) {
   if (path !== "/" && path.endsWith("/")) {
@@ -380,7 +380,7 @@ export function Navbar() {
             })}
             <span className="mx-1 h-5 w-px bg-[var(--border)]" />
             <Link
-              href="/about"
+              href="/about/"
               onClick={closeMenus}
               className={cn(
                 "inline-flex items-center rounded-full px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 lg:px-3.5",
@@ -392,7 +392,7 @@ export function Navbar() {
               About
             </Link>
             <Link
-              href="/contact"
+              href="/contact/"
               onClick={closeMenus}
               className={cn(
                 "inline-flex items-center rounded-full px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 lg:px-3.5",

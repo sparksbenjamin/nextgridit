@@ -1,4 +1,4 @@
-import Script from "next/script";
+import { JsonLd } from "@/components/content/JsonLd";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { siteConfig, technologies } from "@/lib/site-data";
@@ -31,11 +31,7 @@ export default function CompanyFactsPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="company-facts-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id="company-facts-breadcrumb-schema" data={breadcrumbSchema} />
       <PageIntro
         eyebrow="Canonical Facts"
         title="Company"

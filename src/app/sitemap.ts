@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 import { getAllGuides } from "@/lib/guides";
 import { getAllPolicies } from "@/lib/policies";
-import { industries, locations, services, technologyCatalog } from "@/lib/site-data";
+import { industries, locations, services, siteConfig, technologyCatalog } from "@/lib/site-data";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.nextgridit.com";
+  const base = siteConfig.url;
   const guides = getAllGuides();
   const policies = getAllPolicies();
 

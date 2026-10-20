@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import { MarkdownContent } from "@/components/content/MarkdownContent";
 import {
@@ -74,16 +74,8 @@ export default async function GuideDetailPage({
 
   return (
     <div className="container mx-auto min-h-[70vh] px-4 py-24">
-      <Script
-        id={`guide-breadcrumb-${guide.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id={`guide-article-${guide.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
+      <JsonLd id={`guide-breadcrumb-${guide.slug}`} data={breadcrumbSchema} />
+      <JsonLd id={`guide-article-${guide.slug}`} data={articleSchema} />
 
       <div className="mb-14 max-w-4xl">
         {guide.eyebrow ? (

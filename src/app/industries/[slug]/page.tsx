@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
-import Script from "next/script";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
@@ -28,7 +28,7 @@ export async function generateMetadata({
 
   return createMetadata({
     title: industry.title,
-    description: industry.description,
+    description: industry.summary,
     path: `/industries/${industry.slug}/`,
   });
 }
@@ -59,11 +59,7 @@ export default async function IndustryDetailPage({
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id={`industry-breadcrumb-${industry.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id={`industry-breadcrumb-${industry.slug}`} data={breadcrumbSchema} />
 
       <PageIntro
         eyebrow="Industry"

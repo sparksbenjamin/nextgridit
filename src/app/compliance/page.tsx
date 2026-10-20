@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import {
   IconChecklist,
   IconCreditCard,
@@ -64,11 +64,7 @@ export default function CompliancePage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="compliance-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id="compliance-breadcrumb-schema" data={breadcrumbSchema} />
       <div className="max-w-4xl mb-14">
         <p className="theme-accent-strong mb-4 text-sm font-mono uppercase tracking-[0.3em]">
           Compliance and frameworks

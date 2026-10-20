@@ -7,10 +7,10 @@ Primary service cities: Seneca, Clemson, Anderson, Easley, and Greenville, South
 Primary industries: medical offices, healthcare-adjacent practices, small and mid-sized businesses, municipalities, campgrounds, and multi-site properties.
 
 Service pages:
-- https://www.nextgridit.com/services/it-support/
+- https://www.nextgridit.com/services/
 - https://www.nextgridit.com/services/microsoft-365/
 - https://www.nextgridit.com/services/network-wifi/
-- https://www.nextgridit.com/services/security-hardening/
+- https://www.nextgridit.com/services/infrastructure-hardening/
 - https://www.nextgridit.com/services/camera-systems/
 
 Technology pages:
@@ -32,7 +32,6 @@ Technology pages:
 - https://www.nextgridit.com/technologies/documentation-and-standards/
 - https://www.nextgridit.com/technologies/ip-cameras/
 - https://www.nextgridit.com/technologies/local-nvr-systems/
-- https://www.nextgridit.com/technologies/hikvision/
 - https://www.nextgridit.com/technologies/local-ai-processing/
 
 Resource pages:

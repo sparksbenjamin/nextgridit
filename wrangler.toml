@@ -8,10 +8,17 @@ keep_vars = true
 [assets]
 directory = "out"
 binding = "ASSETS"
-run_worker_first = ["/api/*"]
+run_worker_first = true
+html_handling = "force-trailing-slash"
 not_found_handling = "404-page"
 
 [[routes]]
 pattern = "www.nextgridit.com"
+zone_name = "nextgridit.com"
+custom_domain = true
+
+# Route the bare domain through the Worker for a permanent redirect to www.
+[[routes]]
+pattern = "nextgridit.com"
 zone_name = "nextgridit.com"
 custom_domain = true

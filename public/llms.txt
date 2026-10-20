@@ -15,10 +15,10 @@
 
 ## Services
 
-- IT support and operational guidance: https://www.nextgridit.com/services/it-support/
+- IT support and operational guidance: https://www.nextgridit.com/services/
 - Microsoft 365 and cloud services: https://www.nextgridit.com/services/microsoft-365/
 - Network infrastructure, public Wi-Fi, and connectivity: https://www.nextgridit.com/services/network-wifi/
-- Security hardening, documentation, and compliance-aware support: https://www.nextgridit.com/services/security-hardening/
+- Security hardening, documentation, and compliance-aware support: https://www.nextgridit.com/services/infrastructure-hardening/
 - Camera systems and local-first smart deployments: https://www.nextgridit.com/services/camera-systems/
 
 ## Technologies
@@ -41,7 +41,6 @@
 - Documentation and standards: https://www.nextgridit.com/technologies/documentation-and-standards/
 - IP camera support: https://www.nextgridit.com/technologies/ip-cameras/
 - Local NVR systems: https://www.nextgridit.com/technologies/local-nvr-systems/
-- Hikvision support: https://www.nextgridit.com/technologies/hikvision/
 - Local AI processing: https://www.nextgridit.com/technologies/local-ai-processing/
 
 ## Primary service areas

@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
-import Script from "next/script";
 import { ServicesPage2026 } from "@/components/pages/ServicesPage2026";
 import {
   createBreadcrumbSchema,
@@ -11,7 +11,7 @@ import { services } from "@/lib/site-data";
 export const metadata: Metadata = createMetadata({
   title: "Services",
   description:
-    "MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, infrastructure hardening, hybrid cloud, Microsoft 365, network and Wi-Fi, and penetration testing in Upstate South Carolina.",
+    "IT services for Upstate SC businesses: MSP transitions, security assessments, Microsoft 365, network infrastructure, camera systems, and private AI consulting.",
   path: "/services/",
 });
 
@@ -34,16 +34,8 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Script
-        id="services-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="services-collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd id="services-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="services-collection-schema" data={collectionSchema} />
       <ServicesPage2026 />
     </>
   );

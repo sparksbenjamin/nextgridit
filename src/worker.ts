@@ -470,6 +470,18 @@ const worker = {
   async fetch(request: Request, env: WorkerEnv) {
     const url = new URL(request.url);
 
+    // Only the public production origin should be indexed. Keep preview URLs
+    // crawlable so search engines can see the noindex response header.
+    const productionHost = "www.nextgridit.com";
+    if ([productionHost, "nextgridit.com"].includes(url.hostname) &&
+        (url.hostname !== productionHost || url.protocol !== "https:") &&
+        ["GET", "HEAD"].includes(request.method)) {
+      url.hostname = productionHost;
+      url.protocol = "https:";
+      url.port = "";
+      return Response.redirect(url.toString(), 308);
+    }
+
     if (url.pathname.startsWith("/api/")) {
       const origin = request.headers.get("origin");
       if (origin && origin !== url.origin) {
@@ -484,16 +496,21 @@ const worker = {
       return jsonResponse({ error: "API endpoint not found." }, { status: 404 });
     }
 
-    if (
-      request.method === "GET" &&
-      !url.pathname.endsWith("/") &&
-      !url.pathname.includes(".")
-    ) {
-      url.pathname = `${url.pathname}/`;
-      return env.ASSETS.fetch(new Request(url, request));
+    // Let the asset service handle slash/index.html redirects and true 404s.
+    let response = await env.ASSETS.fetch(request);
+    // Asset URL normalization is permanent; preserve its validated destination.
+    if (response.status === 307 && response.headers.has("Location")) {
+      response = new Response(response.body, {
+        status: 308,
+        headers: response.headers,
+      });
     }
-
-    return env.ASSETS.fetch(request);
+    if (url.hostname !== productionHost) {
+      const preview = new Response(response.body, response);
+      preview.headers.set("X-Robots-Tag", "noindex, nofollow");
+      return preview;
+    }
+    return response;
   },
 };
 

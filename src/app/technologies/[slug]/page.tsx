@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
@@ -37,7 +37,7 @@ export async function generateMetadata({
 
   return createMetadata({
     title: `${technology.name} Support`,
-    description: `${technology.summary} Learn how NextGridIT applies ${technology.name} across infrastructure hardening, surveillance, and deployment programs.`,
+    description: `${technology.name} support from NextGridIT in Upstate SC. ${technology.summary}`,
     path: `/technologies/${technology.slug}/`,
   });
 }
@@ -76,15 +76,11 @@ export default async function TechnologyDetailPage({
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id={`technology-breadcrumb-${technology.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id={`technology-breadcrumb-${technology.slug}`} data={breadcrumbSchema} />
 
       <PageIntro
         eyebrow="Technology"
-        title={technology.name}
+        title={`${technology.name} Support`}
         description={technology.summary}
       />
 

@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { PageIntro } from "@/components/content/PageIntro";
 import { getAllPolicies } from "@/lib/policies";
 import {
@@ -41,16 +41,8 @@ export default function PolicyStarterKitPage() {
 
   return (
     <div className="container mx-auto min-h-[70vh] px-4 py-24">
-      <Script
-        id="policy-kit-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id="policy-kit-collection-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
-      />
+      <JsonLd id="policy-kit-breadcrumb-schema" data={breadcrumbSchema} />
+      <JsonLd id="policy-kit-collection-schema" data={collectionSchema} />
 
       <PageIntro
         eyebrow="Resource Center"

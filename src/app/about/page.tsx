@@ -1,6 +1,6 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { IconBug, IconCertificate, IconNetwork, IconWorld } from "@tabler/icons-react";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
@@ -46,11 +46,7 @@ export default function AboutPage() {
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id="about-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <JsonLd id="about-breadcrumb-schema" data={breadcrumbSchema} />
       <div className="mb-16">
         <h1 className="theme-heading mb-6 font-mono text-4xl font-bold uppercase tracking-wider md:text-5xl">
           About <span className="theme-accent-alt">NextGridIT</span>

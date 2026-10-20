@@ -1,5 +1,5 @@
+import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
-import Script from "next/script";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
@@ -34,8 +34,8 @@ export async function generateMetadata({
   }
 
   return createMetadata({
-    title: location.title,
-    description: location.description,
+    title: `IT Support & Security in ${location.city}, SC`,
+    description: location.summary,
     path: `/service-areas/${location.slug}/`,
   });
 }
@@ -87,30 +87,14 @@ export default async function ServiceAreaDetailPage({
 
   return (
     <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <Script
-        id={`service-area-breadcrumb-${location.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <Script
-        id={`service-area-place-${location.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(placeSchema) }}
-      />
-      <Script
-        id={`service-area-services-${location.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localServicesSchema) }}
-      />
-      <Script
-        id={`service-area-faq-${location.slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <JsonLd id={`service-area-breadcrumb-${location.slug}`} data={breadcrumbSchema} />
+      <JsonLd id={`service-area-place-${location.slug}`} data={placeSchema} />
+      <JsonLd id={`service-area-services-${location.slug}`} data={localServicesSchema} />
+      <JsonLd id={`service-area-faq-${location.slug}`} data={faqSchema} />
 
       <PageIntro
         eyebrow="Local Service Area"
-        title={location.city}
+        title={`IT Services in ${location.city}`}
         accent="South Carolina"
         description={location.description}
       />
