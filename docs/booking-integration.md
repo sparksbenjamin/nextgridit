@@ -14,7 +14,8 @@ the retained email form. Shared closing CTAs also retain the project-details
 alternative. Phone/email and existing form validation, delivery, failure
 recovery, and duplicate-submission handling remain available. The privacy page
 identifies the Microsoft Bookings handoff. Duration, price, and meeting modality
-are not asserted because the published service details could not be verified.
+are left to the provider page so the website does not duplicate appointment
+configuration.
 
 ## Verification
 
@@ -25,7 +26,7 @@ are not asserted because the published service details could not be verified.
   create an appointment or prove provider availability.
 - Captured and viewed the modified contact layout at 390 and 1440px.
 
-## Publication dependency
+## Initial provider failure and resolution
 
 The supplied Microsoft page was inspected twice in an unsigned-in browser.
 Its document returned HTTP 200 but displayed “Some error occurred.” The public
@@ -36,10 +37,14 @@ This is evidence of a provider-side failure, not a confirmed diagnosis of the
 tenant's policy configuration. No tenant settings were changed and no booking
 was created.
 
-The integration is kept off production while this failure persists. Before
-merging, verify the public link in a private browser: the intended service,
-duration, available times/timezone, and guest details must load. Confirm business
-hours use the intended timezone; the public business response currently reports
-UTC. Once resolved, merge to main, let Cloudflare redeploy, and check the live
-booking links plus the form alternative. A real appointment/notification test
-requires a separately authorized test booking.
+After the owner confirmed the page was live, two fresh unsigned-in browser
+checks loaded the IT Project Consultation service, its 30-minute duration,
+available appointment times, and the guest details form. The blocking service
+requests no longer failed. An Eastern-time browser still displayed UTC on the
+booking page. The owner should check business hours/timezone in Bookings if
+local Eastern hours are intended. The exact supplied URL is preserved despite
+the misspelling in the booking business's display name and URL.
+
+The public provider page is ready for linking. Merge to main, let Cloudflare
+redeploy, and check the live booking links plus the form alternative. No
+appointment was created and confirmation/reminder delivery was not tested.
