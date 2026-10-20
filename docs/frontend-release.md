@@ -88,10 +88,10 @@ text-led design uses existing sanitized project information without placeholders
 invented endorsements, or fabricated client imagery. Authentic approved photos
 can be added later without changing the information hierarchy.
 
-The bare-domain Cloudflare 522 found in the earlier live SEO review is a separate
-infrastructure follow-up; this redesign does not claim to resolve an external
-DNS/custom-domain configuration. Search Console, field performance, conversion
-analytics, and real visitor research were not available.
+The bare-domain Cloudflare 522 found in the earlier live SEO review was resolved
+in the subsequent [SEO release audit](seo-release-audit.md) through a normal
+Worker route. Search Console, field performance, conversion analytics, and real
+visitor research were not available.
 
 ## Repeat the checks
 
@@ -116,3 +116,8 @@ The unverified bare-domain registration was removed to restore the established
 www-only deployment target. The Worker still contains the permanent apex-to-www
 redirect for use once the bare-domain binding/DNS is correctly configured.
 This isolates an infrastructure prerequisite from publishing the working site.
+
+Subsequent release `204e5d0` added a normal `nextgridit.com/*` Worker route
+instead of a second custom-domain registration. Its Cloudflare check succeeded,
+and live HTTP/HTTPS apex requests redirected permanently to www with paths and
+queries preserved. See the SEO release audit for the full production checks.

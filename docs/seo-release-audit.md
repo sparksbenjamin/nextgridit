@@ -24,8 +24,9 @@ Remaining findings and implemented fixes:
 The apex is a normal Worker route, not a second custom-domain registration. It
 intercepts the existing proxied hostname without replacing DNS records. The
 established www custom domain remains the public content origin. Wrangler's dry
-run accepted the mixed route configuration; account-side installation and live
-redirects must also be checked before treating that issue as resolved.
+run accepted the mixed route configuration. The subsequent successful production
+deployment and live checks confirmed the route is installed and the error is
+resolved.
 
 ## Intended search behavior
 
@@ -60,6 +61,22 @@ llms.txt files are maintained for consistency without claiming ranking value.
   100, SEO 100; LCP 3.0 seconds, TBT 10 ms, CLS 0. This is a simulated lab run,
   not field Core Web Vitals or accessibility certification.
 - Contact delivery states and DNS outcomes use mocks; no real email was sent.
+
+## Production release evidence
+
+Commit `204e5d0` deployed successfully through GitHub's `Workers Builds:
+nextgridit` check. A fresh production crawl verified all 78 pages returned 200,
+with unique branded titles/descriptions, self-canonicals, large image preview
+permission, and no accidental noindex. All 371 JSON-LD blocks parsed; all 18
+article pages exposed matching sharing/schema dates. All seven PDF responses
+carried the correct HTML canonical Link header.
+
+Both `http://nextgridit.com` and `https://nextgridit.com` returned 308 redirects
+to HTTPS www, preserving the tested service path and tracking query. HTTP www
+also redirected correctly. A tracking-query service request retained a clean
+canonical; a missing route returned 404 with noindex. Production robots.txt
+remained crawlable with the correct sitemap. No Cloudflare 522 remained in
+these host checks.
 
 ## Measurement and unavailable evidence
 
