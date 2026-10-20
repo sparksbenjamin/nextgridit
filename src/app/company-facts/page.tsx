@@ -30,7 +30,7 @@ export default function CompanyFactsPage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container mx-auto px-4 py-24 min-h-[70vh]">
       <JsonLd id="company-facts-breadcrumb-schema" data={breadcrumbSchema} />
       <PageIntro
         eyebrow="Canonical Facts"
@@ -50,7 +50,7 @@ export default function CompanyFactsPage() {
       </section>
 
       <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+        <h2 className="theme-heading mb-4  text-2xl font-bold">
           Technologies frequently referenced
         </h2>
         <div className="flex flex-wrap gap-3">

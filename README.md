@@ -20,6 +20,10 @@ To preview the site in the Cloudflare Workers runtime locally:
 npm run preview
 ```
 
+Open `http://localhost:8788` for the Worker preview. Using the same localhost
+origin for pages and API requests keeps local form validation consistent with
+production; the preview is intentionally marked noindex.
+
 ## Cloudflare Deploy
 
 Production deploy:
@@ -195,3 +199,38 @@ Implementation references: [Next.js metadata](https://nextjs.org/docs/app/api-re
 [Google canonical guidance](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls),
 [Google structured data guidance](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data),
 and [Cloudflare HTML handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
+
+
+## Frontend design and browser verification
+
+The consultancy design uses shared light/dark tokens, a responsive navigation,
+consistent page introductions, and a single project-inquiry action. Service,
+industry, location, and technology URLs are preserved. The contact form still
+uses the Worker/Microsoft 365 delivery flow; the Labs lookup still uses public
+MX records. Neither flow substitutes a visual success state for API acceptance.
+
+The implementation and review evidence are recorded in
+[the frontend release notes](docs/frontend-release.md). The original
+[design plan](docs/frontend-design-plan.md) includes the before-state captures.
+
+For repeatable frontend checks:
+
+```bash
+npm run check
+npx playwright install chromium
+npm run test:browser
+```
+
+The browser suite starts a fresh local Worker on port 8790 using the generated `out`
+directory. It checks the public route map, 15 templates at five widths,
+keyboard/menu behavior, themes and storage recovery, form validation and delivery
+states, technology filters, guide anchors, PDF downloads, the Labs lookup, and
+200% text resizing with reduced motion. Contact and lookup success/failure cases
+use mocked responses; tests do not send email or query external DNS. An invalid
+contact payload also exercises the actual Worker validation path without
+sending a message.
+
+Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE` to use an installed Chromium-compatible
+browser instead of Playwright's downloaded browser. `SITE_TEST_URL` can point
+the browser suite at another approved environment; avoid using it for arbitrary
+third-party sites. Browser reports and failure traces are ignored by Git.

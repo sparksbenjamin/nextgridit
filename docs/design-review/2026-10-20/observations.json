@@ -1,0 +1,392 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "title": "IT Support & Security in Seneca & Upstate SC",
+    "height": 4310,
+    "h1": [
+      "Make your IT a business advantage."
+    ],
+    "buttons": [
+      {
+        "label": "Book a project conversation",
+        "href": "/contact/"
+      },
+      {
+        "label": "Explore how we help ↗",
+        "href": "#home-services"
+      },
+      {
+        "label": "01 / OWNERSHIPTake back control from your MSP.Transition planning, vendor independence, credential recovery, and documentation that leaves your organization in charge.↗",
+        "href": "/services/msp-transition/"
+      },
+      {
+        "label": "02 / SECURITYKnow what is actually at risk.HIPAA assessments, vulnerability reviews, and remediation plans prioritized around real business impact.↗",
+        "href": "/services/hipaa-security-assessment/"
+      },
+      {
+        "label": "03 / INFRASTRUCTUREBuild systems people can rely on.Cloud, hybrid, network, Wi-Fi, and local-first infrastructure designed for visibility, resilience, and growth.↗",
+        "href": "/services/network-wifi/"
+      },
+      {
+        "label": "See if we're a fit",
+        "href": "/project-fit/"
+      },
+      {
+        "label": "Read the case study ↗",
+        "href": "/case-studies/#msp-transition"
+      },
+      {
+        "label": "Start a conversation ↗",
+        "href": "/contact/"
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/services/",
+    "status": 200,
+    "title": "Services | NextGridIT",
+    "height": 3622,
+    "h1": [
+      "Services built around useful outcomes"
+    ],
+    "buttons": [
+      {
+        "label": "01↗MSP Transition and Vendor IndependenceWe help you take back control of your IT — from firing your MSP to standing up your own systems, ensuring nothing gets left behind.View service details",
+        "href": "/services/msp-transition/"
+      },
+      {
+        "label": "02↗Vendor Lockout RecoveryWhen your IT provider walks away and takes your credentials with them, we break back in and hand you the keys — legally.View service details",
+        "href": "/services/vendor-lockout-recovery/"
+      },
+      {
+        "label": "01↗HIPAA Security Assessment for Medical PracticesSecurity assessments for medical offices and healthcare-adjacent practices that need to demonstrate compliance — not just check boxes.View service details",
+        "href": "/services/hipaa-security-assessment/"
+      },
+      {
+        "label": "02↗Vulnerability Assessment and Remediation PlanningFind what's actually vulnerable in your environment and get a prioritized plan to fix it — not a 200-page report that sits on a shelf.View service details",
+        "href": "/services/vulnerability-assessment/"
+      },
+      {
+        "label": "03↗Infrastructure Hardening and Security CleanupClose the gaps in identity, mail, network edges, and inherited infrastructure before someone else finds them first.View service details",
+        "href": "/services/infrastructure-hardening/"
+      },
+      {
+        "label": "04↗Vulnerability Assessment and Penetration TestingBlack box and trusted-access security testing with remediation help and real-world risk review for each finding.View service details",
+        "href": "/services/security-audits-pentesting/"
+      },
+      {
+        "label": "01↗Microsoft 365 and Cloud ServicesAdministration, cleanup, security, and migration support across Microsoft 365, Entra ID, Azure, and related cloud systems.View service details",
+        "href": "/services/microsoft-365/"
+      },
+      {
+        "label": "02↗Network Infrastructure and Wi-Fi DeploymentWired and wireless infrastructure delivery, segmentation, and network operations for businesses that need reliable connectivity.View service details",
+        "href": "/services/network-wifi/"
+      },
+      {
+        "label": "03↗Camera Systems and Surveillance InfrastructureCamera, sensor, and local capture infrastructure designed for sites that need visibility without surrendering footage to a third-party cloud.View service details",
+        "href": "/services/camera-systems/"
+      },
+      {
+        "label": "04↗Private and On-Premise AI ConsultingGuidance on deploying local AI solutions that keep your data inside your environment — from model selection to hardware and workflow design.View service details",
+        "href": "/services/private-ai/"
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/services/msp-transition/",
+    "status": 200,
+    "title": "MSP Transition and Vendor Independence | NextGridIT",
+    "height": 5489,
+    "h1": [
+      "MSP Transition and Vendor Independence "
+    ],
+    "buttons": [
+      {
+        "label": "Small and Mid-Sized BusinessesMSP transitions, vendor independence, IT cleanup, and security hardening for businesses that need a technical partner who shows up.",
+        "href": "/industries/small-business/"
+      },
+      {
+        "label": "Medical Offices and Healthcare PracticesHIPAA security assessments, Microsoft 365 cleanup, and compliance-aware support for independent medical practices.",
+        "href": "/industries/medical-offices/"
+      },
+      {
+        "label": "Municipal and Public-Sector OrganizationsVendor lockout recovery, public Wi-Fi, camera systems, and NIST-informed security for local government operations.",
+        "href": "/industries/municipalities/"
+      },
+      {
+        "label": "Seneca, South CarolinaLocal IT, MSP transition, vendor lockout recovery, security assessments, and network support for organizations in and around Seneca, South Carolina.",
+        "href": "/service-areas/seneca-sc/"
+      },
+      {
+        "label": "Clemson, South CarolinaMicrosoft 365 administration, HIPAA security assessments, and compliance-aware IT support for organizations in Clemson, South Carolina.",
+        "href": "/service-areas/clemson-sc/"
+      },
+      {
+        "label": "Greenville, South CarolinaBusiness IT support, HIPAA assessments, Microsoft 365, vulnerability assessments, and network services for Greenville, South Carolina.",
+        "href": "/service-areas/greenville-sc/"
+      },
+      {
+        "label": "HIPAA Security Assessment Checklist for Medical OfficesA practical checklist for small medical practices preparing for a HIPAA security assessment, including what to gather, what auditors look for, and how to close common gaps.",
+        "href": "/guides/hipaa-security-assessment-checklist/"
+      },
+      {
+        "label": "How to Transition Away from Your MSP and Take Control of Your ITA practical guide for businesses that have outgrown their MSP, want to bring IT in-house, or need to fire their current provider without losing access to their systems.",
+        "href": "/guides/how-to-transition-away-from-your-msp/"
+      },
+      {
+        "label": "Microsoft 365 Security Basics Every Business Should KnowMost small businesses set up Microsoft 365 and never look at the security settings again. This guide covers the essentials that every M365 tenant should have configured — and what happens when they aren't.",
+        "href": "/guides/m365-security-basics-every-business-should-know/"
+      },
+      {
+        "label": "Email About MSP Transition",
+        "href": "mailto:contact@nextgridit.com?subject=Inquiry%20about%20MSP%20Transition%20and%20Vendor%20Independence&body=Hi%20NextGridIT%2C%0A%0AI'm%20interested%20in%20your%20MSP%20Transition%20and%20Vendor%20Independence%20service.%0A%0ALocation%3A%20%0ATimeline%3A%20%0AMain%20problem%20we%20need%20solved%3A%20%0A%0APlease%20reach%20out%20to%20discuss%20next%20steps."
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/about/",
+    "status": 200,
+    "title": "About | NextGridIT",
+    "height": 2231,
+    "h1": [
+      "About NextGridIT"
+    ],
+    "buttons": [
+      {
+        "label": "View Case Studies",
+        "href": "/case-studies/"
+      },
+      {
+        "label": "Company Facts",
+        "href": "/company-facts/"
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/contact/",
+    "status": 200,
+    "title": "Contact | NextGridIT",
+    "height": 2818,
+    "h1": [
+      "Contact NextGridIT"
+    ],
+    "buttons": [
+      {
+        "label": "contact@nextgridit.com",
+        "href": "mailto:contact@nextgridit.com"
+      },
+      {
+        "label": "privacy policy",
+        "href": "/privacy/"
+      },
+      {
+        "label": "Send Message",
+        "href": null
+      },
+      {
+        "label": "contact@nextgridit.com",
+        "href": "mailto:contact@nextgridit.com"
+      },
+      {
+        "label": "864-780-0202",
+        "href": "tel:8647800202"
+      },
+      {
+        "label": "View on Google Maps",
+        "href": "https://www.google.com/maps/search/NextGridIT+Seneca+SC"
+      },
+      {
+        "label": "Seneca, South Carolina",
+        "href": "/service-areas/seneca-sc/"
+      },
+      {
+        "label": "Clemson, South Carolina",
+        "href": "/service-areas/clemson-sc/"
+      },
+      {
+        "label": "Anderson, South Carolina",
+        "href": "/service-areas/anderson-sc/"
+      },
+      {
+        "label": "Easley, South Carolina",
+        "href": "/service-areas/easley-sc/"
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/guides/",
+    "status": 200,
+    "title": "Guides and Field Notes | NextGridIT",
+    "height": 3834,
+    "h1": [
+      "Guides and Field Notes"
+    ],
+    "buttons": [
+      {
+        "label": "Read Guide",
+        "href": "/guides/hipaa-security-assessment-checklist/"
+      },
+      {
+        "label": "Local-First Systems",
+        "href": "/local-first/"
+      },
+      {
+        "label": "Network and Wi-Fi Services",
+        "href": "/services/network-wifi/"
+      },
+      {
+        "label": "Start a Project Conversation",
+        "href": "/contact/"
+      },
+      {
+        "label": "Read Guide",
+        "href": "/guides/how-to-transition-away-from-your-msp/"
+      },
+      {
+        "label": "Read Guide",
+        "href": "/guides/m365-security-basics-every-business-should-know/"
+      },
+      {
+        "label": "Read Guide",
+        "href": "/guides/network-segmentation-for-small-businesses/"
+      },
+      {
+        "label": "Read Guide",
+        "href": "/guides/what-to-do-when-your-it-vendor-walks-away/"
+      },
+      {
+        "label": "Read Guide",
+        "href": "/guides/why-your-small-business-needs-a-vulnerability-assessment/"
+      },
+      {
+        "label": "Read Guide",
+        "href": "/guides/why-local-dhcp-matters/"
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/service-areas/seneca-sc/",
+    "status": 200,
+    "title": "IT Support & Security in Seneca, SC | NextGridIT",
+    "height": 4095,
+    "h1": [
+      "IT Services in Seneca South Carolina"
+    ],
+    "buttons": [
+      {
+        "label": "Clemson, South Carolina",
+        "href": "/service-areas/clemson-sc/"
+      },
+      {
+        "label": "Anderson, South Carolina",
+        "href": "/service-areas/anderson-sc/"
+      },
+      {
+        "label": "Greenville, South Carolina",
+        "href": "/service-areas/greenville-sc/"
+      },
+      {
+        "label": "Vendor Lockout RecoveryWhen your IT provider walks away and takes your credentials with them, we break back in and hand you the keys — legally.",
+        "href": "/services/vendor-lockout-recovery/"
+      },
+      {
+        "label": "MSP Transition and Vendor IndependenceWe help you take back control of your IT — from firing your MSP to standing up your own systems, ensuring nothing gets left behind.",
+        "href": "/services/msp-transition/"
+      },
+      {
+        "label": "Network Infrastructure and Wi-Fi DeploymentWired and wireless infrastructure delivery, segmentation, and network operations for businesses that need reliable connectivity.",
+        "href": "/services/network-wifi/"
+      },
+      {
+        "label": "Camera Systems and Surveillance InfrastructureCamera, sensor, and local capture infrastructure designed for sites that need visibility without surrendering footage to a third-party cloud.",
+        "href": "/services/camera-systems/"
+      },
+      {
+        "label": "Small and Mid-Sized BusinessesMSP transitions, vendor independence, IT cleanup, and security hardening for businesses that need a technical partner who shows up.",
+        "href": "/industries/small-business/"
+      },
+      {
+        "label": "Municipal and Public-Sector OrganizationsVendor lockout recovery, public Wi-Fi, camera systems, and NIST-informed security for local government operations.",
+        "href": "/industries/municipalities/"
+      },
+      {
+        "label": "Campgrounds and Guest ConnectivityWi-Fi coverage, guest access separation, and infrastructure design for properties that need reliable connectivity for visitors.",
+        "href": "/industries/campgrounds/"
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/labs/",
+    "status": 200,
+    "title": "NextGrid Labs — Security Research and Vulnerability Discovery | NextGridIT",
+    "height": 3215,
+    "h1": [
+      "Security Research and Vulnerability Discovery"
+    ],
+    "buttons": [
+      {
+        "label": "DNS BlockingPractical DNS-level blocking for network security. Filter malicious domains, ads, and tracking at the DNS layer without expensive appliances.DNSNetwork SecuritySelf-HostedView on GitHub →",
+        "href": "https://github.com/nextgridit-team/DNS_Blocking"
+      },
+      {
+        "label": "Aegis SSH MCPMCP server for SSH operations. Enables AI agents and automation workflows to execute remote commands, transfer files, and manage server infrastructure securely.MCPSSHAI AutomationView on GitHub →",
+        "href": "https://github.com/nextgridit-team/Aegis-SSH-MCP"
+      },
+      {
+        "label": "Aegis API MCPMCP server for API interactions. Connect AI agents to REST and GraphQL endpoints with structured request handling and response parsing.MCPAPIAI AutomationView on GitHub →",
+        "href": "https://github.com/nextgridit-team/Aegis-API-MCP"
+      },
+      {
+        "label": "Look up mail provider",
+        "href": null
+      }
+    ],
+    "bodyFont": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+    "theme": "light"
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "height": 7494,
+    "overflow": false
+  },
+  {
+    "path": "/services/",
+    "width": 390,
+    "height": 6935,
+    "overflow": false
+  },
+  {
+    "path": "/services/msp-transition/",
+    "width": 390,
+    "height": 10976,
+    "overflow": false
+  },
+  {
+    "path": "/about/",
+    "width": 390,
+    "height": 4835,
+    "overflow": false
+  },
+  {
+    "path": "/contact/",
+    "width": 390,
+    "height": 6177,
+    "overflow": false
+  }
+]

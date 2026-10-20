@@ -1,12 +1,11 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IconArrowRight } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
-import {
-  createBreadcrumbSchema,
-  createMetadata,
-} from "@/lib/seo";
+import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import {
   getIndustry,
   getService,
@@ -62,11 +61,11 @@ export default async function TechnologyDetailPage({
 
   const relatedServices = technology.relatedServices
     .map((serviceSlug) => getService(serviceSlug))
-    .filter(Boolean);
+    .filter((item) => item !== undefined);
 
   const relatedIndustries = technology.relatedIndustries
     .map((industrySlug) => getIndustry(industrySlug))
-    .filter(Boolean);
+    .filter((item) => item !== undefined);
 
   const relatedLocations = locations.filter((location) =>
     location.relatedServices.some((serviceSlug) =>
@@ -75,134 +74,93 @@ export default async function TechnologyDetailPage({
   );
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <JsonLd id={`technology-breadcrumb-${technology.slug}`} data={breadcrumbSchema} />
-
-      <PageIntro
-        eyebrow="Technology"
-        title={`${technology.name} Support`}
-        description={technology.summary}
+    <div className="page-shell container">
+      <JsonLd
+        id={`technology-breadcrumb-${technology.slug}`}
+        data={breadcrumbSchema}
       />
-
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Where this technology usually fits
-          </h2>
-          <p className="theme-copy mb-6 leading-relaxed">
-            NextGridIT typically works with {technology.name} as part of broader
-            infrastructure, cloud, security, Wi-Fi, camera, or operational
-            improvement projects. The goal is not to force a platform for its own
-            sake, but to make sure the chosen stack is supportable, documented,
-            and aligned to the environment it serves.
-          </p>
-          <div className="space-y-4">
-            <div className="theme-chip px-5 py-4 leading-relaxed">
-              Category: {technology.category}
-            </div>
-            <div className="theme-chip px-5 py-4 leading-relaxed">
-              Typical fit: project-led work, cleanup, implementation, or
-              environment improvement tied to real operating needs
-            </div>
-            <div className="theme-chip px-5 py-4 leading-relaxed">
-              Common context: business, medical, municipal, property, and
-              multi-building environments depending on the stack
-            </div>
-          </div>
+      <nav className="breadcrumbs" aria-label="Breadcrumb">
+        <Link href="/technologies/">Technology expertise</Link>
+        <span aria-hidden="true">/</span>
+        <span>{technology.name}</span>
+      </nav>
+      <PageIntro
+        eyebrow={technology.category}
+        title={`${technology.name} support.`}
+        description={technology.summary}
+      >
+        <Link href="/contact/" className="button-primary">
+          Discuss your project
+          <IconArrowRight size={17} aria-hidden="true" />
+        </Link>
+      </PageIntro>
+      <section className="detail-section">
+        <p className="eyebrow mb-3">Where it fits</p>
+        <h2>Part of a dependable environment.</h2>
+        <p>
+          {technology.name} is one part of the wider system. NextGridIT helps
+          plan, implement, and support it in the context of your infrastructure,
+          security, and day-to-day operations.
+        </p>
+        <div className="resource-grid mt-8">
+          {relatedServices.map((service) => (
+            <Link
+              className="related-link"
+              href={`/services/${service.slug}/`}
+              key={service.slug}
+            >
+              <h3>{service.title}</h3>
+              <p>{service.summary}</p>
+              <span className="text-link">
+                Explore the service
+                <IconArrowRight size={17} aria-hidden="true" />
+              </span>
+            </Link>
+          ))}
         </div>
-
-        <aside className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Related services
-          </h2>
-          <div className="space-y-4">
-            {relatedServices.map((service) => (
-              <Link
-                key={service!.slug}
-                href={`/services/${service!.slug}/`}
-                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
-              >
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                  {service!.title}
-                </h3>
-                <p className="theme-copy text-sm leading-relaxed">
-                  {service!.summary}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </aside>
       </section>
-
-      <section className="mt-16 grid gap-8 lg:grid-cols-2">
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Industries where this commonly shows up
-          </h2>
-          <div className="space-y-4">
+      <section className="detail-section detail-columns">
+        <div>
+          <h2>Relevant environments.</h2>
+          <div>
             {relatedIndustries.map((industry) => (
               <Link
-                key={industry!.slug}
-                href={`/industries/${industry!.slug}/`}
-                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
+                className="related-link"
+                href={`/industries/${industry.slug}/`}
+                key={industry.slug}
               >
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                  {industry!.title}
-                </h3>
-                <p className="theme-copy text-sm leading-relaxed">
-                  {industry!.summary}
-                </p>
+                <h3>{industry.title}</h3>
+                <p>{industry.summary}</p>
               </Link>
             ))}
           </div>
         </div>
-
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Relevant local service areas
-          </h2>
-          <div className="space-y-4">
+        <aside className="detail-aside">
+          <h2>Local project support</h2>
+          <p className="theme-copy text-sm">
+            On-site work across the Upstate, with remote support when the
+            project allows.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
             {relatedLocations.map((location) => (
               <Link
-                key={location.slug}
+                className="text-link"
                 href={`/service-areas/${location.slug}/`}
-                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
+                key={location.slug}
               >
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                  {location.city}, South Carolina
-                </h3>
-                <p className="theme-copy text-sm leading-relaxed">
-                  {location.summary}
-                </p>
+                {location.city}, SC
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-          Want to confirm fit for your environment?
-        </h2>
-        <p className="theme-copy mb-6 leading-relaxed">
-          The best intake note includes the current platform, your location, the
-          number of users or buildings involved, and what needs to improve first.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <Link
-            href="/contact/"
-            className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-          >
-            Start by Email
+          <Link href="/technologies/" className="text-link mt-6">
+            Explore all technologies
+            <IconArrowRight size={17} aria-hidden="true" />
           </Link>
-          <Link
-            href="/technologies/"
-            className="button-secondary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-          >
-            View All Technologies
-          </Link>
-        </div>
+        </aside>
       </section>
+      <ProjectCTA
+        title={`Let’s make ${technology.name} work for your organization.`}
+      />
     </div>
   );
 }

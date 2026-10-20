@@ -1,5 +1,7 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import Link from "next/link";
+import { IconArrowRight } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
   createBreadcrumbSchema,
@@ -33,83 +35,50 @@ export default function IndustriesPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container">
       <JsonLd id="industries-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="industries-collection-schema" data={collectionSchema} />
-
       <PageIntro
-        eyebrow="Who We Help"
-        title="Industry"
-        accent="Focus"
-        description="NextGridIT supports organizations that need stable systems, practical technical leadership, and a cleaner operating baseline across infrastructure, cloud, security, Wi-Fi, and camera work."
+        eyebrow="Who we help"
+        title="Different environments."
+        accent="The same care."
+        description="Business technology works best when it fits the people and operations it serves. Explore how we approach the needs of your organization."
       />
-
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="resource-grid">
         {industries.map((industry) => (
-          <section key={industry.slug} className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-              {industry.title}
+          <article className="resource-card" key={industry.slug}>
+            <h2>
+              <Link href={`/industries/${industry.slug}/`}>
+                {industry.title}
+              </Link>
             </h2>
-            <p className="theme-copy mb-6 leading-relaxed">{industry.description}</p>
-            <div className="mb-6 flex flex-wrap gap-3">
-              {industry.needs.map((need) => (
-                <span key={need} className="theme-chip px-4 py-2 text-sm">
-                  {need}
-                </span>
-              ))}
-            </div>
-            <div className="mb-6 space-y-3">
-              {industry.relatedServices.map((slug) => {
-                const service = getService(slug);
-
-                if (!service) {
-                  return null;
-                }
-
-                return (
+            <p>{industry.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {industry.relatedServices
+                .slice(0, 3)
+                .map(getService)
+                .filter((service) => service !== undefined)
+                .map((service) => (
                   <Link
+                    className="theme-chip px-3 py-1 text-xs"
                     key={service.slug}
                     href={`/services/${service.slug}/`}
-                    className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]"
                   >
-                    {service.title}
+                    {service.shortLabel}
                   </Link>
-                );
-              })}
+                ))}
             </div>
             <Link
               href={`/industries/${industry.slug}/`}
-              className="button-secondary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+              className="text-link mt-3"
             >
-              View Industry Page
+              Explore the approach
+              <IconArrowRight size={17} aria-hidden="true" />
             </Link>
-          </section>
+          </article>
         ))}
       </div>
-
-      <section className="glass-panel mt-16 grid gap-8 border border-[var(--border)] p-8 lg:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            How to use these industry pages
-          </h2>
-          <p className="theme-copy leading-relaxed">
-            Each industry page is designed to translate the core services into a
-            more familiar operating context. That means highlighting the kinds of
-            systems, risks, and project types that usually matter most in that
-            environment instead of making every audience decode generic IT language
-            on its own.
-          </p>
-        </div>
-        <div className="space-y-4">
-          <Link href="/services/" className="button-secondary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
-            View All Services
-          </Link>
-          <div className="theme-copy rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 text-sm leading-relaxed">
-            Not sure which industry bucket fits best? Start with your location,
-            user count, and the main system problem that needs to be solved.
-          </div>
-        </div>
-      </section>
+      <ProjectCTA />
     </div>
   );
 }

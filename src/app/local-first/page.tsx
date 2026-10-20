@@ -36,7 +36,7 @@ export default function LocalFirstPage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container mx-auto px-4 py-24 min-h-[70vh]">
       <JsonLd id="local-first-breadcrumb-schema" data={breadcrumbSchema} />
 
       <PageIntro
@@ -48,7 +48,7 @@ export default function LocalFirstPage() {
 
       <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <h2 className="theme-heading mb-4  text-2xl font-bold">
             What local-first means here
           </h2>
           <div className="theme-copy space-y-4 leading-relaxed">
@@ -76,7 +76,7 @@ export default function LocalFirstPage() {
         </div>
 
         <aside className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <h2 className="theme-heading mb-4  text-2xl font-bold">
             Typical deployment patterns
           </h2>
           <div className="space-y-4">
@@ -97,17 +97,22 @@ export default function LocalFirstPage() {
 
       <section className="mt-16 grid gap-8 md:grid-cols-3">
         {principles.map((principle) => (
-          <section key={principle.title} className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <section
+            key={principle.title}
+            className="glass-panel border border-[var(--border)] p-8"
+          >
+            <h2 className="theme-heading mb-4  text-2xl font-bold">
               {principle.title}
             </h2>
-            <p className="theme-copy leading-relaxed">{principle.description}</p>
+            <p className="theme-copy leading-relaxed">
+              {principle.description}
+            </p>
           </section>
         ))}
       </section>
 
       <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+        <h2 className="theme-heading mb-4  text-2xl font-bold">
           Related pages
         </h2>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

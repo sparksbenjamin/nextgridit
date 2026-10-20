@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/content/JsonLd";
-import Link from "next/link";
+import { IconCheck } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 import { caseStudies } from "@/lib/site-data";
@@ -18,57 +19,43 @@ export default function CaseStudiesPage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container">
       <JsonLd id="case-studies-breadcrumb-schema" data={breadcrumbSchema} />
       <PageIntro
-        eyebrow="Representative Work"
-        title="Case"
-        accent="Studies"
-        description="These examples are intentionally sanitized to protect client privacy while still showing the kinds of operational and infrastructure problems NextGridIT helps solve."
+        eyebrow="From the project files"
+        title="Real problems."
+        accent="Clearer outcomes."
+        description="A look at the infrastructure, access, and security challenges NextGridIT helps resolve. These client examples are sanitized to protect private environments."
       />
-
-      <div className="space-y-8">
-        {caseStudies.map((study) => (
-          <section id={study.slug} key={study.title} className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-              {study.title}
-            </h2>
-            <div className="grid gap-6 lg:grid-cols-3">
-              <div>
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">Challenge</h3>
-                <p className="theme-copy leading-relaxed">{study.challenge}</p>
-              </div>
-              <div>
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">Approach</h3>
-                <p className="theme-copy leading-relaxed">{study.approach}</p>
-              </div>
-              <div>
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">Outcomes</h3>
-                <ul className="theme-copy space-y-3 leading-relaxed">
-                  {study.outcomes.map((outcome) => (
-                    <li key={outcome} className="theme-chip px-4 py-3">
-                      {outcome}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      {caseStudies.map((study, index) => (
+        <section id={study.slug} className="detail-section" key={study.slug}>
+          <p className="eyebrow mb-3">
+            Project {String(index + 1).padStart(2, "0")} / Sanitized client
+            example
+          </p>
+          <h2 className="mb-8 max-w-3xl">{study.title}</h2>
+          <div className="detail-columns">
+            <div>
+              <h3 className="mb-3 text-lg">The challenge</h3>
+              <p className="theme-copy mb-6">{study.challenge}</p>
+              <h3 className="mb-3 text-lg">The work</h3>
+              <p className="theme-copy">{study.approach}</p>
             </div>
-          </section>
-        ))}
-      </div>
-
-      <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-          Need a similar project?
-        </h2>
-        <p className="theme-copy mb-6 leading-relaxed">
-          The examples above are typical of environments that need more structure, better
-          documentation, and more dependable technical execution without unnecessary complexity.
-        </p>
-        <Link href="/contact/" className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
-          Contact NextGridIT
-        </Link>
-      </section>
+            <aside className="detail-outcomes">
+              <h3 className="mb-5 text-lg">What changed</h3>
+              <ul className="check-list text-sm">
+                {study.outcomes.map((item) => (
+                  <li key={item}>
+                    <IconCheck size={18} aria-hidden="true" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
+        </section>
+      ))}
+      <ProjectCTA title="Have a similar challenge?" />
     </div>
   );
 }

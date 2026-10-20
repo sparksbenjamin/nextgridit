@@ -60,7 +60,10 @@ export default async function PolicyDetailPage({
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: "Home", path: "/" },
     { name: "Policy Starter Kit", path: "/resources/policy-starter-kit/" },
-    { name: policy.title, path: `/resources/policy-starter-kit/${policy.slug}/` },
+    {
+      name: policy.title,
+      path: `/resources/policy-starter-kit/${policy.slug}/`,
+    },
   ]);
   const articleSchema = createArticleSchema({
     title: policy.title,
@@ -72,20 +75,18 @@ export default async function PolicyDetailPage({
   });
 
   return (
-    <div className="container mx-auto min-h-[70vh] px-4 py-24">
+    <div className="page-shell container mx-auto min-h-[70vh] px-4 py-24">
       <JsonLd id={`policy-breadcrumb-${policy.slug}`} data={breadcrumbSchema} />
       <JsonLd id={`policy-article-${policy.slug}`} data={articleSchema} />
 
-      <div className="mb-14 max-w-4xl">
+      <div className="page-intro">
         {policy.eyebrow ? (
           <p className="theme-accent-strong mb-4 text-sm font-mono uppercase tracking-[0.3em]">
             {policy.eyebrow}
           </p>
         ) : null}
-        <h1 className="theme-heading mb-6 font-mono text-4xl font-bold uppercase tracking-wider md:text-5xl">
-          {policy.title}
-        </h1>
-        <div className="theme-rule mb-6 h-1 w-24" />
+        <h1 className="theme-heading mb-6">{policy.title}</h1>
+        <div className="theme-rule mb-6 w-16" />
         <p className="theme-copy max-w-3xl text-lg leading-relaxed">
           {policy.summary}
         </p>
@@ -121,7 +122,7 @@ export default async function PolicyDetailPage({
         </div>
       </div>
 
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] xl:grid-cols-[minmax(0,1fr)_320px]">
+      <section className="reading-layout">
         <article className="glass-panel border border-[var(--border)] p-8">
           <MarkdownContent content={policy.content} />
         </article>
@@ -129,7 +130,7 @@ export default async function PolicyDetailPage({
         <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
           {policy.headings.length > 0 ? (
             <section className="glass-panel border border-[var(--border)] p-8">
-              <h2 className="theme-heading mb-4 font-mono text-xl font-bold">
+              <h2 className="theme-heading mb-4  text-xl font-bold">
                 In this document
               </h2>
               <nav aria-label="Policy sections" className="space-y-3">
@@ -149,7 +150,7 @@ export default async function PolicyDetailPage({
           ) : null}
 
           <section className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-4 font-mono text-xl font-bold">
+            <h2 className="theme-heading mb-4  text-xl font-bold">
               Related services
             </h2>
             <div className="grid gap-4">
@@ -182,7 +183,7 @@ export default async function PolicyDetailPage({
 
           {allPolicies.length > 0 ? (
             <section className="glass-panel border border-[var(--border)] p-8">
-              <h2 className="theme-heading mb-4 font-mono text-xl font-bold">
+              <h2 className="theme-heading mb-4  text-xl font-bold">
                 More policies
               </h2>
               <div className="space-y-4">
@@ -192,7 +193,7 @@ export default async function PolicyDetailPage({
                     href={`/resources/policy-starter-kit/${relatedPolicy.slug}/`}
                     className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
                   >
-                    <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
+                    <h3 className="theme-heading mb-2  text-lg font-bold">
                       {relatedPolicy.title}
                     </h3>
                     <p className="theme-copy text-sm leading-relaxed">

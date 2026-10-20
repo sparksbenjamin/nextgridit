@@ -20,37 +20,58 @@ const frameworks = [
   {
     title: "HIPAA-Aware Support",
     icon: <IconHeartbeat className="w-7 h-7 text-[#39ff14]" />,
-    appliesTo: "Medical offices, healthcare-adjacent practices, and organizations handling protected information.",
+    appliesTo:
+      "Medical offices, healthcare-adjacent practices, and organizations handling protected information.",
     support:
       "We help with secure Microsoft 365 administration, access controls, documentation, infrastructure cleanup, backups, endpoint posture, and practical coordination with the systems you already rely on.",
     links: [
-      { label: "HIPAA Assessment", href: "/services/hipaa-security-assessment/" },
-      { label: "Infrastructure Hardening", href: "/services/infrastructure-hardening/" },
+      {
+        label: "HIPAA Assessment",
+        href: "/services/hipaa-security-assessment/",
+      },
+      {
+        label: "Infrastructure Hardening",
+        href: "/services/infrastructure-hardening/",
+      },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
     ],
   },
   {
     title: "PCI DSS-Aware Projects",
     icon: <IconCreditCard className="w-7 h-7 text-[#00f0ff]" />,
-    appliesTo: "Organizations that process payments and need cleaner network boundaries, documentation, and security practices.",
+    appliesTo:
+      "Organizations that process payments and need cleaner network boundaries, documentation, and security practices.",
     support:
       "We help with segmentation, public or guest Wi-Fi separation, access control improvements, documentation, and infrastructure decisions that support safer payment environments.",
     links: [
       { label: "Network & Wi-Fi", href: "/services/network-wifi/" },
-      { label: "Vulnerability Assessment", href: "/services/vulnerability-assessment/" },
+      {
+        label: "Vulnerability Assessment",
+        href: "/services/vulnerability-assessment/",
+      },
       { label: "Camera Systems", href: "/services/camera-systems/" },
     ],
   },
   {
     title: "NIST-Informed Security Practices",
     icon: <IconShieldCheck className="w-7 h-7 text-[#b026ff]" />,
-    appliesTo: "Municipal, regulated, and security-conscious organizations that want a stronger operational baseline.",
+    appliesTo:
+      "Municipal, regulated, and security-conscious organizations that want a stronger operational baseline.",
     support:
       "Our approach is informed by practical security frameworks, including NIST-aligned thinking, so technical improvements can map back to risk reduction, documentation, and a more defensible operating posture.",
     links: [
-      { label: "Infrastructure Hardening", href: "/services/infrastructure-hardening/" },
-      { label: "Penetration Testing", href: "/services/security-audits-pentesting/" },
-      { label: "Vulnerability Assessment", href: "/services/vulnerability-assessment/" },
+      {
+        label: "Infrastructure Hardening",
+        href: "/services/infrastructure-hardening/",
+      },
+      {
+        label: "Penetration Testing",
+        href: "/services/security-audits-pentesting/",
+      },
+      {
+        label: "Vulnerability Assessment",
+        href: "/services/vulnerability-assessment/",
+      },
       { label: "Cloud Services", href: "/services/microsoft-365/" },
     ],
   },
@@ -63,34 +84,53 @@ export default function CompliancePage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container mx-auto px-4 py-24 min-h-[70vh]">
       <JsonLd id="compliance-breadcrumb-schema" data={breadcrumbSchema} />
       <div className="max-w-4xl mb-14">
         <p className="theme-accent-strong mb-4 text-sm font-mono uppercase tracking-[0.3em]">
           Compliance and frameworks
         </p>
-        <h1 className="theme-heading mb-6 font-mono text-4xl font-bold uppercase tracking-wider md:text-5xl">
-          Compliance-Aware <span className="theme-accent">Security Operations</span>
+        <h1 className="theme-heading mb-6  text-4xl font-bold   md:text-5xl">
+          Compliance-Aware{" "}
+          <span className="theme-accent">Security Operations</span>
         </h1>
         <div className="theme-rule mb-6 h-1 w-24" />
         <p className="theme-copy text-lg leading-relaxed">
-          NextGridIT helps organizations improve real systems and daily operations in ways that support compliance expectations. We focus on technical execution, documentation, and risk reduction rather than empty checklist language.
+          NextGridIT helps organizations improve real systems and daily
+          operations in ways that support compliance expectations. We focus on
+          technical execution, documentation, and risk reduction rather than
+          empty checklist language.
         </p>
       </div>
 
       <div className="grid gap-8 md:grid-cols-3">
         {frameworks.map((framework) => (
-          <section key={framework.title} className="glass-panel border border-[var(--border)] p-8">
+          <section
+            key={framework.title}
+            className="glass-panel border border-[var(--border)] p-8"
+          >
             <div className="mb-5 inline-flex rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-4">
               {framework.icon}
             </div>
-            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">{framework.title}</h2>
-            <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">Common fit</p>
-            <p className="theme-copy mb-5 leading-relaxed">{framework.appliesTo}</p>
-            <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">How we help</p>
-            <p className="theme-copy mb-6 leading-relaxed">{framework.support}</p>
+            <h2 className="theme-heading mb-4  text-2xl font-bold">
+              {framework.title}
+            </h2>
+            <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">
+              Common fit
+            </p>
+            <p className="theme-copy mb-5 leading-relaxed">
+              {framework.appliesTo}
+            </p>
+            <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">
+              How we help
+            </p>
+            <p className="theme-copy mb-6 leading-relaxed">
+              {framework.support}
+            </p>
             <div className="border-t border-[var(--border)] pt-5">
-              <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">Related services</p>
+              <p className="theme-soft mb-3 text-sm font-mono uppercase tracking-[0.2em]">
+                Related services
+              </p>
               <div className="flex flex-wrap gap-2">
                 {framework.links.map((link) => (
                   <Link
@@ -115,21 +155,33 @@ export default function CompliancePage() {
           </div>
           <div className="theme-copy space-y-4 leading-relaxed">
             <p>
-              We do not treat compliance like a disconnected paperwork exercise. We connect security, documentation, identity, networking, Wi-Fi, cameras, and cloud administration to the real operating environment.
+              We do not treat compliance like a disconnected paperwork exercise.
+              We connect security, documentation, identity, networking, Wi-Fi,
+              cameras, and cloud administration to the real operating
+              environment.
             </p>
             <p>
-              That means helping teams improve the technical foundation behind HIPAA-aware healthcare environments, PCI DSS-sensitive payment systems, and NIST-informed security programs without burying the project in enterprise theater.
+              That means helping teams improve the technical foundation behind
+              HIPAA-aware healthcare environments, PCI DSS-sensitive payment
+              systems, and NIST-informed security programs without burying the
+              project in enterprise theater.
             </p>
           </div>
         </div>
 
         <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">Local-First Mindset</h2>
+          <h2 className="theme-heading mb-4  text-2xl font-bold">
+            Local-First Mindset
+          </h2>
           <p className="theme-copy mb-4 leading-relaxed">
-            Many of our solutions are designed to keep ownership, visibility, and performance close to the client environment whenever that is the right fit.
+            Many of our solutions are designed to keep ownership, visibility,
+            and performance close to the client environment whenever that is the
+            right fit.
           </p>
           <p className="theme-copy leading-relaxed">
-            That includes infrastructure choices, camera deployments, and custom local AI processing options where on-site control matters more than handing everything to a third-party platform.
+            That includes infrastructure choices, camera deployments, and custom
+            local AI processing options where on-site control matters more than
+            handing everything to a third-party platform.
           </p>
           <Link
             href="/local-first/"

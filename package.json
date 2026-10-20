@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/check-export.mjs",
-    "preview": "npm run build && wrangler dev",
+    "preview": "npm run build && wrangler dev --host localhost --port 8788",
     "deploy": "npm run build && wrangler deploy",
     "upload": "npm run build && wrangler versions upload",
     "deploy:preview": "npm run upload",
@@ -16,7 +16,8 @@
     "site:sync": "powershell -ExecutionPolicy Bypass -File ./scripts/site-sync.ps1",
     "test": "node --import tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm test && npm run build"
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.40.0",
@@ -34,6 +35,7 @@
     "topojson-client": "^3.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

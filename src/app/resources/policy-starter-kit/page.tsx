@@ -1,6 +1,8 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IconArrowRight, IconDownload } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { PageIntro } from "@/components/content/PageIntro";
 import { getAllPolicies } from "@/lib/policies";
 import {
@@ -40,97 +42,62 @@ export default function PolicyStarterKitPage() {
   });
 
   return (
-    <div className="container mx-auto min-h-[70vh] px-4 py-24">
+    <div className="page-shell container">
       <JsonLd id="policy-kit-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="policy-kit-collection-schema" data={collectionSchema} />
-
       <PageIntro
-        eyebrow="Resource Center"
-        title="Policy Starter"
-        accent="Kit"
-        description="Short, practical IT and security policy documents for small businesses that need better controls without enterprise paperwork."
+        eyebrow="Small business IT policy starter kit"
+        title="Good practices."
+        accent="Put into words."
+        description="Plain-language starting points for AI use, devices, passwords, vendor access, and IT transitions. Read online, download a PDF, and adapt the documents to your organization."
       />
-
-      <section className="mb-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <article className="glass-panel border border-[var(--border)] p-8">
-          <p className="theme-accent-strong mb-3 font-mono text-xs uppercase tracking-[0.28em]">
-            Open source source files
+      <section className="detail-section detail-columns">
+        <div>
+          <h2>A useful starting point.</h2>
+          <p className="theme-copy">
+            Replace placeholders and tailor each document to your systems,
+            contracts, and responsibilities. Have leadership, legal, or
+            compliance review it before treating it as a final policy.
           </p>
-          <h2 className="theme-heading mb-4 font-mono text-3xl font-bold">
-            Browse online, download as PDF, adapt to your environment.
-          </h2>
-          <p className="theme-copy max-w-3xl text-lg leading-relaxed">
-            These starter documents cover the gaps that show up constantly in small
-            business IT: AI use, mobile devices, company computers, passwords and MFA,
-            vendor access, offboarding, and MSP transitions. They are intentionally
-            plain-language so owners, managers, and employees can actually use them.
+        </div>
+        <div>
+          <p className="eyebrow">How to use the kit</p>
+          <p className="theme-copy mt-3">
+            Read → Adapt → Review → Share with your team
           </p>
-        </article>
-
-        <aside className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            How to use them
-          </h2>
-          <div className="space-y-3">
-            {[
-              "Read the browsable page first.",
-              "Download the PDF for staff review or internal discussion.",
-              "Replace placeholders and adapt the language to your tools, contracts, and regulatory obligations.",
-              "Have legal, compliance, or leadership review before treating a starter document as final policy.",
-            ].map((item) => (
-              <div key={item} className="theme-chip px-4 py-4 leading-relaxed">
-                {item}
-              </div>
-            ))}
-          </div>
-        </aside>
-      </section>
-
-      <section className="glass-panel border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-6 font-mono text-2xl font-bold">
-          Starter documents
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {policies.map((policy) => (
-            <article
-              key={policy.slug}
-              className="rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6"
-            >
-              <div className="theme-soft mb-3 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-[0.16em]">
-                <span>{policy.readingTimeMinutes} min read</span>
-                <span>{policy.eyebrow ?? "Policy"}</span>
-              </div>
-              <h3 className="theme-heading mb-3 font-mono text-2xl font-bold">
-                {policy.title}
-              </h3>
-              <p className="theme-copy mb-5 leading-relaxed">{policy.summary}</p>
-              <div className="mb-6 flex flex-wrap gap-2">
-                {policy.tags.map((tag) => (
-                  <span key={tag} className="theme-chip px-3 py-2 text-xs">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href={`/resources/policy-starter-kit/${policy.slug}/`}
-                  className="button-primary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-                >
-                  Browse
-                </Link>
-                {policy.pdf ? (
-                  <a
-                    href={policy.pdf}
-                    className="button-secondary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-                  >
-                    PDF
-                  </a>
-                ) : null}
-              </div>
-            </article>
-          ))}
         </div>
       </section>
+      <div className="resource-grid">
+        {policies.map((policy) => (
+          <article className="resource-card" key={policy.slug}>
+            <p className="resource-meta">
+              {policy.readingTimeMinutes} min read
+            </p>
+            <h2>
+              <Link href={`/resources/policy-starter-kit/${policy.slug}/`}>
+                {policy.title}
+              </Link>
+            </h2>
+            <p>{policy.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-4">
+              <Link
+                className="text-link"
+                href={`/resources/policy-starter-kit/${policy.slug}/`}
+              >
+                Read the document
+                <IconArrowRight size={17} aria-hidden="true" />
+              </Link>
+              {policy.pdf && (
+                <a className="text-link" href={policy.pdf} download>
+                  <IconDownload size={17} aria-hidden="true" />
+                  Download PDF
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      <ProjectCTA title="Need help putting policy into practice?" />
     </div>
   );
 }

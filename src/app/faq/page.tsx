@@ -1,6 +1,11 @@
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageIntro } from "@/components/content/PageIntro";
-import { createBreadcrumbSchema, createFaqSchema, createMetadata } from "@/lib/seo";
+import {
+  createBreadcrumbSchema,
+  createFaqSchema,
+  createMetadata,
+} from "@/lib/seo";
 import { faqs } from "@/lib/site-data";
 
 export const metadata = createMetadata({
@@ -18,27 +23,24 @@ export default function FaqPage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container">
       <JsonLd id="faq-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="faq-page-schema" data={faqSchema} />
-
       <PageIntro
-        eyebrow="Questions"
-        title="Frequently Asked"
-        accent="Questions"
-        description="Straight answers about how NextGridIT works, what kinds of projects are a fit, and how engagements typically begin."
+        eyebrow="Common questions"
+        title="Straight answers."
+        accent="Useful next steps."
+        description="What to expect from NextGridIT, which projects are a good fit, and how an engagement begins."
       />
-
-      <div className="space-y-5">
+      <div className="faq-list">
         {faqs.map((item) => (
-          <section key={item.question} className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-3 font-mono text-2xl font-bold">
-              {item.question}
-            </h2>
-            <p className="theme-copy leading-relaxed">{item.answer}</p>
-          </section>
+          <details key={item.question}>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
         ))}
       </div>
+      <ProjectCTA title="Have a question about your environment?" />
     </div>
   );
 }

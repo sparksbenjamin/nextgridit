@@ -6,7 +6,12 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer2026 } from "@/components/layout/Footer2026";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
-import { locations, services, siteConfig, technologyCatalog } from "@/lib/site-data";
+import {
+  locations,
+  services,
+  siteConfig,
+  technologyCatalog,
+} from "@/lib/site-data";
 
 const themeInitScript = `
   (() => {
@@ -42,7 +47,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#f4f7f1",
+  themeColor: "#f7f8f5",
   width: "device-width",
   initialScale: 1,
 };
@@ -244,7 +249,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} cyber-grid min-h-screen antialiased`}
+        className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} min-h-screen antialiased`}
       >
         <a
           href="#main-content"
@@ -267,7 +272,9 @@ export default function RootLayout({
         ></script>
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
-          <main id="main-content" className="flex-grow pt-16 pb-16 md:pb-0">{children}</main>
+          <main id="main-content" className="flex-grow">
+            {children}
+          </main>
           <Footer2026 />
           <MobileStickyBar />
         </div>

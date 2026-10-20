@@ -2,8 +2,9 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { IconArrowRight, IconBrandGoogle, IconMail, IconPhone } from "@tabler/icons-react";
-import { MapChart } from "@/components/ui/LazyMapChart";
+import { IconArrowRight, IconMail, IconPhone } from "@tabler/icons-react";
+import { PageIntro } from "@/components/content/PageIntro";
+import { siteConfig } from "@/lib/site-data";
 
 type FormState = {
   company: string;
@@ -11,55 +12,17 @@ type FormState = {
   details: string;
   website: string;
 };
-
 const initialFormState: FormState = {
   company: "",
   email: "",
   details: "",
   website: "",
 };
-
-const intakeSteps = [
-  {
-    step: "01",
-    title: "Share the basics",
-    description:
-      "Start with your city, organization name, timeline, and the main issue you want solved first.",
-    signal: "Best first details: location, user count, buildings, and your biggest pain point.",
-  },
-  {
-    step: "02",
-    title: "Environment review",
-    description:
-      "We look at the current setup, inherited vendors, and where the biggest operational risk or drag is showing up.",
-    signal: "Useful context: platforms in use, known outages, weak Wi-Fi, or camera/security gaps.",
-  },
-  {
-    step: "03",
-    title: "Prioritized next steps",
-    description:
-      "The initial response is meant to clarify fit and point toward the most useful next action instead of forcing a generic package.",
-    signal: "That might be a scoped project, a deeper assessment, or a targeted remediation plan.",
-  },
-  {
-    step: "04",
-    title: "Move into project work",
-    description:
-      "Once the direction is clear, the project can move into implementation, cleanup, documentation, and handoff.",
-    signal: "Typical scopes include cloud cleanup, Wi-Fi redesign, security hardening, cameras, and infrastructure work.",
-  },
-] as const;
-
-const intakeChecklist = [
-  "City or project site",
-  "How many users or buildings are involved",
-  "Main system problem to solve first",
-  "Current platforms, vendors, or inherited issues",
-] as const;
-
 export function ContactPageClient() {
   const [form, setForm] = useState<FormState>(initialFormState);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
 
   function buildMailtoHref(values: FormState) {
     const subject = `NextGridIT inquiry from ${values.company || "Website visitor"}`;
@@ -87,7 +50,8 @@ export function ContactPageClient() {
         signal: AbortSignal.timeout(20000),
       });
       const payload = await response.json();
-      if (!response.ok || payload.ok !== true) throw new Error("Delivery failed");
+      if (!response.ok || payload.ok !== true)
+        throw new Error("Delivery failed");
       setStatus("sent");
       setForm(initialFormState);
     } catch {
@@ -96,241 +60,163 @@ export function ContactPageClient() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <div className="mb-16">
-        <h1 className="theme-heading mb-6 font-mono text-4xl font-bold uppercase tracking-wider md:text-5xl">
-          Contact <span className="theme-accent-strong">NextGridIT</span>
-        </h1>
-        <div className="theme-rule mb-6 h-1 w-24" />
-      </div>
-
-      <div className="grid lg:grid-cols-2 gap-12 items-start">
-        <div className="glass-panel relative border border-[var(--border)] p-8">
-          <div className="absolute right-0 top-0 p-4 opacity-50">
-            <div className="h-12 w-12 border-r-2 border-t-2 border-[var(--accent)]" />
-          </div>
-
-          <div className="mb-8">
-            <p className="theme-copy mb-2 border-l-2 border-[var(--accent)] pl-3 font-mono text-sm">
-              START THE PROJECT CONVERSATION
-            </p>
-            <p className="theme-soft font-sans text-sm">
-              Send your project details directly to{" "}
-              <a className="theme-link" href="mailto:contact@nextgridit.com">
-                contact@nextgridit.com
-              </a>
-              . You can also reach us directly by phone or email at any time.
-            </p>
-          </div>
-
-
-          <form className="space-y-6 font-mono" onSubmit={handleSubmit} aria-busy={status === "sending"}>
-            <fieldset disabled={status === "sending"} className="space-y-6">
-            <div className="hidden" aria-hidden="true">
+    <div className="page-shell container">
+      <PageIntro
+        eyebrow="Let’s talk about your project"
+        title="A good next step starts"
+        accent="with a conversation."
+        description="Tell us what is getting in the way. We will help you clarify the problem, explore the options, and decide whether NextGridIT is the right fit."
+      />
+      <div className="contact-layout">
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+          aria-busy={status === "sending"}
+        >
+          <h2>What can we help you with?</h2>
+          <p>
+            A few details are enough to get started. Required fields are marked
+            below.
+          </p>
+          <fieldset disabled={status === "sending"}>
+            <div hidden aria-hidden="true">
               <label htmlFor="website">Website</label>
               <input
                 id="website"
+                name="website"
                 type="text"
                 tabIndex={-1}
                 autoComplete="off"
                 value={form.website}
-                onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
+                onChange={(event) =>
+                  setForm({ ...form, website: event.target.value })
+                }
               />
             </div>
-            <div>
-              <label htmlFor="company" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Company Name</label>
+            <div className="form-field">
+              <label htmlFor="company">
+                Organization <span>Optional</span>
+              </label>
               <input
                 id="company"
                 name="company"
+                type="text"
                 autoComplete="organization"
                 maxLength={200}
-                type="text"
                 value={form.company}
-                onChange={(event) => setForm((current) => ({ ...current, company: event.target.value }))}
-                className="theme-input w-full rounded-xl p-3"
-                placeholder="Enter organization name..."
+                onChange={(event) =>
+                  setForm({ ...form, company: event.target.value })
+                }
+                className="theme-input"
+                placeholder="Your business or organization"
               />
             </div>
-            <div>
-              <label htmlFor="email" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Email</label>
+            <div className="form-field">
+              <label htmlFor="email">
+                Email address <span>Required</span>
+              </label>
               <input
                 id="email"
                 name="email"
+                type="email"
                 autoComplete="email"
                 maxLength={320}
-                type="email"
                 required
                 value={form.email}
-                onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-                className="theme-input w-full rounded-xl p-3"
-                placeholder="Enter your email address..."
+                onChange={(event) =>
+                  setForm({ ...form, email: event.target.value })
+                }
+                className="theme-input"
+                placeholder="you@yourcompany.com"
               />
             </div>
-            <div>
-              <label htmlFor="details" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Project Details</label>
+            <div className="form-field">
+              <label htmlFor="details">
+                Tell us about the project <span>Required</span>
+              </label>
               <textarea
                 id="details"
                 name="details"
-                minLength={10}
-                maxLength={5000}
-                rows={5}
                 required
+                maxLength={10000}
                 value={form.details}
-                onChange={(event) => setForm((current) => ({ ...current, details: event.target.value }))}
-                className="theme-input w-full resize-none rounded-xl p-3"
-                placeholder="Tell us about your infrastructure, cloud, Wi-Fi, camera, security, or compliance-related needs..."
+                onChange={(event) =>
+                  setForm({ ...form, details: event.target.value })
+                }
+                className="theme-input"
+                aria-describedby="project-help"
+                placeholder="What needs to improve? Include your location and timeline if you know them."
               />
             </div>
-            {status === "sent" && (
-              <p
-                className="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-strong)] theme-copy px-4 py-3 text-sm leading-relaxed"
-                role="status"
-              >
-                Your message has been sent. Thank you for contacting NextGridIT.
-              </p>
-            )}
-            {status === "error" && (
-              <p role="alert" className="theme-copy text-sm leading-relaxed">
-                We could not confirm delivery. Your details are still here. Try again or{" "}
-                <a className="theme-link underline" href={buildMailtoHref(form)}>open a pre-filled email</a>.
-              </p>
-            )}
-            <p className="theme-soft text-sm">
-              Please leave out passwords and sensitive client or patient information. See our{" "}
-              <Link href="/privacy/" className="theme-link underline">privacy policy</Link>.
+            <p id="project-help" className="form-note">
+              Please leave out passwords and sensitive client or patient
+              information. Read our <Link href="/privacy/">privacy policy</Link>
+              .
             </p>
-            <button
-              type="submit"
-              className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest"
-            >
-              <span>{status === "sending" ? "Sending…" : "Send Message"}</span>
-              <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <button type="submit" className="button-primary w-full">
+              {status === "sending" ? "Sending your message…" : "Send Message"}
+              <IconArrowRight size={18} aria-hidden="true" />
             </button>
-            </fieldset>
-          </form>
-
-          <section className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
-            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-              <div>
-                <p className="theme-accent-strong mb-2 font-mono text-xs uppercase tracking-[0.26em]">
-                  Intake Flow
-                </p>
-                <h2 className="theme-heading font-mono text-xl font-bold uppercase tracking-wide">
-                  How the first step usually works
-                </h2>
-              </div>
-              <p className="theme-soft max-w-md font-sans text-sm leading-relaxed">
-                The goal is a cleaner project start, not a generic sales script.
-                Email is the fastest way to establish fit and get the right next
-                move in front of you.
-              </p>
+          </fieldset>
+          {status === "sent" && (
+            <div role="status" className="form-message">
+              Your message has been sent. Thank you for getting in touch—we will
+              follow up by email.
             </div>
-
-            <div className="relative grid gap-4 sm:grid-cols-2">
-              {intakeSteps.map((step) => (
-                <div key={step.step} className="relative">
-                  <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)]">
-                    <span className="theme-heading font-mono text-sm font-bold tracking-[0.2em]">
-                      {step.step}
-                    </span>
-                  </div>
-                  <div className="rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-4">
-                    <h3 className="theme-heading mb-2 font-mono text-base font-bold">
-                      {step.title}
-                    </h3>
-                    <p className="theme-copy text-sm leading-relaxed">
-                      {step.description}
-                    </p>
-                    <p className="theme-soft mt-3 text-xs leading-relaxed">
-                      {step.signal}
-                    </p>
-                  </div>
-                </div>
-              ))}
+          )}
+          {status === "error" && (
+            <div role="alert" className="form-message">
+              We couldn’t confirm delivery. Your details are still here. Please
+              try again or{" "}
+              <a href={buildMailtoHref(form)}>open a pre-filled email</a>.
             </div>
+          )}
+        </form>
+        <aside className="contact-aside">
+          <section>
+            <p className="eyebrow mb-3">Prefer to reach out directly?</p>
+            <h2>We’re easy to get in touch with.</h2>
+            <a className="contact-direct" href={`mailto:${siteConfig.email}`}>
+              <IconMail size={19} aria-hidden="true" />
+              {siteConfig.email}
+            </a>
+            <a className="contact-direct" href={`tel:${siteConfig.phone}`}>
+              <IconPhone size={19} aria-hidden="true" />
+              {siteConfig.phoneDisplay}
+            </a>
           </section>
-
-          <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
-            <p className="theme-accent-strong mb-3 font-mono text-xs uppercase tracking-[0.24em]">
-              Helpful first-email details
+          <section>
+            <h2>What happens next</h2>
+            <ol>
+              <li>We review your inquiry and clarify what you need.</li>
+              <li>We discuss your environment, priorities, and project fit.</li>
+              <li>
+                You receive a proposed scope and clear deliverables before work
+                begins.
+              </li>
+            </ol>
+            <Link className="text-link" href="/process/">
+              More about our approach
+              <IconArrowRight size={16} />
+            </Link>
+          </section>
+          <section>
+            <h2>
+              Local to the Upstate.
+              <br />
+              Flexible about the work.
+            </h2>
+            <p>
+              Based in Seneca, serving Clemson, Anderson, Easley, and
+              Greenville. Remote work and project travel are available when the
+              scope calls for them.
             </p>
-            <div className="flex flex-wrap gap-3">
-              {intakeChecklist.map((item) => (
-                <span key={item} className="theme-chip px-4 py-2 text-sm">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-8">
-          <div className="glass-panel border border-[var(--border)] p-8">
-            <div className="flex items-center gap-3 mb-4">
-              <IconMail className="theme-accent h-5 w-5" />
-              <h2 className="theme-heading font-mono text-xl uppercase tracking-wider">Direct Contact</h2>
-            </div>
-            <div className="theme-copy space-y-3 font-sans leading-relaxed">
-              <p>Email: <a className="theme-link" href="mailto:contact@nextgridit.com">contact@nextgridit.com</a></p>
-              <p className="flex items-center gap-2"><IconPhone className="theme-accent h-4 w-4" /><a className="theme-link" href="tel:8647800202">864-780-0202</a></p>
-              <p>If you already know what you need, reach out directly with your location, timeline, and the main problem you want solved. We currently emphasize custom projects and tailored support engagements.</p>
-            </div>
-          </div>
-
-          <div className="glass-panel border border-[var(--border)] p-8">
-            <div className="flex items-center gap-3 mb-4">
-              <IconBrandGoogle className="theme-accent-alt h-5 w-5" />
-              <h2 className="theme-heading font-mono text-xl uppercase tracking-wider">Find Us on <span className="theme-accent-alt">Google</span></h2>
-            </div>
-            <div className="theme-copy space-y-3 font-sans leading-relaxed">
-              <p>NextGridIT is based in Seneca, South Carolina and serves businesses across Upstate SC. You can find us on Google for directions, reviews, and quick contact.</p>
-              <a
-                href="https://www.google.com/maps/search/NextGridIT+Seneca+SC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-secondary inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-[0.2em]"
-              >
-                <span>View on Google Maps</span>
-                <IconArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          <div className="glass-panel flex h-[400px] flex-col border border-[var(--border)] p-8">
-            <h3 className="theme-heading mb-2 font-mono text-xl uppercase tracking-wider">Local <span className="theme-accent">Service Area</span></h3>
-            <p className="theme-copy mb-4 font-sans text-sm">
-              Primary local coverage includes Seneca, Clemson, Anderson, Easley, and Greenville, South Carolina. Travel is available for larger projects and specialty engagements. Each pin jumps to the matching local page.
-            </p>
-            <div className="relative min-h-[250px] w-full flex-grow overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)]">
-              <MapChart />
-            </div>
-          </div>
-
-          <div className="glass-panel border border-[var(--border)] border-l-[var(--accent-alt)] p-8">
-            <h3 className="theme-heading mb-2 font-mono text-xl uppercase tracking-wider">Infrastructure and <span className="theme-accent-alt">Compliance Support</span></h3>
-            <p className="theme-copy font-sans leading-relaxed">
-              NextGridIT supports MSP transitions, vendor lockout recovery, HIPAA security assessments, vulnerability remediation, cloud services, camera deployments, and infrastructure hardening for organizations that need technically strong execution.
-            </p>
-            <div className="theme-accent-alt mt-4 flex items-center gap-2 font-mono text-sm">
-              <span className="h-2 w-2 rounded-full bg-[var(--accent-alt)] animate-ping" />
-              STATUS: ACCEPTING NEW PROJECTS
-            </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/faq/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
-                FAQ
-              </Link>
-              <Link href="/process/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
-                Process
-              </Link>
-              <Link href="/project-fit/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
-                Project Fit
-              </Link>
-              <Link href="/service-areas/" className="button-secondary rounded-full px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.2em]">
-                Service Areas
-              </Link>
-            </div>
-          </div>
-        </div>
+            <Link className="text-link" href="/service-areas/">
+              Explore our service areas
+              <IconArrowRight size={16} />
+            </Link>
+          </section>
+        </aside>
       </div>
     </div>
   );

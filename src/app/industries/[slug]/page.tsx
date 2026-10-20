@@ -1,10 +1,17 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IconArrowRight, IconCheck } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
-import { getIndustry, getService, industries, locations } from "@/lib/site-data";
+import {
+  getIndustry,
+  getService,
+  industries,
+  locations,
+} from "@/lib/site-data";
 
 type Params = {
   slug: string;
@@ -58,96 +65,89 @@ export default async function IndustryDetailPage({
   );
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <JsonLd id={`industry-breadcrumb-${industry.slug}`} data={breadcrumbSchema} />
-
-      <PageIntro
-        eyebrow="Industry"
-        title={industry.title}
-        description={industry.description}
+    <div className="page-shell container">
+      <JsonLd
+        id={`industry-breadcrumb-${industry.slug}`}
+        data={breadcrumbSchema}
       />
-
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Common needs in this environment
-          </h2>
-          <div className="space-y-4">
+      <nav className="breadcrumbs" aria-label="Breadcrumb">
+        <Link href="/industries/">Who we help</Link>
+        <span aria-hidden="true">/</span>
+        <span>{industry.title}</span>
+      </nav>
+      <div className="detail-hero">
+        <PageIntro
+          eyebrow="An approach that fits your organization"
+          title={industry.title}
+          description={industry.summary}
+        >
+          <Link href="/contact/" className="button-primary">
+            Discuss your project
+            <IconArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </PageIntro>
+        <aside className="detail-outcomes">
+          <h2>Where we focus</h2>
+          <ul className="check-list text-sm">
             {industry.needs.map((need) => (
-              <div key={need} className="theme-chip px-5 py-4 leading-relaxed">
-                {need}
-              </div>
+              <li key={need}>
+                <IconCheck size={18} aria-hidden="true" />
+                <span>{need}</span>
+              </li>
             ))}
-          </div>
-        </div>
-
-        <aside className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Related services
-          </h2>
-          <div className="space-y-4">
-            {industry.relatedServices.map((slug) => {
-              const service = getService(slug);
-
-              if (!service) {
-                return null;
-              }
-
-              return (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}/`}
-                  className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
-                >
-                  <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                    {service.title}
-                  </h3>
-                  <p className="theme-copy text-sm leading-relaxed">{service.summary}</p>
-                </Link>
-              );
-            })}
-          </div>
+          </ul>
         </aside>
+      </div>
+      <section className="detail-section">
+        <p className="eyebrow mb-3">Understanding your environment</p>
+        <h2>Practical support for the way you work.</h2>
+        <p>{industry.description}</p>
       </section>
-
-      <section className="mt-16 grid gap-8 lg:grid-cols-2">
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Relevant service areas
-          </h2>
-          <div className="space-y-4">
-            {relatedLocations.map((location) => (
+      <section className="detail-section">
+        <h2>Services that fit.</h2>
+        <div className="resource-grid">
+          {industry.relatedServices
+            .map(getService)
+            .filter((service) => service !== undefined)
+            .map((service) => (
               <Link
-                key={location.slug}
-                href={`/service-areas/${location.slug}/`}
-                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
+                href={`/services/${service.slug}/`}
+                key={service.slug}
+                className="related-link"
               >
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                  {location.city}, South Carolina
-                </h3>
-                <p className="theme-copy text-sm leading-relaxed">{location.summary}</p>
+                <h3>{service.title}</h3>
+                <p>{service.summary}</p>
+                <span className="text-link">
+                  Explore the service
+                  <IconArrowRight size={17} aria-hidden="true" />
+                </span>
               </Link>
             ))}
-          </div>
-        </div>
-
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Start a project in this environment
-          </h2>
-          <p className="theme-copy mb-6 leading-relaxed">
-            The best intake note for this kind of project includes your location,
-            the number of users or buildings involved, and the main operational
-            problem you want solved first.
-          </p>
-          <Link
-            href="/contact/"
-            className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-          >
-            Contact NextGridIT
-          </Link>
         </div>
       </section>
+      <section className="detail-section">
+        <h2>Local to your organization.</h2>
+        <p>
+          On-site support across the Upstate, with remote work and project
+          travel when appropriate.
+        </p>
+        <nav
+          aria-label="Related service areas"
+          className="mt-4 flex flex-wrap gap-5"
+        >
+          {relatedLocations.map((location) => (
+            <Link
+              className="text-link"
+              key={location.slug}
+              href={`/service-areas/${location.slug}/`}
+            >
+              {location.city}, SC
+              <IconArrowRight size={16} aria-hidden="true" />
+            </Link>
+          ))}
+        </nav>
+      </section>
+      <ProjectCTA />
     </div>
   );
 }

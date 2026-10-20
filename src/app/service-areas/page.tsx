@@ -1,5 +1,7 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import Link from "next/link";
+import { IconArrowRight } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
   createBreadcrumbSchema,
@@ -33,82 +35,54 @@ export default function ServiceAreasPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container">
       <JsonLd id="service-areas-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="service-areas-collection-schema" data={collectionSchema} />
-
       <PageIntro
-        eyebrow="Coverage"
-        title="Service"
-        accent="Areas"
-        description="NextGridIT primarily serves organizations in Upstate South Carolina, with local support centered on cities where on-site infrastructure, network, and camera work matter most."
+        eyebrow="Local knowledge. Practical support."
+        title="Rooted in"
+        accent="Upstate South Carolina."
+        description="Based in Seneca, with on-site project work across the Upstate. Remote support and travel are available when the project calls for them."
       />
-
-      <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+      <div className="resource-grid">
         {locations.map((location) => (
-          <section key={location.slug} className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-3 font-mono text-2xl font-bold">
-              {location.city}, SC
+          <article key={location.slug} className="resource-card">
+            <p className="eyebrow">{location.county}</p>
+            <h2>
+              <Link href={`/service-areas/${location.slug}/`}>
+                {location.city}, SC
+              </Link>
             </h2>
-            <p className="theme-copy mb-6 leading-relaxed">{location.description}</p>
-            <div className="mb-6 flex flex-wrap gap-3">
-              {location.focus.map((focus) => (
-                <span key={focus} className="theme-chip px-4 py-2 text-sm">
-                  {focus}
-                </span>
-              ))}
-            </div>
-            <div className="mb-6 space-y-3">
-              {location.relatedServices.map((slug) => {
-                const service = getService(slug);
-
-                if (!service) {
-                  return null;
-                }
-
-                return (
+            <p>{location.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {location.relatedServices
+                .slice(0, 3)
+                .map(getService)
+                .filter((service) => service !== undefined)
+                .map((service) => (
                   <Link
+                    className="theme-chip px-3 py-1 text-xs"
                     key={service.slug}
                     href={`/services/${service.slug}/`}
-                    className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm theme-copy hover:border-[var(--border-strong)]"
                   >
                     {service.shortLabel}
                   </Link>
-                );
-              })}
+                ))}
             </div>
             <Link
               href={`/service-areas/${location.slug}/`}
-              className="button-secondary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+              className="text-link mt-3"
             >
-              View Local Page
+              Explore local services
+              <IconArrowRight size={17} aria-hidden="true" />
             </Link>
-          </section>
+          </article>
         ))}
       </div>
-
-      <section className="glass-panel mt-16 grid gap-8 border border-[var(--border)] p-8 lg:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Local coverage with project travel when it makes sense
-          </h2>
-          <p className="theme-copy leading-relaxed">
-            These city pages are intended to make local relevance clearer for
-            organizations that want nearby support, on-site project work, and a
-            provider that understands the Upstate South Carolina market. Travel is
-            still available when the project scope justifies it.
-          </p>
-        </div>
-        <div className="space-y-4">
-          <Link href="/contact/" className="button-primary inline-block rounded-full px-5 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
-            Start a Local Project
-          </Link>
-          <div className="theme-copy rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 text-sm leading-relaxed">
-            Best intake details: city, organization type, timeline, and whether
-            the project is cloud, network, Wi-Fi, camera, or security-focused.
-          </div>
-        </div>
-      </section>
+      <ProjectCTA
+        title="Planning work in the Upstate—or beyond?"
+        description="Share your location, timeline, and the systems involved. We will help you determine the right approach for the project."
+      />
     </div>
   );
 }

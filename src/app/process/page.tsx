@@ -66,7 +66,7 @@ export default function ProcessPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container mx-auto px-4 py-24 min-h-[70vh]">
       <JsonLd id="process-breadcrumb-schema" data={breadcrumbSchema} />
       <JsonLd id="process-itemlist-schema" data={processSchema} />
       <PageIntro
@@ -94,7 +94,7 @@ export default function ProcessPage() {
               <p className="theme-accent-strong mb-2 font-mono text-xs uppercase tracking-[0.26em]">
                 Stage {step.step}
               </p>
-              <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+              <h2 className="theme-heading mb-4  text-2xl font-bold">
                 {step.title}
               </h2>
               <p className="theme-copy leading-relaxed">{step.description}</p>
@@ -104,23 +104,29 @@ export default function ProcessPage() {
               <p className="theme-accent-alt mb-3 font-mono text-xs uppercase tracking-[0.24em]">
                 What matters here
               </p>
-              <p className="theme-copy text-sm leading-relaxed">{step.signal}</p>
+              <p className="theme-copy text-sm leading-relaxed">
+                {step.signal}
+              </p>
             </div>
           </section>
         ))}
       </div>
 
       <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+        <h2 className="theme-heading mb-4  text-2xl font-bold">
           What the process is designed to avoid
         </h2>
         <p className="theme-copy mb-6 leading-relaxed">
-          The goal is to avoid vague support relationships, undocumented changes, and technical work
-          that creates more confusion than it solves. NextGridIT is designed for clients that want
-          clear action, realistic recommendations, and systems that are easier to operate after the
-          work is complete.
+          The goal is to avoid vague support relationships, undocumented
+          changes, and technical work that creates more confusion than it
+          solves. NextGridIT is designed for clients that want clear action,
+          realistic recommendations, and systems that are easier to operate
+          after the work is complete.
         </p>
-        <Link href="/contact/" className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]">
+        <Link
+          href="/contact/"
+          className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
+        >
           Start the Intake
         </Link>
       </section>

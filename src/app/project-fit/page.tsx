@@ -57,7 +57,7 @@ export default function ProjectFitPage() {
   ]);
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
+    <div className="page-shell container mx-auto px-4 py-24 min-h-[70vh]">
       <JsonLd id="project-fit-breadcrumb-schema" data={breadcrumbSchema} />
 
       <PageIntro
@@ -69,13 +69,19 @@ export default function ProjectFitPage() {
 
       <section className="grid gap-8 md:grid-cols-3">
         {fitSignals.map((signal) => (
-          <section key={signal.title} className="glass-panel border border-[var(--border)] p-8">
-            <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <section
+            key={signal.title}
+            className="glass-panel border border-[var(--border)] p-8"
+          >
+            <h2 className="theme-heading mb-4  text-2xl font-bold">
               {signal.title}
             </h2>
             <div className="space-y-3">
               {signal.items.map((item) => (
-                <div key={item} className="theme-chip px-4 py-3 leading-relaxed">
+                <div
+                  key={item}
+                  className="theme-chip px-4 py-3 leading-relaxed"
+                >
                   {item}
                 </div>
               ))}
@@ -86,7 +92,7 @@ export default function ProjectFitPage() {
 
       <section className="glass-panel mt-16 border border-[var(--border)] p-8">
         <div className="mb-8 max-w-3xl">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <h2 className="theme-heading mb-4  text-2xl font-bold">
             Visual fit map
           </h2>
           <p className="theme-copy leading-relaxed">
@@ -142,7 +148,7 @@ export default function ProjectFitPage() {
 
       <section className="mt-16 grid gap-8 lg:grid-cols-2">
         <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <h2 className="theme-heading mb-4  text-2xl font-bold">
             Where NextGridIT is strongest
           </h2>
           <div className="theme-copy space-y-4 leading-relaxed">
@@ -155,15 +161,15 @@ export default function ProjectFitPage() {
             <p>
               That usually means inherited systems, mixed vendors, unclear
               documentation, coverage issues, cloud cleanup, public-facing
-              networks, hybrid integration needs, local-first requirements, or
-              a need to reduce technical risk without creating enterprise
+              networks, hybrid integration needs, local-first requirements, or a
+              need to reduce technical risk without creating enterprise
               overhead.
             </p>
           </div>
         </div>
 
         <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
+          <h2 className="theme-heading mb-4  text-2xl font-bold">
             Best next pages
           </h2>
           <div className="grid gap-4 sm:grid-cols-2">

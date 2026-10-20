@@ -1,6 +1,8 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IconArrowRight, IconCheck } from "@tabler/icons-react";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { notFound } from "next/navigation";
 import { PageIntro } from "@/components/content/PageIntro";
 import { LocationAreaMap } from "@/components/ui/LazyLocationAreaMap";
@@ -11,7 +13,12 @@ import {
   createMetadata,
   createPlaceSchema,
 } from "@/lib/seo";
-import { getLocation, getService, industries, locations } from "@/lib/site-data";
+import {
+  getLocation,
+  getService,
+  industries,
+  locations,
+} from "@/lib/site-data";
 
 type Params = {
   slug: string;
@@ -86,143 +93,106 @@ export default async function ServiceAreaDetailPage({
   );
 
   return (
-    <div className="container mx-auto px-4 py-24 min-h-[70vh]">
-      <JsonLd id={`service-area-breadcrumb-${location.slug}`} data={breadcrumbSchema} />
-      <JsonLd id={`service-area-place-${location.slug}`} data={placeSchema} />
-      <JsonLd id={`service-area-services-${location.slug}`} data={localServicesSchema} />
-      <JsonLd id={`service-area-faq-${location.slug}`} data={faqSchema} />
-
-      <PageIntro
-        eyebrow="Local Service Area"
-        title={`IT Services in ${location.city}`}
-        accent="South Carolina"
-        description={location.description}
+    <div className="page-shell container">
+      <JsonLd
+        id={`service-area-breadcrumb-${location.slug}`}
+        data={breadcrumbSchema}
       />
-
-      <section className="glass-panel mb-16 grid gap-8 border border-[var(--border)] p-8 lg:grid-cols-[0.85fr_1.15fr]">
-        <div>
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            General area around {location.city}
-          </h2>
-          <p className="theme-copy mb-6 leading-relaxed">
-            This simple map highlights the general area of {location.city},{" "}
-            South Carolina within the broader Upstate service region. It is meant
-            as a quick local reference rather than a street-level coverage map.
-          </p>
-          <div className="space-y-3">
-            <div className="theme-chip px-5 py-4 leading-relaxed">
-              County: {location.county}
-            </div>
-            <div className="theme-chip px-5 py-4 leading-relaxed">
-              Nearby service cities: {location.nearbyCities.join(", ")}
-            </div>
-            <div className="theme-chip px-5 py-4 leading-relaxed">
-              Best for organizations that want on-site project work with an
-              Upstate South Carolina focus.
-            </div>
-          </div>
-        </div>
-
-        <LocationAreaMap currentSlug={location.slug} />
-      </section>
-
-      <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Typical local project focus
-          </h2>
-          <div className="space-y-4">
-            {location.focus.map((focus) => (
-              <div key={focus} className="theme-chip px-5 py-4 leading-relaxed">
-                {focus}
-              </div>
+      <JsonLd id={`service-area-place-${location.slug}`} data={placeSchema} />
+      <JsonLd
+        id={`service-area-services-${location.slug}`}
+        data={localServicesSchema}
+      />
+      <JsonLd id={`service-area-faq-${location.slug}`} data={faqSchema} />
+      <nav className="breadcrumbs" aria-label="Breadcrumb">
+        <Link href="/service-areas/">Service areas</Link>
+        <span aria-hidden="true">/</span>
+        <span>{location.city}, SC</span>
+      </nav>
+      <div className="detail-hero">
+        <PageIntro
+          eyebrow="Upstate South Carolina"
+          title={`IT services in ${location.city}.`}
+          description={location.summary}
+        >
+          <Link href="/contact/" className="button-primary">
+            Discuss your project
+            <IconArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </PageIntro>
+        <aside className="detail-outcomes">
+          <h2>Local project focus</h2>
+          <ul className="check-list text-sm">
+            {location.focus.map((item) => (
+              <li key={item}>
+                <IconCheck size={18} aria-hidden="true" />
+                <span>{item}</span>
+              </li>
             ))}
-          </div>
-        </div>
-
-        <aside className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Services commonly requested
-          </h2>
-          <div className="space-y-4">
-            {location.relatedServices.map((slug) => {
-              const service = getService(slug);
-
-              if (!service) {
-                return null;
-              }
-
-              return (
-                <Link
-                  key={service.slug}
-                  href={`/services/${service.slug}/`}
-                  className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
-                >
-                  <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                    {service.title}
-                  </h3>
-                  <p className="theme-copy text-sm leading-relaxed">{service.summary}</p>
-                </Link>
-              );
-            })}
-          </div>
+          </ul>
         </aside>
-      </section>
-
-      <section className="mt-16 grid gap-8 lg:grid-cols-2">
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Industries commonly supported here
-          </h2>
-          <div className="space-y-4">
-            {relatedIndustries.map((industry) => (
+      </div>
+      <section className="detail-section">
+        <h2>Hands-on help. Close to home.</h2>
+        <p>{location.description}</p>
+        <div className="resource-grid mt-6">
+          {location.relatedServices
+            .map(getService)
+            .filter((service) => service !== undefined)
+            .map((service) => (
               <Link
-                key={industry.slug}
-                href={`/industries/${industry.slug}/`}
-                className="block rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5 hover:border-[var(--border-strong)]"
+                className="related-link"
+                href={`/services/${service.slug}/`}
+                key={service.slug}
               >
-                <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                  {industry.title}
-                </h3>
-                <p className="theme-copy text-sm leading-relaxed">{industry.summary}</p>
+                <h3>{service.title}</h3>
+                <p>{service.summary}</p>
+                <span className="text-link">
+                  Explore the service
+                  <IconArrowRight size={17} aria-hidden="true" />
+                </span>
               </Link>
             ))}
-          </div>
-        </div>
-
-        <div className="glass-panel border border-[var(--border)] p-8">
-          <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
-            Planning work in {location.city}?
-          </h2>
-          <p className="theme-copy mb-6 leading-relaxed">
-            Include the project site address, target timeline, and whether the
-            work is primarily cloud, networking, Wi-Fi, camera, or security
-            related. That makes it much easier to scope the next step quickly.
-          </p>
-          <Link
-            href="/contact/"
-            className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-          >
-            Start the Conversation
-          </Link>
         </div>
       </section>
-
-      <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-6 font-mono text-2xl font-bold">
-          Frequently asked questions
-        </h2>
-        <div className="space-y-5">
-          {location.faq.map((item) => (
-            <div key={item.question} className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-5">
-              <h3 className="theme-heading mb-2 font-mono text-lg font-bold">
-                {item.question}
-              </h3>
-              <p className="theme-copy leading-relaxed">{item.answer}</p>
+      <section className="detail-section detail-columns">
+        <div>
+          <p className="eyebrow mb-3">In the neighborhood</p>
+          <h2>{location.city} and the surrounding area.</h2>
+          <p className="theme-copy">
+            Serving organizations in {location.county}. Nearby communities
+            include {location.nearbyCities.join(", ")}. This map shows the
+            general area; contact us to discuss your specific site.
+          </p>
+          <div className="mt-6">
+            <h3 className="mb-3 text-lg">Organizations we work with</h3>
+            <div className="flex flex-wrap gap-x-5 gap-y-2">
+              {relatedIndustries.map((industry) => (
+                <Link
+                  className="text-link"
+                  href={`/industries/${industry.slug}/`}
+                  key={industry.slug}
+                >
+                  {industry.title}
+                </Link>
+              ))}
             </div>
+          </div>
+        </div>
+        <LocationAreaMap currentSlug={location.slug} />
+      </section>
+      <section className="detail-section">
+        <h2>Common questions.</h2>
+        <div className="faq-list">
+          {location.faq.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
           ))}
         </div>
       </section>
+      <ProjectCTA title={`Planning a project in ${location.city}?`} />
     </div>
   );
 }

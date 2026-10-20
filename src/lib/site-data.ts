@@ -63,7 +63,7 @@ export const services: Service[] = [
     shortLabel: "MSP Transition",
     title: "MSP Transition and Vendor Independence",
     summary:
-      "We help you take back control of your IT — from firing your MSP to standing up your own systems, ensuring nothing gets left behind.",
+      "Plan a controlled transition from your MSP, recover ownership of your systems, and give your team a documented path forward.",
     description:
       "Many businesses outgrow their MSP but don't know how to leave. NextGridIT guides organizations through the full transition: auditing what the MSP currently manages, identifying the right internal hires or replacement systems, coordinating the cutover, and verifying that the former provider no longer has access to anything. The goal is a clean break where you own every system, every credential, and every document.",
     audience:
@@ -113,7 +113,7 @@ export const services: Service[] = [
     shortLabel: "Vendor Lockout Recovery",
     title: "Vendor Lockout Recovery",
     summary:
-      "When your IT provider walks away and takes your credentials with them, we break back in and hand you the keys — legally.",
+      "Recover authorized access to the systems your organization owns, reset credentials, and establish a clear handoff.",
     description:
       "Vendor lockout happens more often than anyone talks about. A provider walks away, gets fired, or simply stops responding — and suddenly you can't access your own network, cameras, firewall, or cloud services. NextGridIT recovers access to systems you legally own. Every engagement starts with proper authorization documentation so there's a clear paper trail if questions arise later.",
     audience:
