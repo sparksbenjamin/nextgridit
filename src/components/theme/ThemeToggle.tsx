@@ -14,7 +14,8 @@ function applyTheme(theme: ThemeMode) {
   const root = document.documentElement;
   root.dataset.theme = theme;
   root.style.colorScheme = theme === "light" ? "light" : "dark";
-  window.localStorage.setItem(STORAGE_KEY, theme);
+  try { window.localStorage.setItem(STORAGE_KEY, theme); } catch { /* Storage is optional. */ }
+  window.dispatchEvent(new Event("nextgridit:theme-changed"));
 }
 
 function shouldIgnoreKeyTarget(target: EventTarget | null) {
@@ -31,22 +32,26 @@ function shouldIgnoreKeyTarget(target: EventTarget | null) {
   );
 }
 
+function subscribeToTheme(onChange: () => void) {
+  window.addEventListener("nextgridit:theme-changed", onChange);
+  return () => window.removeEventListener("nextgridit:theme-changed", onChange);
+}
+
+function readTheme(): ThemeMode {
+  const theme = document.documentElement.dataset.theme;
+  return theme === "dark" || theme === "hacker" ? theme : "light";
+}
+
+function readUnlocked() {
+  if (readTheme() === "hacker") return true;
+  try { return window.localStorage.getItem(HACKER_UNLOCK_KEY) === "true"; } catch { return false; }
+}
+
 export function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = React.useState<ThemeMode>("dark");
-  const [hackerUnlocked, setHackerUnlocked] = React.useState(false);
+  const theme = React.useSyncExternalStore(subscribeToTheme, readTheme, () => "light" as ThemeMode);
+  const hackerUnlocked = React.useSyncExternalStore(subscribeToTheme, readUnlocked, () => false);
 
   React.useEffect(() => {
-    const rootTheme = document.documentElement.dataset.theme;
-    const savedTheme = window.localStorage.getItem(STORAGE_KEY) as ThemeMode | null;
-    const unlocked = window.localStorage.getItem(HACKER_UNLOCK_KEY) === "true";
-
-    setHackerUnlocked(unlocked);
-    setTheme(
-      rootTheme === "light" || rootTheme === "dark" || rootTheme === "hacker"
-        ? rootTheme
-        : savedTheme ?? "dark"
-    );
-
     let sequence = "";
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -61,18 +66,14 @@ export function ThemeToggle({ className }: { className?: string }) {
       sequence = `${sequence}${event.key.toLowerCase()}`.slice(-HACKER_SEQUENCE.length);
 
       if (sequence === HACKER_SEQUENCE) {
-        window.localStorage.setItem(HACKER_UNLOCK_KEY, "true");
-        setHackerUnlocked(true);
-        setTheme("hacker");
+        try { window.localStorage.setItem(HACKER_UNLOCK_KEY, "true"); } catch { /* Storage is optional. */ }
         applyTheme("hacker");
         sequence = "";
       }
     };
 
     const handleUnlock = () => {
-      window.localStorage.setItem(HACKER_UNLOCK_KEY, "true");
-      setHackerUnlocked(true);
-      setTheme("hacker");
+      try { window.localStorage.setItem(HACKER_UNLOCK_KEY, "true"); } catch { /* Storage is optional. */ }
       applyTheme("hacker");
     };
 
@@ -90,7 +91,6 @@ export function ThemeToggle({ className }: { className?: string }) {
       return;
     }
 
-    setTheme(nextTheme);
     applyTheme(nextTheme);
   }
 

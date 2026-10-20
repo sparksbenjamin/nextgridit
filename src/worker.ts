@@ -43,7 +43,9 @@ type NormalizedSurfaceScan = {
 };
 
 type DnsJsonResponse = {
+  Status?: number;
   Answer?: Array<{
+    type?: number;
     data?: string;
   }>;
 };
@@ -52,7 +54,37 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const JSON_HEADERS = {
   "cache-control": "no-store",
   "content-type": "application/json; charset=utf-8",
+  "x-content-type-options": "nosniff",
 };
+
+class RequestPayloadError extends Error {
+  constructor(message: string, public status: number) { super(message); }
+}
+
+async function readJsonPayload(request: Request): Promise<unknown> {
+  const reader = request.body?.getReader();
+  if (!reader) throw new RequestPayloadError("Request body is required.", 400);
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > 16384) {
+        await reader.cancel();
+        throw new RequestPayloadError("Request body is too large.", 413);
+      }
+      chunks.push(value);
+    }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    return JSON.parse(new TextDecoder().decode(bytes));
+  } finally {
+    reader.releaseLock();
+  }
+}
 
 class ContactConfigError extends Error {}
 
@@ -144,6 +176,7 @@ async function getGraphAccessToken(env: WorkerEnv) {
     `https://login.microsoftonline.com/${encodeURIComponent(tenantId)}/oauth2/v2.0/token`,
     {
       method: "POST",
+      signal: AbortSignal.timeout(8000),
       headers: {
         "content-type": "application/x-www-form-urlencoded",
       },
@@ -157,8 +190,7 @@ async function getGraphAccessToken(env: WorkerEnv) {
   );
 
   if (!tokenResponse.ok) {
-    const responseBody = await tokenResponse.text();
-    throw new Error(`Microsoft token request failed: ${tokenResponse.status} ${responseBody}`);
+    throw new Error(`Microsoft token request failed: ${tokenResponse.status}`);
   }
 
   const data = (await tokenResponse.json()) as { access_token?: string };
@@ -202,6 +234,7 @@ async function sendContactEmail(form: NormalizedContactForm, request: Request, e
     `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(sender)}/sendMail`,
     {
       method: "POST",
+      signal: AbortSignal.timeout(8000),
       headers: {
         authorization: `Bearer ${accessToken}`,
         "content-type": "application/json",
@@ -240,8 +273,7 @@ async function sendContactEmail(form: NormalizedContactForm, request: Request, e
   );
 
   if (!graphResponse.ok) {
-    const responseBody = await graphResponse.text();
-    throw new Error(`Microsoft Graph sendMail failed: ${graphResponse.status} ${responseBody}`);
+    throw new Error(`Microsoft Graph sendMail failed: ${graphResponse.status}`);
   }
 }
 
@@ -269,7 +301,7 @@ async function handleContactRequest(request: Request, env: WorkerEnv) {
 
   const contentType = request.headers.get("content-type") ?? "";
 
-  if (!contentType.includes("application/json")) {
+  if (contentType.split(";")[0].trim().toLowerCase() !== "application/json") {
     return jsonResponse(
       { error: "Use application/json when submitting the contact form." },
       { status: 415 },
@@ -279,9 +311,12 @@ async function handleContactRequest(request: Request, env: WorkerEnv) {
   let form: NormalizedContactForm;
 
   try {
-    const payload = (await request.json()) as unknown;
+    const payload = await readJsonPayload(request);
     form = parseContactFormPayload(payload);
   } catch (error) {
+    if (error instanceof RequestPayloadError) {
+      return jsonResponse({ error: error.message }, { status: error.status });
+    }
     if (error instanceof ContactValidationError) {
       return jsonResponse({ error: error.message }, { status: 400 });
     }
@@ -331,6 +366,7 @@ function extractMxHost(value: string) {
 async function lookupMxRecords(domain: string) {
   const dnsUrl = `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=MX`;
   const dnsResponse = await fetch(dnsUrl, {
+    signal: AbortSignal.timeout(8000),
     headers: {
       accept: "application/dns-json",
     },
@@ -342,71 +378,29 @@ async function lookupMxRecords(domain: string) {
 
   const payload = (await dnsResponse.json()) as DnsJsonResponse;
 
+  if (payload.Status !== 0 && payload.Status !== 3) {
+    throw new Error("DNS resolver could not complete the lookup.");
+  }
+
   return (payload.Answer ?? [])
+    .filter((answer) => answer.type === 15)
     .map((answer) => extractMxHost(answer.data ?? ""))
     .filter(Boolean);
 }
 
 function buildSurfaceScanResult(domain: string, mxRecords: string[]): SurfaceScanResult {
-  const hasMicrosoft365 = mxRecords.some((record) => record.includes("protection.outlook.com"));
-  const hasGoogleWorkspace = mxRecords.some((record) => record.includes("google.com"));
-
-  if (hasMicrosoft365) {
-    return {
-      domain,
-      environment: "Microsoft 365 / Entra ID",
-      finding:
-        "MX fingerprinting resolved a Microsoft-hosted mail edge consistent with Microsoft 365 and Entra-connected identity workflows.",
-      focus:
-        "Prioritize pre-auth enumeration validation, Autodiscover heuristics, legacy discovery behavior, and tenant-side identity hardening controls.",
-      riskScore: 86,
-      mxRecords,
-      summary:
-        "The full exposure brief should validate public identity signal leakage, legacy discovery behavior, and tenant-level controls before broader external correlation work begins.",
-      technicalBrief: [
-        "Mail carrier resolved through Microsoft 365 routing.",
-        "Environment aligns with current research on unauthenticated enumeration behavior in public identity endpoints.",
-        "Recommended next step: validate principal discovery paths, Autodiscover behavior, and Entra identity controls.",
-      ],
-    };
-  }
-
-  if (hasGoogleWorkspace) {
-    return {
-      domain,
-      environment: "Google Workspace",
-      finding:
-        "MX fingerprinting resolved a Google-hosted mail edge with a lower probability of Entra-linked enumeration paths.",
-      focus:
-        "Prioritize delegation review, branded subdomain exposure, identity residue, and admin boundary hygiene across externally visible collaboration services.",
-      riskScore: 71,
-      mxRecords,
-      summary:
-        "The full exposure brief should validate delegated access, collaboration surface residue, and identity-related discovery pathways tied to Google-hosted infrastructure.",
-      technicalBrief: [
-        "Mail carrier resolved through Google Workspace.",
-        "Primary research path shifts away from Autodiscover toward IAM delegation and branded discovery residue.",
-        "Recommended next step: review admin delegation, API surface, and exposed identity-adjacent subdomains.",
-      ],
-    };
+  let environment = mxRecords.length ? "Other mail provider" : "No mail exchanger found";
+  if (mxRecords.some((host) => host.endsWith(".protection.outlook.com"))) {
+    environment = "Microsoft 365 mail routing";
+  } else if (mxRecords.some((host) => host === "smtp.google.com" || host.endsWith(".google.com") || host.endsWith(".googlemail.com"))) {
+    environment = "Google Workspace mail routing";
   }
 
   return {
     domain,
-    environment: "Custom or Hybrid Mail",
-    finding:
-      "MX fingerprinting indicates a custom or hybrid mail posture with greater uncertainty across identity-adjacent edge systems.",
-    focus:
-      "Prioritize mail routing residue, inherited subdomains, externally visible identity workflows, and evidence of blended SaaS plus legacy infrastructure.",
-    riskScore: 69,
+    environment,
     mxRecords,
-    summary:
-      "The full exposure brief should classify the mail stack, enumerate inherited DNS pathways, and review identity-adjacent services before deeper research correlation.",
-    technicalBrief: [
-      "MX routing does not cleanly match Microsoft 365 or Google Workspace.",
-      "Initial reconnaissance should classify the provider and map residual subdomains and edge services.",
-      "Recommended next step: baseline passive DNS, MX ownership, and public identity-related pathways.",
-    ],
+    summary: "This lookup checks public MX records only. Mail routing does not establish identity configuration, security controls, or a vulnerability. No security risk score or AI assessment is generated.",
   };
 }
 
@@ -434,7 +428,7 @@ async function handleSurfaceScanRequest(request: Request) {
 
   const contentType = request.headers.get("content-type") ?? "";
 
-  if (!contentType.includes("application/json")) {
+  if (contentType.split(";")[0].trim().toLowerCase() !== "application/json") {
     return jsonResponse(
       { error: "Use application/json when submitting a surface scan." },
       { status: 415 },
@@ -444,9 +438,12 @@ async function handleSurfaceScanRequest(request: Request) {
   let scan: NormalizedSurfaceScan;
 
   try {
-    const payload = (await request.json()) as unknown;
+    const payload = await readJsonPayload(request);
     scan = parseSurfaceScanPayload(payload);
   } catch (error) {
+    if (error instanceof RequestPayloadError) {
+      return jsonResponse({ error: error.message }, { status: error.status });
+    }
     if (error instanceof SurfaceScanValidationError) {
       return jsonResponse({ error: error.message }, { status: 400 });
     }
@@ -473,12 +470,18 @@ const worker = {
   async fetch(request: Request, env: WorkerEnv) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/api/surface-scan" || url.pathname === "/api/surface-scan/") {
-      return handleSurfaceScanRequest(request);
-    }
-
-    if (url.pathname === "/api/contact" || url.pathname === "/api/contact/") {
-      return handleContactRequest(request, env);
+    if (url.pathname.startsWith("/api/")) {
+      const origin = request.headers.get("origin");
+      if (origin && origin !== url.origin) {
+        return jsonResponse({ error: "Cross-origin requests are not allowed." }, { status: 403 });
+      }
+      if (url.pathname === "/api/surface-scan" || url.pathname === "/api/surface-scan/") {
+        return handleSurfaceScanRequest(request);
+      }
+      if (url.pathname === "/api/contact" || url.pathname === "/api/contact/") {
+        return handleContactRequest(request, env);
+      }
+      return jsonResponse({ error: "API endpoint not found." }, { status: 404 });
     }
 
     if (

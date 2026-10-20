@@ -91,7 +91,7 @@ const navGroups: NavGroup[] = [
         description: "Guidance on local AI that keeps your data inside your environment.",
       },
     ],
-    matchers: ["/services", "/technologies"],
+    matchers: ["/services"],
   },
   {
     id: "solutions",
@@ -226,10 +226,12 @@ export function Navbar() {
   const activeDesktopGroup =
     navGroups.find((group) => group.id === activeDesktopGroupId) ?? null
 
-  React.useEffect(() => {
+  const [previousPathname, setPreviousPathname] = React.useState(pathname)
+  if (previousPathname !== pathname) {
+    setPreviousPathname(pathname)
     setIsOpen(false)
     setActiveDesktopGroupId(null)
-  }, [pathname])
+  }
 
   React.useEffect(() => {
     if (!isOpen) {
@@ -258,23 +260,44 @@ export function Navbar() {
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
+        const expandedTrigger = headerRef.current?.querySelector<HTMLButtonElement>('button[aria-expanded="true"]')
+        expandedTrigger?.focus()
         setIsOpen(false)
         setActiveDesktopGroupId(null)
       }
     }
 
+    function handleFocusIn(event: FocusEvent) {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setIsOpen(false)
+        setActiveDesktopGroupId(null)
+      }
+    }
+
+    document.addEventListener("focusin", handleFocusIn)
     document.addEventListener("pointerdown", handlePointerDown)
     document.addEventListener("keydown", handleKeyDown)
 
     return () => {
+      document.removeEventListener("focusin", handleFocusIn)
       document.removeEventListener("pointerdown", handlePointerDown)
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
 
+  React.useEffect(() => {
+    const breakpoint = window.matchMedia("(min-width: 768px)")
+    function handleBreakpointChange() {
+      setIsOpen(false)
+      setActiveDesktopGroupId(null)
+    }
+    breakpoint.addEventListener("change", handleBreakpointChange)
+    return () => breakpoint.removeEventListener("change", handleBreakpointChange)
+  }, [])
+
   function unlockHackerTheme(event: React.MouseEvent<HTMLDivElement>) {
     if (event.altKey && event.shiftKey) {
-      window.localStorage.setItem("nextgridit-hacker-unlocked", "true")
+      try { window.localStorage.setItem("nextgridit-hacker-unlocked", "true") } catch { /* Storage is optional. */ }
       window.dispatchEvent(new Event("nextgridit:hacker-unlocked"))
     }
   }
@@ -329,7 +352,6 @@ export function Navbar() {
                   type="button"
                   aria-expanded={activeDesktopGroupId === group.id}
                   aria-controls={desktopMenuId}
-                  aria-haspopup="true"
                   onClick={() => toggleDesktopGroup(group.id)}
                   className={cn(
                     "relative inline-flex items-center gap-1 rounded-full px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 lg:px-3.5",
@@ -507,6 +529,7 @@ export function Navbar() {
             : "pointer-events-none max-h-0 opacity-0"
         )}
         aria-hidden={!isOpen}
+        inert={!isOpen}
       >
         <div className="max-h-[calc(100vh-3.5rem)] overflow-y-auto px-3 pb-28 pt-3">
           <nav aria-label="Mobile" className="grid gap-2">
@@ -517,6 +540,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive && pathname === normalizePath(link.href) ? "page" : undefined}
                   onClick={closeMenus}
                   className={cn(
                     "flex min-h-12 items-center justify-between rounded-xl border px-4 py-3 font-mono text-sm font-bold uppercase tracking-[0.1em] transition-colors duration-200",

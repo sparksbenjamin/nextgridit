@@ -117,7 +117,7 @@ export function HomePage2026() {
               <h3>From “our provider manages it” to “we own it.”</h3>
               <p>{featuredCase.approach}</p>
               <div className="home-outcomes">{featuredCase.outcomes.map((outcome) => <span key={outcome}><i />{outcome}</span>)}</div>
-              <Link className="home-text-link" href="/case-studies/msp-transition/">Read the case study <span>↗</span></Link>
+              <Link className="home-text-link" href={`/case-studies/#${featuredCase.slug}`}>Read the case study <span>↗</span></Link>
             </div>
           </article>
         </div>

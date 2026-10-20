@@ -8,7 +8,7 @@ This is a statically exported Next.js site configured for deployment to Cloudfla
 
 ## Local Development
 
-Start the normal Next.js dev server:
+Use Node.js 22 or newer. Install the locked dependencies with `npm ci`, then start the normal Next.js dev server:
 
 ```bash
 npm run dev
@@ -95,7 +95,19 @@ If you want the app limited to one mailbox instead of broad tenant mail-send rig
 
 ### Fallback behavior
 
-If the Worker secrets are missing or direct delivery is unavailable, the contact form falls back to opening a prefilled `mailto:` email so the page still remains usable.
+The form submits to `/api/contact`. If delivery cannot be confirmed, it preserves the entered details and offers a prefilled `mailto:` link. A success message appears only after the API accepts the message.
+
+## Review checks
+
+Run `npm run check` (or `npm run site:check`) for lint, TypeScript, Worker regression tests, and the production static export. Every build also checks internal links, fragment targets, sitemap destinations, and page headings. These commands do not pull, commit, push, or deploy. `npm run site:sync` retains the existing PowerShell publishing workflow.
+
+The Worker regression tests mock Microsoft Graph and DNS; they never send real email. End-to-end mailbox delivery still requires the configured Microsoft 365 secrets and permissions.
+
+API routes run through the Worker before static assets. Requests accept JSON only, reject cross-origin browser submissions, and limit streamed bodies to 16 KiB. Provider calls have timeouts. These controls and the honeypot do not replace a Cloudflare rate limiting rule if automated abuse becomes a problem.
+
+The Labs mail lookup checks public MX records only. It reports routing information without assigning a security risk score or claiming an AI assessment.
+
+Static response headers are configured in `public/_headers`. Sitemap modification dates are included for dated guides and policies; undated pages do not claim a new modification on every build.
 
 References:
 

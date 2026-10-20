@@ -1,21 +1,14 @@
-export const surfaceScanSteps = [
-  "[INFO] Detecting Mail Carrier via MX Fingerprinting...",
-  "[MATCH] Microsoft 365 / Entra ID Environment Detected.",
-  "[INTEL] Cross-referencing current identity exposure research (Unauthenticated Enumeration)...",
-  "[AI] Qwen 2.5 Coder generating risk posture brief...",
-] as const
-
 export type SurfaceScanResult = {
   domain: string
   environment: string
-  finding: string
-  focus: string
-  riskScore: number
   mxRecords: string[]
   summary: string
-  technicalBrief: string[]
 }
 
 export function looksLikeDomain(value: string) {
-  return /^(?!-)[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(value.trim())
+  const domain = value.trim()
+  if (domain.length > 253 || /^\d+(\.\d+){3}$/.test(domain)) return false
+  const labels = domain.split(".")
+  return labels.length >= 2 && /^[a-z]{2,63}$/i.test(labels.at(-1) ?? "") &&
+    labels.every((label) => /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i.test(label))
 }

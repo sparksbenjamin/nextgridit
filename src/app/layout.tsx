@@ -21,8 +21,8 @@ const themeInitScript = `
       document.documentElement.dataset.theme = nextTheme;
       document.documentElement.style.colorScheme = nextTheme === "light" ? "light" : "dark";
     } catch (error) {
-      document.documentElement.dataset.theme = "dark";
-      document.documentElement.style.colorScheme = "dark";
+      document.documentElement.dataset.theme = "light";
+      document.documentElement.style.colorScheme = "light";
     }
   })();
 `;

@@ -59,7 +59,7 @@ const intakeChecklist = [
 
 export function ContactPageClient() {
   const [form, setForm] = useState<FormState>(initialFormState);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   function buildMailtoHref(values: FormState) {
     const subject = `NextGridIT inquiry from ${values.company || "Website visitor"}`;
@@ -74,10 +74,25 @@ export function ContactPageClient() {
     return `mailto:contact@nextgridit.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    window.location.href = buildMailtoHref(form);
-    setSubmitted(true);
+    if (status === "sending") return;
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(form),
+        signal: AbortSignal.timeout(20000),
+      });
+      const payload = await response.json();
+      if (!response.ok || payload.ok !== true) throw new Error("Delivery failed");
+      setStatus("sent");
+      setForm(initialFormState);
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -100,8 +115,7 @@ export function ContactPageClient() {
               START THE PROJECT CONVERSATION
             </p>
             <p className="theme-soft font-sans text-sm">
-              Fill out the form below and your default email client will open with a
-              pre-filled message to{" "}
+              Send your project details directly to{" "}
               <a className="theme-link" href="mailto:contact@nextgridit.com">
                 contact@nextgridit.com
               </a>
@@ -109,7 +123,93 @@ export function ContactPageClient() {
             </p>
           </div>
 
-          <section className="mb-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
+
+          <form className="space-y-6 font-mono" onSubmit={handleSubmit} aria-busy={status === "sending"}>
+            <fieldset disabled={status === "sending"} className="space-y-6">
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                id="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.website}
+                onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
+              />
+            </div>
+            <div>
+              <label htmlFor="company" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Company Name</label>
+              <input
+                id="company"
+                name="company"
+                autoComplete="organization"
+                maxLength={200}
+                type="text"
+                value={form.company}
+                onChange={(event) => setForm((current) => ({ ...current, company: event.target.value }))}
+                className="theme-input w-full rounded-xl p-3"
+                placeholder="Enter organization name..."
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Email</label>
+              <input
+                id="email"
+                name="email"
+                autoComplete="email"
+                maxLength={320}
+                type="email"
+                required
+                value={form.email}
+                onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
+                className="theme-input w-full rounded-xl p-3"
+                placeholder="Enter your email address..."
+              />
+            </div>
+            <div>
+              <label htmlFor="details" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Project Details</label>
+              <textarea
+                id="details"
+                name="details"
+                minLength={10}
+                maxLength={5000}
+                rows={5}
+                required
+                value={form.details}
+                onChange={(event) => setForm((current) => ({ ...current, details: event.target.value }))}
+                className="theme-input w-full resize-none rounded-xl p-3"
+                placeholder="Tell us about your infrastructure, cloud, Wi-Fi, camera, security, or compliance-related needs..."
+              />
+            </div>
+            {status === "sent" && (
+              <p
+                className="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-strong)] theme-copy px-4 py-3 text-sm leading-relaxed"
+                role="status"
+              >
+                Your message has been sent. Thank you for contacting NextGridIT.
+              </p>
+            )}
+            {status === "error" && (
+              <p role="alert" className="theme-copy text-sm leading-relaxed">
+                We could not confirm delivery. Your details are still here. Try again or{" "}
+                <a className="theme-link underline" href={buildMailtoHref(form)}>open a pre-filled email</a>.
+              </p>
+            )}
+            <p className="theme-soft text-sm">
+              Please leave out passwords and sensitive client or patient information. See our{" "}
+              <Link href="/privacy/" className="theme-link underline">privacy policy</Link>.
+            </p>
+            <button
+              type="submit"
+              className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest"
+            >
+              <span>{status === "sending" ? "Sending…" : "Send Message"}</span>
+              <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            </fieldset>
+          </form>
+
+          <section className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
             <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
               <div>
                 <p className="theme-accent-strong mb-2 font-mono text-xs uppercase tracking-[0.26em]">
@@ -126,8 +226,7 @@ export function ContactPageClient() {
               </p>
             </div>
 
-            <div className="relative grid gap-4 md:grid-cols-4">
-              <div className="absolute left-8 right-8 top-6 hidden h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent md:block" />
+            <div className="relative grid gap-4 sm:grid-cols-2">
               {intakeSteps.map((step) => (
                 <div key={step.step} className="relative">
                   <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface)]">
@@ -150,70 +249,6 @@ export function ContactPageClient() {
               ))}
             </div>
           </section>
-
-          <form className="space-y-6 font-mono" onSubmit={handleSubmit}>
-            <div className="hidden" aria-hidden="true">
-              <label htmlFor="website">Website</label>
-              <input
-                id="website"
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                value={form.website}
-                onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
-              />
-            </div>
-            <div>
-              <label htmlFor="company" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Company Name</label>
-              <input
-                id="company"
-                type="text"
-                value={form.company}
-                onChange={(event) => setForm((current) => ({ ...current, company: event.target.value }))}
-                className="theme-input w-full rounded-xl p-3"
-                placeholder="Enter organization name..."
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Email</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={form.email}
-                onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-                className="theme-input w-full rounded-xl p-3"
-                placeholder="Enter your email address..."
-              />
-            </div>
-            <div>
-              <label htmlFor="details" className="theme-accent-strong mb-2 block text-sm uppercase tracking-wide">Project Details</label>
-              <textarea
-                id="details"
-                rows={5}
-                required
-                value={form.details}
-                onChange={(event) => setForm((current) => ({ ...current, details: event.target.value }))}
-                className="theme-input w-full resize-none rounded-xl p-3"
-                placeholder="Tell us about your infrastructure, cloud, Wi-Fi, camera, security, or compliance-related needs..."
-              />
-            </div>
-            {submitted && (
-              <p
-                className="rounded-2xl border border-[var(--border-strong)] bg-[var(--surface-strong)] theme-copy px-4 py-3 text-sm leading-relaxed"
-                role="status"
-              >
-                Your email client should have opened with a pre-filled message. If it didn&apos;t, email us directly at contact@nextgridit.com.
-              </p>
-            )}
-            <button
-              type="submit"
-              className="button-primary mt-4 flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-bold uppercase tracking-widest"
-            >
-              <span>Open Email to NextGridIT</span>
-              <IconArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </form>
 
           <div className="mt-8 rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-6">
             <p className="theme-accent-strong mb-3 font-mono text-xs uppercase tracking-[0.24em]">

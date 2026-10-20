@@ -33,7 +33,7 @@ export default function CaseStudiesPage() {
 
       <div className="space-y-8">
         {caseStudies.map((study) => (
-          <section key={study.title} className="glass-panel border border-[var(--border)] p-8">
+          <section id={study.slug} key={study.title} className="glass-panel border border-[var(--border)] p-8">
             <h2 className="theme-heading mb-4 font-mono text-2xl font-bold">
               {study.title}
             </h2>

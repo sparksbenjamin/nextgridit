@@ -230,8 +230,8 @@ export function LabsPageClient() {
 
       <SurfaceScanModule
         anchorId="surface-scan"
-        sectionTitle="Run Instant Perimeter Audit"
-        sectionDescription="Use the labs terminal to classify the mail edge, cross-reference research posture, and preview a blurred exposure brief before requesting the full report."
+        sectionTitle="Look Up Your Mail Provider"
+        sectionDescription="Identify public mail routing from MX records and start a conversation about your security assessment."
       />
     </div>
   )
