@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { IconArrowRight, IconMail, IconPhone } from "@tabler/icons-react";
 import { PageIntro } from "@/components/content/PageIntro";
+import { BookingLink } from "@/components/content/BookingLink";
 import { siteConfig } from "@/lib/site-data";
 
 type FormState = {
@@ -65,18 +66,40 @@ export function ContactPageClient() {
         eyebrow="Let’s talk about your project"
         title="A good next step starts"
         accent="with a conversation."
-        description="Tell us what is getting in the way. We will help you clarify the problem, explore the options, and decide whether NextGridIT is the right fit."
+        description="Choose a time to discuss your IT challenge with Benjamin, or send your project details if you prefer to start by email."
       />
+      <section className="contact-booking" aria-labelledby="booking-heading">
+        <div>
+          <p className="eyebrow">Find your next step</p>
+          <h2 id="booking-heading">Book an IT project consultation.</h2>
+          <p>
+            Discuss what you need, whether NextGridIT is a good fit, and
+            practical next steps. Choose an available time through Microsoft
+            Bookings.
+          </p>
+          <p className="form-note">
+            An introductory conversation, rather than a troubleshooting session
+            or security assessment.
+          </p>
+        </div>
+        <div className="project-cta-actions">
+          <BookingLink>Choose a time</BookingLink>
+          <a href="#project-details" className="text-link">
+            Send project details instead
+          </a>
+        </div>
+      </section>
       <div className="contact-layout">
         <form
+          id="project-details"
           className="contact-form"
           onSubmit={handleSubmit}
           aria-busy={status === "sending"}
         >
-          <h2>What can we help you with?</h2>
+          <h2>Send project details</h2>
           <p>
-            A few details are enough to get started. Required fields are marked
-            below.
+            Prefer email? Tell us a little about what you need and we will
+            follow up. Required fields are marked below.
           </p>
           <fieldset disabled={status === "sending"}>
             <div hidden aria-hidden="true">

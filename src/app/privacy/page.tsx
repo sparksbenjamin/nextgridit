@@ -55,6 +55,11 @@ export default function PrivacyPage() {
             handling.
           </p>
           <p>
+            Consultation scheduling opens Microsoft Bookings. Information you
+            provide there is processed through Microsoft 365 to manage your
+            appointment and related communication.
+          </p>
+          <p>
             If you would like to request deletion of information you previously
             shared, contact{" "}
             <a className="theme-link" href="mailto:contact@nextgridit.com">

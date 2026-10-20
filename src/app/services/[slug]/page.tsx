@@ -1,3 +1,4 @@
+import { BookingLink } from "@/components/content/BookingLink";
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -107,10 +108,7 @@ export default async function ServiceDetailPage({
           title={service.title}
           description={service.summary}
         >
-          <Link href="/contact/" className="button-primary">
-            Discuss your project
-            <IconArrowRight size={18} aria-hidden="true" />
-          </Link>
+          <BookingLink className="button-primary" />
           <a href="#scope" className="text-link">
             What’s included
             <IconArrowRight size={17} aria-hidden="true" />

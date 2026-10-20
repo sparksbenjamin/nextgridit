@@ -1,5 +1,7 @@
 "use client";
 
+import { BookingLink } from "@/components/content/BookingLink";
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -232,14 +234,7 @@ export function Navbar() {
             About
           </Link>
         </nav>
-        <Link
-          href="/contact/"
-          className="button-primary header-cta"
-          onClick={close}
-        >
-          Discuss your project
-          <IconArrowRight size={17} aria-hidden="true" />
-        </Link>
+        <BookingLink className="button-primary header-cta" onClick={close} />
         <button
           ref={mobileTrigger}
           className="menu-trigger"
@@ -324,10 +319,7 @@ export function Navbar() {
             About NextGridIT
             <IconArrowRight size={18} />
           </Link>
-          <Link href="/contact/" className="button-primary" onClick={close}>
-            Discuss your project
-            <IconArrowRight size={17} />
-          </Link>
+          <BookingLink className="button-primary" onClick={close} />
           <div className="mobile-nav-utility">
             <span>Appearance</span>
             <ThemeToggle />

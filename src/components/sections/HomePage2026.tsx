@@ -1,3 +1,4 @@
+import { BookingLink } from "@/components/content/BookingLink";
 import Link from "next/link";
 import {
   IconArrowRight,
@@ -93,10 +94,7 @@ export function HomePage2026() {
               your team owns.
             </p>
             <div className="hero-actions">
-              <Link className="button-primary" href="/contact/">
-                Discuss your project
-                <IconArrowRight size={18} aria-hidden="true" />
-              </Link>
+              <BookingLink className="button-primary" />
               <Link className="text-link" href="/services/">
                 See how we can help
                 <IconArrowUpRight size={18} aria-hidden="true" />

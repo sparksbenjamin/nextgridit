@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { siteConfig } from "../../src/lib/site-data";
 
 const representativePages = [
   "/",
@@ -177,6 +178,38 @@ test("themes apply to all main surfaces, persist, and work without storage", asy
     .getByRole("button", { name: "Dark", exact: true })
     .click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
+test("consultation links hand off to Bookings and project details remain available", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  for (const path of ["/", "/services/msp-transition/", "/contact/"]) {
+    await page.goto(path);
+    await expect(page.locator(".header-cta")).toHaveAttribute(
+      "href",
+      siteConfig.bookingUrl,
+    );
+    const links = page.locator(`main a[href="${siteConfig.bookingUrl}"]`);
+    expect(await links.count()).toBeGreaterThan(0);
+  }
+  await page
+    .getByRole("link", { name: "Send project details instead", exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/contact\/#project-details$/);
+  await expect(page.locator("#project-details")).toBeInViewport();
+  // Test the handoff without creating an appointment or depending on provider uptime.
+  await page.route(siteConfig.bookingUrl, (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<h1>Booking destination test</h1>",
+    }),
+  );
+  await page.getByRole("link", { name: "Choose a time", exact: true }).click();
+  await expect(page).toHaveURL(siteConfig.bookingUrl);
+  await expect(
+    page.getByRole("heading", { name: "Booking destination test" }),
+  ).toBeVisible();
 });
 
 test("contact validates input, preserves failures, prevents duplicate sends, and confirms accepted delivery", async ({

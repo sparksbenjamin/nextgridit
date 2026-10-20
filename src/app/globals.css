@@ -834,7 +834,11 @@ svg {
   color: var(--muted);
   font-size: 0.93rem;
 }
-.project-cta > .button-primary {
+.project-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
   flex-shrink: 0;
 }
 
@@ -1102,6 +1106,35 @@ svg {
 }
 
 /* Contact keeps the real delivery flow, with less surrounding friction. */
+.contact-booking {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: clamp(1.25rem, 3.5vw, 2.5rem);
+  margin-bottom: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+}
+.contact-booking > div:first-child {
+  flex: 1 1 24rem;
+  max-width: 640px;
+}
+.contact-booking h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0.7rem 0 1rem;
+}
+.contact-booking p:not(.eyebrow) {
+  color: var(--muted);
+}
+.contact-booking .form-note {
+  margin-top: 1rem;
+}
+#project-details {
+  scroll-margin-top: 7rem;
+}
 .contact-layout {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;

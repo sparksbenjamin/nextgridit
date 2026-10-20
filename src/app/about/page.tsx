@@ -1,3 +1,4 @@
+import { BookingLink } from "@/components/content/BookingLink";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IconArrowRight, IconCheck } from "@tabler/icons-react";
@@ -51,10 +52,7 @@ export default function AboutPage() {
             <br />
             Based in Seneca, South Carolina
           </p>
-          <Link href="/contact/" className="text-link">
-            Discuss your project
-            <IconArrowRight size={17} aria-hidden="true" />
-          </Link>
+          <BookingLink className="text-link" />
         </div>
         <div className="founder-bio">
           <p>

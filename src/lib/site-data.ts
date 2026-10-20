@@ -5,6 +5,8 @@ export const siteConfig = {
   phone: "+1-864-780-0202",
   phoneDisplay: "864-780-0202",
   email: "contact@nextgridit.com",
+  bookingUrl:
+    "https://bookings.cloud.microsoft/book/ITProjectConsulation@nextgridit.com/",
   region: "Upstate South Carolina",
   serviceArea: ["Seneca", "Clemson", "Anderson", "Easley", "Greenville"],
   founded: "2026",

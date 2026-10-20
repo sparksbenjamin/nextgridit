@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { IconArrowRight } from "@tabler/icons-react";
+import { BookingLink } from "@/components/content/BookingLink";
 
 export function ProjectCTA({
   title = "A clearer path forward starts here.",
-  description = "Tell us what is not working, what you need to own, or what you are preparing for. We will help you find the right next step.",
+  description = "Choose a time to discuss your IT challenge, project fit, and practical next steps. Prefer to start by email? Send a few details instead.",
 }: {
   title?: string;
   description?: string;
@@ -15,10 +15,12 @@ export function ProjectCTA({
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
-      <Link href="/contact/" className="button-primary">
-        Discuss your project
-        <IconArrowRight size={18} aria-hidden="true" />
-      </Link>
+      <div className="project-cta-actions">
+        <BookingLink />
+        <Link href="/contact/#project-details" className="text-link">
+          Send project details
+        </Link>
+      </div>
     </section>
   );
 }

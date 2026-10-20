@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { BookingLink } from "@/components/content/BookingLink";
+
 import { usePathname } from "next/navigation";
-import { IconArrowRight, IconPhone } from "@tabler/icons-react";
+import { IconPhone } from "@tabler/icons-react";
 import { siteConfig } from "@/lib/site-data";
 
 export function MobileStickyBar() {
@@ -14,10 +15,7 @@ export function MobileStickyBar() {
         <IconPhone size={17} aria-hidden="true" />
         Call us
       </a>
-      <Link href="/contact/">
-        Discuss your project
-        <IconArrowRight size={17} aria-hidden="true" />
-      </Link>
+      <BookingLink />
     </div>
   );
 }

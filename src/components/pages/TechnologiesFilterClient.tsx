@@ -1,5 +1,7 @@
 "use client";
 
+import { BookingLink } from "@/components/content/BookingLink";
+
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
@@ -160,10 +162,7 @@ export function TechnologiesFilterClient() {
             platform in mind, we can help you assess whether it fits the
             project.
           </p>
-          <Link className="text-link mt-3" href="/contact/">
-            Discuss your project
-            <IconArrowRight size={17} />
-          </Link>
+          <BookingLink className="text-link mt-3" />
         </div>
       )}
     </div>

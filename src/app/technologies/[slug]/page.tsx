@@ -1,3 +1,4 @@
+import { BookingLink } from "@/components/content/BookingLink";
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -89,10 +90,7 @@ export default async function TechnologyDetailPage({
         title={`${technology.name} support.`}
         description={technology.summary}
       >
-        <Link href="/contact/" className="button-primary">
-          Discuss your project
-          <IconArrowRight size={17} aria-hidden="true" />
-        </Link>
+        <BookingLink className="button-primary" />
       </PageIntro>
       <section className="detail-section">
         <p className="eyebrow mb-3">Where it fits</p>
