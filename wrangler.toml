@@ -16,9 +16,3 @@ not_found_handling = "404-page"
 pattern = "www.nextgridit.com"
 zone_name = "nextgridit.com"
 custom_domain = true
-
-# Route the bare domain through the Worker for a permanent redirect to www.
-[[routes]]
-pattern = "nextgridit.com"
-zone_name = "nextgridit.com"
-custom_domain = true

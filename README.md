@@ -141,7 +141,7 @@ to `/about/`. The bare domain returned a Cloudflare 522 during the review.
 | Some useful destinations were absent from shared navigation | Add technology, compliance, FAQ, process, local-first, and company-facts links | Check incoming links for every sitemap destination |
 | Sitemap and robots repeated the production origin | Derive both from `siteConfig.url` | Require exact sitemap/export coverage and robots sitemap reference |
 | Business schema included a city-center coordinate as the business location, an unsupported credential property, and an unsubstantiated price range | Remove those fields; connect service providers to the established business ID; add article images | Parse schema and inspect the supplied business facts |
-| Bare domain failed and preview URLs had no explicit indexing protection | Add the apex custom-domain route and permanent HTTPS/www redirects; add preview `X-Robots-Tag: noindex, nofollow` | Worker tests and local Cloudflare HTTP checks |
+| Bare domain failed and preview URLs had no explicit indexing protection | Keep permanent HTTPS/www redirect handling in the Worker and add preview `X-Robots-Tag: noindex, nofollow`; reconcile the bare-domain binding separately | Worker tests and local Cloudflare HTTP checks |
 | Discovery files referenced three obsolete URLs | Correct both existing discovery files and permanently redirect the old routes to relevant destinations | Validate discovery-file URLs against the export and request each legacy route |
 | Navigation linked to redirecting slashless URLs | Standardize navigation and calls to action on trailing-slash URLs | Reject noncanonical internal page links during export checks |
 | Homepage labels and shared light-theme buttons had insufficient contrast | Darken text and button colors while preserving the palette | Repeat mobile Lighthouse accessibility checks |
@@ -172,9 +172,10 @@ repository acceptance rules, not claims that all are Google ranking factors.
   used `npm exec next build -- --webpack` followed by
   `node scripts/check-export.mjs`; the standard build command is retained.
 
-Deploying this configuration attaches `nextgridit.com` as a Cloudflare custom
-domain. If Cloudflare reports an existing DNS/domain conflict, reconcile it in
-the zone before deployment. All asset requests now run through the Worker so
+The deployment configuration manages the established `www.nextgridit.com`
+custom domain. The bare-domain DNS/custom-domain binding must be reconciled in
+Cloudflare before adding it to managed routes; its redirect behavior is already
+implemented in the Worker. All asset requests now run through the Worker so
 host redirects and preview indexing headers apply consistently; account for
 those requests in the Cloudflare plan. Public page URLs are preserved.
 

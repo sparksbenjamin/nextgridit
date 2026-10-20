@@ -102,3 +102,17 @@ the build. The test runner starts a fresh local Worker on port 8790 so it reads 
 asset manifest. Rebuilding `out` while an older Wrangler preview remains open
 can leave its manifest stale; restart that preview after rebuilding.
 See the README for preview and test-environment options.
+
+
+## Deployment configuration follow-up
+
+GitHub's Cloudflare check succeeded for `a160a88` (the established www-only
+configuration), but failed for `c1d0553` and `342380f` after the public assets
+became available. The latter two configurations also attempted to register the
+bare domain as an additional custom domain. The public check does not expose
+Cloudflare's detailed error, and account credentials were unavailable here.
+
+The unverified bare-domain registration was removed to restore the established
+www-only deployment target. The Worker still contains the permanent apex-to-www
+redirect for use once the bare-domain binding/DNS is correctly configured.
+This isolates an infrastructure prerequisite from publishing the working site.
