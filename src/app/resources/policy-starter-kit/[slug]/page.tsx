@@ -1,3 +1,4 @@
+import { ReadingContents } from "@/components/content/ReadingContents";
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -128,31 +129,13 @@ export default async function PolicyDetailPage({
       </div>
 
       <section className="reading-layout">
+        <ReadingContents headings={policy.headings} title="In this document" label="Policy sections" mobile />
         <article className="glass-panel border border-[var(--border)] p-8">
           <MarkdownContent content={policy.content} />
         </article>
 
         <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
-          {policy.headings.length > 0 ? (
-            <section className="glass-panel border border-[var(--border)] p-8">
-              <h2 className="theme-heading mb-4  text-xl font-bold">
-                In this document
-              </h2>
-              <nav aria-label="Policy sections" className="space-y-3">
-                {policy.headings.map((heading) => (
-                  <a
-                    key={`${heading.level}-${heading.id}`}
-                    href={`#${heading.id}`}
-                    className={`block text-sm leading-relaxed theme-copy hover:text-[var(--accent)] ${
-                      heading.level === 3 ? "pl-4" : ""
-                    }`}
-                  >
-                    {heading.text}
-                  </a>
-                ))}
-              </nav>
-            </section>
-          ) : null}
+          <ReadingContents headings={policy.headings} title="In this document" label="Policy sections" />
 
           <section className="glass-panel border border-[var(--border)] p-8">
             <h2 className="theme-heading mb-4  text-xl font-bold">

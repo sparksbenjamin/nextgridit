@@ -77,6 +77,7 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [desktopGroup, setDesktopGroup] = useState<string | null>(null);
+  const [lastDesktopGroup, setLastDesktopGroup] = useState("services");
   const header = useRef<HTMLElement>(null);
   const mobileTrigger = useRef<HTMLButtonElement>(null);
   const [previousPath, setPreviousPath] = useState(pathname);
@@ -85,7 +86,14 @@ export function Navbar() {
     setIsOpen(false);
     setDesktopGroup(null);
   }
-  const selected = groups.find((group) => group.id === desktopGroup);
+  // Retain the panel content during its closing transition. Inert removes it
+  // from interaction immediately; CSS handles the brief visual exit.
+  const selected = groups.find((group) => group.id === (desktopGroup ?? lastDesktopGroup));
+  function toggleGroup(id: string) {
+    setLastDesktopGroup(id);
+    setDesktopGroup(desktopGroup === id ? null : id);
+    setIsOpen(false);
+  }
   function close() {
     setIsOpen(false);
     setDesktopGroup(null);
@@ -141,11 +149,12 @@ export function Navbar() {
       if (event.key === "Tab" && isOpen) {
         const focusable = [
           ...(header.current?.querySelectorAll<HTMLElement>(
-            "a[href],button:not([disabled])",
+            "a[href],button:not([disabled]),summary",
           ) ?? []),
         ].filter(
           (element) =>
-            element.getClientRects().length && !element.closest("[inert]"),
+            element.getClientRects().length && element.tabIndex >= 0 &&
+            getComputedStyle(element).visibility !== "hidden" && !element.closest("[inert]"),
         );
         const first = focusable[0],
           last = focusable.at(-1);
@@ -198,10 +207,7 @@ export function Navbar() {
               className={
                 active(pathname, group.href) ? "nav-link is-active" : "nav-link"
               }
-              onClick={() => {
-                setDesktopGroup(desktopGroup === group.id ? null : group.id);
-                setIsOpen(false);
-              }}
+              onClick={() => toggleGroup(group.id)}
             >
               {group.label}
               <IconChevronDown size={14} aria-hidden="true" />
@@ -216,12 +222,10 @@ export function Navbar() {
           </Link>
           <button
             type="button"
-            className="nav-link"
+            className={`nav-link ${groups[2].links.some(([, href]) => active(pathname, href)) || active(pathname, "/resources/") ? "is-active" : ""}`}
             aria-expanded={desktopGroup === "resources"}
             aria-controls="desktop-navigation"
-            onClick={() =>
-              setDesktopGroup(desktopGroup === "resources" ? null : "resources")
-            }
+            onClick={() => toggleGroup("resources")}
           >
             Resources
             <IconChevronDown size={14} aria-hidden="true" />
@@ -253,8 +257,9 @@ export function Navbar() {
       <div
         id="desktop-navigation"
         className="nav-panel"
-        hidden={!selected}
-        inert={!selected}
+        data-open={desktopGroup !== null}
+        aria-hidden={desktopGroup === null}
+        inert={desktopGroup === null}
       >
         {selected && (
           <div className="site-shell nav-panel-inner">
@@ -281,7 +286,8 @@ export function Navbar() {
         id="mobile-navigation"
         className="mobile-navigation"
         aria-label="Mobile primary"
-        hidden={!isOpen}
+        data-open={isOpen}
+        aria-hidden={!isOpen}
         inert={!isOpen}
       >
         <div className="mobile-nav-content">

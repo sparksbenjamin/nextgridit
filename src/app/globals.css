@@ -334,6 +334,7 @@ svg {
   background: var(--background);
 }
 .theme-toggle-button {
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -444,6 +445,30 @@ svg {
   border-bottom: 1px solid var(--border-strong);
   box-shadow: 0 16px 26px var(--shadow-color);
 }
+.nav-panel,
+.mobile-navigation {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease-out, transform 180ms ease-out,
+    visibility 0s 180ms;
+}
+.nav-panel[data-open="true"],
+.mobile-navigation[data-open="true"] {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  transition-delay: 0s;
+}
+.nav-link svg,
+.mobile-navigation summary svg {
+  transition: transform 180ms ease-out;
+}
+.nav-link[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
 .nav-panel-inner {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -485,7 +510,7 @@ svg {
   box-shadow: 0 15px 25px var(--shadow-color);
 }
 .mobile-nav-content {
-  padding: 1rem var(--gutter) 2rem;
+  padding: 1rem var(--gutter) calc(2rem + env(safe-area-inset-bottom, 0px));
 }
 .mobile-main-link,
 .mobile-navigation summary {
@@ -975,6 +1000,8 @@ svg {
   padding-block: 1.15rem;
 }
 .faq-list summary {
+  min-height: 44px;
+  align-items: center;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -1059,6 +1086,27 @@ svg {
 .reading-layout aside {
   position: sticky;
   top: 110px;
+}
+.reading-contents-mobile {
+  display: none;
+}
+.reading-contents-links {
+  display: grid;
+}
+.reading-contents-links a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.reading-contents-links a:hover {
+  color: var(--accent);
+}
+.reading-contents-links .reading-subsection {
+  padding-left: 1rem;
 }
 .resource-grid {
   display: grid;
@@ -1328,6 +1376,38 @@ svg {
   }
 }
 @media (max-width: 850px) {
+  .reading-contents-desktop {
+    display: none;
+  }
+  .reading-contents-mobile {
+    display: block;
+    border-block: 1px solid var(--border-strong);
+  }
+  .reading-contents-mobile summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    list-style: none;
+    color: var(--foreground);
+    font-weight: 500;
+  }
+  .reading-contents-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+  .reading-contents-mobile summary span {
+    transition: transform 180ms ease-out;
+  }
+  .reading-contents-mobile[open] summary span {
+    transform: rotate(180deg);
+  }
+  .reading-contents-mobile nav {
+    padding-bottom: 1rem;
+  }
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
   .home-hero-grid,
   .featured-case,
   .founder-grid,
@@ -1516,6 +1596,7 @@ svg {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }
 .guide-markdown {
@@ -1669,6 +1750,8 @@ svg {
   margin-top: 1.5rem;
 }
 .category-filters button {
+  min-height: 44px;
+  min-width: 44px;
   border: 1px solid var(--control-border);
   padding: 0.5rem 0.8rem;
   border-radius: 5px;
@@ -1689,6 +1772,32 @@ svg {
   color: var(--muted-soft);
   font-size: 0.8rem;
   margin-top: 1rem;
+}
+.filter-status button {
+  min-height: 44px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .button-primary,
+  .button-secondary,
+  .menu-trigger,
+  .category-filters button {
+    transition: transform 160ms ease-out, background-color 160ms ease,
+      border-color 160ms ease, color 160ms ease;
+  }
+  .button-primary:active,
+  .button-secondary:active,
+  .menu-trigger:active,
+  .category-filters button:active {
+    transform: scale(0.98);
+  }
+  .text-link svg {
+    transition: transform 160ms ease-out;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .text-link:hover svg {
+      transform: translateX(3px);
+    }
+  }
 }
 @media (max-width: 700px) {
   .filter-fields {

@@ -6,6 +6,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer2026 } from "@/components/layout/Footer2026";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
+import { SiteMotion } from "@/components/layout/SiteMotion";
 import {
   locations,
   services,
@@ -275,6 +276,7 @@ export default function RootLayout({
         ></script>
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
+          <SiteMotion />
           <main id="main-content" className="flex-grow">
             {children}
           </main>

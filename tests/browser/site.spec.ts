@@ -17,6 +17,14 @@ const representativePages = [
   "/technologies/microsoft-365/",
   "/labs/",
   "/faq/",
+  "/services/network-wifi/",
+  "/case-studies/",
+  "/process/",
+  "/compliance/",
+  "/local-first/",
+  "/company-facts/",
+  "/project-fit/",
+  "/privacy/",
 ];
 
 test.beforeEach(async ({ page }) => {
@@ -428,4 +436,95 @@ test("text resizing and reduced motion preserve usable navigation and content", 
       ),
     ).toBe("auto");
   }
+});
+
+test("phone and tablet contents navigate before the article, with usable touch controls", async ({ page }) => {
+  for (const width of [390, 768, 820]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const [path, label] of [
+      ["/guides/why-local-dns-matters/", "In this guide"],
+      ["/resources/policy-starter-kit/password-and-mfa-policy/", "In this document"],
+    ]) {
+      await page.goto(path);
+      const contents = page.locator(".reading-contents-mobile");
+      expect(await contents.evaluate((element) => !!(element.compareDocumentPosition(document.querySelector("article")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+      await expect(contents.locator("summary")).toContainText(label);
+      await contents.locator("summary").click();
+      const link = contents.getByRole("link").last();
+      const href = await link.getAttribute("href");
+      await link.click();
+      await expect(page.locator(href!)).toBeInViewport();
+      await expect.poll(() => page.locator(href!).evaluate((element) => element.getBoundingClientRect().top)).toBeGreaterThan(67);
+    }
+    await page.goto("/technologies/");
+    for (const button of await page.locator(".category-filters button").all()) {
+      const box = await button.boundingBox();
+      expect(box!.height).toBeGreaterThanOrEqual(44);
+      expect(box!.width).toBeGreaterThanOrEqual(44);
+    }
+  }
+});
+
+test("navigation transitions can be interrupted and short landscape menus scroll", async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 480 });
+  await page.goto("/");
+  const panel = page.locator("#mobile-navigation");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  await panel.locator("summary").first().click();
+  const booking = panel.getByRole("link", { name: "Book a consultation" });
+  await booking.focus();
+  await expect(booking).toBeInViewport();
+  await page.keyboard.press("Escape");
+  await expect(panel).toHaveAttribute("inert", "");
+  await expect(panel).toBeHidden();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const services = page.locator(".desktop-nav").getByRole("button", { name: "Services", exact: true });
+  await services.evaluate((button) => {
+    if (!(button instanceof HTMLButtonElement)) throw new Error("Expected navigation button");
+    button.click(); button.click(); button.click();
+  });
+  await expect(page.locator("#desktop-navigation")).toBeVisible();
+  await expect(services).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Escape");
+  await expect(services).toBeFocused();
+  await expect(page.locator("#desktop-navigation")).toHaveAttribute("inert", "");
+  await expect(page.locator("#desktop-navigation")).toBeHidden();
+});
+
+test("section motion runs once, respects changed preferences, and content works without JavaScript", async ({ page, browser }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  // Observe actual animation creation, rather than inferring it from attributes.
+  await page.evaluate(() => {
+    const original = Element.prototype.animate;
+    const recorded: string[] = [];
+    Object.assign(window, { recordedArrivals: recorded });
+    Element.prototype.animate = function (frames, options) {
+      if (typeof options === "object" && options.id === "section-arrival") recorded.push(this.textContent!.slice(0, 80));
+      return original.call(this, frames, options);
+    };
+  });
+  const section = page.locator("[data-reveal]").first();
+  await section.scrollIntoViewIfNeeded();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length)).toBeGreaterThan(0);
+  await expect.poll(() => section.evaluate((element) => element.getAnimations().length)).toBe(0);
+  const firstCount = await page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length);
+  await page.evaluate(() => scrollTo(0, 0));
+  await section.scrollIntoViewIfNeeded();
+  expect(await page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length)).toBe(firstCount);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.locator("[data-reveal]").last().scrollIntoViewIfNeeded();
+  expect(await page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length)).toBe(firstCount);
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const plain = await context.newPage();
+  await plain.route("**/fw-cdn.com/**", (route) => route.abort());
+  await plain.goto("/");
+  await expect(plain.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(plain.locator(".project-cta")).toBeVisible();
+  await plain.goto("/guides/why-local-dns-matters/");
+  await plain.locator(".reading-contents-mobile summary").click();
+  await expect(plain.locator(".reading-contents-mobile").getByRole("link").first()).toBeVisible();
+  await expect(plain.locator("article")).toBeVisible();
+  await context.close();
 });

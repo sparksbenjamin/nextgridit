@@ -62,7 +62,7 @@ export function MarkdownContent({
             );
           },
           table: ({ children }) => (
-            <div className="guide-table-wrapper">
+            <div className="guide-table-wrapper" role="region" aria-label="Scrollable table" tabIndex={0}>
               <table>{children}</table>
             </div>
           ),

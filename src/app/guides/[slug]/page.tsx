@@ -1,3 +1,4 @@
+import { ReadingContents } from "@/components/content/ReadingContents";
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -111,31 +112,13 @@ export default async function GuideDetailPage({
       </div>
 
       <section className="reading-layout">
+        <ReadingContents headings={guide.headings} title="In this guide" label="Guide sections" mobile />
         <article className="glass-panel border border-[var(--border)] p-8">
           <MarkdownContent content={guide.content} />
         </article>
 
         <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
-          {guide.headings.length > 0 ? (
-            <section className="glass-panel border border-[var(--border)] p-8">
-              <h2 className="theme-heading mb-4  text-xl font-bold">
-                In this guide
-              </h2>
-              <nav aria-label="Guide sections" className="space-y-3">
-                {guide.headings.map((heading) => (
-                  <a
-                    key={`${heading.level}-${heading.id}`}
-                    href={`#${heading.id}`}
-                    className={`block text-sm leading-relaxed theme-copy hover:text-[var(--accent)] ${
-                      heading.level === 3 ? "pl-4" : ""
-                    }`}
-                  >
-                    {heading.text}
-                  </a>
-                ))}
-              </nav>
-            </section>
-          ) : null}
+          <ReadingContents headings={guide.headings} title="In this guide" label="Guide sections" />
 
           <section className="glass-panel border border-[var(--border)] p-8">
             <h2 className="theme-heading mb-4  text-xl font-bold">

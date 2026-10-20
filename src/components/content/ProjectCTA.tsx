@@ -9,7 +9,7 @@ export function ProjectCTA({
   description?: string;
 }) {
   return (
-    <section className="project-cta">
+    <section className="project-cta" data-reveal>
       <div>
         <p className="eyebrow">Let’s work through it</p>
         <h2>{title}</h2>

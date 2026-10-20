@@ -178,7 +178,7 @@ export function HomePage2026() {
         </div>
       </section>
       <section className="home-section">
-        <div className="site-shell">
+        <div className="site-shell" data-reveal>
           <div className="section-heading">
             <div>
               <p className="eyebrow">Where we can help</p>
@@ -217,7 +217,7 @@ export function HomePage2026() {
         </div>
       </section>
       <section className="case-band home-section">
-        <div className="site-shell featured-case">
+        <div className="site-shell featured-case" data-reveal>
           <div>
             <p className="eyebrow">Work with a clear finish line</p>
             <h2>From “our provider manages it” to “we own it.”</h2>
@@ -244,7 +244,7 @@ export function HomePage2026() {
         </div>
       </section>
       <section className="home-section">
-        <div className="site-shell founder-grid">
+        <div className="site-shell founder-grid" data-reveal>
           <div className="founder-heading">
             <p className="eyebrow">Experienced. Independent. Accountable.</p>
             <h2>A technical partner who sees the whole environment.</h2>
@@ -271,7 +271,7 @@ export function HomePage2026() {
           </div>
         </div>
       </section>
-      <section className="site-shell home-section border-t border-[var(--border)]">
+      <section className="site-shell home-section border-t border-[var(--border)]" data-reveal>
         <div className="section-heading">
           <div>
             <p className="eyebrow">How we work</p>
