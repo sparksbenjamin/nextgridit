@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/check-export.mjs",
+    "build": "next build && node --import tsx scripts/build-headers.ts && node scripts/check-export.mjs",
     "preview": "npm run build && wrangler dev --host localhost --port 8788",
     "deploy": "npm run build && wrangler deploy",
     "upload": "npm run build && wrangler versions upload",

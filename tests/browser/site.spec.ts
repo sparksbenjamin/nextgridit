@@ -186,9 +186,16 @@ test("contact validates input, preserves failures, prevents duplicate sends, and
   await page.goto("/contact/");
   await expect(page.locator(".mobile-contact-bar")).toHaveCount(0);
   // Exercise the actual Worker origin/validation path without sending email.
-  const invalidResponse = await page.evaluate(async () => (await fetch("/api/contact", {
-    method: "POST", headers: { "content-type": "application/json" }, body: "{}",
-  })).status);
+  const invalidResponse = await page.evaluate(
+    async () =>
+      (
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: "{}",
+        })
+      ).status,
+  );
   expect(invalidResponse).toBe(400);
   await page.getByRole("button", { name: "Send Message" }).click();
   expect(
@@ -293,6 +300,14 @@ test("article anchors, FAQ disclosures, and PDF downloads are available", async 
     const response = await request.get(file);
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("application/pdf");
+    const canonical = /^<([^>]+)>; rel="canonical"$/.exec(
+      response.headers().link ?? "",
+    )?.[1];
+    expect(canonical).toBeTruthy();
+    expect(new URL(canonical!).origin).toBe("https://www.nextgridit.com");
+    const html = await request.get(new URL(canonical!).pathname);
+    expect(html.status()).toBe(200);
+    expect(await html.text()).toContain(`href="${file}"`);
   }
 });
 

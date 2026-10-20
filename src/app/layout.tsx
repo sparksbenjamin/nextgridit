@@ -103,6 +103,9 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   category: "technology",
+  robots: {
+    googleBot: { "max-image-preview": "large" },
+  },
 };
 
 const knowledgeAreas = Array.from(

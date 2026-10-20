@@ -5,6 +5,11 @@ type MetadataOptions = {
   title: string;
   description: string;
   path: string;
+  article?: {
+    publishedTime: string;
+    modifiedTime: string;
+    tags?: string[];
+  };
 };
 
 type SchemaListItem = {
@@ -17,22 +22,32 @@ export function createMetadata({
   title,
   description,
   path,
+  article,
 }: MetadataOptions): Metadata {
   const url = `${siteConfig.url}${path}`;
+  const brandedTitle = `${title} | ${siteConfig.name}`;
 
   return {
-    title,
+    title: { absolute: brandedTitle },
     description,
     alternates: {
       canonical: path,
     },
     openGraph: {
-      title: `${title} | ${siteConfig.name}`,
+      title: brandedTitle,
       description,
       url,
       siteName: siteConfig.name,
       locale: "en_US",
-      type: "website",
+      ...(article
+        ? {
+            type: "article" as const,
+            publishedTime: article.publishedTime,
+            modifiedTime: article.modifiedTime,
+            authors: [siteConfig.url],
+            ...(article.tags?.length ? { tags: article.tags } : {}),
+          }
+        : { type: "website" as const }),
       images: [
         {
           url: "/og-image.png",
@@ -44,7 +59,7 @@ export function createMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${title} | ${siteConfig.name}`,
+      title: brandedTitle,
       description,
       images: ["/og-image.png"],
     },
@@ -147,7 +162,9 @@ export function createArticleSchema(options: {
         url: `${siteConfig.url}/og-image.png`,
       },
     },
-    ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
+    ...(options.keywords?.length
+      ? { keywords: options.keywords.join(", ") }
+      : {}),
   };
 }
 

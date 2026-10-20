@@ -41,6 +41,11 @@ export async function generateMetadata({
     title: policy.title,
     description: policy.summary,
     path: `/resources/policy-starter-kit/${policy.slug}/`,
+    article: {
+      publishedTime: policy.publishedAt,
+      modifiedTime: policy.updatedAt ?? policy.publishedAt,
+      tags: policy.tags,
+    },
   });
 }
 

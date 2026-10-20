@@ -42,6 +42,11 @@ export async function generateMetadata({
     title: guide.title,
     description: guide.summary,
     path: `/guides/${guide.slug}/`,
+    article: {
+      publishedTime: guide.publishedAt,
+      modifiedTime: guide.updatedAt ?? guide.publishedAt,
+      tags: guide.tags,
+    },
   });
 }
 

@@ -111,7 +111,11 @@ API routes run through the Worker before static assets. Requests accept JSON onl
 
 The Labs mail lookup checks public MX records only. It reports routing information without assigning a security risk score or claiming an AI assessment.
 
-Static response headers are configured in `public/_headers`. Sitemap modification dates are included for dated guides and policies; undated pages do not claim a new modification on every build.
+Static response headers are configured in `public/_headers`. `npm run build`
+also generates PDF canonical headers in `out/_headers` from the policy content
+model, then validates the export. Deploy the output of the complete build command.
+Sitemap modification dates are included for dated guides and policies; undated
+pages do not claim a new modification on every build.
 
 References:
 
@@ -121,6 +125,10 @@ References:
 - [Wrangler system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/)
 
 ## SEO review — 2026-10-20
+
+The following records the initial review. See the subsequent
+[release audit](docs/seo-release-audit.md) for the post-redesign findings,
+generated PDF headers, current checks, and apex routing follow-up.
 
 The review covered all 78 public pages in the production export, shared layouts,
 page templates, content relationships, metadata, structured data, robots rules,
@@ -173,9 +181,10 @@ repository acceptance rules, not claims that all are Google ranking factors.
   `node scripts/check-export.mjs`; the standard build command is retained.
 
 The deployment configuration manages the established `www.nextgridit.com`
-custom domain. The bare-domain DNS/custom-domain binding must be reconciled in
-Cloudflare before adding it to managed routes; its redirect behavior is already
-implemented in the Worker. All asset requests now run through the Worker so
+custom domain. A normal `nextgridit.com/*` Worker route intercepts the existing
+proxied apex for the permanent www redirect without registering another custom
+domain or replacing DNS. The deploy token needs Worker Routes permissions for
+the zone. Verify the live route after each routing change. All asset requests run through the Worker so
 host redirects and preview indexing headers apply consistently; account for
 those requests in the Cloudflare plan. Public page URLs are preserved.
 

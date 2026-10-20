@@ -16,3 +16,9 @@ not_found_handling = "404-page"
 pattern = "www.nextgridit.com"
 zone_name = "nextgridit.com"
 custom_domain = true
+
+# Intercept the existing proxied apex only to redirect to the www origin.
+# This route does not replace or create DNS records/custom-domain bindings.
+[[routes]]
+pattern = "nextgridit.com/*"
+zone_name = "nextgridit.com"
