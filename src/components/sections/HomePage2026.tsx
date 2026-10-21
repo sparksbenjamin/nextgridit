@@ -6,56 +6,58 @@ import {
   IconMapPin,
 } from "@tabler/icons-react";
 import { BookingLink } from "@/components/content/BookingLink";
-import { InfrastructureArtwork } from "@/components/content/InfrastructureArtwork";
+import { NetworkGlobe } from "@/components/sections/NetworkGlobe";
 import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { ServiceFinder } from "@/components/sections/ServiceFinder";
 import { getAllGuides } from "@/lib/guides";
-import { caseStudies, siteConfig } from "@/lib/site-data";
+import { caseStudies } from "@/lib/site-data";
 
 export function HomePage2026() {
   const study = caseStudies[0];
   const guides = getAllGuides().slice(0, 2);
   return (
     <div className="studio-home">
-      <section className="studio-hero site-shell">
-        <div className="studio-hero-copy">
-          <p className="eyebrow">
-            <span className="location-dot" aria-hidden="true" />
-            Independent IT consulting · Upstate SC
-          </p>
-          <h1>
-            Your business has <em>better things to do</em> than fight its IT.
-          </h1>
-          <p className="studio-hero-description">
-            Networks, cabling, Microsoft 365, and security. Practical help from
-            an experienced local consultant, with a clear plan and a documented
-            handoff.
-          </p>
-          <div className="studio-hero-actions">
-            <BookingLink />
-            <a href="#find-your-fit" className="text-link">
-              Find your next step
-              <IconArrowRight size={18} aria-hidden="true" />
-            </a>
+      <section className="connected-hero">
+        <div className="site-shell connected-hero-layout">
+          <div className="studio-hero-copy">
+            <p className="eyebrow">Independent IT consulting · Seneca, SC</p>
+            <h1>
+              Make your IT
+              <br />
+              <span>work together.</span>
+            </h1>
+            <p className="studio-hero-description">
+              From the cable in the wall to the systems in the cloud. Networks,
+              Microsoft 365, and security that fit your business—with a clear
+              plan and ownership that stays with you.
+            </p>
+            <div className="studio-hero-actions">
+              <BookingLink />
+              <a href="#find-your-fit" className="text-link">
+                Find your next step
+                <IconArrowRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+            <p className="studio-location">
+              <IconMapPin size={15} aria-hidden="true" />
+              Based in Seneca. Working across the Upstate and beyond.
+            </p>
           </div>
-          <p className="studio-location">
-            <IconMapPin size={15} aria-hidden="true" />
-            Based in Seneca. Working across the Upstate and beyond.
-          </p>
+          <NetworkGlobe />
         </div>
-        <div className="studio-hero-art">
-          <div className="artwork-heading">
-            <span>Built to work together.</span>
-            <IconArrowUpRight size={19} aria-hidden="true" />
-          </div>
-          <InfrastructureArtwork priority />
-          <div className="artwork-footnote">
-            <span>From the wall jack to the cloud.</span>
-            <Link href="/services/network-wifi/">
-              Explore infrastructure
-              <IconArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
+        <div className="connected-service-strip site-shell">
+          <Link href="/services/network-wifi/">
+            <span>01</span> Networks & cabling{" "}
+            <IconArrowUpRight size={20} aria-hidden="true" />
+          </Link>
+          <Link href="/services/microsoft-365/">
+            <span>02</span> Microsoft 365 & cloud{" "}
+            <IconArrowUpRight size={20} aria-hidden="true" />
+          </Link>
+          <Link href="/services/">
+            <span>03</span> Security & ownership{" "}
+            <IconArrowUpRight size={20} aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
@@ -64,9 +66,9 @@ export function HomePage2026() {
         aria-label="Professional experience"
       >
         <p>
-          Technical depth.
+          Independent advice.
           <br />
-          <strong>Human perspective.</strong>
+          <strong>Hands-on delivery.</strong>
         </p>
         <div>
           <strong>
@@ -91,9 +93,9 @@ export function HomePage2026() {
           <div>
             <p className="eyebrow">Start with what is getting in your way</p>
             <h2>
-              One clear next step.
+              What needs to
               <br />
-              <em>A lot less guesswork.</em>
+              work better?
             </h2>
           </div>
           <p>
@@ -120,7 +122,9 @@ export function HomePage2026() {
               <h2>
                 A fresh start.
                 <br />
-                <em>With the keys included.</em>
+                <span className="connected-highlight">
+                  With the keys included.
+                </span>
               </h2>
               <p>{study.challenge}</p>
               <Link className="text-link" href={`/case-studies/#${study.slug}`}>
@@ -169,9 +173,9 @@ export function HomePage2026() {
         <div className="studio-person-intro">
           <p className="eyebrow">Experienced. Independent. Accountable.</p>
           <h2>
-            A person to call.
+            The whole environment.
             <br />
-            <em>The whole picture in mind.</em>
+            One technical partner.
           </h2>
           <p>
             Infrastructure, security, cloud, and operations rarely stay in their
@@ -201,22 +205,10 @@ export function HomePage2026() {
             security, and compliance-aware operations.
           </p>
           <div className="consultant-card-links">
-            <a
-              href={siteConfig.sameAs[1]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
+            <Link href="/about/">
+              Experience & approach
               <IconArrowUpRight size={17} aria-hidden="true" />
-            </a>
-            <a
-              href={siteConfig.sameAs[0]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-              <IconArrowUpRight size={17} aria-hidden="true" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -226,9 +218,9 @@ export function HomePage2026() {
           <div>
             <p className="eyebrow">A clear finish line</p>
             <h2>
-              Good work.
+              Built properly.
               <br />
-              <em>No loose ends.</em>
+              Handed over completely.
             </h2>
             <Link href="/process/" className="text-link">
               How projects work
@@ -269,10 +261,8 @@ export function HomePage2026() {
       <section className="studio-section site-shell">
         <div className="studio-section-heading" data-reveal>
           <div>
-            <p className="eyebrow">A little useful perspective</p>
-            <h2>
-              From the <em>field notes.</em>
-            </h2>
+            <p className="eyebrow">Practical advice for business owners</p>
+            <h2>A clearer view of your IT.</h2>
           </div>
           <Link className="text-link" href="/guides/">
             All guides

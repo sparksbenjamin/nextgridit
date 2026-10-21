@@ -654,6 +654,50 @@ test("service finder supports touch, keyboard selection, and real service destin
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
 
+test("globe motion pauses, stops offscreen, and responds to reduced-motion changes", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  const canvas = page.locator(".network-globe canvas[data-ready=true]");
+  await expect(canvas).toBeVisible();
+  const picture = () =>
+    canvas.evaluate((element) => (element as HTMLCanvasElement).toDataURL());
+  const first = await picture();
+  await expect.poll(picture).not.toBe(first);
+  await page.getByRole("button", { name: "Pause globe animation" }).click();
+  await expect(page.locator(".network-globe")).toHaveAttribute(
+    "data-motion",
+    "paused",
+  );
+  await expect(canvas).toBeVisible();
+  await page.waitForTimeout(150);
+  const paused = await picture();
+  await page.waitForTimeout(250);
+  expect(await picture()).toBe(paused);
+  await page.getByRole("button", { name: "Play globe animation" }).click();
+  await expect.poll(picture).not.toBe(paused);
+  await page.locator("footer").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(150);
+  const offscreen = await picture();
+  await page.waitForTimeout(250);
+  expect(await picture()).toBe(offscreen);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await expect.poll(picture).not.toBe(offscreen);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".network-globe canvas")).toHaveCount(0);
+  await expect(page.locator(".network-globe img")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Pause globe animation" }),
+  ).toHaveCount(0);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect(canvas).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Pause globe animation" }),
+  ).toBeVisible();
+});
+
 test("a saved dark theme is applied before the first content paint", async ({
   page,
 }) => {

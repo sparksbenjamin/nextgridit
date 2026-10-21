@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import "./studio.css";
+import "./connected.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer2026 } from "@/components/layout/Footer2026";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
