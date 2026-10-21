@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 type Point = [number, number, number];
 const radians = Math.PI / 180;
@@ -57,7 +56,6 @@ export function NetworkGlobe() {
     getReducedMotion,
     serverMotion,
   );
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (reduced) return;
@@ -75,7 +73,7 @@ export function NetworkGlobe() {
     let rotationSin = Math.sin(55 * radians);
     const tiltCos = Math.cos(18 * radians);
     const tiltSin = Math.sin(18 * radians);
-    const canRun = () => !disposed && visible && !document.hidden && !paused;
+    const canRun = () => !disposed && visible && !document.hidden;
     const project = ([x, y, z]: Point): Point => {
       const xx = x * rotationCos + z * rotationSin;
       const zz = z * rotationCos - x * rotationSin;
@@ -238,12 +236,12 @@ export function NetworkGlobe() {
       intersection.disconnect();
       document.removeEventListener("visibilitychange", update);
     };
-  }, [paused, reduced]);
+  }, [reduced]);
 
   return (
     <div
       className="network-globe"
-      data-motion={reduced ? "static" : paused ? "paused" : "playing"}
+      data-motion={reduced ? "static" : "playing"}
     >
       <div className="network-globe-scene" aria-hidden="true">
         {!reduced && <canvas ref={canvasRef} />}
@@ -256,22 +254,6 @@ export function NetworkGlobe() {
           <span /> Local expertise. A connected world.
           <small>Illustrative network routes</small>
         </p>
-        {!reduced && (
-          <button
-            type="button"
-            onClick={() => setPaused(!paused)}
-            aria-label={
-              paused ? "Play globe animation" : "Pause globe animation"
-            }
-            title={paused ? "Play globe animation" : "Pause globe animation"}
-          >
-            {paused ? (
-              <IconPlayerPlay size={16} aria-hidden="true" />
-            ) : (
-              <IconPlayerPause size={16} aria-hidden="true" />
-            )}
-          </button>
-        )}
       </div>
     </div>
   );

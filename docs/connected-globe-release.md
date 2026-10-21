@@ -17,7 +17,8 @@ The renderer uses Canvas 2D without a new dependency. Coastline points load in a
 separate local chunk. Drawing is capped at approximately 30 fps on larger
 canvases and 20 fps on smaller ones, with device pixel ratio capped at 1.5.
 Intersection and page-visibility observers stop animation when it is not visible.
-Pause/play is available, including keyboard access. Reduced-motion preferences
+The decorative globe has no visible playback controls, as requested by the owner.
+Reduced-motion preferences
 are observed immediately and when changed. A complete static SVG globe is
 present before JavaScript and remains the fallback if enhancement fails.
 
@@ -44,8 +45,9 @@ No new career claims, testimonials, client photographs, or credentials were adde
 - Lint, TypeScript, 22 unit tests, production build and export checks passed.
   The export includes 81 HTML files, 6,763 internal links, 78 sitemap URLs,
   371 JSON-LD blocks and seven PDF canonical headers.
-- All 20 browser tests passed, including new checks for pixel changes while
-  playing, stable output when paused or offscreen, resume, and changing the
+- All 20 browser tests passed for the original release. The globe coverage now
+  checks for no playback controls, pixel changes while playing, stable output
+  offscreen, resume on return, and changing the
   reduced-motion preference. Existing booking/contact, navigation, filter,
   mobile, enlarged-text, SEO and no-JavaScript checks remain covered.
 - Automated accessibility: 36 page, theme and menu states, zero axe violations.

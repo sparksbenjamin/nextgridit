@@ -117,22 +117,6 @@
   font-size: 0.7rem;
   margin-top: 0.3rem;
 }
-.network-globe-caption button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  min-width: 44px;
-  min-height: 44px;
-  border: 0;
-  border-radius: 50%;
-  color: #afc5b8;
-  font-size: 0.75rem;
-  background: transparent;
-}
-.network-globe-caption button:hover {
-  background: #244438;
-}
 .connected-service-strip {
   position: relative;
   z-index: 1;
