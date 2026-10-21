@@ -1,3 +1,4 @@
+import { InfrastructureArtwork } from "@/components/content/InfrastructureArtwork";
 import { BookingLink } from "@/components/content/BookingLink";
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
@@ -115,6 +116,12 @@ export default async function ServiceDetailPage({
           </a>
         </PageIntro>
         <aside className="detail-outcomes">
+          {service.slug === "network-wifi" && (
+            <InfrastructureArtwork
+              className="service-illustration"
+              sizes="(max-width: 850px) calc(100vw - 8rem), (min-width: 1376px) 440px, calc(45vw - 6rem)"
+            />
+          )}
           <p className="eyebrow mb-3">The goal</p>
           <h2>What better looks like</h2>
           <ul className="check-list text-sm">

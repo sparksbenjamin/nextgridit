@@ -437,36 +437,62 @@ test("text resizing and reduced motion preserve usable navigation and content", 
       ),
     ).toBe("auto");
     if (width === 1440) {
-      const trigger = page.getByRole("button", { name: "Open navigation menu" });
+      const trigger = page.getByRole("button", {
+        name: "Open navigation menu",
+      });
       await trigger.click();
       await expect(page.locator("main")).toHaveAttribute("inert", "");
-      const lastControl = page.locator("#mobile-navigation").getByRole("button", { name: "Light", exact: true });
+      const lastControl = page
+        .locator("#mobile-navigation")
+        .getByRole("button", { name: "Light", exact: true });
       await lastControl.focus();
       await expect(lastControl).toBeInViewport();
-      await page.evaluate(() => document.documentElement.style.fontSize = "100%");
+      await page.evaluate(
+        () => (document.documentElement.style.fontSize = "100%"),
+      );
       await expect(page.locator("main")).not.toHaveAttribute("inert", "");
       await expect(page.locator("#mobile-navigation")).toBeHidden();
     }
   }
 });
 
-test("phone and tablet contents navigate before the article, with usable touch controls", async ({ page }) => {
+test("phone and tablet contents navigate before the article, with usable touch controls", async ({
+  page,
+}) => {
   for (const width of [390, 768, 820]) {
     await page.setViewportSize({ width, height: 900 });
     for (const [path, label] of [
       ["/guides/why-local-dns-matters/", "In this guide"],
-      ["/resources/policy-starter-kit/password-and-mfa-policy/", "In this document"],
+      [
+        "/resources/policy-starter-kit/password-and-mfa-policy/",
+        "In this document",
+      ],
     ]) {
       await page.goto(path);
       const contents = page.locator(".reading-contents-mobile");
-      expect(await contents.evaluate((element) => !!(element.compareDocumentPosition(document.querySelector("article")!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+      expect(
+        await contents.evaluate(
+          (element) =>
+            !!(
+              element.compareDocumentPosition(
+                document.querySelector("article")!,
+              ) & Node.DOCUMENT_POSITION_FOLLOWING
+            ),
+        ),
+      ).toBe(true);
       await expect(contents.locator("summary")).toContainText(label);
       await contents.locator("summary").click();
       const link = contents.getByRole("link").last();
       const href = await link.getAttribute("href");
       await link.click();
       await expect(page.locator(href!)).toBeInViewport();
-      await expect.poll(() => page.locator(href!).evaluate((element) => element.getBoundingClientRect().top)).toBeGreaterThan(67);
+      await expect
+        .poll(() =>
+          page
+            .locator(href!)
+            .evaluate((element) => element.getBoundingClientRect().top),
+        )
+        .toBeGreaterThan(67);
     }
     await page.goto("/technologies/");
     for (const button of await page.locator(".category-filters button").all()) {
@@ -477,7 +503,9 @@ test("phone and tablet contents navigate before the article, with usable touch c
   }
 });
 
-test("navigation transitions can be interrupted and short landscape menus scroll", async ({ page }) => {
+test("navigation transitions can be interrupted and short landscape menus scroll", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 820, height: 480 });
   await page.goto("/");
   const panel = page.locator("#mobile-navigation");
@@ -490,20 +518,31 @@ test("navigation transitions can be interrupted and short landscape menus scroll
   await expect(panel).toHaveAttribute("inert", "");
   await expect(panel).toBeHidden();
   await page.setViewportSize({ width: 1440, height: 900 });
-  const services = page.locator(".desktop-nav").getByRole("button", { name: "Services", exact: true });
+  const services = page
+    .locator(".desktop-nav")
+    .getByRole("button", { name: "Services", exact: true });
   await services.evaluate((button) => {
-    if (!(button instanceof HTMLButtonElement)) throw new Error("Expected navigation button");
-    button.click(); button.click(); button.click();
+    if (!(button instanceof HTMLButtonElement))
+      throw new Error("Expected navigation button");
+    button.click();
+    button.click();
+    button.click();
   });
   await expect(page.locator("#desktop-navigation")).toBeVisible();
   await expect(services).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Escape");
   await expect(services).toBeFocused();
-  await expect(page.locator("#desktop-navigation")).toHaveAttribute("inert", "");
+  await expect(page.locator("#desktop-navigation")).toHaveAttribute(
+    "inert",
+    "",
+  );
   await expect(page.locator("#desktop-navigation")).toBeHidden();
 });
 
-test("section motion runs once, respects changed preferences, and content works without JavaScript", async ({ page, browser }) => {
+test("section motion runs once, respects changed preferences, and content works without JavaScript", async ({
+  page,
+  browser,
+}) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
@@ -513,22 +552,52 @@ test("section motion runs once, respects changed preferences, and content works 
     const recorded: string[] = [];
     Object.assign(window, { recordedArrivals: recorded });
     Element.prototype.animate = function (frames, options) {
-      if (typeof options === "object" && options.id === "section-arrival") recorded.push(this.textContent!.slice(0, 80));
+      if (typeof options === "object" && options.id === "section-arrival")
+        recorded.push(this.textContent!.slice(0, 80));
       return original.call(this, frames, options);
     };
   });
   const section = page.locator("[data-reveal]").first();
   await section.scrollIntoViewIfNeeded();
-  await expect.poll(() => page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length)).toBeGreaterThan(0);
-  await expect.poll(() => section.evaluate((element) => element.getAnimations().length)).toBe(0);
-  const firstCount = await page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length);
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          (window as unknown as { recordedArrivals: string[] }).recordedArrivals
+            .length,
+      ),
+    )
+    .toBeGreaterThan(0);
+  await expect
+    .poll(() => section.evaluate((element) => element.getAnimations().length))
+    .toBe(0);
+  const firstCount = await page.evaluate(
+    () =>
+      (window as unknown as { recordedArrivals: string[] }).recordedArrivals
+        .length,
+  );
   await page.evaluate(() => scrollTo(0, 0));
   await section.scrollIntoViewIfNeeded();
-  expect(await page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length)).toBe(firstCount);
+  expect(
+    await page.evaluate(
+      () =>
+        (window as unknown as { recordedArrivals: string[] }).recordedArrivals
+          .length,
+    ),
+  ).toBe(firstCount);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.locator("[data-reveal]").last().scrollIntoViewIfNeeded();
-  expect(await page.evaluate(() => (window as unknown as { recordedArrivals: string[] }).recordedArrivals.length)).toBe(firstCount);
-  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  expect(
+    await page.evaluate(
+      () =>
+        (window as unknown as { recordedArrivals: string[] }).recordedArrivals
+          .length,
+    ),
+  ).toBe(firstCount);
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 390, height: 844 },
+  });
   const plain = await context.newPage();
   await plain.route("**/fw-cdn.com/**", (route) => route.abort());
   await plain.goto("/");
@@ -536,7 +605,94 @@ test("section motion runs once, respects changed preferences, and content works 
   await expect(plain.locator(".project-cta")).toBeVisible();
   await plain.goto("/guides/why-local-dns-matters/");
   await plain.locator(".reading-contents-mobile summary").click();
-  await expect(plain.locator(".reading-contents-mobile").getByRole("link").first()).toBeVisible();
+  await expect(
+    plain.locator(".reading-contents-mobile").getByRole("link").first(),
+  ).toBeVisible();
   await expect(plain.locator("article")).toBeVisible();
   await context.close();
+});
+
+test("service finder supports touch, keyboard selection, and real service destinations", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const tabs = page.getByRole("tablist", {
+    name: "What do you need help with?",
+  });
+  await expect(
+    tabs.getByRole("tab", { name: "Connect", exact: true }),
+  ).toHaveAttribute("aria-selected", "true");
+  const protect = tabs.getByRole("tab", { name: "Protect", exact: true });
+  await protect.click();
+  await expect(page.getByRole("tabpanel")).toHaveCount(1);
+  await expect(page.getByRole("tabpanel").getByRole("heading")).toContainText(
+    "Know where you stand",
+  );
+  await protect.press("ArrowRight");
+  await expect(tabs.getByRole("tab", { name: "Take control" })).toBeFocused();
+  await expect(
+    page
+      .getByRole("tabpanel")
+      .getByRole("link", { name: "Changing IT providers" }),
+  ).toHaveAttribute("href", "/services/msp-transition/");
+  await page.keyboard.press("Home");
+  await expect(
+    tabs.getByRole("tab", { name: "Connect", exact: true }),
+  ).toBeFocused();
+  await expect(
+    page
+      .getByRole("tabpanel")
+      .getByRole("link", { name: "Networks, Wi-Fi & cabling" }),
+  ).toHaveAttribute("href", "/services/network-wifi/");
+  await page.keyboard.press("End");
+  await page
+    .getByRole("tabpanel")
+    .getByRole("link", { name: "Changing IT providers" })
+    .click();
+  await expect(page).toHaveURL(/\/services\/msp-transition\/$/);
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+});
+
+test("a saved dark theme is applied before the first content paint", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("nextgridit-theme", "dark");
+    const audit = { applied: 0 };
+    Object.assign(window, { themeBootAudit: audit });
+    const observer = new MutationObserver((mutations) => {
+      if (
+        mutations.some(
+          (mutation) => mutation.target === document.documentElement,
+        ) &&
+        document.documentElement.dataset.theme === "dark"
+      ) {
+        audit.applied = performance.now();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document, {
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  });
+  await page.goto("/");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () => performance.getEntriesByName("first-contentful-paint").length,
+      ),
+    )
+    .toBe(1);
+  const timing = await page.evaluate(() => ({
+    applied: (window as unknown as { themeBootAudit: { applied: number } })
+      .themeBootAudit.applied,
+    painted: performance.getEntriesByName("first-contentful-paint")[0]
+      .startTime,
+  }));
+  expect(timing.applied).toBeGreaterThan(0);
+  expect(timing.applied).toBeLessThanOrEqual(timing.painted);
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });

@@ -136,7 +136,7 @@ export function TechnologiesFilterClient() {
               Explore support
               <IconArrowRight size={17} aria-hidden="true" />
             </Link>
-            <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
+            <div className="resource-related-links mt-3 flex flex-wrap gap-x-5 gap-y-1">
               {item.relatedServices
                 .map(getService)
                 .filter((entry) => entry !== undefined)

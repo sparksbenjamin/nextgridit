@@ -1,8 +1,12 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
-import Script from "next/script";
+import {
+  IBM_Plex_Mono,
+  Instrument_Serif,
+  Space_Grotesk,
+} from "next/font/google";
 import "./globals.css";
+import "./studio.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer2026 } from "@/components/layout/Footer2026";
 import { MobileStickyBar } from "@/components/layout/MobileStickyBar";
@@ -37,6 +41,14 @@ const themeInitScript = `
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const editorial = Instrument_Serif({
+  variable: "--font-editorial",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
   display: "swap",
 });
 
@@ -252,8 +264,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          id="theme-init"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
       <body
-        className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} min-h-screen antialiased`}
+        className={`${spaceGrotesk.variable} ${ibmPlexMono.variable} ${editorial.variable} min-h-screen antialiased`}
       >
         <a
           href="#main-content"
@@ -262,9 +280,6 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeInitScript}
-        </Script>
         <JsonLd id="website-schema" data={websiteSchema} />
         <JsonLd id="organization-schema" data={organizationSchema} />
         <JsonLd id="local-business-schema" data={professionalServiceSchema} />

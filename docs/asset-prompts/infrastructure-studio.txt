@@ -1,0 +1,10 @@
+Generated with the built-in imagegen tool, transparent_background=false.
+
+Use case: stylized-concept. Asset type: premium website hero illustration for NextGridIT, an independent network infrastructure and IT security consultant. Create a sophisticated editorial 3D still-life illustration, landscape 3:2 composition. A beautifully precise compact business network arranged as a sculptural exploded assembly: brushed aluminum 24-port network switch and patch panel, a small security gateway below, meticulously dressed forest green Ethernet cables making elegant physical connections and arcing smoothly upward, one understated white access point. Hardware must feel tangible and plausible, arranged with architectural order, cables form a restrained flowing green ribbon through the assembly. Three-quarter elevated camera, object occupies central 75 percent, generous breathing space all sides, no objects cut off. Background perfectly solid very dark pine #10271f. Materials warm brushed silver, graphite, green braided cable, restrained lime port indicators. Directional soft studio light from upper left, subtle grounded shadows, precise fine details, premium industrial design editorial rendering, physically believable but clearly an art-directed 3D illustration, beautifully simple composition, no datacenter aisles. No text, no logos, no watermarks, no people, no monitors or screens, no charts, no floating UI, no neon glow, no blue, no purple. A distinctive thoughtful infrastructure image that suggests clear connections and control rather than sci-fi.
+
+Published image variants:
+public/images/infrastructure-studio.webp (1440 x 960)
+public/images/infrastructure-studio-small.webp (720 x 480)
+public/images/infrastructure-studio-medium.webp (1080 x 720)
+
+The image is labeled as an infrastructure illustration in the site. It is not a photograph of a NextGridIT client installation. The social preview embeds a PNG rendition of this artwork inside the authored SVG layout. The brand mark and favicon are authored vector artwork, not generated client evidence.

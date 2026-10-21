@@ -6,9 +6,9 @@ import { services } from "@/lib/site-data";
 
 const groups = [
   {
-    label: "Ownership",
-    title: "Get your environment back under your control.",
-    slugs: ["msp-transition", "vendor-lockout-recovery"],
+    label: "Networks & cloud",
+    title: "Make the everyday work better.",
+    slugs: ["network-wifi", "microsoft-365", "camera-systems", "private-ai"],
   },
   {
     label: "Security",
@@ -21,9 +21,9 @@ const groups = [
     ],
   },
   {
-    label: "Infrastructure",
-    title: "A dependable foundation for the work ahead.",
-    slugs: ["microsoft-365", "network-wifi", "camera-systems", "private-ai"],
+    label: "Ownership",
+    title: "Get your environment back under your control.",
+    slugs: ["msp-transition", "vendor-lockout-recovery"],
   },
 ];
 export function ServicesPage2026() {
@@ -31,8 +31,8 @@ export function ServicesPage2026() {
     <div className="page-shell container">
       <PageIntro
         eyebrow="Our expertise"
-        title="Technical work."
-        accent="Practical outcomes."
+        title="The right help."
+        accent="For the work ahead."
         description="Recover access, strengthen security, or build more dependable infrastructure. Find the service that fits the problem you need solved."
       />
       {groups.map((group) => (
@@ -42,7 +42,7 @@ export function ServicesPage2026() {
             <h2>{group.title}</h2>
           </div>
           <div className="service-catalog">
-            {group.slugs.map((slug) => {
+            {group.slugs.map((slug, index) => {
               const service = services.find((item) => item.slug === slug)!;
               return (
                 <Link
@@ -50,10 +50,13 @@ export function ServicesPage2026() {
                   href={`/services/${slug}/`}
                   key={slug}
                 >
+                  <span className="service-number" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <h3>{service.title}</h3>
                   <p>{service.summary}</p>
                   <span className="text-link">
-                    Explore this service
+                    View scope
                     <IconArrowRight size={17} aria-hidden="true" />
                   </span>
                 </Link>

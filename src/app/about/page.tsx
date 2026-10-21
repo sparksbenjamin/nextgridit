@@ -5,6 +5,7 @@ import { IconArrowRight, IconCheck } from "@tabler/icons-react";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageIntro } from "@/components/content/PageIntro";
 import { ProjectCTA } from "@/components/content/ProjectCTA";
+import { siteConfig } from "@/lib/site-data";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
@@ -45,6 +46,9 @@ export default function AboutPage() {
       />
       <section className="detail-section founder-grid">
         <div className="founder-heading">
+          <div className="about-signature" aria-hidden="true">
+            bs.
+          </div>
           <p className="eyebrow">The person behind the work</p>
           <h2>Benjamin Sparks</h2>
           <p className="theme-copy">
@@ -53,6 +57,24 @@ export default function AboutPage() {
             Based in Seneca, South Carolina
           </p>
           <BookingLink className="text-link" />
+          <div className="about-profile-links">
+            <a
+              className="text-link"
+              href={siteConfig.sameAs[1]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn <IconArrowRight size={17} aria-hidden="true" />
+            </a>
+            <a
+              className="text-link"
+              href={siteConfig.sameAs[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub <IconArrowRight size={17} aria-hidden="true" />
+            </a>
+          </div>
         </div>
         <div className="founder-bio">
           <p>

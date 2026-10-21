@@ -1,5 +1,5 @@
 import { JsonLd } from "@/components/content/JsonLd";
-import Link from "next/link";
+import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { PageIntro } from "@/components/content/PageIntro";
 import {
   createBreadcrumbSchema,
@@ -71,65 +71,29 @@ export default function ProcessPage() {
       <JsonLd id="process-itemlist-schema" data={processSchema} />
       <PageIntro
         eyebrow="How Work Starts"
-        title="Project"
-        accent="Process"
+        title="Good work."
+        accent="No loose ends."
         description="NextGridIT uses a project-led process built around practical assessment, prioritized improvements, and a cleaner handoff at the end of the engagement."
       />
 
-      <div className="relative grid gap-6">
+      <ol className="project-roadmap" role="list">
         {processSteps.map((step) => (
-          <section
-            key={step.step}
-            className="glass-panel grid gap-6 border border-[var(--border)] p-8 lg:grid-cols-[84px_1fr_320px]"
-          >
-            <div className="flex lg:justify-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-strong)]">
-                <span className="theme-heading font-mono text-base font-bold tracking-[0.2em]">
-                  {step.step}
-                </span>
+          <li key={step.step}>
+            <span className="roadmap-index" aria-hidden="true">
+              {step.step}
+            </span>
+            <div>
+              <h2>{step.title}</h2>
+              <p>{step.description}</p>
+              <div className="roadmap-note">
+                <span className="eyebrow">What matters here</span>
+                <p>{step.signal}</p>
               </div>
             </div>
-
-            <div>
-              <p className="theme-accent-strong mb-2 font-mono text-xs uppercase tracking-[0.26em]">
-                Stage {step.step}
-              </p>
-              <h2 className="theme-heading mb-4  text-2xl font-bold">
-                {step.title}
-              </h2>
-              <p className="theme-copy leading-relaxed">{step.description}</p>
-            </div>
-
-            <div className="rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] p-5">
-              <p className="theme-accent-alt mb-3 font-mono text-xs uppercase tracking-[0.24em]">
-                What matters here
-              </p>
-              <p className="theme-copy text-sm leading-relaxed">
-                {step.signal}
-              </p>
-            </div>
-          </section>
+          </li>
         ))}
-      </div>
-
-      <section className="glass-panel mt-16 border border-[var(--border)] p-8">
-        <h2 className="theme-heading mb-4  text-2xl font-bold">
-          What the process is designed to avoid
-        </h2>
-        <p className="theme-copy mb-6 leading-relaxed">
-          The goal is to avoid vague support relationships, undocumented
-          changes, and technical work that creates more confusion than it
-          solves. NextGridIT is designed for clients that want clear action,
-          realistic recommendations, and systems that are easier to operate
-          after the work is complete.
-        </p>
-        <Link
-          href="/contact/"
-          className="button-primary inline-block rounded-full px-6 py-3 font-mono text-sm font-bold uppercase tracking-[0.2em]"
-        >
-          Start the Intake
-        </Link>
-      </section>
+      </ol>
+      <ProjectCTA title="Let’s work out a clear next step." />
     </div>
   );
 }

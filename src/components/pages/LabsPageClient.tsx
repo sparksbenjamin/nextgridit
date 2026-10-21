@@ -7,6 +7,7 @@ import {
   IconShieldLock,
   IconTargetArrow,
 } from "@tabler/icons-react";
+import { PageIntro } from "@/components/content/PageIntro";
 import { SurfaceScanModule } from "@/components/scan/SurfaceScanModule";
 
 const openSourceProjects = [
@@ -59,57 +60,29 @@ export function LabsPageClient() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <section className="relative overflow-hidden border-b border-[var(--border)]">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 cyber-grid opacity-[0.07]" />
-          <div
-            className="absolute left-[-8rem] top-[-4rem] h-80 w-80 rounded-full blur-[120px]"
-            style={{ backgroundColor: "var(--hero-glow-one)" }}
-          />
-          <div
-            className="absolute right-[-6rem] top-20 h-96 w-96 rounded-full blur-[150px]"
-            style={{ backgroundColor: "var(--hero-glow-two)" }}
-          />
-        </div>
-
         <div className="relative z-10 container mx-auto px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 font-mono text-xs uppercase tracking-[0.28em] theme-accent-strong">
-            <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_14px_var(--accent)]" />
-            NextGrid Labs
-          </div>
-
-          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="max-w-4xl">
-              <h1 className="theme-heading text-4xl font-bold leading-tight md:text-6xl">
-                Security Research and Vulnerability Discovery
-              </h1>
-              <p className="theme-copy mt-6 max-w-3xl text-lg leading-relaxed">
-                NextGrid Labs is the research arm of NextGridIT. Active bug
-                bounty work on Microsoft and HackerOne platforms drives the same
-                methodology that informs client security assessments,
-                vulnerability prioritization, and remediation guidance.
-              </p>
-            </div>
-
-            <div className="rounded-xl border border-[var(--border)] bg-[var(--surface)]/90 p-6 ">
-              <p className="font-mono text-xs uppercase tracking-[0.3em] theme-soft">
-                Active research platforms
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
+          <PageIntro
+            eyebrow="NextGrid Labs"
+            title="Research with"
+            accent="a defender’s perspective."
+            description="Active security research informs the same methodology behind client assessments, vulnerability prioritization, and practical remediation guidance."
+          />
+          <div className="labs-platforms">
+            <div>
+              <p className="eyebrow">Active research platforms</p>
+              <div className="labs-platform-tags">
                 {bugBountyPlatforms.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-[var(--border)] bg-[var(--background-elevated)] px-3 py-2 font-mono text-[11px] uppercase tracking-[0.22em] theme-copy"
-                  >
+                  <span className="theme-chip" key={item}>
                     {item}
                   </span>
                 ))}
               </div>
-              <p className="theme-copy mt-5 leading-relaxed">
-                Research findings follow coordinated disclosure processes. Exact
-                exploit paths remain inside disclosure boundaries while the
-                research track is active.
-              </p>
             </div>
+            <p>
+              Research findings follow coordinated disclosure processes. Exact
+              exploit paths remain inside disclosure boundaries while the
+              research track is active.
+            </p>
           </div>
 
           <div className="mt-12 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
