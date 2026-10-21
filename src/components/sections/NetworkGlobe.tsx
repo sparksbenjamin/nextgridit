@@ -263,13 +263,13 @@ export function NetworkGlobe() {
             aria-label={
               paused ? "Play globe animation" : "Pause globe animation"
             }
+            title={paused ? "Play globe animation" : "Pause globe animation"}
           >
             {paused ? (
               <IconPlayerPlay size={16} aria-hidden="true" />
             ) : (
               <IconPlayerPause size={16} aria-hidden="true" />
             )}
-            {paused ? "Play" : "Pause"}
           </button>
         )}
       </div>
