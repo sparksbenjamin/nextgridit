@@ -177,7 +177,9 @@ const professionalServiceSchema = {
     },
   })),
   description: siteConfig.tagline,
-  sameAs: siteConfig.sameAs,
+  sameAs: siteConfig.googleBusinessUrl
+    ? [...siteConfig.sameAs, siteConfig.googleBusinessUrl]
+    : siteConfig.sameAs,
   knowsAbout: knowledgeAreas,
   founder: {
     "@type": "Person",
@@ -242,7 +244,9 @@ const organizationSchema = {
   email: siteConfig.email,
   telephone: siteConfig.phone,
   logo: `${siteConfig.url}/og-image.png`,
-  sameAs: siteConfig.sameAs,
+  sameAs: siteConfig.googleBusinessUrl
+    ? [...siteConfig.sameAs, siteConfig.googleBusinessUrl]
+    : siteConfig.sameAs,
   foundingDate: siteConfig.founded,
   address: {
     "@type": "PostalAddress",

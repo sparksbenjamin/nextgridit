@@ -33,6 +33,7 @@ const options = [
     links: [
       ["Vulnerability assessments", "/services/vulnerability-assessment/"],
       ["HIPAA security assessments", "/services/hipaa-security-assessment/"],
+      ["NIST 800-171 readiness", "/services/nist-800-171-readiness/"],
       ["Infrastructure hardening", "/services/infrastructure-hardening/"],
     ],
     illustration: ["Understand", "Prioritize", "Strengthen"],

@@ -19,6 +19,15 @@ export const siteConfig = {
   googleBusinessUrl: "",
 } as const;
 
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  location: string;
+};
+
+export const testimonials: Testimonial[] = [];
+
 export type ProcessStep = {
   title: string;
   description: string;
@@ -257,6 +266,62 @@ export const services: Service[] = [
         question: "Do we need to install anything on our network?",
         answer:
           "It depends on the scope. External assessments require no internal access. Internal assessments may require a scanner deployment, which can be done with minimal footprint and removed after the engagement.",
+      },
+    ],
+  },
+  {
+    slug: "nist-800-171-readiness",
+    shortLabel: "NIST 800-171 Readiness",
+    title: "NIST 800-171 Readiness for Defense Suppliers",
+    summary:
+      "Gap assessments, System Security Plan support, and SPRS score preparation for Upstate SC manufacturers that hold or bid on Department of Defense contracts.",
+    description:
+      "If you hold a Department of Defense contract or subcontract, DFARS clause 252.204-7012 requires you to protect covered defense information to NIST SP 800-171 and report your self-assessment score in SPRS. The Department of Defense's suspension of CMMC Phase 2 in 2026 did not remove that obligation — the clause and the self-assessment requirements remain in force, and they flow down from primes to subcontractors of every size. NextGridIT translates NIST SP 800-171 into a practical gap assessment and remediation plan for small manufacturers, grounded in the same NIST framework experience applied daily to MARS-E and NIST 800-53 environments.",
+    audience:
+      "Best fit for manufacturers, machine shops, and suppliers in Upstate SC that handle covered defense information under DoD contracts — or have DFARS clauses flowing down from their customers — and need a realistic path to compliance without enterprise overhead.",
+    outcomes: [
+      "A current, evidence-based gap assessment against NIST SP 800-171",
+      "A prioritized remediation plan that maps each gap to a practical fix",
+      "System Security Plan documentation and the inputs needed for a defensible SPRS self-assessment score",
+    ],
+    deliverables: [
+      "Control-by-control gap assessment with evidence and interview notes",
+      "Prioritized Plan of Action and Milestones (POA&M) for open gaps",
+      "System Security Plan (SSP) support written for your actual environment",
+      "SPRS score preparation with documentation you can stand behind",
+    ],
+    process: [
+      { title: "Scoping and contract review", description: "We identify which DFARS clauses apply, what information is covered, and which systems fall in scope — so the assessment matches your real obligations instead of a generic checklist.", duration: "3-5 days" },
+      { title: "Gap assessment", description: "We assess the environment against NIST SP 800-171 requirements — access control, incident response, media protection, configuration management, and the rest — with evidence gathered on-site and remotely.", duration: "1-2 weeks" },
+      { title: "Prioritization and POA&M", description: "Gaps are ranked by real risk and contract exposure, with practical fixes sized for a small manufacturer's budget and staff. You get a POA&M in the format your customer or auditor expects.", duration: "3-5 days" },
+      { title: "SSP and SPRS preparation", description: "We support the System Security Plan documentation and prepare the inputs for your SPRS self-assessment score, so what you report matches what you actually do.", duration: "1 week" },
+    ],
+    pricing: "Project-based. NIST 800-171 readiness engagements typically range from $4,000-$10,000 depending on environment size and existing documentation.",
+    delivery: "Hybrid. On-site for system inventory and interviews in Upstate SC; remote for assessment analysis, documentation, and plan development.",
+    buyerPersonas: [
+      "Owners of small manufacturers who received DFARS flow-down requirements from a prime",
+      "Plant or operations managers asked for a SPRS score they don't have",
+      "Shops bidding on DoD contracts that need to show 800-171 progress to win the work",
+    ],
+    relatedCaseStudies: [],
+    relatedIndustries: ["manufacturing-defense", "small-business"],
+    relatedLocations: ["seneca-sc", "clemson-sc", "anderson-sc"],
+    technologies: ["NIST SP 800-171", "DFARS 252.204-7012", "SPRS", "NIST 800-53", "MARS-E"],
+    faq: [
+      {
+        question: "Do we need CMMC certification to keep our DoD contracts?",
+        answer:
+          "Not currently. The Department of Defense suspended CMMC Phase 2 in July 2026, pausing the third-party certification rollout. The underlying DFARS 252.204-7012 clause remains in force: covered contractors still need to implement NIST SP 800-171 and self-assess, reporting scores in SPRS. Requirements can change — we track them so you don't have to.",
+      },
+      {
+        question: "What is a SPRS score, and why is our customer asking for one?",
+        answer:
+          "SPRS (Supplier Performance Risk System) is where DoD suppliers report their NIST SP 800-171 self-assessment score. Primes increasingly require a current score from subcontractors before awarding work. If you've been asked for a score, the path is a defensible self-assessment, documentation that backs it, and accurate reporting.",
+      },
+      {
+        question: "We're a small shop — is 800-171 realistic for us?",
+        answer:
+          "Yes, with proper scoping. Many controls map to what a well-run small environment needs anyway: access control, backups, updates, and documentation. A gap assessment tells you which controls apply to you, which you already meet, and which need work — so you invest where it counts instead of guessing.",
       },
     ],
   },
@@ -609,6 +674,25 @@ export const industries: Industry[] = [
       "microsoft-365",
       "infrastructure-hardening",
       "vulnerability-assessment",
+    ],
+  },
+  {
+    slug: "manufacturing-defense",
+    title: "Manufacturers and Defense Suppliers",
+    summary:
+      "NIST 800-171 readiness, DFARS flow-down obligations, and dependable infrastructure for Upstate SC manufacturers.",
+    description:
+      "Oconee County runs on manufacturing — machine shops, fabricators, and tier-2 suppliers feeding BMW Spartanburg, Michelin, and the region's defense primes. When those customers flow DFARS clauses down, small shops are suddenly accountable for NIST SP 800-171 controls and SPRS scores designed for much larger organizations. NextGridIT works with manufacturers on the security side — gap assessments, remediation planning, and the SPRS score preparation your customers ask for — plus the dependable networks and infrastructure a production floor depends on, without enterprise pricing or a bloated toolchain.",
+    needs: [
+      "NIST 800-171 gap assessments and SPRS score preparation without enterprise overhead",
+      "Networks and Wi-Fi that hold up across shop floors, offices, and outbuildings",
+      "Security hardening that protects production systems without slowing them down",
+    ],
+    relatedServices: [
+      "nist-800-171-readiness",
+      "vulnerability-assessment",
+      "infrastructure-hardening",
+      "network-wifi",
     ],
   },
   {

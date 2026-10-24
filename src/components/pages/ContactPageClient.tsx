@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
-import { IconArrowRight, IconMail, IconPhone } from "@tabler/icons-react";
+import { IconArrowRight, IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
 import { PageIntro } from "@/components/content/PageIntro";
 import { BookingLink } from "@/components/content/BookingLink";
 import { siteConfig } from "@/lib/site-data";
@@ -207,6 +207,17 @@ export function ContactPageClient() {
               <IconPhone size={19} aria-hidden="true" />
               {siteConfig.phoneDisplay}
             </a>
+            {siteConfig.googleBusinessUrl && (
+              <a
+                className="contact-direct"
+                href={siteConfig.googleBusinessUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <IconMapPin size={19} aria-hidden="true" />
+                Find us on Google
+              </a>
+            )}
           </section>
           <section>
             <h2>What happens next</h2>

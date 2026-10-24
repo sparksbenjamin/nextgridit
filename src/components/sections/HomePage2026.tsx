@@ -9,6 +9,7 @@ import { BookingLink } from "@/components/content/BookingLink";
 import { NetworkGlobe } from "@/components/sections/NetworkGlobe";
 import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { ServiceFinder } from "@/components/sections/ServiceFinder";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { getAllGuides } from "@/lib/guides";
 import { caseStudies } from "@/lib/site-data";
 
@@ -87,6 +88,8 @@ export function HomePage2026() {
           <IconArrowRight size={18} aria-hidden="true" />
         </Link>
       </div>
+
+      <TestimonialsSection />
 
       <section className="studio-section site-shell" id="find-your-fit">
         <div className="studio-section-heading" data-reveal>

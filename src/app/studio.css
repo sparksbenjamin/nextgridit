@@ -617,6 +617,46 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
 }
+.studio-testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+}
+.studio-testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--studio-radius);
+  background: var(--surface);
+}
+.studio-testimonial blockquote {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.studio-testimonial blockquote::before {
+  content: "\201C";
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+  color: var(--accent);
+}
+.studio-testimonial figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+.studio-testimonial figcaption strong {
+  font-weight: 600;
+}
+.studio-testimonial figcaption span {
+  color: var(--muted);
+}
 .studio-note {
   display: flex;
   flex-direction: column;

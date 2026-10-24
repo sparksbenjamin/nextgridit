@@ -10,9 +10,11 @@ import {
   IconArrowUpRight,
   IconChevronDown,
   IconMenu2,
+  IconPhone,
   IconX,
 } from "@tabler/icons-react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { siteConfig } from "@/lib/site-data";
 
 const groups = [
   {
@@ -25,6 +27,7 @@ const groups = [
       ["Vendor lockout recovery", "/services/vendor-lockout-recovery/"],
       ["HIPAA security assessments", "/services/hipaa-security-assessment/"],
       ["Vulnerability assessments", "/services/vulnerability-assessment/"],
+      ["NIST 800-171 readiness", "/services/nist-800-171-readiness/"],
       ["Infrastructure hardening", "/services/infrastructure-hardening/"],
       ["Penetration testing", "/services/security-audits-pentesting/"],
       ["Microsoft 365 & cloud", "/services/microsoft-365/"],
@@ -41,6 +44,7 @@ const groups = [
     links: [
       ["Small businesses", "/industries/small-business/"],
       ["Medical practices", "/industries/medical-offices/"],
+      ["Manufacturers & defense", "/industries/manufacturing-defense/"],
       ["Municipalities", "/industries/municipalities/"],
       ["Campgrounds", "/industries/campgrounds/"],
       ["Multi-site properties", "/industries/multi-site-properties/"],
@@ -246,6 +250,10 @@ export function Navbar() {
             About
           </Link>
         </nav>
+        <a className="header-phone" href={`tel:${siteConfig.phone}`}>
+          <IconPhone size={16} aria-hidden="true" />
+          {siteConfig.phoneDisplay}
+        </a>
         <BookingLink className="button-primary header-cta" onClick={close} />
         <button
           ref={mobileTrigger}
