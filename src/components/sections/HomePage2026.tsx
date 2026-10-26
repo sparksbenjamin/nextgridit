@@ -294,6 +294,11 @@ export function HomePage2026() {
         </div>
       </section>
       <div className="site-shell">
+        <section className="aegis-home-feature" aria-labelledby="aegis-home-title">
+          <div><p className="eyebrow">Open source from NextGridIT</p><h2 id="aegis-home-title">Meet Aegis.</h2><p>A self-hosted web application firewall and reverse proxy. Manage application protection, TLS certificates, and traffic visibility on infrastructure you control.</p><Link href="/aegis/">Explore Aegis WAF<IconArrowUpRight size={18} aria-hidden="true" /></Link></div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/aegis/overview-small.webp" width="720" height="450" alt="Aegis dashboard with example application traffic from an isolated test deployment" loading="lazy" />
+        </section>
         <ProjectCTA
           title="What is getting in your way?"
           description="Tell us about your environment and what needs to work better. Start with a conversation about your project, the fit, and a practical next step."

@@ -342,3 +342,52 @@
     font-size: 2.6rem;
   }
 }
+
+.aegis-home-feature {
+  --foreground: #eaf4ef;
+  --muted: #bdd2cb;
+  --accent: #9be5ce;
+  margin-bottom: 4rem;
+  background: #0e1b21;
+  color: #eaf4ef;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: clamp(1.6rem, 4vw, 3rem);
+  border-radius: 10px;
+  align-items: center;
+}
+.aegis-home-feature .eyebrow {
+  color: #9be5ce;
+}
+.aegis-home-feature h2 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-block: 0.7rem 1rem;
+}
+.aegis-home-feature p:not(.eyebrow) {
+  color: #bdd2cb;
+  max-width: 550px;
+  font-size: 0.9rem;
+}
+.aegis-home-feature a {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: 44px;
+  color: #9be5ce;
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+}
+.aegis-home-feature img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid #395b50;
+}
+
+@media (max-width: 850px) {
+  .aegis-home-feature {
+    grid-template-columns: 1fr;
+  }
+}

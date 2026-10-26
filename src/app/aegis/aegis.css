@@ -1,0 +1,719 @@
+.aegis-page {
+  --aegis-accent: #106e60;
+  --aegis-mint: #88dfc5;
+  --aegis-ink: #0e1b21;
+}
+.aegis-page section[id] {
+  scroll-margin-top: 7rem;
+}
+.aegis-page h1,
+.aegis-page h2,
+.aegis-page h3 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+}
+.aegis-page h2 {
+  font-size: clamp(2.1rem, 3.7vw, 3.5rem);
+  line-height: 1.09;
+}
+.aegis-page h3 {
+  font-size: 1.35rem;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+.aegis-page p {
+  line-height: 1.8;
+}
+.aegis-kicker {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+.aegis-hero,
+.aegis-final {
+  background: var(--aegis-ink);
+  color: #edf5f4;
+  --accent: #88dfc5;
+  --muted: #b8cad0;
+  --foreground: #edf5f4;
+}
+.aegis-hero {
+  padding-block: 2.5rem 2rem;
+}
+.aegis-product-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding-block: 0 2.5rem;
+  border-bottom: 1px solid #345049;
+}
+.aegis-wordmark {
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+}
+.aegis-wordmark > svg {
+  color: #88dfc5;
+}
+.aegis-wordmark > span {
+  font-weight: 400;
+  color: #b8cad0;
+}
+.aegis-byline {
+  font-size: 0.78rem;
+  color: #bed0d2;
+}
+.aegis-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 4rem;
+  align-items: end;
+  padding-block: 4rem 3.5rem;
+}
+.aegis-hero h1 {
+  font-size: clamp(3.2rem, 5.5vw, 5.25rem);
+  letter-spacing: -0.055em !important;
+  text-wrap: initial;
+  line-height: 1.01;
+  margin: 0;
+}
+.aegis-hero h1 > span {
+  color: #88dfc5;
+}
+.aegis-hero-copy > p {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: #c8d8d9;
+  max-width: 550px;
+  margin-bottom: 1.9rem;
+}
+.aegis-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+}
+.aegis-primary,
+.aegis-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 52px;
+  padding: 0.85rem 1.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+.aegis-primary {
+  background: #88dfc5;
+  color: #0e2924;
+}
+.aegis-primary:hover {
+  background: #b1efdc;
+}
+.aegis-secondary {
+  color: #e6efed;
+  border: 1px solid #55706c;
+  background: transparent;
+}
+.aegis-secondary:hover {
+  background: #203831;
+}
+.aegis-facts {
+  display: flex;
+  gap: 0.6rem 1.1rem;
+  flex-wrap: wrap;
+  margin-top: 1.9rem;
+  font-size: 0.7rem;
+  color: #b9cfca;
+  list-style: none;
+}
+.aegis-facts li + li::before {
+  content: "·";
+  margin-right: 1.1rem;
+  color: #88dfc5;
+}
+.aegis-showcase {
+  border-top: 1px solid #345049;
+}
+.aegis-screen-tabs {
+  display: flex;
+  gap: 1.5rem;
+}
+.aegis-screen-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 65px;
+  padding: 1rem 0.25rem;
+  color: #bdcfcc;
+  border-bottom: 3px solid transparent;
+  font-size: 0.86rem;
+}
+.aegis-screen-tabs button[aria-selected="true"] {
+  color: #99e4cf;
+  border-color: #88dfc5;
+}
+.aegis-screen-tabs button > span {
+  color: #9eb9b3;
+  font-size: 0.65rem;
+}
+.aegis-screen-frame {
+  overflow: hidden;
+  border: 1px solid #3d565b;
+  border-radius: 10px;
+  background: #0e171c;
+}
+.aegis-screen-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.44;
+  object-fit: contain;
+  background: #0e171c;
+}
+.aegis-screen-description {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-block: 1.65rem 1rem;
+}
+.aegis-screen-description h2 {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.6rem;
+}
+.aegis-screen-description p {
+  color: #bdd0d0;
+  font-size: 0.88rem;
+  max-width: 700px;
+}
+.aegis-screen-description a,
+.aegis-provenance a,
+.aegis-flow-figure a,
+.aegis-benchmark a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  font-size: 0.76rem;
+  color: #88dfc5;
+}
+.aegis-screen-description a {
+  flex-shrink: 0;
+}
+.aegis-provenance {
+  color: #a8c1bd;
+  font-size: 0.72rem;
+}
+.aegis-provenance a {
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.aegis-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.aegis-section-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.aegis-section {
+  padding-block: clamp(3.5rem, 6.5vw, 6rem);
+}
+.aegis-section-heading {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 2.5rem;
+}
+.aegis-section-heading > p {
+  color: var(--muted);
+  max-width: 470px;
+  font-size: 1rem;
+}
+.aegis-flow-figure {
+  margin: 0;
+}
+.aegis-flow-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+.aegis-flow-figure figcaption {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+}
+.aegis-flow-figure a {
+  color: var(--accent);
+}
+.aegis-architecture-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+.aegis-architecture-notes p {
+  display: flex;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.aegis-architecture-notes svg {
+  flex-shrink: 0;
+  color: var(--accent);
+  margin-top: 0.3rem;
+}
+.aegis-architecture-notes strong {
+  display: block;
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+.aegis-capabilities {
+  background: var(--surface-muted);
+  padding-block: clamp(3.5rem, 6.5vw, 6rem);
+}
+.aegis-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem 2.5rem;
+}
+.aegis-feature-grid article {
+  border-top: 1px solid var(--border-strong);
+  padding-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.aegis-feature-grid article > svg {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.aegis-feature-grid h3 {
+  margin-bottom: 0.9rem;
+  max-width: 330px;
+}
+.aegis-feature-grid p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.aegis-feature-grid a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+.aegis-agent,
+.aegis-start,
+.aegis-performance-layout,
+.aegis-boundaries,
+.aegis-faq {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+.aegis-agent > div > p:not(.aegis-kicker),
+.aegis-start > div > p:not(.aegis-kicker),
+.aegis-performance-layout > div > p:not(.aegis-kicker) {
+  margin-block: 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 530px;
+}
+.aegis-agent h2 > span {
+  color: var(--accent);
+}
+.aegis-agent-figure {
+  background: var(--surface-muted);
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 0;
+}
+.aegis-agent-figure ol {
+  list-style: none;
+}
+.aegis-agent-figure li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1.8rem;
+}
+.aegis-agent-figure li > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  background: var(--accent);
+  color: var(--selection-text);
+  border-radius: 50%;
+  font-size: 0.7rem;
+}
+.aegis-agent-figure li > svg {
+  position: absolute;
+  left: 8px;
+  bottom: 0.1rem;
+  transform: rotate(90deg);
+  color: var(--accent);
+}
+.aegis-agent-figure li:last-child {
+  padding-bottom: 0;
+}
+.aegis-agent-figure h3 {
+  font-size: 1.15rem;
+  margin-block: 0.2rem 0.35rem;
+}
+.aegis-agent-figure p {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.aegis-agent-figure figcaption {
+  margin-top: 1.5rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.73rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.aegis-performance {
+  background: var(--surface-muted);
+  padding-block: clamp(3.5rem, 6.5vw, 6rem);
+}
+.aegis-benchmark {
+  margin: 0;
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 10px;
+}
+.aegis-benchmark figcaption {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+.aegis-benchmark-row {
+  margin-block: 1.3rem;
+}
+.aegis-benchmark-row > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+.aegis-benchmark-row strong {
+  font-size: 1.4rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.aegis-benchmark-row small {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.aegis-benchmark-track {
+  display: block;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--surface-muted);
+}
+.aegis-benchmark-track > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.aegis-benchmark > p {
+  color: var(--muted);
+  font-size: 0.7rem;
+  margin-top: 1.6rem;
+}
+.aegis-benchmark a {
+  color: var(--accent);
+}
+.aegis-benchmark-context {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 2.5rem;
+  line-height: 1.8;
+}
+.aegis-start-steps {
+  padding-left: 1.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-block: 1.5rem;
+}
+.aegis-start-steps li {
+  padding-left: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+.aegis-terminal {
+  background: #0e1b21;
+  color: #d2e5dc;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.aegis-terminal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.1rem;
+  border-bottom: 1px solid #38514e;
+  color: #afc8bf;
+  font-size: 0.73rem;
+}
+.aegis-terminal button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.4rem 0.7rem;
+  border-radius: 5px;
+  background: #203831;
+  color: #a3e8cd;
+  font-size: 0.75rem;
+}
+.aegis-terminal pre {
+  overflow-x: auto;
+  padding: 1.75rem 1.2rem;
+  font-size: 0.76rem;
+  line-height: 2.1;
+  white-space: pre;
+}
+.aegis-terminal pre:focus-visible {
+  outline-offset: -4px;
+}
+.aegis-terminal > p {
+  padding: 0 1.2rem 1rem;
+  color: #afc8bf;
+  font-size: 0.72rem;
+}
+.aegis-setup-note {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-block: 1.2rem;
+  line-height: 1.8;
+}
+.aegis-setup-note code {
+  overflow-wrap: anywhere;
+}
+.aegis-boundaries {
+  padding: 2rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-muted);
+  border-radius: 0 9px 9px 0;
+}
+.aegis-boundaries h2 {
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+}
+.aegis-boundaries > div > p:not(.aegis-kicker) {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.aegis-faq details {
+  border-top: 1px solid var(--border-strong);
+  padding-block: 1.2rem;
+}
+.aegis-faq details:last-child {
+  border-bottom: 1px solid var(--border-strong);
+}
+.aegis-faq summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  padding-right: 0.5rem;
+  min-height: 32px;
+}
+.aegis-faq details > p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-block: 1rem 0.5rem;
+}
+.aegis-final {
+  padding-block: 4.5rem;
+}
+.aegis-final > div > svg {
+  color: #88dfc5;
+  margin-bottom: 1.5rem;
+}
+.aegis-final h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+}
+.aegis-final p {
+  color: #c0d4d0;
+  margin-block: 1.5rem 2rem;
+  max-width: 530px;
+}
+.aegis-issues {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  color: #b8d5cc;
+  font-size: 0.75rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 1099px) {
+  .aegis-hero-grid {
+    gap: 2rem;
+  }
+  .aegis-screen-tabs button {
+    gap: 1rem;
+  }
+  .aegis-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .aegis-screen-description {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 850px) {
+  .aegis-hero-grid,
+  .aegis-section-heading,
+  .aegis-agent,
+  .aegis-start,
+  .aegis-performance-layout,
+  .aegis-boundaries,
+  .aegis-faq {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .aegis-hero-grid {
+    padding-block: 3rem 2.5rem;
+  }
+  .aegis-hero-copy > p {
+    max-width: 650px;
+  }
+  .aegis-architecture-notes {
+    gap: 1.5rem;
+  }
+  .aegis-home-feature {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 639px) {
+  .aegis-hero {
+    padding-top: 1.5rem;
+  }
+  .aegis-product-line {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding-bottom: 1.5rem;
+  }
+  .aegis-wordmark {
+    font-size: 1.6rem;
+  }
+  .aegis-hero h1 {
+    font-size: clamp(2.2rem, 11.5vw, 3.2rem);
+  }
+  .aegis-page h2 {
+    font-size: 2.2rem;
+  }
+  .aegis-kicker {
+    font-size: 0.65rem;
+  }
+  .aegis-screen-tabs {
+    gap: 0;
+    justify-content: space-between;
+  }
+  .aegis-screen-tabs button {
+    flex: 1;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    padding-inline: 0.3rem;
+    min-height: 60px;
+  }
+  .aegis-screen-tabs button > span {
+    display: none;
+  }
+  .aegis-screen-description h2 {
+    font-size: 1.3rem;
+  }
+  .aegis-screen-description p {
+    font-size: 0.82rem;
+  }
+  .aegis-section-nav {
+    gap: 0.2rem 1.2rem;
+  }
+  .aegis-feature-grid,
+  .aegis-architecture-notes {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .aegis-agent-figure,
+  .aegis-benchmark {
+    padding: 1.3rem;
+  }
+  .aegis-architecture-notes {
+    margin-top: 1.5rem;
+  }
+  .aegis-primary,
+  .aegis-secondary {
+    min-height: 50px;
+    padding-inline: 1rem;
+  }
+  .aegis-hero .aegis-primary {
+    width: 100%;
+  }
+  .aegis-facts {
+    font-size: 0.65rem;
+    gap: 0.5rem 0.8rem;
+  }
+  .aegis-facts li + li::before {
+    margin-right: 0.8rem;
+  }
+  .aegis-terminal-top {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .aegis-terminal pre {
+    font-size: 0.7rem;
+  }
+  .aegis-start > div {
+    min-width: 0;
+  }
+  .aegis-boundaries {
+    padding: 1.5rem;
+  }
+  .aegis-issues {
+    flex-wrap: wrap;
+    line-height: 1.6;
+  }
+}

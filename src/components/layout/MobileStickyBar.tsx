@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site-data";
 
 export function MobileStickyBar() {
   const path = usePathname();
-  if (path.startsWith("/contact")) return null;
+  if (path.startsWith("/contact") || path.startsWith("/aegis")) return null;
   return (
     <div className="mobile-contact-bar">
       <a href={`tel:${siteConfig.phone}`}>

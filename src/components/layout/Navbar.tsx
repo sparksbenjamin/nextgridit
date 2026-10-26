@@ -65,6 +65,7 @@ const groups = [
       ["Compliance", "/compliance/"],
       ["Technology expertise", "/technologies/"],
       ["Local-first systems", "/local-first/"],
+      ["Aegis WAF · open source", "/aegis/"],
       ["NextGrid Labs", "/labs/"],
       ["Company facts", "/company-facts/"],
     ],

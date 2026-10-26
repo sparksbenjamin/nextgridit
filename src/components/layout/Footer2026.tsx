@@ -40,6 +40,7 @@ const columns = [
       ["Local-first systems", "/local-first/"],
       ["Project fit", "/project-fit/"],
       ["Common questions", "/faq/"],
+      ["Aegis WAF", "/aegis/"],
       ["NextGrid Labs", "/labs/"],
     ],
   },

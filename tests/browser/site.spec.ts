@@ -16,6 +16,7 @@ const representativePages = [
   "/technologies/",
   "/technologies/microsoft-365/",
   "/labs/",
+  "/aegis/",
   "/faq/",
   "/services/network-wifi/",
   "/case-studies/",

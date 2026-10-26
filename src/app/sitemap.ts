@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${base}/`, priority: 1 },
     { url: `${base}/labs/`, priority: 0.96 },
+    { url: `${base}/aegis/`, priority: 0.86 },
     { url: `${base}/services/`, priority: 0.95 },
     ...services.map((service) => ({
       url: `${base}/services/${service.slug}/`,
