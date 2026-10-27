@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type KeyboardEvent } from "react";
-import { IconArrowUpRight, IconCheck, IconCopy } from "@tabler/icons-react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 
 const repository = "https://github.com/nextgridit-team/Aegis-WAF";
 const screens = [
@@ -12,7 +12,7 @@ const screens = [
     title: "See the traffic reaching your applications.",
     description:
       "Follow recorded requests, distinguish allowed and blocked traffic, and investigate individual events.",
-    alt: "Aegis live traffic map and request log from the repository's isolated test deployment",
+    alt: "Aegis WAF live traffic map and request log from the repository's isolated test deployment",
     height: 1000,
   },
   {
@@ -22,7 +22,7 @@ const screens = [
     title: "Choose the detections your application needs.",
     description:
       "Build reusable, pinned signature sets from installed CRS rules, then tune sensitivity and exclusions in a policy.",
-    alt: "Aegis curated signature set builder with synthetic policy configuration",
+    alt: "Aegis WAF curated signature set builder with synthetic policy configuration",
     height: 1000,
   },
   {
@@ -32,7 +32,7 @@ const screens = [
     title: "Manage certificates alongside protection.",
     description:
       "Request and renew ACME certificates, including Cloudflare DNS-01 wildcards, or upload your existing PEM certificate and key.",
-    alt: "Aegis certificate inventory showing automatic ACME and manually uploaded example certificates",
+    alt: "Aegis WAF certificate inventory showing automatic ACME and manually uploaded example certificates",
     height: 1000,
   },
 ] as const;
@@ -56,7 +56,7 @@ export function AegisShowcase() {
   return (
     <section
       className="aegis-showcase"
-      aria-label="Explore the Aegis interface"
+      aria-label="Explore the Aegis WAF interface"
     >
       <div
         className="aegis-screen-tabs"
@@ -125,47 +125,5 @@ export function AegisShowcase() {
         </a>
       </p>
     </section>
-  );
-}
-
-export const aegisQuickstart = `git clone https://github.com/nextgridit-team/Aegis-WAF.git
-cd Aegis-WAF
-python3 scripts/bootstrap-secrets.py
-docker compose up -d --wait`;
-
-export function AegisQuickstart() {
-  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(aegisQuickstart);
-      setStatus("copied");
-    } catch {
-      setStatus("failed");
-    }
-  }
-  return (
-    <div className="aegis-terminal">
-      <div className="aegis-terminal-top">
-        <span>Docker Compose · quickstart</span>
-        <button type="button" onClick={copy}>
-          {status === "copied" ? (
-            <IconCheck size={16} aria-hidden="true" />
-          ) : (
-            <IconCopy size={16} aria-hidden="true" />
-          )}
-          {status === "copied" ? "Copied" : "Copy commands"}
-        </button>
-      </div>
-      <pre tabIndex={0} aria-label="Aegis installation commands">
-        <code>{aegisQuickstart}</code>
-      </pre>
-      <p role="status" aria-live="polite">
-        {status === "copied"
-          ? "Commands copied to clipboard."
-          : status === "failed"
-            ? "Clipboard unavailable. Select and copy the commands above."
-            : "Run on your own Docker host."}
-      </p>
-    </div>
   );
 }

@@ -134,6 +134,23 @@ test("preview assets carry noindex while production assets remain indexable", as
   }
 });
 
+test("Aegis WAF migration preserves query strings and normalizes product aliases", async () => {
+  for (const path of ["/aegis", "/aegis/", "/aegis.html", "/aegis/index.html", "/aegis/WAF", "/aegis/waf/", "/aegis/WAF/index.html", "/aegis/WAF.html"]) {
+    for (const method of ["GET", "HEAD"]) {
+      const response = await worker.fetch(new Request(`http://nextgridit.com${path}?ref=github`, { method }), env);
+      assert.equal(response.status, 308, path);
+      assert.equal(response.headers.get("location"), "https://www.nextgridit.com/aegis/WAF/?ref=github");
+    }
+  }
+  const preview = await worker.fetch(new Request("http://localhost:8790/aegis/"), env);
+  assert.equal(preview.headers.get("location"), "http://localhost:8790/aegis/WAF/");
+  for (const path of ["/aegis/WAF/", "/aegis/social.png", "/aegis/overview.webp", "/aegis/another-project/"]) {
+    const response = await worker.fetch(new Request(`https://www.nextgridit.com${path}`), env);
+    assert.equal(response.status, 200, path);
+    assert.equal(response.headers.get("location"), null, path);
+  }
+});
+
 test("asset normalization is permanent and missing pages keep their 404", async () => {
   for (const status of [307, 404]) {
     const response = await worker.fetch(new Request("https://www.nextgridit.com/about"), {

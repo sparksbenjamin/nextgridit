@@ -1,13 +1,18 @@
-# Aegis product page
+# Aegis WAF landing page
 
 ## Brief and source review
 
 Audience: developers, self-hosters, and IT teams evaluating an application WAF.
-Primary task: understand the product, inspect the source and follow the repository
-quickstart. Secondary task: discuss a deployment project with NextGridIT.
+Primary task: assess Aegis WAF for self-hosted websites, HTTP APIs, and multiple
+applications. The landing page explains benefits, use cases, and evaluation
+criteria in original copy. Installation commands and detailed operating guidance
+live on GitHub. Secondary task: discuss deployment help with NextGridIT.
 
-Route: `/aegis/`. Original product direction: the request path under your control.
-Aegis's teal, mint, dark slate, shield motif and real interface screenshots carry
+Canonical route: `/aegis/WAF/` (uppercase WAF as requested). Legacy `/aegis/`,
+slashless, HTML, and lowercase WAF variants permanently redirect with HTTP 308,
+preserving query parameters. Asset paths remain unchanged.
+
+Aegis WAF’s teal, mint, dark slate, shield motif and real interface screenshots carry
 its identity inside NextGridIT's shared navigation, themes and typography.
 
 Reviewed the public repository at `7c07c36224c51329cb11becd1cc704a724bd972c`
@@ -27,13 +32,12 @@ benchmark. Changes are confined to the website repository.
 | Default app plus PostgreSQL | compose.yaml; docs/deployment.md |
 | Optional external agents, disabled drafts, gated enforcement | internal/app/mcp.go server instructions; docs/agent-access.md |
 | No built-in inference; bounded and opt-in inspection | docs/limitations.md; docs/body-inspection.md |
-| Published 1.025 / 1.218 / 1.471 ms mean latencies | docs/benchmarks/platform-hardening-20261025.json |
-| Added CRS mean approximately 0.45 ms | 1.471 - 1.025 = 0.446 ms, calculated from that report |
 | Open-source application code | LICENSE; README third-party notices |
 
-Performance labels state the published workload, test date, hardware, disabled
-features and comparison limits. No attack-coverage, autonomous policy adaptation,
-network DDoS protection, production-capacity or security certification claims.
+The revised page links to the published benchmark methodology instead of
+repeating the README’s benchmark table. Product facts were rechecked against
+the current GitHub README on 2026-10-26. No attack-coverage, autonomous policy
+adaptation, network DDoS protection, production-capacity or certification claims.
 
 ## Assets and provenance
 
@@ -46,23 +50,23 @@ network DDoS protection, production-capacity or security certification claims.
   palettes. They contain no scripts, external fonts, remote images or motion.
 - The HTML agent-workflow infographic is semantic and responsive. It shows
   scoped reading, disabled drafts, simulation and explicitly permitted enforcement.
-- The benchmark graphic uses labeled HTML bars with the numeric values in text.
 - `public/aegis/social.svg` and `.png` are an original 1200×630 sharing image.
 - Upstream MIT notice is retained in `public/aegis/LICENSE.txt`.
 
 ## Discovery and behavior
 
 Homepage feature, Resources navigation, footer and sitemap link the product.
-The page has a self-canonical, dedicated sharing metadata and source-code schema.
+The title, description, H1, sharing metadata, and SoftwareApplication schema
+identify Aegis WAF. Schema links directly to nextgridit-team/Aegis-WAF. The
+canonical, Open Graph URL, breadcrumbs, and sitemap use `/aegis/WAF/`.
 The general mobile booking bar is omitted on this product page so GitHub remains
 the primary action; the final section retains an optional deployment-help link.
 Screenshot tabs support pointer and Left/Right/Home/End keyboard navigation.
-Full-size images link to the actual repository captures. The command copy action
-reports success and gives a selection fallback on clipboard failure. Setup and
-FAQ content remain available without JavaScript. No product demo, email or
+Full-size images link to the actual repository captures. Evaluation guidance,
+installation links, and FAQs remain available without JavaScript. No product demo, email or
 installation is executed for visitors.
 
-## Verification
+## Original launch verification (before the landing-page revision)
 
 - Full check: lint, TypeScript, 22 unit tests, build and export verification passed.
 - Export: 84 HTML files, 81 sitemap URLs, 386 JSON-LD blocks and seven PDF canonicals.
@@ -80,3 +84,21 @@ installation is executed for visitors.
 
 Live deployment checks are reported separately with the delivery.
 Browser checks use Chromium emulation, not physical mobile hardware.
+
+## Landing-page revision verification
+
+Updated regression coverage checks the WAF canonical and search metadata,
+repository identity, homepage discovery, sitemap migration, permanent redirects,
+query preservation, screenshots, and no-JavaScript content.
+
+- ESLint and TypeScript passed.
+- All 23 unit tests passed with `node --import tsx --test --test-isolation=none tests/*.test.ts`.
+- Production export passed with `next build --webpack`, followed by header
+  generation and export checks: 84 HTML files, 81 sitemap URLs, 386 JSON-LD blocks.
+- All 23 Playwright browser tests passed using the installed Brave Chromium.
+- Desktop and phone screenshots reviewed in light and dark themes. No horizontal
+  overflow at 1440px or 390px; both lazy-loaded architecture diagrams resolved.
+- The default Turbopack build could not bind its worker port in this environment;
+  the supported webpack compiler completed successfully. Build configuration is
+  unchanged. Generated route types were refreshed after moving the page.
+- Changes are local and have not been deployed.

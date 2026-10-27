@@ -473,6 +473,19 @@ const worker = {
     // Only the public production origin should be indexed. Keep preview URLs
     // crawlable so search engines can see the noindex response header.
     const productionHost = "www.nextgridit.com";
+    // Keep the WAF's legacy and alternate URLs on one product-specific canonical.
+    // Match pages exactly so screenshots and future Aegis products remain separate.
+    if (["GET", "HEAD"].includes(request.method) &&
+        /^\/aegis(?:\/(?:waf(?:\/index\.html|\.html|\/)?|index\.html)?|\.html)?$/i.test(url.pathname) &&
+        url.pathname !== "/aegis/WAF/") {
+      url.pathname = "/aegis/WAF/";
+      if ([productionHost, "nextgridit.com"].includes(url.hostname)) {
+        url.hostname = productionHost;
+        url.protocol = "https:";
+        url.port = "";
+      }
+      return Response.redirect(url.toString(), 308);
+    }
     if ([productionHost, "nextgridit.com"].includes(url.hostname) &&
         (url.hostname !== productionHost || url.protocol !== "https:") &&
         ["GET", "HEAD"].includes(request.method)) {

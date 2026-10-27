@@ -200,8 +200,7 @@
 }
 .aegis-screen-description a,
 .aegis-provenance a,
-.aegis-flow-figure a,
-.aegis-benchmark a {
+.aegis-flow-figure a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -302,7 +301,7 @@
 }
 .aegis-feature-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 3rem 2.5rem;
 }
 .aegis-feature-grid article {
@@ -336,16 +335,13 @@
 }
 .aegis-agent,
 .aegis-start,
-.aegis-performance-layout,
-.aegis-boundaries,
 .aegis-faq {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 6vw, 6rem);
 }
 .aegis-agent > div > p:not(.aegis-kicker),
-.aegis-start > div > p:not(.aegis-kicker),
-.aegis-performance-layout > div > p:not(.aegis-kicker) {
+.aegis-start > div > p:not(.aegis-kicker) {
   margin-block: 1.5rem;
   color: var(--muted);
   font-size: 0.95rem;
@@ -405,143 +401,6 @@
   font-size: 0.73rem;
   color: var(--muted);
   line-height: 1.7;
-}
-.aegis-performance {
-  background: var(--surface-muted);
-  padding-block: clamp(3.5rem, 6.5vw, 6rem);
-}
-.aegis-benchmark {
-  margin: 0;
-  background: var(--surface);
-  padding: 2rem;
-  border-radius: 10px;
-}
-.aegis-benchmark figcaption {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 2rem;
-}
-.aegis-benchmark-row {
-  margin-block: 1.3rem;
-}
-.aegis-benchmark-row > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
-}
-.aegis-benchmark-row strong {
-  font-size: 1.4rem;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.aegis-benchmark-row small {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.aegis-benchmark-track {
-  display: block;
-  height: 9px;
-  border-radius: 2px;
-  background: var(--surface-muted);
-}
-.aegis-benchmark-track > span {
-  display: block;
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-}
-.aegis-benchmark > p {
-  color: var(--muted);
-  font-size: 0.7rem;
-  margin-top: 1.6rem;
-}
-.aegis-benchmark a {
-  color: var(--accent);
-}
-.aegis-benchmark-context {
-  color: var(--muted);
-  font-size: 0.75rem;
-  margin-top: 2.5rem;
-  line-height: 1.8;
-}
-.aegis-start-steps {
-  padding-left: 1.2rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-block: 1.5rem;
-}
-.aegis-start-steps li {
-  padding-left: 0.4rem;
-  margin-bottom: 0.7rem;
-}
-.aegis-terminal {
-  background: #0e1b21;
-  color: #d2e5dc;
-  border-radius: 9px;
-  overflow: hidden;
-}
-.aegis-terminal-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.8rem 1.1rem;
-  border-bottom: 1px solid #38514e;
-  color: #afc8bf;
-  font-size: 0.73rem;
-}
-.aegis-terminal button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 44px;
-  padding: 0.4rem 0.7rem;
-  border-radius: 5px;
-  background: #203831;
-  color: #a3e8cd;
-  font-size: 0.75rem;
-}
-.aegis-terminal pre {
-  overflow-x: auto;
-  padding: 1.75rem 1.2rem;
-  font-size: 0.76rem;
-  line-height: 2.1;
-  white-space: pre;
-}
-.aegis-terminal pre:focus-visible {
-  outline-offset: -4px;
-}
-.aegis-terminal > p {
-  padding: 0 1.2rem 1rem;
-  color: #afc8bf;
-  font-size: 0.72rem;
-}
-.aegis-setup-note {
-  color: var(--muted);
-  font-size: 0.8rem;
-  margin-block: 1.2rem;
-  line-height: 1.8;
-}
-.aegis-setup-note code {
-  overflow-wrap: anywhere;
-}
-.aegis-boundaries {
-  padding: 2rem;
-  border-left: 3px solid var(--accent);
-  background: var(--surface-muted);
-  border-radius: 0 9px 9px 0;
-}
-.aegis-boundaries h2 {
-  font-size: clamp(1.9rem, 3vw, 2.7rem);
-}
-.aegis-boundaries > div > p:not(.aegis-kicker) {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
 }
 .aegis-faq details {
   border-top: 1px solid var(--border-strong);
@@ -607,8 +466,6 @@
   .aegis-section-heading,
   .aegis-agent,
   .aegis-start,
-  .aegis-performance-layout,
-  .aegis-boundaries,
   .aegis-faq {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -677,8 +534,7 @@
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
-  .aegis-agent-figure,
-  .aegis-benchmark {
+  .aegis-agent-figure {
     padding: 1.3rem;
   }
   .aegis-architecture-notes {
@@ -699,21 +555,23 @@
   .aegis-facts li + li::before {
     margin-right: 0.8rem;
   }
-  .aegis-terminal-top {
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .aegis-terminal pre {
-    font-size: 0.7rem;
-  }
   .aegis-start > div {
     min-width: 0;
-  }
-  .aegis-boundaries {
-    padding: 1.5rem;
   }
   .aegis-issues {
     flex-wrap: wrap;
     line-height: 1.6;
   }
+}
+
+.aegis-use-cases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aegis-evaluation {
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+.aegis-evaluation-links { display: grid; gap: 1rem; }
+@media (max-width: 767px) {
+  .aegis-use-cases { grid-template-columns: 1fr; }
 }
