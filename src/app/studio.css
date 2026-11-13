@@ -1427,6 +1427,13 @@ h2 {
   gap: 3.5rem;
   padding-right: 3.5rem;
 }
+.ack-marquee a {
+  display: inline-flex;
+}
+.ack-marquee a:focus-visible {
+  outline: 3px solid var(--ink-text);
+  outline-offset: 4px;
+}
 .ack-marquee img {
   height: 56px;
   width: auto;

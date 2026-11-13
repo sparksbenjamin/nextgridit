@@ -758,8 +758,18 @@ test("sample finding shows report facts; acknowledgment wall stays data-gated", 
     "href",
     "/services/security-audits-pentesting/",
   );
-  // The wall renders only with real acknowledgment entries; none are seeded.
-  await expect(page.locator(".studio-ack-band")).toHaveCount(0);
+  // The wall renders only with real acknowledgment entries; Microsoft is
+  // credited in MSRC's own advisory data for CVE-2025-33051.
+  const wall = page.locator(".studio-ack-band");
+  await expect(wall).toBeVisible();
+  await expect(
+    wall.getByRole("heading", { level: 2 }),
+  ).toContainText("acknowledged");
+  await expect(wall.getByRole("img", { name: "Microsoft" })).toHaveCount(1);
+  await expect(wall.getByRole("link", { name: "Microsoft" })).toHaveAttribute(
+    "href",
+    "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-33051",
+  );
   await page.setViewportSize({ width: 390, height: 844 });
   const box = await services.boundingBox();
   expect(box!.height).toBeGreaterThanOrEqual(44);

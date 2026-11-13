@@ -29,7 +29,18 @@ export type Acknowledgment = {
   reference?: string;
 };
 
-export const acknowledgments: Acknowledgment[] = [];
+export const acknowledgments: Acknowledgment[] = [
+  {
+    company: "Microsoft",
+    logo: "/acknowledgments/microsoft.svg",
+    logoWidth: 220,
+    logoHeight: 56,
+    // Credited in Microsoft's own advisory data as "Ben Sparks"
+    // (document.acknowledgments), verified against the CSAF record.
+    reference:
+      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-33051",
+  },
+];
 
 /**
  * How many copies of the logo strip the marquee needs so one half of the
@@ -38,6 +49,8 @@ export const acknowledgments: Acknowledgment[] = [];
  */
 export function marqueeStripCount(entryCount: number): number {
   if (entryCount <= 0) return 0;
-  const target = Math.max(2, Math.ceil(8 / entryCount));
+  // Target ~10 logo slots per track so one half covers a wide viewport;
+  // even count required: the track translates by -50%.
+  const target = Math.max(2, Math.ceil(10 / entryCount));
   return target % 2 === 0 ? target : target + 1;
 }

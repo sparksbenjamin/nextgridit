@@ -38,17 +38,34 @@ export function AcknowledgmentWall() {
                 key={stripIndex}
                 aria-hidden={stripIndex === 0 ? undefined : "true"}
               >
-                {acknowledgments.map((entry) => (
-                  // eslint-disable-next-line @next/next/no-img-element -- fixed-size monochrome wordmarks with explicit dimensions; no loader needed
-                  <img
-                    key={entry.company}
-                    src={entry.logo}
-                    alt={stripIndex === 0 ? entry.company : ""}
-                    width={entry.logoWidth}
-                    height={entry.logoHeight}
-                    loading="lazy"
-                  />
-                ))}
+                {acknowledgments.map((entry) =>
+                  stripIndex === 0 && entry.reference ? (
+                    <a
+                      key={entry.company}
+                      href={entry.reference}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={entry.logo}
+                        alt={entry.company}
+                        width={entry.logoWidth}
+                        height={entry.logoHeight}
+                        loading="lazy"
+                      />
+                    </a>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element -- fixed-size monochrome wordmarks with explicit dimensions; no loader needed
+                    <img
+                      key={entry.company}
+                      src={entry.logo}
+                      alt={stripIndex === 0 ? entry.company : ""}
+                      width={entry.logoWidth}
+                      height={entry.logoHeight}
+                      loading="lazy"
+                    />
+                  ),
+                )}
               </li>
             ))}
           </ul>

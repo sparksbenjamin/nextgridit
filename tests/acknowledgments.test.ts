@@ -18,7 +18,7 @@ test("marquee strip count is even, loop-ready, and zero when empty", () => {
       `${count} entries must produce an even strip count for the -50% loop`,
     );
     assert.ok(
-      strips * count >= 8,
+      strips * count >= 10,
       `${count} entries must fill half a wide track`,
     );
   }
