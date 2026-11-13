@@ -409,12 +409,17 @@ test("text resizing and reduced motion preserve usable navigation and content", 
     await page.evaluate(() => {
       document.documentElement.style.fontSize = "200%";
     });
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
-      `text reflow at ${width}`,
-    ).toBe(true);
+    // Lazy-loaded hero imagery can settle a frame after fonts; require the
+    // settled layout rather than the transient during asset load.
+    await expect
+      .poll(
+        () =>
+          page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+          ),
+        { timeout: 2000 },
+      )
+      .toBe(true);
     const overlaps = await page.locator(".header-row").evaluate((header) => {
       const boxes = [...header.children]
         .map((element) => element.getBoundingClientRect())
@@ -725,4 +730,47 @@ test("a saved dark theme is applied before the first content paint", async ({
   expect(timing.applied).toBeGreaterThan(0);
   expect(timing.applied).toBeLessThanOrEqual(timing.painted);
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
+test("sample finding shows report facts; acknowledgment wall stays data-gated", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/");
+  const card = page.locator(".finding-card");
+  await expect(card).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "What a finding looks like" }),
+  ).toBeVisible();
+  await expect(card.getByRole("heading", { level: 3 })).toContainText(
+    "Password reset",
+  );
+  await expect(card.locator(".finding-severity")).toHaveText("High");
+  await expect(card.locator(".finding-status")).toContainText(
+    "Verified fixed",
+  );
+  await expect(card.getByText("CWE-307")).toBeVisible();
+  await expect(card).toContainText("Names and hosts redacted");
+  const services = page.getByRole("link", {
+    name: "Security assessment services",
+  });
+  await expect(services).toHaveAttribute(
+    "href",
+    "/services/security-audits-pentesting/",
+  );
+  // The wall renders only with real acknowledgment entries; Microsoft is
+  // credited in MSRC's own advisory data for CVE-2025-33051.
+  const wall = page.locator(".studio-ack-band");
+  await expect(wall).toBeVisible();
+  await expect(
+    wall.getByRole("heading", { level: 2 }),
+  ).toContainText("acknowledged");
+  await expect(wall.getByRole("img", { name: "Microsoft" })).toHaveCount(1);
+  await expect(wall.getByRole("link", { name: "Microsoft" })).toHaveAttribute(
+    "href",
+    "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-33051",
+  );
+  await page.setViewportSize({ width: 390, height: 844 });
+  const box = await services.boundingBox();
+  expect(box!.height).toBeGreaterThanOrEqual(44);
 });
