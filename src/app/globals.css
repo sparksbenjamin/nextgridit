@@ -1247,8 +1247,11 @@ svg {
   }
   .project-cta {
     flex-direction: column;
-    align-items: start;
+    align-items: stretch;
     gap: 1.5rem;
+  }
+  .project-cta-actions .button-primary {
+    width: 100%;
   }
   .detail-aside {
     border-left: 0;
@@ -1269,7 +1272,8 @@ svg {
     display: none;
   }
   .wordmark {
-    font-size: 1.2rem;
+    /* vw cap keeps the wordmark from doubling under 200% text zoom. */
+    font-size: min(1.2rem, 6vw);
   }
   .page-shell {
     padding-top: 2.5rem;
@@ -1321,6 +1325,27 @@ svg {
   .footer-bottom {
     padding-bottom: 5.5rem;
   }
+  .text-link {
+    min-height: 44px;
+  }
+  .theme-toggle {
+    flex-wrap: wrap;
+  }
+  .theme-toggle-button {
+    min-height: 44px;
+  }
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
   .mobile-contact-bar {
     display: grid;
     position: fixed;
@@ -1328,12 +1353,13 @@ svg {
     left: 0;
     right: 0;
     z-index: 50;
-    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
     background: var(--background-elevated);
     border-top: 1px solid var(--border-strong);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .mobile-contact-bar a {
+    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;

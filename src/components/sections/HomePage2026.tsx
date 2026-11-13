@@ -10,6 +10,8 @@ import { NetworkGlobe } from "@/components/sections/NetworkGlobe";
 import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { ServiceFinder } from "@/components/sections/ServiceFinder";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { SampleFindingSection } from "@/components/sections/SampleFindingSection";
+import { AcknowledgmentWall } from "@/components/sections/AcknowledgmentWall";
 import { getAllGuides } from "@/lib/guides";
 import { caseStudies } from "@/lib/site-data";
 
@@ -171,6 +173,10 @@ export function HomePage2026() {
           </div>
         </div>
       </section>
+
+      <SampleFindingSection />
+
+      <AcknowledgmentWall />
 
       <section className="studio-section site-shell studio-person" data-reveal>
         <div className="studio-person-intro">

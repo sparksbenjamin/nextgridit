@@ -254,6 +254,7 @@ h2 {
 }
 .finder-tabs {
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid var(--border);
   background: var(--surface-muted);
 }
@@ -463,6 +464,7 @@ h2 {
 }
 .handoff-record {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
   padding-block: 0.9rem;
@@ -523,6 +525,7 @@ h2 {
 }
 .consultant-card-top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
@@ -661,6 +664,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  min-width: 0;
   padding: 1.75rem;
   border: 1px solid var(--border);
   border-radius: var(--studio-radius);
@@ -680,6 +684,9 @@ h2 {
   font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 1rem;
+  /* The card hugs its children; cap the title so a single long word wraps
+     under large text sizes instead of sizing the card. */
+  max-width: 100%;
 }
 .studio-note > p {
   color: var(--muted);
@@ -940,7 +947,10 @@ h2 {
     object-fit: contain;
   }
   .studio-credentials {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .studio-credentials > * {
+    min-width: 0;
   }
   .studio-credentials > p {
     grid-column: 1/-1;
@@ -960,20 +970,31 @@ h2 {
     max-width: 540px;
   }
   .finder-panel {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
+  }
+  .finder-panel > * {
+    min-width: 0;
   }
   .finder-paths {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     align-items: start;
   }
   .studio-case-grid,
   .studio-person,
   .studio-process-layout {
-    grid-template-columns: 1fr;
+    /* minmax(0, 1fr) lets the single column shrink below its content's
+       min-content at large text sizes; long words then wrap via the
+       heading overflow-wrap instead of overflowing the page. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
+  }
+  .studio-case-grid > *,
+  .studio-person > *,
+  .studio-process-layout > * {
+    min-width: 0;
   }
   .handoff-illustration {
     max-width: 520px;
@@ -1055,7 +1076,9 @@ h2 {
     padding-block: 1.5rem;
   }
   .studio-credentials > div > strong {
-    font-size: 2.3rem;
+    /* vw cap keeps the display numerals from doubling under 200% text zoom
+       on narrow screens, where they cannot shrink by wrapping. */
+    font-size: min(2.3rem, 12vw);
   }
   .studio-credentials > div > span {
     font-size: 0.72rem;
@@ -1079,7 +1102,7 @@ h2 {
     padding: 1.25rem;
   }
   .finder-paths {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
   }
   .finder-copy h3 {
@@ -1120,7 +1143,7 @@ h2 {
     gap: 1rem;
   }
   .studio-notes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .studio-note {
     padding: 1.5rem;
@@ -1247,4 +1270,184 @@ h2 {
 }
 .page-shell > .project-cta:last-child {
   margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------------
+   Homepage proof layer: sample finding card + acknowledgment wall
+   ------------------------------------------------------------------ */
+.finding-card {
+  --finding-severity-text: #9c4a24;
+  --finding-severity-bg: #f4e2d6;
+  --finding-severity-border: #d9b6a2;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--studio-radius);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  max-width: 780px;
+}
+:root[data-theme="dark"] .finding-card,
+:root[data-theme="hacker"] .finding-card {
+  --finding-severity-text: #e8a279;
+  --finding-severity-bg: #3a2a20;
+  --finding-severity-border: #5c4433;
+}
+.finding-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.finding-id {
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.finding-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+}
+.finding-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem 1.25rem;
+  margin-top: 1.6rem;
+  flex-wrap: wrap;
+}
+.finding-severity {
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--finding-severity-text);
+  background: var(--finding-severity-bg);
+  border: 1px solid var(--finding-severity-border);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+}
+.finding-title-row h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+}
+.finding-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 1rem 2rem;
+  margin: 1.5rem 0 0;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+.finding-meta dt {
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+  margin-bottom: 0.3rem;
+}
+.finding-meta dd {
+  margin: 0;
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.82rem;
+  color: var(--foreground);
+  overflow-wrap: anywhere;
+}
+.finding-body {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+.finding-body p {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.finding-body strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.finding-caption {
+  margin: 1.5rem 0 0;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 0.72rem;
+  color: var(--muted-soft);
+}
+.studio-section .finding-card + .text-link {
+  margin-top: 1.75rem;
+}
+
+/* Acknowledgment wall band */
+.studio-ack-band {
+  background: var(--ink-surface);
+  color: var(--ink-text);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
+}
+.studio-ack-inner .eyebrow {
+  color: var(--ink-muted);
+}
+.studio-ack-inner h2 {
+  color: var(--ink-text);
+  max-width: 24ch;
+  margin-block: 1rem 1.25rem;
+}
+.studio-ack-lede {
+  color: var(--ink-muted);
+  max-width: 56ch;
+  font-size: 0.95rem;
+}
+.ack-marquee {
+  margin-top: 2.75rem;
+  overflow: hidden;
+}
+.ack-marquee-track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  animation: ack-marquee-scroll 42s linear infinite;
+}
+.ack-marquee-track > li {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  padding-right: 3.5rem;
+}
+.ack-marquee img {
+  height: 56px;
+  width: auto;
+  display: block;
+}
+@keyframes ack-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ack-marquee-track {
+    animation: none;
+  }
+}
+@media (max-width: 639px) {
+  .ack-marquee-track > li {
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+  .ack-marquee img {
+    height: 40px;
+  }
 }
