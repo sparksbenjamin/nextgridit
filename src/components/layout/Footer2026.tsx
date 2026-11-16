@@ -17,14 +17,14 @@ const columns = [
       ["Security assessments", "/services/vulnerability-assessment/"],
       ["Microsoft 365", "/services/microsoft-365/"],
       ["Networks, Wi-Fi & cabling", "/services/network-wifi/"],
-      ["Technology platforms", "/technologies/"],
+      ["Technology expertise", "/technologies/"],
     ],
   },
   {
     title: "NextGridIT",
     links: [
       ["About", "/about/"],
-      ["Our work", "/case-studies/"],
+      ["Case studies", "/case-studies/"],
       ["Who we help", "/industries/"],
       ["Service areas", "/service-areas/"],
       ["Our process", "/process/"],
