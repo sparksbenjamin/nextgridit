@@ -61,6 +61,34 @@
   max-width: 440px;
   line-height: 1.7;
 }
+.connected-hero .hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.75rem;
+  margin: 2rem 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(193, 209, 200, 0.25);
+  max-width: 580px;
+  list-style: none;
+  padding-inline-start: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.connected-hero .hero-trust-row strong {
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+.connected-hero .hero-trust-row a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.connected-hero .hero-trust-row a:hover,
+.connected-hero .hero-trust-row a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .network-globe {
   position: relative;
   width: 128%;
