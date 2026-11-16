@@ -50,7 +50,7 @@ export default function AboutPage() {
           </div>
           <p className="eyebrow">The person behind the work</p>
           <h2>Benjamin Sparks</h2>
-          <p className="theme-copy">
+          <p className="theme-copy max-w-prose">
             IT consultant & senior security analyst
             <br />
             Based in Seneca, South Carolina
@@ -105,7 +105,7 @@ export default function AboutPage() {
         <div>
           <p className="eyebrow mb-3">How that translates into work</p>
           <h2>Clear outcomes. Accountable delivery.</h2>
-          <p className="theme-copy">
+          <p className="theme-copy max-w-prose">
             Projects include helping businesses transition away from an MSP,
             recovering municipal infrastructure access after a vendor departure,
             strengthening Microsoft 365 environments, and prioritizing security

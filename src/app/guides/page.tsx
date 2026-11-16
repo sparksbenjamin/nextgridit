@@ -64,7 +64,7 @@ export default function GuidesPage() {
           </div>
           <div>
             <h2>{featuredGuide.title}</h2>
-            <p>{featuredGuide.summary}</p>
+            <p className="max-w-prose">{featuredGuide.summary}</p>
             <Link
               className="text-link mt-3"
               href={`/guides/${featuredGuide.slug}/`}

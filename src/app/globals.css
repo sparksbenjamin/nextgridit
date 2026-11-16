@@ -180,7 +180,7 @@ svg {
   margin: 0.8rem 0 1.25rem;
 }
 .intro-description {
-  max-width: 720px;
+  max-width: 65ch;
   color: var(--muted);
   font-size: 1.125rem;
   line-height: 1.8;
@@ -733,7 +733,7 @@ svg {
   margin-bottom: 1.25rem;
 }
 .detail-section > p {
-  max-width: 800px;
+  max-width: 65ch;
   color: var(--muted);
 }
 .detail-columns {
@@ -743,6 +743,9 @@ svg {
 }
 .detail-columns > * {
   min-width: 0;
+}
+.detail-columns p {
+  max-width: 65ch;
 }
 .detail-aside {
   border-left: 1px solid var(--border);
