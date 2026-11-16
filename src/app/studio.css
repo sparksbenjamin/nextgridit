@@ -183,7 +183,7 @@ h2 {
 }
 .studio-credentials {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1fr auto;
   gap: 2rem;
   align-items: center;
   border-block: 1px solid var(--border);

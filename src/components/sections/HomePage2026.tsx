@@ -45,6 +45,24 @@ export function HomePage2026() {
               <IconMapPin size={15} aria-hidden="true" />
               Based in Seneca. Working across the Upstate and beyond.
             </p>
+            <ul className="hero-trust-row" aria-label="Practice highlights">
+              <li>
+                <strong>20+</strong> years in practice
+              </li>
+              <li>
+                <strong>100+</strong> medical offices assessed
+              </li>
+              <li>
+                <Link href="/services/hipaa-security-assessment/">
+                  HIPAA security assessments
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/nist-800-171-readiness/">
+                  NIST 800-171 readiness
+                </Link>
+              </li>
+            </ul>
           </div>
           <NetworkGlobe />
         </div>
@@ -73,18 +91,6 @@ export function HomePage2026() {
           <br />
           <strong>Hands-on delivery.</strong>
         </p>
-        <div>
-          <strong>
-            20<span>+</span>
-          </strong>
-          <span>years of professional IT experience</span>
-        </div>
-        <div>
-          <strong>
-            100<span>+</span>
-          </strong>
-          <span>medical offices assessed</span>
-        </div>
         <Link href="/about/" className="text-link">
           Meet your technical partner
           <IconArrowRight size={18} aria-hidden="true" />
