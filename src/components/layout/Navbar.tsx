@@ -343,6 +343,10 @@ export function Navbar() {
             <IconArrowRight size={18} />
           </Link>
           <BookingLink className="button-primary" onClick={close} />
+          <a className="mobile-nav-phone" href={`tel:${siteConfig.phone}`}>
+            <IconPhone size={16} aria-hidden="true" />
+            {siteConfig.phoneDisplay}
+          </a>
           <div className="mobile-nav-utility">
             <span>Appearance</span>
             <ThemeToggle />
