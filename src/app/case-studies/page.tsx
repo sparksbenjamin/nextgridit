@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/content/JsonLd";
 import { IconCheck } from "@tabler/icons-react";
+import { BookingLink } from "@/components/content/BookingLink";
 import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { PageIntro } from "@/components/content/PageIntro";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
@@ -26,7 +27,9 @@ export default function CaseStudiesPage() {
         title="Real problems."
         accent="Clearer outcomes."
         description="A look at the infrastructure, access, and security challenges NextGridIT helps resolve. These client examples are sanitized to protect private environments."
-      />
+      >
+        <BookingLink />
+      </PageIntro>
       {caseStudies.map((study, index) => (
         <section id={study.slug} className="detail-section" key={study.slug}>
           <p className="eyebrow mb-3">

@@ -9,6 +9,7 @@ import {
   IconArrowRight,
   IconArrowUpRight,
   IconChevronDown,
+  IconMail,
   IconMenu2,
   IconPhone,
   IconX,
@@ -231,7 +232,7 @@ export function Navbar() {
             href="/case-studies/"
             onClick={close}
           >
-            Our work
+            Case studies
           </Link>
           <button
             type="button"
@@ -313,7 +314,7 @@ export function Navbar() {
             <IconArrowRight size={18} />
           </Link>
           {groups.map((group) => (
-            <details key={group.id}>
+            <details key={group.id} open={group.id === "services"}>
               <summary>
                 {group.label}
                 <IconChevronDown size={18} />
@@ -335,7 +336,7 @@ export function Navbar() {
             className="mobile-main-link"
             onClick={close}
           >
-            Our work
+            Case studies
             <IconArrowRight size={18} />
           </Link>
           <Link href="/about/" className="mobile-main-link" onClick={close}>
@@ -343,10 +344,16 @@ export function Navbar() {
             <IconArrowRight size={18} />
           </Link>
           <BookingLink className="button-primary" onClick={close} />
-          <a className="mobile-nav-phone" href={`tel:${siteConfig.phone}`}>
-            <IconPhone size={16} aria-hidden="true" />
-            {siteConfig.phoneDisplay}
-          </a>
+          <div className="mobile-nav-contact">
+            <a className="mobile-nav-phone" href={`tel:${siteConfig.phone}`}>
+              <IconPhone size={16} aria-hidden="true" />
+              {siteConfig.phoneDisplay}
+            </a>
+            <a className="mobile-nav-phone" href={`mailto:${siteConfig.email}`}>
+              <IconMail size={16} aria-hidden="true" />
+              {siteConfig.email}
+            </a>
+          </div>
           <div className="mobile-nav-utility">
             <span>Appearance</span>
             <ThemeToggle />

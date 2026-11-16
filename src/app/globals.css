@@ -559,11 +559,16 @@ svg {
   width: 100%;
   margin-top: 1.5rem;
 }
+.mobile-nav-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.75rem;
+  margin-top: 1.25rem;
+}
 .mobile-nav-phone {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: 1.25rem;
   min-height: 44px;
   font-size: 0.95rem;
   font-weight: 600;

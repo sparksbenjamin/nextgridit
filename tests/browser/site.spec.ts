@@ -126,11 +126,11 @@ test("mobile navigation supports disclosure, Escape, resize, and route changes",
   await expect(page.locator("#mobile-navigation")).toBeVisible();
   await page
     .locator("#mobile-navigation summary")
-    .filter({ hasText: "Services" })
+    .filter({ hasText: "Who we help" })
     .click();
   await page
     .locator("#mobile-navigation")
-    .getByRole("link", { name: "MSP transition", exact: true })
+    .getByRole("link", { name: "Medical practices", exact: true })
     .focus();
   await page.keyboard.press("Escape");
   await expect(trigger).toBeFocused();

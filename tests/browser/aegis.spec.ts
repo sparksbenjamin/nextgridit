@@ -93,8 +93,11 @@ test("Aegis stays discoverable, readable and useful without JavaScript", async (
   await expect(
     page.getByRole("link", { name: "Install Aegis WAF" }),
   ).toHaveAttribute("href", `${repository}#quickstart`);
-  await page.getByText("Is Aegis WAF free to use?", { exact: true }).click();
-  await expect(page.locator("details[open]")).toContainText("MIT license");
+  const licenseFaq = page
+    .locator("details")
+    .filter({ hasText: "Is Aegis WAF free to use?" });
+  await licenseFaq.locator("summary").click();
+  await expect(licenseFaq).toContainText("MIT license");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
