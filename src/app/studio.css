@@ -50,7 +50,7 @@ h2 {
 }
 .page-intro h1 {
   max-width: 960px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .page-intro .intro-description {
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
@@ -575,7 +575,7 @@ h2 {
 }
 .studio-process-band {
   background: var(--surface-muted);
-  padding-block: clamp(3.5rem, 7vw, 6rem);
+  padding-block: clamp(3.5rem, 7vw, 7rem);
 }
 .studio-process-layout {
   display: grid;
@@ -856,7 +856,7 @@ h2 {
   font-weight: 500;
 }
 .reading-layout > article {
-  max-width: 760px;
+  max-width: 70ch;
 }
 .reading-contents-desktop {
   background: var(--surface-muted);
