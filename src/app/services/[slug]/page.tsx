@@ -1,4 +1,4 @@
-import { InfrastructureArtwork } from "@/components/content/InfrastructureArtwork";
+import { ServiceArtwork } from "@/components/content/ServiceArtwork";
 import { BookingLink } from "@/components/content/BookingLink";
 import { JsonLd } from "@/components/content/JsonLd";
 import type { Metadata } from "next";
@@ -24,6 +24,17 @@ import { getAllGuides } from "@/lib/guides";
 
 type Params = {
   slug: string;
+};
+
+const serviceArtwork: Record<string, "networks" | "security" | "handoff"> = {
+  "network-wifi": "networks",
+  "hipaa-security-assessment": "security",
+  "vulnerability-assessment": "security",
+  "nist-800-171-readiness": "security",
+  "infrastructure-hardening": "security",
+  "security-audits-pentesting": "security",
+  "msp-transition": "handoff",
+  "vendor-lockout-recovery": "handoff",
 };
 
 export function generateStaticParams() {
@@ -116,8 +127,9 @@ export default async function ServiceDetailPage({
           </a>
         </PageIntro>
         <aside className="detail-outcomes">
-          {service.slug === "network-wifi" && (
-            <InfrastructureArtwork
+          {serviceArtwork[service.slug] && (
+            <ServiceArtwork
+              variant={serviceArtwork[service.slug]}
               className="service-illustration"
               sizes="(max-width: 850px) calc(100vw - 8rem), (min-width: 1376px) 440px, calc(45vw - 6rem)"
             />

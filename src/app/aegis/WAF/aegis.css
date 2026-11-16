@@ -169,9 +169,22 @@
 }
 .aegis-screen-frame {
   overflow: hidden;
-  border: 1px solid #3d565b;
+  border: 1px solid #52707a;
   border-radius: 10px;
   background: #0e171c;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+.aegis-screen-frame::before {
+  content: "";
+  display: block;
+  height: 34px;
+  border-bottom: 1px solid #243941;
+  background-image:
+    radial-gradient(circle at 18px 17px, #3a5d67 4.5px, transparent 5.5px),
+    radial-gradient(circle at 38px 17px, #3a5d67 4.5px, transparent 5.5px),
+    radial-gradient(circle at 58px 17px, #9fc98f 4.5px, transparent 5.5px),
+    linear-gradient(#141f24, #101a1f);
+  background-repeat: no-repeat;
 }
 .aegis-screen-frame img {
   display: block;
