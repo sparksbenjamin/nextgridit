@@ -887,6 +887,12 @@ h2 {
   object-fit: cover;
   margin-bottom: 1.25rem;
 }
+.founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 1.25rem;
+}
 .about-signature {
   font-family: var(--font-editorial), Georgia, serif;
   font-style: italic;

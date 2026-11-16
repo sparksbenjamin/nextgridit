@@ -1,11 +1,12 @@
 import { BookingLink } from "@/components/content/BookingLink";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IconArrowRight, IconCheck } from "@tabler/icons-react";
+import { IconArrowRight, IconBrandLinkedin, IconCheck } from "@tabler/icons-react";
 import { JsonLd } from "@/components/content/JsonLd";
 import { PageIntro } from "@/components/content/PageIntro";
 import { ProjectCTA } from "@/components/content/ProjectCTA";
 import { createBreadcrumbSchema, createMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site-data";
 
 export const metadata: Metadata = createMetadata({
   title: "About",
@@ -61,7 +62,18 @@ export default function AboutPage() {
             <br />
             Based in Seneca, South Carolina
           </p>
-          <BookingLink className="text-link" />
+          <div className="founder-links">
+            <BookingLink className="text-link" />
+            <a
+              className="text-link"
+              href={siteConfig.founderLinkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconBrandLinkedin size={17} aria-hidden="true" />
+              LinkedIn
+            </a>
+          </div>
         </div>
         <div className="founder-bio">
           <p>

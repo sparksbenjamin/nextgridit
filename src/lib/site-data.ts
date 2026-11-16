@@ -5,6 +5,7 @@ export const siteConfig = {
   phone: "+1-864-780-0202",
   phoneDisplay: "864-780-0202",
   email: "contact@nextgridit.com",
+  founderLinkedin: "https://www.linkedin.com/in/sparks-benjamin/",
   bookingUrl:
     "https://bookings.cloud.microsoft/book/ITProjectConsulation@nextgridit.com/",
   region: "Upstate South Carolina",
