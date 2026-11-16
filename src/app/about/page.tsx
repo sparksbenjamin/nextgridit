@@ -45,9 +45,15 @@ export default function AboutPage() {
       />
       <section className="detail-section founder-grid">
         <div className="founder-heading">
-          <div className="about-signature" aria-hidden="true">
-            bs.
-          </div>
+          <img
+            src="https://github.com/sparksbenjamin.png"
+            alt="Benjamin Sparks, IT consultant and senior security analyst"
+            width="170"
+            height="170"
+            loading="lazy"
+            decoding="async"
+            className="founder-portrait"
+          />
           <p className="eyebrow">The person behind the work</p>
           <h2>Benjamin Sparks</h2>
           <p className="theme-copy max-w-prose">

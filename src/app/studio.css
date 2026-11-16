@@ -878,6 +878,15 @@ h2 {
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 500;
 }
+.founder-portrait {
+  display: block;
+  width: 170px;
+  height: 170px;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  object-fit: cover;
+  margin-bottom: 1.25rem;
+}
 .about-signature {
   font-family: var(--font-editorial), Georgia, serif;
   font-style: italic;
